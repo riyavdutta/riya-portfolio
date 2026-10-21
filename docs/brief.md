@@ -18,7 +18,7 @@ A professional portfolio with a touch of personal branding. It should show what 
 - **Home:** postcard hero, About with three proof points, Selected work (five folders), What's in my kit, Back catalogue (records), Contact.
 - **Selected work, in order:** The Haunted CRM, The Founder Bottleneck, TRACE-BRL, the B2Ne website, CRM Graveyard.
 - **Case studies:** brief, audience, idea, rules, the work itself, lead asset, look, how it was made. Results appear only once they've been measured.
-- **Credits:** B2Ne campaigns are "Made for B2Ne", and Riya ran them end to end: concept, copy, design, video, posting and analysis. The B2Ne website is "Co-built with Mehtab Singh"; Riya made the About, How We Help, Services and Nexus Academy pages. B2Ne has approved showing this work.
+- **Credits:** B2Ne campaigns are "Made for B2Ne", and Riya ran them end to end: concept, copy, design, video, posting and analysis. The B2Ne website is "Co-built with B2Ne’s founder" (the founder isn’t named on the site); Riya made the About, How We Help, Services and Nexus Academy pages. B2Ne has approved showing this work.
 - **Never on the site:** salary or HR details, internal client data (such as Nodinite's), or claims she hasn't confirmed.
 
 ## 4–5. Visual direction

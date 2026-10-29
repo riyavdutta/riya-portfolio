@@ -1,0 +1,169 @@
+{
+ "slug": "the-content-studio",
+ "no": "003",
+ "year": "2026",
+ "credit": "BUILT FOR B2NE",
+ "tag": "System · 2026",
+ "title": "The Content Studio",
+ "sub": "The production system behind every B2Ne campaign: from a brief to a posted LinkedIn piece, with a check at every step.",
+ "description": "The Content Studio: the production system behind B2Ne’s LinkedIn campaigns, from brief to posted piece, with videos, carousels and soundtracks built in code. Designed and run by Riya Dutta.",
+ "postmark": "BUILT FOR B2NE · CONTENT STUDIO ·",
+ "facts": [
+  [
+   "FOR",
+   "B2Ne’s LinkedIn campaigns"
+  ],
+  [
+   "USED ON",
+   "The Haunted CRM, The Founder Bottleneck and CRM Graveyard"
+  ],
+  [
+   "BUILT WITH",
+   "Remotion (React and TypeScript), Python and an AI coding assistant"
+  ],
+  [
+   "MY PART",
+   "I designed the workflow, its rules and its approval gates, and I run it end to end"
+  ]
+ ],
+ "hero": {
+  "svg": "<svg viewBox=\"0 0 400 500\" role=\"img\" aria-label=\"The route from brief to post, eleven stops\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"400\" height=\"500\" fill=\"#07081A\"/><rect x=\"10\" y=\"10\" width=\"380\" height=\"480\" fill=\"none\" stroke=\"#2D31FA\" stroke-opacity=\".5\" stroke-dasharray=\"4 6\"/><text x=\"28\" y=\"36\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"2\" fill=\"#8FB4FF\">THE CONTENT STUDIO · ROUTE</text><path d=\"M36,92 L200,92 L364,92 L364,209 L200,209 L36,209 L36,327 L200,327 L364,327 L364,444 L200,444\" fill=\"none\" stroke=\"#DFF6FF\" stroke-opacity=\".55\" stroke-width=\"2\" stroke-dasharray=\"5 6\"/><circle cx=\"36\" cy=\"92\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"36\" y=\"96\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">01</text><text x=\"36\" y=\"126\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">BRIEF</text><circle cx=\"200\" cy=\"92\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"200\" y=\"96\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">02</text><text x=\"200\" y=\"126\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">PLAN</text><circle cx=\"364\" cy=\"92\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"364\" y=\"96\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">03</text><text x=\"364\" y=\"126\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">COPY</text><circle cx=\"364\" cy=\"209\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"364\" y=\"213\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">04</text><text x=\"364\" y=\"243\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">CHECK</text><circle cx=\"200\" cy=\"209\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"200\" y=\"213\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">05</text><text x=\"200\" y=\"243\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">APPROVE</text><circle cx=\"36\" cy=\"209\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"36\" y=\"213\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">06</text><text x=\"36\" y=\"243\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">BUILD</text><circle cx=\"36\" cy=\"327\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"36\" y=\"331\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">07</text><text x=\"36\" y=\"361\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">RENDER</text><circle cx=\"200\" cy=\"327\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"200\" y=\"331\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">08</text><text x=\"200\" y=\"361\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">CHECK</text><circle cx=\"364\" cy=\"327\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"364\" y=\"331\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">09</text><text x=\"364\" y=\"361\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">DELIVER</text><circle cx=\"364\" cy=\"444\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"364\" y=\"448\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">10</text><text x=\"364\" y=\"478\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">WATCH</text><circle cx=\"200\" cy=\"444\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"200\" y=\"448\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">11</text><text x=\"200\" y=\"478\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">POST</text></svg>",
+  "alt": "The route from brief to post"
+ },
+ "sections": [
+  {
+   "type": "statement",
+   "kick": "THE IDEA",
+   "title": "A studio, not a folder of files.",
+   "lead": "Every post goes through the same route, and nothing is built until the words are approved.",
+   "paras": [
+    "Campaigns, captions, videos and carousels all live in one place, with finished work kept apart from drafts and named by posting date, so each folder reads in posting order."
+   ]
+  },
+  {
+   "type": "route",
+   "kick": "THE ROUTE",
+   "title": "From brief to posted, in eleven stops.",
+   "items": [
+    {
+     "t": "Brief",
+     "d": "Who it’s for, what it’s about, the format, the date and what the reader should do.",
+     "you": true
+    },
+    {
+     "t": "Plan",
+     "d": "For a campaign: theme options, a scored pick, content pillars and a calendar."
+    },
+    {
+     "t": "Copy",
+     "d": "Drafted to one story shape: hook, problem, turn, step, lesson."
+    },
+    {
+     "t": "Check",
+     "d": "Line by line: does every line name the exact thing? Anything under 4 out of 5 is rewritten."
+    },
+    {
+     "t": "Approve",
+     "d": "The gate. Nothing is built until the words are approved.",
+     "you": true
+    },
+    {
+     "t": "Build",
+     "d": "Slides and scenes are written in code."
+    },
+    {
+     "t": "Render",
+     "d": "Videos with a synthesised soundtrack; carousels as slides plus a PDF."
+    },
+    {
+     "t": "Check",
+     "d": "Sample frames from every scene, the duration and the audio."
+    },
+    {
+     "t": "Deliver",
+     "d": "Dated files land in the finished folders, each with its caption beside it."
+    },
+    {
+     "t": "Watch",
+     "d": "Every video with sound, every slide, every caption read aloud.",
+     "you": true
+    },
+    {
+     "t": "Post",
+     "d": "Paste the caption, upload, post.",
+     "you": true
+    }
+   ],
+   "key": "Where I sign off."
+  },
+  {
+   "type": "rules",
+   "kick": "HOUSE RULES",
+   "title": "Every line is checked against these.",
+   "intro": "Eight house rules sit at the top of the process. Five of them:",
+   "items": [
+    {
+     "t": "The visual is the hook",
+     "d": "One statement per image; one line of at most eight words per slide or scene."
+    },
+    {
+     "t": "No invented numbers",
+     "d": "No statistics, prices or figures that can’t be backed up."
+    },
+    {
+     "t": "No client names",
+     "d": "Client work stays out of public posts."
+    },
+    {
+     "t": "The precision test",
+     "d": "Every noun has one meaning to a B2B tech founder: not “forecast” but “sales forecast”, not “list” but “CRM contact list”."
+    },
+    {
+     "t": "Pain, not solutions",
+     "d": "Posts show the problem and what it costs. The fix is a conversation, not a free how-to."
+    }
+   ]
+  },
+  {
+   "type": "numbers",
+   "kick": "BY THE NUMBERS",
+   "title": "What the system does.",
+   "items": [
+    {
+     "n": "11",
+     "l": "STOPS FROM BRIEF TO POST"
+    },
+    {
+     "n": "8",
+     "l": "HOUSE RULES"
+    },
+    {
+     "n": "0",
+     "l": "SAMPLES IN THE SOUNDTRACKS: EACH ONE IS SYNTHESISED IN CODE"
+    },
+    {
+     "n": "1",
+     "l": "COMMAND REBUILDS EVERY VIDEO, POSTER AND CAROUSEL"
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "kick": "THE MOTION LAB",
+   "title": "A rendering lab for what comes next.",
+   "paras": [
+    "Alongside the studio sits the Motion Lab, a deterministic rendering system. A brief becomes content, content gets treatments, and motion styles, transitions, materials and effects resolve through registries into scenes.",
+    "Its catalogue tracks what’s built and what’s planned, and a rule check makes sure every render comes out the same way twice."
+   ]
+  },
+  {
+   "type": "band",
+   "kick": "WHAT IT MADE",
+   "text": "<a class=\"ul\" href=\"../the-haunted-crm/\">The Haunted CRM</a>, <a class=\"ul\" href=\"../the-founder-bottleneck/\">The Founder Bottleneck</a> and <a class=\"ul\" href=\"../crm-graveyard/\">CRM Graveyard</a>."
+  }
+ ],
+ "next": {
+  "href": "../the-b2ne-website/",
+  "title": "The B2Ne website"
+ }
+}

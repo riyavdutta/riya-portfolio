@@ -1,0 +1,79 @@
+{
+ "slug": "trace-brl",
+ "no": "006",
+ "year": "2025",
+ "credit": "RESEARCH · UNDER REVIEW",
+ "tag": "Research · 2025 –",
+ "title": "TRACE-BRL",
+ "sub": "A framework for evaluating UX labs, and a maturity model for the age of AI and multimodal analytics.",
+ "description": "TRACE-BRL: a five-dimension maturity model for behavioural research labs, applied across 32 research initiatives. Co-authored by Riya Dutta; under review at Cognition, Technology & Work.",
+ "postmark": "UNDER REVIEW · SPRINGER NATURE ·",
+ "facts": [
+  [
+   "STATUS",
+   "Manuscript under review, <em>Cognition, Technology &amp; Work</em> (Springer Nature)"
+  ],
+  [
+   "WITH",
+   "L. Leonori, M. Ali and Y. Charalabidis"
+  ],
+  [
+   "INSTITUTIONS",
+   "Sapienza University of Rome and the University of the Aegean"
+  ],
+  [
+   "MY ROLE",
+   "Co-author"
+  ]
+ ],
+ "hero": {
+  "svg": "<svg viewBox=\"0 0 400 500\" role=\"img\" aria-label=\"TRACE-BRL manuscript title page\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"400\" height=\"500\" fill=\"#b7c9a8\"/><g transform=\"translate(200.0 250.0) rotate(-3)\"><rect x=\"-136.0\" y=\"-200.0\" width=\"272.0\" height=\"400.0\" fill=\"#fcf7d9\"/><text x=\"-112.00000000000001\" y=\"-145.0\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"2\" fill=\"#856a56\">MANUSCRIPT</text><text x=\"-112.00000000000001\" y=\"-75.0\" font-family=\"Playfair Display, serif\" font-size=\"34\" fill=\"#432720\">TRACE-BRL</text><text x=\"-112.00000000000001\" y=\"-30.0\" font-family=\"Work Sans, sans-serif\" font-size=\"11\" fill=\"#604734\">A maturity model for</text><text x=\"-112.00000000000001\" y=\"-15.0\" font-family=\"Work Sans, sans-serif\" font-size=\"11\" fill=\"#604734\">behavioural research labs</text><text x=\"-112.00000000000001\" y=\"135.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#65232b\">32</text><text x=\"-72.00000000000001\" y=\"135.0\" font-family=\"Space Mono, monospace\" font-size=\"9\" fill=\"#604734\">INITIATIVES</text><text x=\"8.0\" y=\"135.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#65232b\">5</text><text x=\"30.0\" y=\"135.0\" font-family=\"Space Mono, monospace\" font-size=\"9\" fill=\"#604734\">DIMENSIONS</text><g transform=\"translate(80.0 -165.0) rotate(9)\"><rect x=\"-46\" y=\"-12\" width=\"92\" height=\"24\" fill=\"none\" stroke=\"#65232b\" stroke-width=\"2\" rx=\"3\"/><text y=\"4\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"2\" fill=\"#65232b\">UNDER REVIEW</text></g></g></svg>",
+  "alt": "TRACE-BRL manuscript"
+ },
+ "sections": [
+  {
+   "type": "text",
+   "kick": "THE PAPER",
+   "title": "How ready are research labs to measure behaviour?",
+   "paras": [
+    "The paper looks at the measurement infrastructure available to consumer and behavioural research. It sets out five evaluative dimensions and a five-level maturity model, applies them across 32 research initiatives worldwide, and finds that <span class=\"mark\">most remain unequipped for multimodal behavioural measurement</span>."
+   ]
+  },
+  {
+   "type": "numbers",
+   "items": [
+    {
+     "n": "32",
+     "l": "RESEARCH INITIATIVES ASSESSED"
+    },
+    {
+     "n": "5",
+     "l": "EVALUATIVE DIMENSIONS"
+    },
+    {
+     "n": "5",
+     "l": "MATURITY LEVELS"
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "kick": "WHERE IT STANDS",
+   "paras": [
+    "Revised after peer review at <em>Behaviour &amp; Information Technology</em>, and now under review at <em>Cognition, Technology &amp; Work</em> (Springer Nature). The paper will be linked here once it’s published."
+   ]
+  },
+  {
+   "type": "text",
+   "kick": "RELATED WORK",
+   "title": "The lab side.",
+   "paras": [
+    "Research internship in Behavioural and Cognitive Methods at the University of the Aegean’s ISLab, Samos (June–August 2025): eye-tracking, GSR and PPG sessions, multimodal data analysis, and a report benchmarking 25 UX labs."
+   ]
+  }
+ ],
+ "next": {
+  "href": "../the-haunted-crm/",
+  "title": "The Haunted CRM"
+ }
+}

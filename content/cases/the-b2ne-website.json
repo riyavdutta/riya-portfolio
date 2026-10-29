@@ -1,0 +1,191 @@
+{
+ "slug": "the-b2ne-website",
+ "no": "004",
+ "year": "2026",
+ "credit": "CO-BUILT WITH THE FOUNDER",
+ "tag": "Website · 2026",
+ "title": "The B2Ne website",
+ "sub": "How to look credible with nothing to show.",
+ "description": "The B2Ne website: how a growth consultancy with one customer and no public presence set out to demonstrate credibility instead of claiming it. Words, structure and the Marketing Capacity Calculator by Riya Dutta.",
+ "postmark": "CO-BUILT · BUSINESS2NEXUS.COM ·",
+ "facts": [
+  [
+   "CLIENT",
+   "B2Ne (Business To Nexus)"
+  ],
+  [
+   "CO-BUILT WITH",
+   "B2Ne’s founder"
+  ],
+  [
+   "MY PART",
+   "The words, the structure and the Marketing Capacity Calculator; the About, How We Help, Services, Pricing and Nexus Academy pages"
+  ],
+  [
+   "BUILT IN",
+   "Lovable"
+  ],
+  [
+   "LIVE",
+   "<a class=\"ul\" href=\"https://www.business2nexus.com/\" target=\"_blank\" rel=\"noopener\">business2nexus.com ↗</a>"
+  ]
+ ],
+ "hero": {
+  "img": "assets/img/b2ne-page-how-we-help.jpg",
+  "alt": "The How We Help page on business2nexus.com",
+  "wide": true
+ },
+ "sections": [
+  {
+   "type": "cards",
+   "items": [
+    {
+     "k": "THE ASK",
+     "t": "B2Ne needed a website. What it had was one customer, Nodinite, and no public presence at all: no site, no case studies, nothing a founder could find.",
+     "bg": "blush"
+    },
+    {
+     "k": "THE PROBLEM",
+     "t": "A growth firm that couldn’t show its own growth. Nobody hands their growth to a firm that looks like it’s still figuring things out.",
+     "bg": "slate-soft"
+    }
+   ]
+  },
+  {
+   "type": "statement",
+   "kick": "THE TURN",
+   "title": "Stop claiming credibility. Demonstrate it.",
+   "lead": "One rule for every page: do something useful for a founder before they ever speak to us.",
+   "tiles": [
+    {
+     "t": "A route, not a menu",
+     "d": "Founders at this stage rarely know which problem they have, so the site shows four milestones in order. A founder finds where they are and sees the next step."
+    },
+    {
+     "t": "A calculator where the pitch should be",
+     "d": "The question under every first call is cost. The Marketing Capacity Calculator answers what B2Ne saves against hiring, before anyone has to ask."
+    },
+    {
+     "t": "Give the diagnosis away",
+     "d": "With no proof to show, the site offers expertise instead: a free 360° audit on request, ten pages on performance, SEO, competitors and paid spend, built from GTmetrix, PageSpeed, Ahrefs and SpyFu."
+    }
+   ]
+  },
+  {
+   "type": "sheet",
+   "kick": "THE PAGES",
+   "title": "The seven pages in the menu.",
+   "intro": "Pick a page to see it, with what it does and a link to the live version.",
+   "caption_label": "THE PAGE",
+   "aspect": "16 / 10",
+   "min": "200px",
+   "mw": "100%",
+   "items": [
+    {
+     "no": "01",
+     "title": "About Us",
+     "fmt": "Made by me",
+     "when": "business2nexus.com/about-us",
+     "text": "Who B2Ne is: a go-to-market and growth consultancy for B2B tech companies in the Nordics, and how it thinks and works.",
+     "img": "assets/img/b2ne-page-about-us.jpg",
+     "link": "https://www.business2nexus.com/about-us"
+    },
+    {
+     "no": "02",
+     "title": "How We Help",
+     "fmt": "Made by me",
+     "when": "business2nexus.com/how-we-help",
+     "text": "B2Ne’s go-to-market work as four milestones: a strategic blueprint, a digital presence, focused market penetration and growth systems.",
+     "img": "assets/img/b2ne-page-how-we-help.jpg",
+     "link": "https://www.business2nexus.com/how-we-help"
+    },
+    {
+     "no": "03",
+     "title": "Services",
+     "fmt": "Made by me",
+     "when": "business2nexus.com/services",
+     "text": "Eight services that compound into predictable B2B growth, each with its own page.",
+     "img": "assets/img/b2ne-page-services.jpg",
+     "link": "https://www.business2nexus.com/services"
+    },
+    {
+     "no": "04",
+     "title": "Pricing",
+     "fmt": "Made by me",
+     "when": "business2nexus.com/pricing",
+     "text": "Three ways to work with B2Ne, from a dedicated founding marketer to a specialist team, and what each includes.",
+     "img": "assets/img/b2ne-page-pricing.jpg",
+     "link": "https://www.business2nexus.com/pricing"
+    },
+    {
+     "no": "05",
+     "title": "Nexus Academy",
+     "fmt": "Made by me",
+     "when": "business2nexus.com/nexus-academy",
+     "text": "The learning hub: articles and playbooks for B2B tech startups on positioning, content, websites, analytics, LinkedIn and CRM.",
+     "img": "assets/img/b2ne-page-nexus-academy.jpg",
+     "link": "https://www.business2nexus.com/nexus-academy"
+    },
+    {
+     "no": "06",
+     "title": "Our Crew",
+     "fmt": "Co-built",
+     "when": "business2nexus.com/our-crew",
+     "text": "“The minds behind your growth journey”: the team page.",
+     "img": "assets/img/b2ne-page-our-crew.jpg",
+     "link": "https://www.business2nexus.com/our-crew"
+    },
+    {
+     "no": "07",
+     "title": "Website Health Check",
+     "fmt": "The founder’s tool",
+     "when": "business2nexus.com/website-health-check",
+     "text": "A free tool that scores a homepage out of 100 on speed, security, mobile and search basics. Built by the founder; shown here as part of the site.",
+     "img": "assets/img/b2ne-page-website-health-check.jpg",
+     "link": "https://www.business2nexus.com/website-health-check"
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "kick": "THE READING ROOM",
+   "title": "Nexus Academy.",
+   "paras": [
+    "Ten articles for B2B tech founders, from the 6.5-step blueprint to scale to choosing a CRM that scales, written by me and published under B2Ne."
+   ]
+  },
+  {
+   "type": "numbers",
+   "kick": "WHAT HAPPENED",
+   "title": "The first number.",
+   "items": [
+    {
+     "n": "4",
+     "l": "CALLS BOOKED IN THE FIRST THREE MONTHS"
+    }
+   ],
+   "note": "Traffic where there was none, and four conversations with founders who found B2Ne on purpose. Not a big number. It’s the first one."
+  },
+  {
+   "type": "quote",
+   "text": "When you can’t show proof yet, show your thinking. It’s the one thing a visitor can check for themselves."
+  },
+  {
+   "type": "text",
+   "kick": "WHAT’S NEXT",
+   "paras": [
+    "The first case study on the site is Nodinite’s: the one customer B2Ne started with, written up as the proof the site couldn’t show at launch."
+   ],
+   "links": [
+    {
+     "href": "https://www.business2nexus.com/",
+     "label": "Visit business2nexus.com ↗"
+    }
+   ]
+  }
+ ],
+ "next": {
+  "href": "../crm-graveyard/",
+  "title": "CRM Graveyard"
+ }
+}

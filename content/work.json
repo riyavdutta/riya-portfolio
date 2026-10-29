@@ -1,0 +1,89 @@
+{
+ "description": "Work by Riya Dutta: LinkedIn campaigns, a website, the content system behind them, and research on how people decide.",
+ "intro": "Campaigns, a website, the system that makes the campaigns, and research. Filter by what each piece shows.",
+ "filters": [
+  "Marketing",
+  "Design",
+  "Build",
+  "Research"
+ ],
+ "items": [
+  {
+   "no": "001",
+   "href": "the-haunted-crm/",
+   "title": "The Haunted CRM",
+   "kind": "LINKEDIN CAMPAIGN · HALLOWEEN 2026",
+   "blurb": "Fifteen CRM problems told as ghost stories across five days.",
+   "img": "assets/img/haunted-crm-teaser.jpg",
+   "color": "slate-soft",
+   "tags": [
+    "Marketing",
+    "Design"
+   ]
+  },
+  {
+   "no": "002",
+   "href": "the-founder-bottleneck/",
+   "title": "The Founder Bottleneck",
+   "kind": "LINKEDIN CAMPAIGN · OCT 2026",
+   "blurb": "One week, three chapters, on what stops when everything runs through the founder.",
+   "img": "assets/img/founder-bottleneck-sick-day.jpg",
+   "color": "vanilla",
+   "tags": [
+    "Marketing",
+    "Design"
+   ]
+  },
+  {
+   "no": "003",
+   "href": "the-content-studio/",
+   "title": "The Content Studio",
+   "kind": "SYSTEM · 2026",
+   "blurb": "The production system behind every campaign, from brief to posted piece.",
+   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"The route from brief to post, eleven stops\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#07081A\"/><rect x=\"10\" y=\"10\" width=\"620\" height=\"380\" fill=\"none\" stroke=\"#2D31FA\" stroke-opacity=\".5\" stroke-dasharray=\"4 6\"/><text x=\"32\" y=\"34\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"2\" fill=\"#8FB4FF\">THE CONTENT STUDIO · ROUTE</text><path d=\"M40,70 L227,70 L413,70 L600,70 L600,207 L413,207 L227,207 L40,207 L40,344 L227,344 L413,344\" fill=\"none\" stroke=\"#DFF6FF\" stroke-opacity=\".55\" stroke-width=\"2\" stroke-dasharray=\"5 6\"/><circle cx=\"40\" cy=\"70\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"40\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">01</text><text x=\"40\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">BRIEF</text><circle cx=\"227\" cy=\"70\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"227\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">02</text><text x=\"227\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">PLAN</text><circle cx=\"413\" cy=\"70\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"413\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">03</text><text x=\"413\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">COPY</text><circle cx=\"600\" cy=\"70\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"600\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">04</text><text x=\"600\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">CHECK</text><circle cx=\"600\" cy=\"207\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"600\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">05</text><text x=\"600\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">APPROVE</text><circle cx=\"413\" cy=\"207\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"413\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">06</text><text x=\"413\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">BUILD</text><circle cx=\"227\" cy=\"207\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"227\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">07</text><text x=\"227\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">RENDER</text><circle cx=\"40\" cy=\"207\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"40\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">08</text><text x=\"40\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">CHECK</text><circle cx=\"40\" cy=\"344\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"40\" y=\"348\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">09</text><text x=\"40\" y=\"378\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">DELIVER</text><circle cx=\"227\" cy=\"344\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"227\" y=\"348\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">10</text><text x=\"227\" y=\"378\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">WATCH</text><circle cx=\"413\" cy=\"344\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"413\" y=\"348\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">11</text><text x=\"413\" y=\"378\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">POST</text></svg>",
+   "color": "slate",
+   "tags": [
+    "Build",
+    "Marketing"
+   ]
+  },
+  {
+   "no": "004",
+   "href": "the-b2ne-website/",
+   "title": "The B2Ne website",
+   "kind": "WEBSITE · 2026",
+   "blurb": "How to look credible with nothing to show. Co-built with the founder.",
+   "img": "assets/img/b2ne-page-how-we-help.jpg",
+   "color": "ivory-deep",
+   "tags": [
+    "Marketing",
+    "Build"
+   ]
+  },
+  {
+   "no": "005",
+   "href": "crm-graveyard/",
+   "title": "CRM Graveyard",
+   "kind": "LINKEDIN SERIES · 2026",
+   "blurb": "Fourteen posts and two videos, a different visual idea for every post.",
+   "img": "assets/img/crm-graveyard-close-date.jpg",
+   "color": "pink",
+   "tags": [
+    "Marketing",
+    "Design"
+   ]
+  },
+  {
+   "no": "006",
+   "href": "trace-brl/",
+   "title": "TRACE-BRL",
+   "kind": "RESEARCH · 2025 –",
+   "blurb": "A maturity model for behavioural research labs, under review.",
+   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"TRACE-BRL manuscript title page\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#b7c9a8\"/><g transform=\"translate(320.0 200.0) rotate(-3)\"><rect x=\"-217.60000000000002\" y=\"-160.0\" width=\"435.20000000000005\" height=\"320.0\" fill=\"#fcf7d9\"/><text x=\"-179.20000000000002\" y=\"-115.99999999999999\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"2\" fill=\"#856a56\">MANUSCRIPT</text><text x=\"-179.20000000000002\" y=\"-60.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#432720\">TRACE-BRL</text><text x=\"-179.20000000000002\" y=\"-24.0\" font-family=\"Work Sans, sans-serif\" font-size=\"11\" fill=\"#604734\">A maturity model for</text><text x=\"-179.20000000000002\" y=\"-9.0\" font-family=\"Work Sans, sans-serif\" font-size=\"11\" fill=\"#604734\">behavioural research labs</text><text x=\"-179.20000000000002\" y=\"108.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#65232b\">32</text><text x=\"-139.20000000000002\" y=\"108.0\" font-family=\"Space Mono, monospace\" font-size=\"9\" fill=\"#604734\">INITIATIVES</text><text x=\"12.8\" y=\"108.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#65232b\">5</text><text x=\"34.8\" y=\"108.0\" font-family=\"Space Mono, monospace\" font-size=\"9\" fill=\"#604734\">DIMENSIONS</text><g transform=\"translate(128.0 -132.0) rotate(9)\"><rect x=\"-46\" y=\"-12\" width=\"92\" height=\"24\" fill=\"none\" stroke=\"#65232b\" stroke-width=\"2\" rx=\"3\"/><text y=\"4\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"2\" fill=\"#65232b\">UNDER REVIEW</text></g></g></svg>",
+   "color": "sage",
+   "tags": [
+    "Research"
+   ]
+  }
+ ]
+}

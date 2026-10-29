@@ -1,0 +1,247 @@
+{
+ "slug": "crm-graveyard",
+ "no": "005",
+ "year": "2026",
+ "credit": "MADE FOR B2NE",
+ "tag": "LinkedIn series · 2026",
+ "title": "CRM Graveyard",
+ "sub": "A LinkedIn series about the problems that pile up inside a CRM, with a different visual idea for every post.",
+ "description": "CRM Graveyard: a LinkedIn series for B2Ne about the problems that pile up inside a CRM. Fourteen posts and two videos, each with its own visual grammar, tracked in a ledger. By Riya Dutta.",
+ "postmark": "MADE FOR B2NE · CRM GRAVEYARD ·",
+ "facts": [
+  [
+   "CLIENT",
+   "B2Ne (Business To Nexus)"
+  ],
+  [
+   "FOR",
+   "Founders and sales leads at small and mid-sized B2B tech companies"
+  ],
+  [
+   "RAN",
+   "2026, on LinkedIn"
+  ],
+  [
+   "MADE",
+   "14 posts and 2 short videos"
+  ],
+  [
+   "MY ROLE",
+   "Everything, end to end: concept, copy, design, video, posting and reading the results. I run B2Ne’s LinkedIn campaigns on my own."
+  ]
+ ],
+ "hero": {
+  "img": "assets/img/crm-graveyard-close-date.jpg",
+  "alt": "The Close Date post: a staircase of struck-through close dates."
+ },
+ "sections": [
+  {
+   "type": "statement",
+   "kick": "THE IDEA",
+   "title": "One world, many visual grammars.",
+   "lead": "Every post lives in one B2Ne world (palette, type, the real logo, the same corners for kicker, logo and URL), but no two posts look alike.",
+   "close": "A ledger records each post’s problem and its visual grammar, so a new post is <span class=\"mark\">never a re-skin of an old one</span>."
+  },
+  {
+   "type": "sheet",
+   "kick": "THE SERIES",
+   "title": "Sixteen pieces, one ledger.",
+   "intro": "Pick a stamp to see the post, with the problem and the insight it was built on.",
+   "caption_label": "THE PROBLEM AND THE INSIGHT",
+   "items": [
+    {
+     "no": "01",
+     "title": "Graveyard (bonus)",
+     "fmt": "Image",
+     "when": "Outlined object poster",
+     "text": "The problem: Leads contacted once, then abandoned.\nThe insight: Every CRM holds records that were started and never finished.",
+     "img": "assets/img/crm-graveyard-01.jpg"
+    },
+    {
+     "no": "02",
+     "title": "HubSpot Confessions",
+     "fmt": "Image",
+     "when": "Quote poster",
+     "text": "The problem: Deals stuck in an early stage for months.\nThe insight: Stage names hide stagnation.",
+     "img": "assets/img/crm-graveyard-02.jpg"
+    },
+    {
+     "no": "03",
+     "title": "The HubSpot Ouija Board",
+     "fmt": "Image",
+     "when": "Quote and symbol poster",
+     "text": "The problem: Nobody can explain where the pipeline went.\nThe insight: The CRM can't answer the question it exists for.",
+     "img": "assets/img/crm-graveyard-03.jpg"
+    },
+    {
+     "no": "04",
+     "title": "CRM Performance Review",
+     "fmt": "Image",
+     "when": "Document / form parody",
+     "text": "The problem: Poor data hygiene, routing and adoption.\nThe insight: The CRM is judged like an employee who is failing.",
+     "img": "assets/img/crm-graveyard-04.jpg"
+    },
+    {
+     "no": "05",
+     "title": "Rate Your CRM",
+     "fmt": "Image",
+     "when": "Checklist",
+     "text": "The problem: Duplicates, unread dashboards, disputed stages, the graveyard stage.\nThe insight: Four small symptoms make one pattern.",
+     "img": "assets/img/crm-graveyard-05.jpg"
+    },
+    {
+     "no": "06",
+     "title": "The Lifecycle Stage Translator",
+     "fmt": "Image",
+     "when": "Typographic split",
+     "text": "The problem: Lifecycle stages mean something different from what they say.\nThe insight: The official label and the reality diverge.",
+     "img": "assets/img/crm-graveyard-06.jpg"
+    },
+    {
+     "no": "07",
+     "title": "Choose Your Own CRM Adventure",
+     "fmt": "Image",
+     "when": "Flow diagram",
+     "text": "The problem: Lead routing that leads nowhere.\nThe insight: Most routing options are dead ends.",
+     "img": "assets/img/crm-graveyard-07.jpg"
+    },
+    {
+     "no": "08",
+     "title": "Speed to Lead",
+     "fmt": "Image",
+     "when": "Big-number poster",
+     "text": "The problem: Slow follow-up on new leads.\nThe insight: Waiting loses the lead to someone faster.",
+     "img": "assets/img/crm-graveyard-08.jpg"
+    },
+    {
+     "no": "09",
+     "title": "Good Month, Dead Month",
+     "fmt": "Image",
+     "when": "Typographic contrast",
+     "text": "The problem: Results swing and nothing records why.\nThe insight: The CRM records outcomes, not causes.",
+     "img": "assets/img/crm-graveyard-09.jpg"
+    },
+    {
+     "no": "10",
+     "title": "Pipeline Alerts",
+     "fmt": "Image",
+     "when": "Icon and story poster",
+     "text": "The problem: Notifications ignored until deals die.\nThe insight: Alert volume trains people to ignore alerts.",
+     "img": "assets/img/crm-graveyard-10.jpg"
+    },
+    {
+     "no": "11",
+     "title": "The List Nobody Touches",
+     "fmt": "Image",
+     "when": "UI cards",
+     "text": "The problem: Zombie lists nobody dares delete.\nThe insight: Fear of deleting keeps dead data alive.",
+     "img": "assets/img/crm-graveyard-11.jpg"
+    },
+    {
+     "no": "12",
+     "title": "The Sync Error",
+     "fmt": "Image",
+     "when": "Comparison cards",
+     "text": "The problem: The CRM and the spreadsheet disagree.\nThe insight: Two sources of truth means no truth.",
+     "img": "assets/img/crm-graveyard-12.jpg"
+    },
+    {
+     "no": "13",
+     "title": "The Handover",
+     "fmt": "Image",
+     "when": "Redacted document",
+     "text": "The problem: Context trapped in one person; the CRM keeps the activity, not the knowledge.\nThe insight: A handover quietly becomes a reset.",
+     "img": "assets/img/crm-graveyard-13.jpg"
+    },
+    {
+     "no": "14",
+     "title": "The Close Date",
+     "fmt": "Image",
+     "when": "Onion-skin typography (motion trail of a single field)",
+     "text": "The problem: The expected close date pushed forward every month.\nThe insight: A date that only moves one way is a habit, not a forecast.\n\nA close date is supposed to describe the buyer's timeline.\nOften it describes the seller's hope.\nWhen the date passes, moving it forward a month is easier than asking what actually changed. So the deal never looks lost. It just looks late, again.\nThe forecast inherits that optimism. The pipeline review talks about the date instead of the deal.\nSomewhere in that edit history is the real signal: a buyer whose priorities moved while the record stayed polite.\nA date that only ever moves in one direction isn't a forecast. It's a habit.",
+     "img": "assets/img/crm-graveyard-14.jpg"
+    },
+    {
+     "no": "15",
+     "title": "Funnel Autopsy",
+     "fmt": "Video",
+     "when": "Video with sound",
+     "text": "One of the series’ two short videos, with its own score.",
+     "img": "assets/img/crm-graveyard-15.jpg",
+     "video": "assets/video/crm-graveyard-15.mp4"
+    },
+    {
+     "no": "16",
+     "title": "Growth Stalls",
+     "fmt": "Video",
+     "when": "Video with sound",
+     "text": "One of the series’ two short videos, with its own score.",
+     "img": "assets/img/crm-graveyard-16.jpg",
+     "video": "assets/video/crm-graveyard-16.mp4"
+    }
+   ]
+  },
+  {
+   "type": "numbers",
+   "kick": "THE LEDGER",
+   "title": "Counting what’s been used.",
+   "items": [
+    {
+     "n": "13",
+     "l": "VISUAL GRAMMARS USED"
+    },
+    {
+     "n": "16",
+     "l": "POSTS AND VIDEOS"
+    },
+    {
+     "n": "8",
+     "l": "IDEAS WAITING IN THE BACKLOG"
+    }
+   ],
+   "note": "Each backlog idea is paired with the problem it would fit, never used for its own sake: a record decaying character by character for stale data, a path that simply stops for ownership nobody holds."
+  },
+  {
+   "type": "rules",
+   "kick": "THE RULES",
+   "title": "What the ledger stopped the series repeating.",
+   "intro": "After fifteen posts, the ledger named the patterns that had been used enough.",
+   "items": [
+    {
+     "t": "No more centred posters",
+     "d": "Six posts already used a centred headline, a small symbol and a punchline."
+    },
+    {
+     "t": "No more outlined cards",
+     "d": "Four posts used an outlined interface card or form. Don’t add another."
+    },
+    {
+     "t": "Coral leaves",
+     "d": "Coral had been the “bad” signal in seven posts, but the brand palette has no coral. From post 14 on, the series stays within Navy, Indigo, Soft Blue and Ice."
+    },
+    {
+     "t": "Icons don’t lead",
+     "d": "A bell, a clock and a planchette carried three posts. Later posts let the composition do the work."
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "kick": "WHAT DIDN’T MAKE IT",
+   "title": "The post that got deleted.",
+   "paras": [
+    "One post tried AI-rendered glossy variants: glass panels, glow, real third-party logos and a distorted B2Ne logo. It was deleted on 1 Oct 2026 as off-brand.",
+    "It stays in the ledger as a record of what not to do."
+   ]
+  },
+  {
+   "type": "band",
+   "kick": "HOW IT WAS MADE",
+   "text": "The first twelve posts were made in a design tool. From post 14, each post is an HTML source with a spec file beside it, rendered to 1080 × 1350 by a script."
+  }
+ ],
+ "next": {
+  "href": "../trace-brl/",
+  "title": "TRACE-BRL"
+ }
+}

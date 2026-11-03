@@ -205,3 +205,12 @@ img, video { display: block; max-width: 100%; }
   .ul, .stamp, .pcard { transition: none; }
   .pm { animation: none; opacity: 1; transform: rotate(-10deg); }
 }
+
+/* torn paper: the cherry header hangs over the page, the footer reaches up into it */
+.top { position: relative; z-index: 41; }
+.top::after { content: ""; position: absolute; left: 0; right: 0; bottom: -17px; height: 18px; background: var(--cherry); pointer-events: none;
+  -webkit-mask: var(--edge-down) repeat-x 0 0 / 240px 18px; mask: var(--edge-down) repeat-x 0 0 / 240px 18px; filter: drop-shadow(0 2px 1px rgba(43,23,17,.15)); }
+.track .wrap { padding-top: 22px; }
+.foot { position: relative; }
+.foot::before { content: ""; position: absolute; left: 0; right: 0; top: -17px; height: 18px; background: var(--cherry); pointer-events: none;
+  -webkit-mask: var(--edge-up) repeat-x 0 0 / 240px 18px; mask: var(--edge-up) repeat-x 0 0 / 240px 18px; }

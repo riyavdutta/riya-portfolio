@@ -69,6 +69,7 @@
       '<text x="56" y="33" text-anchor="middle" font-family="' + SERIF + '" font-style="italic" font-size="20" fill="' + CHERRY + '">hello!</text></svg>' }
   ];
 
+  window.RDStickers = STICKERS;   // shared with the postcard's stamp picker
   var KEY = 'rd-stickers:' + location.pathname;
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
   function save(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {} }

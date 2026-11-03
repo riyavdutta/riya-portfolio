@@ -3,12 +3,13 @@
 Ideas for making the site more playful without losing the calm postcard feel. Each one is grouped by theme, with a rough size: S is an afternoon, M a day or two, L needs a service or a lot of art.
 
 ## Done
+- **Postcard contact** (home): write a note, tap the stamp to pick one of the stickers, and post it into a letterbox; the visitor's mail app opens with the note. `assets/postbox.js`
 - **Sticker sheet** (every page): peel stickers off a sheet and stick them anywhere; they stay put in your browser. `assets/stickers.js`
 - **Case studies** for all six pieces, plus a **Work** page with filters (Marketing, Design, Build, Research). Built from `content/` by `tools/build.py`.
 - Earlier: postmark-your-visit postcard, draggable desk stamps, stamp book, flip cards, record crate, post sheets with playable videos and swipeable carousels, tracking bar on case studies, "Return to sender" 404.
 
 ## Post office
-1. **Write and post a postcard (M).** The contact card becomes a real postcard: write a note, pick one of the stickers as the stamp, drop it into a letterbox (a short animation), and it opens your email with the message.
+1. ~~**Write and post a postcard (M).**~~ Done. The contact card becomes a real postcard: write a note, pick one of the stickers as the stamp, drop it into a letterbox (a short animation), and it opens your email with the message.
 2. **A passport across the site (S).** The stamp book follows visitors to case studies: finishing a case study (the tracking bar reaches "Delivered") stamps the passport.
 3. **Postcard rack for the Work page (M).** A spinning wire rack of postcards; drag to turn it, pick a card to open the case study.
 4. **Airmail page transitions (S).** Between pages, the screen folds like an envelope (View Transitions API, with a plain fallback).
@@ -33,7 +34,7 @@ Ideas for making the site more playful without losing the calm postcard feel. Ea
 15. **Record player for Records (M).** Drop a record on the turntable to "play" its story.
 
 ## Recommended next
-Start with 1 (the postcard contact), 6 (hidden stickers) and 11 (the hook game): each is fun, on-theme, and shows marketing thinking, not just decoration.
+Next: 6 (hidden stickers) and 11 (the hook game): each is fun, on-theme, and shows marketing thinking, not just decoration.
 
 ## Guardrails
 - Every effect has a reduced-motion version and works with a keyboard.

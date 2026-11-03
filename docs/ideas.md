@@ -4,6 +4,7 @@ Ideas for making the site more playful without losing the calm postcard feel. Ea
 
 ## Done
 - **Postcard contact** (home): write a note, tap the stamp to pick one of the stickers, and post it into a letterbox; the visitor's mail app opens with the note. `assets/postbox.js`
+- **Hidden stickers**: six extra stickers, one tucked into each case study (pumpkin, desk lamp, film reel, browser, tombstone, magnifier). Finding one adds it to the sheet; missing ones show as silhouettes.
 - **Sticker sheet** (every page): peel stickers off a sheet and stick them anywhere; they stay put in your browser. `assets/stickers.js`
 - **Case studies** for all six pieces, plus a **Work** page with filters (Marketing, Design, Build, Research). Built from `content/` by `tools/build.py`.
 - Earlier: postmark-your-visit postcard, draggable desk stamps, stamp book, flip cards, record crate, post sheets with playable videos and swipeable carousels, tracking bar on case studies, "Return to sender" 404.
@@ -16,7 +17,7 @@ Ideas for making the site more playful without losing the calm postcard feel. Ea
 5. **Wax seal on the email link (S).** Hover cracks the seal; click opens the email.
 
 ## Stickers
-6. **Hidden stickers (S).** A sticker tucked into each case study (a ghost on The Haunted CRM, an amber lamp on The Founder Bottleneck). Finding one adds it to your sheet.
+6. ~~**Hidden stickers (S).**~~ Done. A sticker tucked into each case study (a ghost on The Haunted CRM, an amber lamp on The Founder Bottleneck). Finding one adds it to your sheet.
 7. **A sticker of the month (S).** Like the seasonal stamp: one new sticker appears each month.
 8. **Stickers that react (S).** The "say yes!" bubble shows the tagline when you stick it down; the ghost says "boo" when you peel it.
 
@@ -34,7 +35,7 @@ Ideas for making the site more playful without losing the calm postcard feel. Ea
 15. **Record player for Records (M).** Drop a record on the turntable to "play" its story.
 
 ## Recommended next
-Next: 6 (hidden stickers) and 11 (the hook game): each is fun, on-theme, and shows marketing thinking, not just decoration.
+Next: 11 (the hook game): each is fun, on-theme, and shows marketing thinking, not just decoration.
 
 ## Guardrails
 - Every effect has a reduced-motion version and works with a keyboard.

@@ -69,6 +69,35 @@
       '<text x="56" y="33" text-anchor="middle" font-family="' + SERIF + '" font-style="italic" font-size="20" fill="' + CHERRY + '">hello!</text></svg>' }
   ];
 
+
+  // hidden stickers: one tucked into each case study; finding it adds it to the sheet
+  var AMBER = '#FFB14E', PUMPKIN = '#e8833a', NIGHT = '#07081A';
+  STICKERS.push(
+    { id: 'pumpkin', label: 'Pumpkin', w: 90, hidden: 'the-haunted-crm', anchor: { sel: 'footer' }, pos: 'right: 14%; top: -44px; rotate: 10deg',
+      svg: '<svg viewBox="0 0 100 92"><path d="M50 18c-3-8 1-14 9-16" fill="none" stroke="' + SAGE_DEEP + '" stroke-width="6" stroke-linecap="round"/>' +
+        '<ellipse cx="30" cy="54" rx="24" ry="32" fill="' + PUMPKIN + '"/><ellipse cx="70" cy="54" rx="24" ry="32" fill="' + PUMPKIN + '"/><ellipse cx="50" cy="54" rx="22" ry="34" fill="#f0964f"/>' +
+        '<path d="M34 46l8-8 6 8z M52 46l8-8 6 8z" fill="' + INK + '"/><path d="M32 64q18 12 36 0l-6 6-6-4-6 5-6-5-6 4z" fill="' + INK + '"/></svg>' },
+    { id: 'lamp', label: 'Amber desk lamp', w: 86, hidden: 'the-founder-bottleneck', anchor: { sel: '.swatches' }, pos: 'right: -10px; bottom: -36px; rotate: -8deg',
+      svg: '<svg viewBox="0 0 100 100"><path d="M40 80l-16 12h44L54 80z" fill="' + INK + '"/><path d="M47 80L34 44l22-20" fill="none" stroke="' + INK + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<path d="M50 14l34 18-10 14-34-18z" fill="' + AMBER + '"/><path d="M74 46l-10 30" stroke="' + AMBER + '" stroke-width="18" stroke-opacity=".3" stroke-linecap="round"/><circle cx="34" cy="44" r="5" fill="' + VANILLA + '"/></svg>' },
+    { id: 'reel', label: 'Film reel', w: 84, hidden: 'the-content-studio', anchor: { sel: '.route' }, pos: 'right: 0; top: -70px; rotate: 14deg',
+      svg: '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="' + SLATE_DEEP + '"/><circle cx="50" cy="50" r="9" fill="' + VANILLA + '"/>' +
+        '<g fill="' + VANILLA + '"><circle cx="50" cy="24" r="10"/><circle cx="73" cy="38" r="10"/><circle cx="73" cy="63" r="10"/><circle cx="50" cy="76" r="10"/><circle cx="27" cy="63" r="10"/><circle cx="27" cy="38" r="10"/></g>' +
+        '<circle cx="50" cy="50" r="3" fill="' + INK + '"/></svg>' },
+    { id: 'browser', label: 'Browser window and cursor', w: 104, hidden: 'the-b2ne-website', anchor: { sel: '.quote' }, pos: 'right: -24px; top: -40px; rotate: 8deg',
+      svg: '<svg viewBox="0 0 110 86"><rect x="2" y="2" width="96" height="70" rx="6" fill="' + VANILLA + '" stroke="' + INK + '" stroke-width="3"/><path d="M2 18h96" stroke="' + INK + '" stroke-width="3"/>' +
+        '<circle cx="12" cy="10" r="3" fill="' + CHERRY + '"/><circle cx="22" cy="10" r="3" fill="' + AMBER + '"/><circle cx="32" cy="10" r="3" fill="' + SAGE_DEEP + '"/>' +
+        '<rect x="14" y="30" width="44" height="7" rx="3" fill="' + BLOSSOM + '"/><rect x="14" y="44" width="62" height="5" rx="2" fill="' + SLATE + '"/><rect x="14" y="54" width="34" height="5" rx="2" fill="' + SLATE + '"/>' +
+        '<path d="M78 46l22 9-10 3 6 11-5 3-6-11-7 7z" fill="' + INK + '" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>' },
+    { id: 'tombstone', label: 'Little tombstone', w: 80, hidden: 'crm-graveyard', anchor: { sel: '.body > section', text: 'The post that got deleted' }, pos: 'right: 6%; top: -10px; rotate: -6deg',
+      svg: '<svg viewBox="0 0 90 100"><path d="M14 92V44a31 31 0 0 1 62 0v48z" fill="' + SLATE + '" stroke="' + SLATE_DEEP + '" stroke-width="3"/>' +
+        '<text x="45" y="56" text-anchor="middle" font-family="' + MONO + '" font-weight="700" font-size="13" letter-spacing="1" fill="' + SLATE_DEEP + '">R.I.P.</text>' +
+        '<path d="M28 70h34" stroke="' + SLATE_DEEP + '" stroke-width="2"/><path d="M2 96q20-10 43-2t43 2v4H2z" fill="' + SAGE_DEEP + '"/></svg>' },
+    { id: 'lens', label: 'Magnifying glass with an eye', w: 88, hidden: 'trace-brl', anchor: { sel: '.numbers' }, pos: 'right: -14px; top: -50px; rotate: -12deg',
+      svg: '<svg viewBox="0 0 100 100"><path d="M62 62l28 28" stroke="' + INK + '" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="40" r="32" fill="' + IVORY + '" stroke="' + CHERRY + '" stroke-width="7"/>' +
+        '<path d="M18 40q22-20 44 0-22 20-44 0z" fill="#fff" stroke="' + INK + '" stroke-width="2.5"/><circle cx="40" cy="40" r="8" fill="' + SLATE_DEEP + '"/><circle cx="40" cy="40" r="3.5" fill="' + INK + '"/></svg>' }
+  );
+
   window.RDStickers = STICKERS;   // shared with the postcard's stamp picker
   var KEY = 'rd-stickers:' + location.pathname;
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
@@ -76,7 +105,11 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var byId = {}; STICKERS.forEach(function (s) { byId[s.id] = s; });
 
-  var placed = load().filter(function (p) { return byId[p.id]; });
+  var FOUND_KEY = 'rd-stickers-found';
+  var found = (function () { try { return JSON.parse(localStorage.getItem(FOUND_KEY) || '[]'); } catch (e) { return []; } })();
+  function locked(s) { return !!s.hidden && found.indexOf(s.id) < 0; }
+  var HIDDEN_TOTAL = STICKERS.filter(function (s) { return s.hidden; }).length;
+  var placed = load().filter(function (p) { return byId[p.id] && !locked(byId[p.id]); });
   var layer, sheet, launcher, slots = {}, countEl;
 
   function docH() { return Math.max(document.documentElement.scrollHeight, document.body.scrollHeight); }
@@ -96,12 +129,15 @@
 
   function refreshSheet() {
     STICKERS.forEach(function (s) {
-      var used = placed.some(function (p) { return p.id === s.id; });
+      var used = placed.some(function (p) { return p.id === s.id; }), lock = locked(s);
       slots[s.id].classList.toggle('is-used', used);
-      slots[s.id].setAttribute('aria-label', s.label + (used ? ', on the page. Peel it off the page to put it back.' : ', drag onto the page or press Enter'));
-      slots[s.id].disabled = used;
+      slots[s.id].classList.toggle('is-locked', lock);
+      slots[s.id].setAttribute('aria-label', lock ? 'A hidden sticker. Find it in one of the case studies.' :
+        s.label + (used ? ', on the page. Peel it off the page to put it back.' : ', drag onto the page or press Enter'));
+      slots[s.id].disabled = used || lock;
     });
-    if (countEl) countEl.textContent = placed.length + ' of ' + STICKERS.length + ' stuck';
+    var have = found.filter(function (id) { return byId[id]; }).length;
+    if (countEl) countEl.textContent = placed.length + ' stuck · ' + have + ' of ' + HIDDEN_TOTAL + ' hidden found';
   }
 
   function position(p) {
@@ -239,10 +275,53 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet.classList.contains('is-open')) openSheet(false); });
 
     placed.forEach(function (p) { makePlaced(p, false); });
+    hideHere();
     refreshSheet();
     var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(function () { placed.forEach(position); }, 120); });
     // the page can grow after fonts and images load
     setTimeout(function () { placed.forEach(position); }, 1500);
+  }
+
+  function toast(text) {
+    var t = document.createElement('p');
+    t.className = 'sk-toast';
+    t.setAttribute('role', 'status');
+    t.textContent = text;
+    document.body.appendChild(t);
+    setTimeout(function () { t.classList.add('is-out'); }, 3600);
+    setTimeout(function () { t.remove(); }, 4100);
+  }
+
+  function hideHere() {
+    STICKERS.forEach(function (s) {
+      if (!s.hidden || !locked(s) || location.pathname.indexOf('/work/' + s.hidden + '/') < 0) return;
+      var spots = [].slice.call(document.querySelectorAll(s.anchor.sel)).filter(function (e) { return !s.anchor.text || e.textContent.indexOf(s.anchor.text) > -1; });
+      var spot = spots[0];
+      if (!spot) return;
+      if (getComputedStyle(spot).position === 'static') spot.style.position = 'relative';
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sk-hidden';
+      b.style.cssText = s.pos;
+      b.setAttribute('aria-label', 'A hidden sticker: ' + s.label + '. Collect it for your sticker sheet.');
+      b.appendChild(art(s));
+      spot.appendChild(b);
+      b.addEventListener('click', function () {
+        found.push(s.id);
+        try { localStorage.setItem(FOUND_KEY, JSON.stringify(found)); } catch (e) {}
+        var from = b.getBoundingClientRect(), to = launcher.getBoundingClientRect();
+        if (!reduce) {
+          b.style.transition = 'translate .7s cubic-bezier(.5,0,.2,1), scale .7s ease, opacity .7s ease';
+          b.style.translate = (to.left + to.width / 2 - (from.left + from.width / 2)) + 'px ' + (to.top + to.height / 2 - (from.top + from.height / 2)) + 'px';
+          b.style.scale = '0.3'; b.style.opacity = '0';
+        }
+        setTimeout(function () { b.remove(); }, reduce ? 0 : 700);
+        launcher.classList.remove('sk-new'); void launcher.offsetWidth; launcher.classList.add('sk-new');
+        refreshSheet();
+        var have = found.filter(function (id) { return byId[id]; }).length;
+        toast('You found the ' + s.label.toLowerCase() + '! It’s on your sticker sheet now (' + have + ' of ' + HIDDEN_TOTAL + ').');
+      });
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build); else build();

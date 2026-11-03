@@ -16,7 +16,7 @@
     '#work > div > div:first-child',
     '.kit__title', '.kit .tray',
     '#catalogue .records__intro', '#catalogue .crate',
-    '#contact > div > div > *',
+    '#contact > div > div > *', '#contact form.pf',
     '#lab h2', '#lab a',
     // case studies and the Work page
     '.body > section', '.hero__art', '.wi-head p', '.filters', '.postcards > .pcard'

@@ -37,74 +37,55 @@ section[style*="radial-gradient(rgba(240,197,212,0.16)"] h1 + p + div { animatio
   .pc[data-on-pointermove="tm_hero"], [data-variant="phone"] .pc[style*="aspect-ratio: 1.3"] { animation: none; }
 }
 
-/* the contact postcard (see postbox.js) */
-.pb-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 2px; }
-.pb-to { font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--track); line-height: 1.5; color: var(--cherry); }
-.pb-to span { color: var(--cocoa-soft); }
-.pb-stamp { position: relative; flex: none; width: 38px; height: 46px; padding: 0; border: 0; background: none; cursor: pointer; transform: rotate(4deg); transition: transform var(--dur-1) var(--ease); }
-.pb-stamp:hover { transform: rotate(0deg) scale(1.08); }
-.pb-stamp[data-bump] { animation: pb-bump var(--dur-2) var(--ease); }
-.pb-stamp[data-bump="1"] { animation-name: pb-bump2; }
-@keyframes pb-bump { 50% { transform: rotate(-6deg) scale(1.15); } }
-@keyframes pb-bump2 { 50% { transform: rotate(10deg) scale(1.15); } }
-.pb-stamp__art { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 4px; background: #fffdf0;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 2.5px, #0000 96%, #000) -4px -4px / 8px 8px round;
-  mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 2.5px, #0000 96%, #000) -4px -4px / 8px 8px round; }
-.pb-stamp__art svg { width: 100%; height: 100%; }
-.pb-mark { position: absolute; left: -26px; top: -10px; width: 64px; height: 64px; opacity: 0; transform: scale(1.6) rotate(-30deg); pointer-events: none; }
-.pb-stamp[data-inked] .pb-mark { animation: pb-ink var(--dur-2) cubic-bezier(.2, .9, .3, 1.3) forwards; }
-@keyframes pb-ink { 60% { opacity: .95; transform: scale(.92) rotate(-12deg); } 100% { opacity: .85; transform: scale(1) rotate(-14deg); } }
-.pb-warn { font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--track); color: var(--cherry); }
-
-/* the letterbox opens under the card, the card drops into the slot */
-.pb-box { width: 100%; max-width: 520px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.pb-plate { position: relative; width: min(300px, 80%); height: 0; overflow: hidden; border-radius: 8px; opacity: 0;
-  background: linear-gradient(#4a1820, #2b0d12); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), var(--shadow-lift);
-  transition: height var(--dur-2) var(--ease), opacity var(--dur-2) var(--ease); }
-.pb-box[data-open] .pb-plate { height: 64px; opacity: 1; }
-.pb-slot { position: absolute; left: 12%; right: 12%; top: 16px; height: 10px; border-radius: 6px; background: #120406; box-shadow: inset 0 3px 4px rgba(0,0,0,.8); }
-.pb-plate__label { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: .3em; color: #d9a35a; }
-.pc[data-pb="posting"] { animation: pb-drop .5s cubic-bezier(.5, 0, .75, 0) forwards; pointer-events: none; }
-.pc[data-pb="posted"] { display: none; }
-@keyframes pb-drop {
-  0% { translate: 0 0; scale: 1; opacity: 1; }
-  30% { translate: 0 -14px; scale: .62; opacity: 1; }
-  100% { translate: 0 calc(100% - 20px); scale: .5 .05; opacity: 0; }
+/* contact: one big postcard. Message on the left, address and "Post it" on the right (see postbox.js) */
+.pf-wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px); }
+.pf-intro { text-align: center; margin-bottom: 40px; }
+.pf-intro h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(48px, 7vw, 72px); line-height: .98; color: var(--blossom); }
+.pf-intro p { margin: 14px auto 0; font-size: 18px; line-height: 1.6; color: var(--ivory); }
+.pf-card { display: grid; grid-template-columns: 1.4fr 1px 1fr; gap: 0 32px; padding: 34px 36px; background: var(--vanilla); color: var(--truffle);
+  box-shadow: var(--shadow-float); transform: rotate(-0.6deg); }
+.pf-card::before { content: ""; grid-column: 2; grid-row: 1; background: var(--rule); }
+.pf-msg { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; }
+.pf-addr { grid-column: 3; grid-row: 1; display: flex; flex-direction: column; }
+.pf label { font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--track); text-transform: uppercase; color: var(--cherry); }
+.pf-msg textarea { flex: 1; min-height: 220px; margin-top: 6px; padding: 4px 0; border: 0; resize: vertical; color: var(--truffle); outline: none;
+  font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 36px;
+  background: repeating-linear-gradient(transparent 0 35px, var(--rule) 35px 36px); }
+.pf-addr input { min-height: 40px; margin: 2px 0 14px; padding: 0; border: 0; border-bottom: 1px solid var(--rule); background: transparent; outline: none;
+  font-family: var(--font-display); font-style: italic; font-size: 19px; color: var(--truffle); }
+.pf textarea:focus, .pf input:focus { border-color: var(--cherry); background-color: rgba(236, 170, 178, .08); }
+.pf textarea::placeholder { color: var(--ink-faint); opacity: .7; }
+.pf-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+.pf-airmail { font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--track); color: var(--cocoa-soft); }
+.pf-stamp { position: relative; flex: none; width: 58px; transform: rotate(4deg); }
+.pf-stamp > svg:first-child { display: block; width: 100%; filter: drop-shadow(0 3px 4px rgba(43, 23, 17, .2)); }
+.pf-mark { position: absolute; left: -34px; top: -6px; width: 80px; height: 80px; opacity: 0; transform: scale(1.6) rotate(-30deg); pointer-events: none; }
+.pf[data-state="inked"] .pf-mark, .pf[data-state="posting"] .pf-mark { animation: pf-ink .4s cubic-bezier(.2, .9, .3, 1.3) forwards; }
+@keyframes pf-ink { 60% { opacity: .95; transform: scale(.92) rotate(-12deg); } 100% { opacity: .85; transform: scale(1) rotate(-14deg); } }
+.pf-to { margin: 0 0 18px; font-family: var(--font-display); font-style: italic; font-size: 22px; line-height: 1.35; color: var(--cherry); }
+.pf-post { margin-top: auto; align-self: flex-end; min-height: 48px; padding: 0 30px; border: 0; border-radius: var(--radius-pill); background: var(--cherry); color: var(--vanilla); cursor: pointer;
+  font-family: var(--font-mono); font-size: var(--label); letter-spacing: var(--track); text-transform: uppercase; transition: transform var(--dur-1) var(--ease); }
+.pf-post:hover { transform: translateY(-2px); }
+.pf-warn { min-height: 1.5em; margin: 14px 0 0; text-align: center; font-family: var(--font-mono); font-size: var(--label); letter-spacing: var(--track); color: var(--blossom); }
+.pf[data-state="posting"] .pf-card { animation: pf-drop .55s cubic-bezier(.5, 0, .75, 0) .2s forwards; }
+@keyframes pf-drop { 0% { translate: 0 0; scale: 1; opacity: 1; } 30% { translate: 0 -12px; scale: .9; } 100% { translate: 0 60px; scale: .6 .2; opacity: 0; } }
+.pf[data-state="posted"] { display: none; }
+.pf-done { text-align: center; color: var(--ivory); padding: 40px 0; }
+.pf-done p { margin: 10px auto 0; font-size: 17px; line-height: 1.6; }
+.pf-done__title { font-family: var(--font-display); font-style: italic; font-size: 48px !important; line-height: 1 !important; color: var(--blossom); }
+.pf-done__alt { font-size: 14px !important; color: var(--pink); }
+.pf-done a { color: var(--blossom); }
+.pf-again { margin-top: 20px; min-height: 44px; padding: 0 22px; border: 1.5px solid var(--blossom); border-radius: var(--radius-pill); background: transparent; color: var(--vanilla); cursor: pointer;
+  font-family: var(--font-mono); font-size: var(--label); letter-spacing: var(--track); text-transform: uppercase; }
+@media (max-width: 760px) {
+  .pf-card { grid-template-columns: 1fr; gap: 0; padding: 22px 20px; transform: none; }
+  .pf-card::before { display: none; }
+  .pf-msg { grid-row: 1; grid-column: 1; }
+  .pf-addr { grid-row: 2; grid-column: 1; margin-top: 18px; }
+  .pf-top { order: -1; }
+  .pf-msg textarea { min-height: 160px; }
+  .pf-post { align-self: stretch; order: 10; margin-top: 18px; }
 }
-.pb-done { text-align: center; color: var(--ivory); }
-.pb-done__title { margin: 0 auto; font-family: var(--font-display); font-style: italic; font-size: 40px; line-height: 1; color: var(--blossom); }
-.pb-done__text { margin: 10px auto 0; font-size: 16px; line-height: 1.6; }
-.pb-done__alt { font-size: 14px; color: var(--pink); }
-.pb-done a, .pb-copy { color: var(--blossom); text-decoration: underline; text-underline-offset: 3px; }
-.pb-copy { padding: 0; border: 0; background: none; font: inherit; cursor: pointer; }
-.pb-again { margin-top: 16px; min-height: 44px; padding: 0 22px; border: 1.5px solid var(--blossom); border-radius: 999px; background: transparent; color: var(--vanilla);
-  font-family: var(--font-mono); font-size: var(--label); letter-spacing: var(--track); text-transform: uppercase; cursor: pointer; }
-.pb-box[data-done] + button[data-on-click="flipContact"] { display: none; }
 @media (prefers-reduced-motion: reduce) {
-  .pb-stamp, .pb-plate { transition: none; } .pb-stamp[data-bump], .pb-stamp[data-inked] .pb-mark { animation: none; }
-  .pb-stamp[data-inked] .pb-mark { opacity: .85; transform: rotate(-14deg); }
-  .pc[data-pb="posting"] { animation: none; display: none; }
+  .pf[data-state] .pf-card { animation: none; } .pf[data-state] .pf-mark { animation: none; opacity: .85; transform: rotate(-14deg); }
 }
-/* back of the contact card: name and email side by side, so the message gets the room */
-.face2.back:has(> .pb-head) { display: grid !important; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto auto minmax(48px, 1fr) auto auto; column-gap: 18px; row-gap: 2px; }
-.face2.back:has(> .pb-head) > .pb-head { grid-column: 1 / -1; grid-row: 1; margin-bottom: 2px; }
-.face2.back:has(> .pb-head) > :nth-child(2) { grid-column: 1; grid-row: 2; }
-.face2.back:has(> .pb-head) > :nth-child(3) { grid-column: 1; grid-row: 3; min-width: 0; }
-.face2.back:has(> .pb-head) > :nth-child(4) { grid-column: 2; grid-row: 2; }
-.face2.back:has(> .pb-head) > :nth-child(5) { grid-column: 2; grid-row: 3; min-width: 0; }
-.face2.back:has(> .pb-head) > :nth-child(6) { grid-column: 1 / -1; grid-row: 4; margin-top: 4px; }
-.face2.back:has(> .pb-head) > textarea { grid-column: 1 / -1; grid-row: 5; min-height: 48px; }
-.face2.back:has(> .pb-head) > .pb-warn { grid-column: 1 / -1; grid-row: 6; }
-.face2.back:has(> .pb-head) > button:last-child { grid-column: 1 / -1; grid-row: 7; margin-top: 4px; min-height: 40px !important; }
-
-/* contact: the writing side is the card, no flipping needed */
-.pc:has(> .inner > .face2.back [data-mailto]) .inner { transform: none !important; transition: none; }
-.pc:has(> .inner > .face2.back [data-mailto]) .inner > .face2:not(.back) { display: none; }
-.pc:has(> .inner > .face2.back [data-mailto]) .inner > .face2.back { transform: none; -webkit-backface-visibility: visible; backface-visibility: visible; }
-button[data-on-click="flipContact"] { display: none !important; }
-.pb-direct { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 18px; font-family: var(--font-mono); font-size: var(--label); letter-spacing: var(--track); text-transform: uppercase; color: var(--pink); }
-.pb-direct a, .pb-direct button { padding: 8px 0; border: 0; background: none; color: var(--vanilla); font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer;
-  background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 85%; }
-.pb-direct span[aria-hidden] { color: var(--blossom); }
-.pb-box[data-done] ~ .pb-direct { display: none; }
-.pc:has(> .inner > .face2.back [data-mailto]) { aspect-ratio: 1.25 !important; }

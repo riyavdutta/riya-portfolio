@@ -35,6 +35,7 @@ def head(title, desc, root, path):
 <link rel="canonical" href="{SITE_URL}{path}">
 <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
 {FONTS}
+<link rel="stylesheet" href="{root}assets/tokens.css">
 <link rel="stylesheet" href="{root}assets/case.css">
 <link rel="stylesheet" href="{root}assets/stickers.css">
 </head>

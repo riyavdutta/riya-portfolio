@@ -1,0 +1,54 @@
+/*
+ * The design system, shared by every page.
+ * Change a value here and it changes everywhere.
+ */
+:root {
+  /* colour roles (the palette itself is cherry, truffle, cocoa, vanilla, ivory, blush, blossom, pink, sage, slate) */
+  --bg: #fcf7d9;            /* vanilla: page ground */
+  --bg-alt: #f8e5d7;        /* ivory: alternate sections */
+  --paper: #fffdf0;         /* cards, prints, stamps */
+  --ink: #432720;           /* truffle: reading text */
+  --ink-soft: #604734;      /* cocoa: secondary text */
+  --ink-faint: #856a56;     /* cocoa-soft: quiet labels */
+  --accent: #65232b;        /* cherry: headings, links, actions */
+  --highlight: #ecaab2;     /* blossom: the one bright moment */
+  --rule: #e2c9b3;          /* hairlines */
+
+  /* type */
+  --label: 11px;            /* small uppercase labels */
+  --label-sm: 10px;         /* labels inside cards and stamps */
+  --track: 0.1em;           /* label letter spacing */
+  --measure: 66ch;          /* longest comfortable reading line */
+  --lh-text: 1.6;
+  --lh-tight: 1.05;
+
+  /* depth: three shadows only */
+  --shadow-paper: 0 2px 6px rgba(43, 23, 17, 0.14), 0 8px 20px rgba(43, 23, 17, 0.09);   /* resting on the page */
+  --shadow-lift: 0 4px 12px rgba(43, 23, 17, 0.2), 0 14px 28px rgba(43, 23, 17, 0.13);   /* picked up, hovered */
+  --shadow-print: 0 14px 26px -14px rgba(43, 23, 17, 0.55);                               /* photos and prints */
+  --shadow-float: 0 40px 80px -30px rgba(43, 23, 17, 0.6);                                /* sheets above the page */
+
+  /* shape */
+  --radius: 10px;
+  --radius-pill: 999px;
+
+  /* motion: one curve, three speeds */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-1: 0.2s;
+  --dur-2: 0.4s;
+  --dur-3: 0.8s;
+}
+
+/* typography rules that apply everywhere */
+/* nothing (like the waiting postmark) can push the page sideways on small phones */
+html, body { overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+  font-variant-numeric: oldstyle-nums proportional-nums; font-kerning: normal; }
+h1, h2, h3, h4 { text-wrap: balance; font-variant-numeric: lining-nums; }
+p, li, dd { text-wrap: pretty; }
+p { max-width: var(--measure); }
+/* labels, dates and counters line up */
+[style*="font-mono"], [style*="Space Mono"], .mono, .kick, .label, time { font-variant-numeric: lining-nums tabular-nums; }
+::selection { background: var(--highlight); color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

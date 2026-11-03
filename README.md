@@ -27,6 +27,13 @@ The source of [riyavdutta.github.io/riya-portfolio](https://riyavdutta.github.io
 
 The Haunted CRM page (`work/the-haunted-crm/`) was built separately and isn't generated from `content/`.
 
+### Case study extras
+
+- **Live and code links:** add `"links": [{"href": "...", "label": "Live site ↗"}, {"href": "...", "label": "View the code ↗"}]` to a case study file and the buttons appear under its facts.
+- **Tags:** Marketing, Brand, Product, Design, Build, Research and Lab. A filter shows on the Work page only once something uses it.
+- **Lab shelf:** anything tagged `Lab` also appears in "The lab" on the home page, below Selected work. With nothing tagged, the shelf stays hidden.
+- **New projects** start from the `riya-lab-starter` folder next to this one; its README covers Vercel.
+
 ## Preview locally
 
 From the folder that contains `riya-portfolio`, run:

@@ -8,7 +8,7 @@ content/work.json          ->  work/index.html
 
 Strings in the content files are trusted HTML (they're written for this site); post captions are escaped.
 """
-import html, json, pathlib
+import html, json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE_URL = 'https://riyavdutta.github.io/riya-portfolio/'
@@ -201,7 +201,7 @@ def build_case(c):
     out = (head(c['title'] + ' · Riya Dutta', c['description'], root, f'work/{slug}/') + top(root, '../') + track(c['no']) +
            f'''<main class="wrap">
 <nav class="crumb" aria-label="Breadcrumb"><a class="ul" href="../">Work</a> <span aria-hidden="true">/</span> No. {c["no"]}<b>· {c["credit"]}</b></nav>
-<section class="hero"><div class="hero__text"><span class="tag torn">{c["tag"]}</span><h1>{c["title"]}</h1><p class="hero__sub">{c["sub"]}</p><dl class="facts">{facts}</dl></div>{hero_art}</section>
+<section class="hero"><div class="hero__text"><span class="tag torn">{c["tag"]}</span><h1>{c["title"]}</h1><p class="hero__sub">{c["sub"]}</p><dl class="facts">{facts}</dl>{links(c, root)}</div>{hero_art}</section>
 <div class="body">{body}</div>
 <nav class="next" aria-label="More work"><a href="../"><span>← ALL WORK</span><strong class="ul">Work</strong></a><a href="{nxt["href"]}"><span>NEXT →</span><strong class="ul">{nxt["title"]}</strong></a></nav>
 </main>
@@ -214,8 +214,8 @@ def build_case(c):
 
 def build_index(w):
     root = '../'
-    tags = [('all', 'All')] + [(t.lower(), t) for t in w['filters']]
     count = lambda t: len(w['items']) if t == 'all' else sum(t in [x.lower() for x in i['tags']] for i in w['items'])
+    tags = [('all', 'All')] + [(t.lower(), t) for t in w['filters'] if count(t.lower())]
     filt = ''.join(f'<button type="button" data-tag="{t}" aria-pressed="{"true" if t == "all" else "false"}">{n}<b>{count(t)}</b></button>' for t, n in tags)
     cards = ''
     for it in w['items']:
@@ -224,6 +224,7 @@ def build_index(w):
         cards += (f'<a class="pcard" href="{it["href"]}" data-tags="{" ".join(t.lower() for t in it["tags"])}" style="--c: var(--{it.get("color", "sage")})">'
                   f'<div class="pcard__img">{pic}<span class="pcard__no perf-s"><span>No. {it["no"]}</span></span></div>'
                   f'<div class="pcard__body"><span class="pcard__kind">{it["kind"]}</span><strong>{it["title"]}</strong><p>{it["blurb"]}</p><div class="pcard__tags">{tg}</div></div></a>')
+    cards = cards or '<p class="copy">Nothing here yet.</p>'
     out = (head('Work · Riya Dutta', w['description'], root, 'work/') + top(root, './') +
            f'''<main class="wrap">
 <section class="wi-head"><h1 class="torn">Work</h1><p>{w["intro"]}</p></section>
@@ -235,7 +236,34 @@ def build_index(w):
     print('wrote work/index.html')
 
 
+def build_lab_shelf(w):
+    lab = [i for i in w['items'] if 'Lab' in i['tags']]
+    home = ROOT / 'index.html'
+    s = home.read_text()
+    assert s.count('<!-- lab:start -->') == 2, 'lab markers missing from index.html'
+    shelf = ''
+    if lab:
+        cards = ''
+        for it in lab:
+            pic = it['svg'] if it.get('svg') else f'<img src="{it["img"]}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">'
+            cards += (f'<a href="work/{it["href"]}" style="flex:1 1 260px;max-width:360px;display:flex;flex-direction:column;background:#fffdf0;box-shadow:0 20px 40px -28px rgba(67,39,32,.6)">'
+                      f'<span style="display:block;aspect-ratio:16/10;overflow:hidden;background:var(--{it.get("color", "sage")})">{pic}</span>'
+                      f'<span style="display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--cocoa)">{it["kind"]}</span>'
+                      f'<span style="font-family:var(--font-display);font-size:24px;line-height:1.1;color:var(--truffle)">{it["title"]}</span>'
+                      f'<span style="font-size:15px;line-height:1.5;color:var(--cocoa)">{it["blurb"]}</span></span></a>')
+        shelf = ('<section id="lab" aria-labelledby="lab-h" style="background:var(--ivory);color:var(--truffle);padding:88px clamp(16px,4vw,56px) 96px">'
+                 '<div style="max-width:1080px;margin:0 auto"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 24px;margin-bottom:36px">'
+                 '<h2 id="lab-h" style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(44px,6vw,64px);line-height:.95">The <em style="color:var(--cherry)">lab</em></h2>'
+                 f'<span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--cocoa-soft)">PASSION PROJECTS · LIVE</span></div>'
+                 f'<div style="display:flex;flex-wrap:wrap;gap:28px">{cards}</div></div></section>')
+    s = re.sub(r'<!-- lab:start -->.*?<!-- lab:end -->', '<!-- lab:start -->' + shelf.replace('\\', '\\\\') + '<!-- lab:end -->', s, flags=re.S)
+    home.write_text(s)
+    print('home lab shelf:', len(lab), 'projects')
+
+
 if __name__ == '__main__':
     for f in sorted((ROOT / 'content' / 'cases').glob('*.json')):
         build_case(json.loads(f.read_text()))
-    build_index(json.loads((ROOT / 'content' / 'work.json').read_text()))
+    work = json.loads((ROOT / 'content' / 'work.json').read_text())
+    build_index(work)
+    build_lab_shelf(work)

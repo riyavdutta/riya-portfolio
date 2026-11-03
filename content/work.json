@@ -3,9 +3,12 @@
  "intro": "Campaigns, a website, the system that makes the campaigns, and research. Filter by what each piece shows.",
  "filters": [
   "Marketing",
+  "Brand",
+  "Product",
   "Design",
   "Build",
-  "Research"
+  "Research",
+  "Lab"
  ],
  "items": [
   {

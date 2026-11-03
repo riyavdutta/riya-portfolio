@@ -3,7 +3,7 @@
   --cherry: #65232b; --truffle: #432720; --cocoa: #604734; --cocoa-soft: #856a56; --vanilla: #fcf7d9; --paper: #fffdf0;
   --ivory: #f8e5d7; --ivory-deep: #e2c9b3; --blush: #f6d8d6; --blossom: #ecaab2; --pink: #f0c5d4;
   --sage: #b7c9a8; --sage-deep: #8da37c; --slate: #9db2c0; --slate-soft: #c3d2db; --slate-deep: #56707f; --line: #e2c9b3;
-  --serif: 'Playfair Display', Georgia, serif; --sans: 'Work Sans', system-ui, sans-serif; --mono: 'Space Mono', monospace;
+  --serif: 'Playfair Display', Georgia, serif; --sans: 'Source Serif 4', Georgia, serif; --mono: 'Space Mono', monospace;
   --pad: clamp(16px, 4vw, 56px);
 }
 * { box-sizing: border-box; }

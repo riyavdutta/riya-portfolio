@@ -25,7 +25,7 @@ A professional portfolio with a touch of personal branding. It should show what 
 ## 4–5. Visual direction
 
 - **Look:** nostalgic postcard and stamp feel, in Riya's own palette: cherry, truffle, vanilla, ivory, blush, blossom, sage and slate (see the `:root` tokens in the page CSS).
-- **Type:** three fonts only, used consistently: Playfair Display (display), Work Sans (reading text), Space Mono (labels).
+- **Type:** three fonts only, used consistently: Playfair Display (display), Source Serif 4 (reading text), Space Mono (labels).
 - **Interactions:** a postcard visitors can postmark (remembered in their own browser), draggable stamps, a stamp book that fills as sections are seen, flip cards, a record crate, a stamp sheet on case studies, and a sticker sheet on every page. Everything respects reduced-motion settings. More ideas are in `docs/ideas.md`.
 - **Calm, not cluttered:** each motif appears once and colour stays restrained.
 

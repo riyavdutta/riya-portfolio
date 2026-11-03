@@ -129,7 +129,7 @@
     persist();
     if (reduce) { el.remove(); return; }
     el.classList.add('sk-peel');
-    setTimeout(function () { el.remove(); }, 380);
+    setTimeout(function () { el.remove(); }, 430);
   }
 
   function place(id, clientX, clientY, slap) {

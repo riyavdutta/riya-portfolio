@@ -194,7 +194,7 @@ def build_case(c):
         pic = art['svg']
     else:
         pic = f'<img src="{asset(root, art["img"])}" alt="{esc(art["alt"])}">'
-    hero_art = (f'<div class="hero__art"><div class="hero__stamp perf{" hero__stamp--wide" if art.get("wide") else ""}">{pic}</div>'
+    hero_art = (f'<div class="hero__art"><div class="hero__stamp perf{" hero__stamp--wide" if art.get("wide") else ""}" style="view-transition-name: case-{slug}">{pic}</div>'
                 f'{postmark(c["postmark"], c["year"])}</div>')
     facts = ''.join(f'<dt>{k}</dt><dd>{v}</dd>' for k, v in c['facts'])
     body = ''.join(SECTIONS[s['type']](s, root) for s in c['sections'])
@@ -223,7 +223,7 @@ def build_index(w):
         pic = it['svg'] if it.get('svg') else f'<img src="{asset(root, it["img"])}" alt="" loading="lazy">'
         tg = ''.join(f'<span>{t}</span>' for t in it['tags'])
         cards += (f'<a class="pcard" href="{it["href"]}" data-tags="{" ".join(t.lower() for t in it["tags"])}" style="--c: var(--{it.get("color", "sage")})">'
-                  f'<div class="pcard__img">{pic}<span class="pcard__no perf-s"><span>No. {it["no"]}</span></span></div>'
+                  f'<div class="pcard__img" style="view-transition-name: case-{it["href"].strip("/")}">{pic}<span class="pcard__no perf-s"><span>No. {it["no"]}</span></span></div>'
                   f'<div class="pcard__body"><span class="pcard__kind">{it["kind"]}</span><strong>{it["title"]}</strong><p>{it["blurb"]}</p><div class="pcard__tags">{tg}</div></div></a>')
     cards = cards or '<p class="copy">Nothing here yet.</p>'
     out = (head('Work · Riya Dutta', w['description'], root, 'work/') + top(root, './') +

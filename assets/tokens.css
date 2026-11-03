@@ -72,3 +72,14 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 9998; pointer-eve
   [data-rv] { transition: none; opacity: 1; translate: none; rotate: none; }
   [data-on-pointermove^="tm_f"] > * { transition: none; scale: none; filter: none; }
 }
+
+/* page transitions: a folder's image grows into its case study's header image (browsers that support it; others just navigate) */
+@view-transition { navigation: auto; }
+::view-transition-group(*) { animation-duration: 0.6s; animation-timing-function: var(--ease); }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.35s; }
+[data-on-pointermove="tm_f1"] > div > div:last-child { view-transition-name: case-the-haunted-crm; }
+[data-on-pointermove="tm_f2"] > div > div:last-child { view-transition-name: case-the-founder-bottleneck; }
+[data-on-pointermove="tm_f3"] > div > div:last-child { view-transition-name: case-the-content-studio; }
+[data-on-pointermove="tm_f4"] > div > div:last-child { view-transition-name: case-the-b2ne-website; }
+[data-on-pointermove="tm_f5"] > div > div:last-child { view-transition-name: case-crm-graveyard; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }

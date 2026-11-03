@@ -41,6 +41,26 @@
       return !onScreen;
     });
 
+    // stat numbers (case studies) count up the first time they come into view
+    var counters = [].slice.call(document.querySelectorAll('.numbers strong')).filter(function (e) {
+      var r = e.getBoundingClientRect();
+      if (!/^\d{1,4}$/.test(e.textContent.trim()) || (r.top < window.innerHeight * 0.92 && r.bottom > 0)) return false;
+      e.setAttribute('data-target', e.textContent.trim());
+      e.textContent = '0';
+      return true;
+    });
+    function count(e) {
+      var target = +e.getAttribute('data-target'), t0 = null, dur = 1100;
+      function step(t) {
+        if (t0 === null) t0 = t;
+        var k = Math.min(1, (t - t0) / dur), eased = 1 - Math.pow(1 - k, 3);
+        e.textContent = String(Math.round(target * eased));
+        if (k < 1) requestAnimationFrame(step); else e.textContent = String(target);
+      }
+      requestAnimationFrame(step);
+      setTimeout(function () { e.textContent = String(target); }, dur + 400);   // lands on the real number even if frames are paused
+    }
+
     function reveal() {
       var vh = window.innerHeight, n = 0;
       pending = pending.filter(function (e) {
@@ -50,6 +70,11 @@
           e.setAttribute('data-rv', 'in');
           return false;
         }
+        return true;
+      });
+      counters = counters.filter(function (e) {
+        var r = e.getBoundingClientRect();
+        if (r.top < vh * 0.85 && r.bottom > 0) { count(e); return false; }
         return true;
       });
     }

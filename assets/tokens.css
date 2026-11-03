@@ -61,3 +61,14 @@ p { max-width: var(--measure); }
 /* a faint paper grain over everything; it never catches clicks */
 body::after { content: ""; position: fixed; inset: 0; z-index: 9998; pointer-events: none; background-image: var(--grain); background-size: 180px 180px; opacity: 0.06; mix-blend-mode: multiply; }
 @media print { body::after { display: none; } }
+
+/* scroll motion (see motion.js): blocks rise into place; folders underneath sink and dim */
+[data-rv] { transition: opacity var(--dur-3) var(--ease), translate var(--dur-3) var(--ease), rotate var(--dur-3) var(--ease); }
+[data-rv-d="1"] { transition-delay: 0.08s; } [data-rv-d="2"] { transition-delay: 0.16s; } [data-rv-d="3"] { transition-delay: 0.24s; } [data-rv-d="4"] { transition-delay: 0.32s; } [data-rv-d="5"] { transition-delay: 0.40s; } [data-rv-d="6"] { transition-delay: 0.48s; } 
+[data-rv=""] { opacity: 0; translate: 0 28px; rotate: -0.6deg; }
+[data-rv="in"] { opacity: 1; translate: 0 0; rotate: 0deg; }
+[data-on-pointermove^="tm_f"] > * { transition: opacity var(--dur-3) var(--ease), translate var(--dur-3) var(--ease), rotate var(--dur-3) var(--ease), filter var(--dur-1) linear; scale: calc(1 - var(--depth, 0) * 0.035); filter: brightness(calc(1 - var(--depth, 0) * 0.1)) saturate(calc(1 - var(--depth, 0) * 0.15)); transform-origin: 50% 0; }
+@media (prefers-reduced-motion: reduce) {
+  [data-rv] { transition: none; opacity: 1; translate: none; rotate: none; }
+  [data-on-pointermove^="tm_f"] > * { transition: none; scale: none; filter: none; }
+}

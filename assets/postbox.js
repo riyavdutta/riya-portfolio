@@ -45,6 +45,16 @@
       '<p class="pb-done__text pb-done__alt">Nothing opened? Write to <a href="mailto:' + TO + '">' + TO + '</a>, or <button type="button" class="pb-copy">copy your note</button>.</p>' +
       '<button type="button" class="pb-again">Write another</button></div>';
     holder.insertBefore(box, card.nextSibling);
+    var direct = document.createElement('p');
+    direct.className = 'pb-direct';
+    direct.innerHTML = '<span>Or:</span><button type="button" class="pb-copymail">Copy my email</button><span aria-hidden="true">·</span>' +
+      '<a href="mailto:' + TO + '">Open your mail app</a><span aria-hidden="true">·</span><a href="https://www.linkedin.com/in/riyaa-duttaa" rel="me">LinkedIn</a>';
+    holder.insertBefore(direct, box.nextSibling);
+    direct.querySelector('.pb-copymail').addEventListener('click', function (e) {
+      var b = e.currentTarget;
+      try { navigator.clipboard.writeText(TO).then(function () { b.textContent = 'Copied ✓'; setTimeout(function () { b.textContent = 'Copy my email'; }, 2000); }); }
+      catch (err) { b.textContent = TO; }
+    });
 
     var field = function (sel) { var el = back.querySelector(sel); return el ? el.value.trim() : ''; };
     function note() {
@@ -71,7 +81,7 @@
       box._note = n.body;
       box.setAttribute('data-open', '');
       stampBtn.setAttribute('data-inked', '');
-      var wait = reduce ? 0 : 450;
+      var wait = reduce ? 0 : 200;
       setTimeout(function () { card.setAttribute('data-pb', 'posting'); }, wait);
       setTimeout(function () {
         card.setAttribute('data-pb', 'posted');
@@ -79,7 +89,7 @@
         box.setAttribute('data-done', '');
         window.location.href = href;
         box.querySelector('.pb-again').focus();
-      }, reduce ? 0 : wait + 950);
+      }, reduce ? 0 : wait + 450);
     }, true);
 
     box.querySelector('.pb-again').addEventListener('click', function () {

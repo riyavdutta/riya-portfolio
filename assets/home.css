@@ -64,7 +64,7 @@ section[style*="radial-gradient(rgba(240,197,212,0.16)"] h1 + p + div { animatio
 .pb-box[data-open] .pb-plate { height: 64px; opacity: 1; }
 .pb-slot { position: absolute; left: 12%; right: 12%; top: 16px; height: 10px; border-radius: 6px; background: #120406; box-shadow: inset 0 3px 4px rgba(0,0,0,.8); }
 .pb-plate__label { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: .3em; color: #d9a35a; }
-.pc[data-pb="posting"] { animation: pb-drop .95s cubic-bezier(.5, 0, .75, 0) forwards; pointer-events: none; }
+.pc[data-pb="posting"] { animation: pb-drop .5s cubic-bezier(.5, 0, .75, 0) forwards; pointer-events: none; }
 .pc[data-pb="posted"] { display: none; }
 @keyframes pb-drop {
   0% { translate: 0 0; scale: 1; opacity: 1; }
@@ -96,3 +96,15 @@ section[style*="radial-gradient(rgba(240,197,212,0.16)"] h1 + p + div { animatio
 .face2.back:has(> .pb-head) > textarea { grid-column: 1 / -1; grid-row: 5; min-height: 48px; }
 .face2.back:has(> .pb-head) > .pb-warn { grid-column: 1 / -1; grid-row: 6; }
 .face2.back:has(> .pb-head) > button:last-child { grid-column: 1 / -1; grid-row: 7; margin-top: 4px; min-height: 40px !important; }
+
+/* contact: the writing side is the card, no flipping needed */
+.pc:has(> .inner > .face2.back [data-mailto]) .inner { transform: none !important; transition: none; }
+.pc:has(> .inner > .face2.back [data-mailto]) .inner > .face2:not(.back) { display: none; }
+.pc:has(> .inner > .face2.back [data-mailto]) .inner > .face2.back { transform: none; -webkit-backface-visibility: visible; backface-visibility: visible; }
+button[data-on-click="flipContact"] { display: none !important; }
+.pb-direct { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 18px; font-family: var(--font-mono); font-size: var(--label); letter-spacing: var(--track); text-transform: uppercase; color: var(--pink); }
+.pb-direct a, .pb-direct button { padding: 8px 0; border: 0; background: none; color: var(--vanilla); font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer;
+  background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 85%; }
+.pb-direct span[aria-hidden] { color: var(--blossom); }
+.pb-box[data-done] ~ .pb-direct { display: none; }
+.pc:has(> .inner > .face2.back [data-mailto]) { aspect-ratio: 1.25 !important; }

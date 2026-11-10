@@ -1,6 +1,6 @@
 {
  "description": "Work by Riya Dutta: LinkedIn campaigns, a website, the content system behind them, and research on how people decide.",
- "intro": "Campaigns, a website, the system that makes the campaigns, and research. Filter by what each piece shows.",
+ "intro": "Campaigns, a website, the system that makes the campaigns, research, and a lab project. Filter by what each piece shows.",
  "filters": [
   "Marketing",
   "Brand",
@@ -86,6 +86,20 @@
    "color": "sage",
    "tags": [
     "Research"
+   ]
+  },
+  {
+   "no": "007",
+   "href": "beas-and-loom/",
+   "title": "Beas & Loom",
+   "kind": "LAB · CONCEPT BRAND · 2026",
+   "blurb": "A concept brand for the Kullu shawl: woven freehand, recorded so it can be trusted.",
+   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"Beas and Loom: a cream Kullu shawl with a red woven border\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#f4efe4\"/><rect x=\"0\" y=\"32.0\" width=\"640\" height=\"52.0\" fill=\"#b3322a\"/><rect x=\"0\" y=\"32.0\" width=\"640\" height=\"5.2\" fill=\"#23282b\"/><rect x=\"0\" y=\"78.8\" width=\"640\" height=\"5.2\" fill=\"#23282b\"/><path d=\"M41.6 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"36.9\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M124.8 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"120.1\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M208.0 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"203.3\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M291.2 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"286.5\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M374.4 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"369.7\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M457.6 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"452.9\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M540.8 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"536.1\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M624.0 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"619.3\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M707.2 42.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"702.5\" y=\"53.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><rect x=\"0\" y=\"316.0\" width=\"640\" height=\"52.0\" fill=\"#b3322a\"/><rect x=\"0\" y=\"316.0\" width=\"640\" height=\"5.2\" fill=\"#23282b\"/><rect x=\"0\" y=\"362.8\" width=\"640\" height=\"5.2\" fill=\"#23282b\"/><path d=\"M41.6 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"36.9\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M124.8 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"120.1\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M208.0 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"203.3\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M291.2 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"286.5\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M374.4 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"369.7\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M457.6 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"452.9\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M540.8 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"536.1\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M624.0 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#4d6b7a\"/><rect x=\"619.3\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><path d=\"M707.2 326.4l15.6 15.6-15.6 15.6-15.6-15.6z\" fill=\"#f4efe4\"/><rect x=\"702.5\" y=\"337.3\" width=\"9.4\" height=\"9.4\" fill=\"#d9a43a\"/><text x=\"320.0\" y=\"200\" text-anchor=\"middle\" font-family=\"Cormorant Garamond, Georgia, serif\" font-size=\"70\" fill=\"#23282b\">Beas <tspan font-style=\"italic\" fill=\"#b3322a\">&amp;</tspan> Loom</text><text x=\"320.0\" y=\"248\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"14\" letter-spacing=\"2\" fill=\"#55605f\">KULLU VALLEY · A CONCEPT</text></svg>",
+   "color": "ivory",
+   "tags": [
+    "Brand",
+    "Research",
+    "Lab"
    ]
   }
  ]

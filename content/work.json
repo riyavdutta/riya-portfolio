@@ -1,6 +1,6 @@
 {
  "description": "Work by Riya Dutta: LinkedIn campaigns, a website, the content system behind them, and research on how people decide.",
- "intro": "Campaigns, a website, the system that makes the campaigns, research, and a lab project. Filter by what each piece shows.",
+ "intro": "Campaigns, a website, the system that makes the campaigns, research, and lab projects. Filter by what each piece shows.",
  "filters": [
   "Marketing",
   "Brand",
@@ -99,6 +99,20 @@
    "tags": [
     "Brand",
     "Research",
+    "Lab"
+   ]
+  },
+  {
+   "no": "008",
+   "href": "what-makes-it-expensive/",
+   "title": "What makes it feel expensive?",
+   "kind": "LAB · INTERACTIVE · 2026",
+   "blurb": "A five-round game testing premium design rules against the research behind them.",
+   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"Two versions of the same product card, A and B\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#f6d8d6\"/><g transform=\"translate(70 92)\"><rect width=\"230\" height=\"248\" fill=\"#ffffff\"/><rect x=\"18\" y=\"18\" width=\"194\" height=\"194\" fill=\"#efe9e1\"/><rect x=\"83\" y=\"97\" width=\"65\" height=\"83\" rx=\"3\" fill=\"#d9cdbf\"/><path d=\"M115 60c6.9 11.5 9.2 18.4 0 30.0c-9.2-11.5-6.9-18.4 0-30.0z\" fill=\"#e9a04a\"/><rect x=\"28\" y=\"28\" width=\"69\" height=\"21\" fill=\"#d4262c\"/><rect x=\"18\" y=\"230\" width=\"115\" height=\"14\" fill=\"#2a2522\"/><rect x=\"18\" y=\"209\" width=\"194\" height=\"21\" fill=\"#2a2522\"/><circle cx=\"0\" cy=\"0\" r=\"18\" fill=\"#432720\"/><text x=\"0\" y=\"7\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"18\" font-weight=\"700\" fill=\"#fcf7d9\">A</text></g><g transform=\"translate(339 92)\"><rect width=\"230\" height=\"248\" fill=\"#ffffff\"/><rect x=\"18\" y=\"18\" width=\"194\" height=\"194\" fill=\"#efe9e1\"/><rect x=\"83\" y=\"97\" width=\"65\" height=\"83\" rx=\"3\" fill=\"#d9cdbf\"/><path d=\"M115 60c6.9 11.5 9.2 18.4 0 30.0c-9.2-11.5-6.9-18.4 0-30.0z\" fill=\"#e9a04a\"/><rect x=\"18\" y=\"230\" width=\"115\" height=\"14\" fill=\"#2a2522\"/><rect x=\"18\" y=\"209\" width=\"194\" height=\"21\" fill=\"#2a2522\"/><circle cx=\"0\" cy=\"0\" r=\"18\" fill=\"#432720\"/><text x=\"0\" y=\"7\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"18\" font-weight=\"700\" fill=\"#fcf7d9\">B</text></g><text x=\"320.0\" y=\"52\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-style=\"italic\" font-size=\"35\" fill=\"#65232b\">which feels expensive?</text></svg>",
+   "color": "blush",
+   "tags": [
+    "Brand",
+    "Product",
     "Lab"
    ]
   }

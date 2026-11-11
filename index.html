@@ -139,9 +139,7 @@ body{margin:0;background:var(--vanilla)}
 
 .kit {
   --kit-dark: var(--espresso);
-  --kit-stripe: #463933;
-  --kit-ticker: #45332f;
-  --kit-pink: var(--hot-pink);
+  --kit-pink: var(--blossom);
   --kit-pink-soft: #e1a6b9;
   --kit-surface: #efeeec;
   --kit-ink: #2a2320;
@@ -150,11 +148,6 @@ body{margin:0;background:var(--vanilla)}
   padding: 0;
   color: var(--kit-surface);
   background-color: var(--kit-dark);
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--kit-dark) 0 14px,
-    var(--kit-stripe) 14px 28px
-  );
 }
 .kit__inner {
   position: relative;
@@ -164,39 +157,8 @@ body{margin:0;background:var(--vanilla)}
 }
 
 
-.ticker {
-  background: var(--kit-ticker);
-  overflow: hidden;
-  padding: 0.45rem 0;
-}
-.ticker__track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 40s linear infinite;
-}
-.ticker span {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-  color: var(--kit-surface);
-  padding-right: 1rem;
-}
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 
 
-.kit-star {
-  position: absolute;
-  color: var(--kit-pink);
-  line-height: 1;
-  pointer-events: none;
-}
-.kit-star--1 { top: 4%;  left: 2%;  font-size: 2.6rem; transform: rotate(-12deg); }
-.kit-star--2 { top: 12%; right: 8%; font-size: 1.5rem; }
-.kit-star--3 { bottom: 6%; right: 4%; font-size: 2.2rem; transform: rotate(10deg); }
 
 
 .kit__title {
@@ -210,9 +172,7 @@ body{margin:0;background:var(--vanilla)}
 }
 .kit__title-top {
   font-size: clamp(2.8rem, 10vw, 5rem);
-  color: var(--kit-pink);
-  border-bottom: 2px solid var(--kit-pink);
-  padding-right: 1.5rem;
+  color: var(--kit-surface);
 }
 .kit__title-bot {
   font-size: clamp(2rem, 7vw, 3.4rem);
@@ -222,9 +182,7 @@ body{margin:0;background:var(--vanilla)}
 }
 .kit__title-bot em {
   font-style: italic;
-  color: var(--kit-ink);
-  background: var(--kit-pink);
-  padding: 0 0.4rem;
+  color: var(--kit-pink);
 }
 
 
@@ -346,8 +304,7 @@ body{margin:0;background:var(--vanilla)}
 @media (max-width: 47.99rem) {
   .tray { margin: 0; }
   .tray__handle { display: none; }
-  
-  .kit-star--3 { display: none; }
+
 }
 
 
@@ -374,7 +331,6 @@ body{margin:0;background:var(--vanilla)}
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker__track { animation: none; }
 }
 
 .records__intro {
@@ -883,9 +839,6 @@ body{margin:0;background:var(--vanilla)}
 <!-- lab:start --><!-- lab:end -->
   <section data-slot="s3" id="kit" class="kit">
     <div class="kit__inner">
-      <span class="kit-star kit-star--1" aria-hidden="true">★</span>
-      <span class="kit-star kit-star--2" aria-hidden="true">★</span>
-      <span class="kit-star kit-star--3" aria-hidden="true">★</span>
 
       <h2 class="kit__title">
         <span class="kit__title-top">What’s</span>
@@ -1579,9 +1532,6 @@ body{margin:0;background:var(--vanilla)}
 <!-- lab:start --><!-- lab:end -->
   <section data-slot="s3" id="kit" class="kit">
     <div class="kit__inner">
-      <span class="kit-star kit-star--1" aria-hidden="true">&#9733;</span>
-      <span class="kit-star kit-star--2" aria-hidden="true">&#9733;</span>
-      <span class="kit-star kit-star--3" aria-hidden="true">&#9733;</span>
 
       <h2 class="kit__title">
         <span class="kit__title-top">What&rsquo;s</span>

@@ -89,3 +89,7 @@ section[style*="radial-gradient(rgba(240,197,212,0.16)"] h1 + p + div { animatio
 @media (prefers-reduced-motion: reduce) {
   .pf[data-state] .pf-card { animation: none; } .pf[data-state] .pf-mark { animation: none; opacity: .85; transform: rotate(-14deg); }
 }
+
+/* main nav: one colour, a quiet underline on hover */
+.navlink { transition: border-color var(--dur-1) var(--ease); }
+.navlink:hover, .navlink:focus-visible { border-bottom-color: var(--blossom) !important; }

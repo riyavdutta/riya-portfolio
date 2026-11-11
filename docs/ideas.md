@@ -4,7 +4,7 @@ Ideas for making the site more playful without losing the calm postcard feel. Ea
 
 ## Done
 - **Postcard contact** (home): write a note, tap the stamp to pick one of the stickers, and post it into a letterbox; the visitor's mail app opens with the note. `assets/postbox.js`
-- **Sticker sheet** (every page): peel stickers off a sheet and stick them anywhere; they stay put in your browser. `assets/stickers.js`
+- **Sticker sheet** (removed Nov 2026 in the calmer edit; was on every page): peel stickers off a sheet and stick them anywhere; they stay put in your browser. `assets/stickers.js`
 - **Case studies** for all six pieces, plus a **Work** page with filters (Marketing, Design, Build, Research). Built from `content/` by `tools/build.py`.
 - Earlier: postmark-your-visit postcard, draggable desk stamps, stamp book, flip cards, record crate, post sheets with playable videos and swipeable carousels, tracking bar on case studies, "Return to sender" 404.
 

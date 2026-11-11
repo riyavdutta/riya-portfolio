@@ -37,7 +37,6 @@ def head(title, desc, root, path):
 {FONTS}
 <link rel="stylesheet" href="{root}assets/tokens.css">
 <link rel="stylesheet" href="{root}assets/case.css">
-<link rel="stylesheet" href="{root}assets/stickers.css">
 </head>
 <body>
 '''
@@ -61,7 +60,7 @@ def track(no):
 def foot(root):
     return (f'<footer class="foot"><div class="wrap"><span>Riya Dutta · 2026</span>'
             f'<span><a class="ul" href="{root}#contact">Contact</a> · <a class="ul" href="{LINKEDIN}" rel="me">LinkedIn</a></span></div></footer>\n'
-            f'<script src="{root}assets/case.js"></script>\n<script src="{root}assets/stickers.js"></script>\n<script src="{root}assets/motion.js"></script>\n</body>\n</html>\n')
+            f'<script src="{root}assets/case.js"></script>\n<script src="{root}assets/motion.js"></script>\n</body>\n</html>\n')
 
 
 def postmark(text, year):

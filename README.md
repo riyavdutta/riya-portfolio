@@ -14,7 +14,6 @@ The source of [riyavdutta.github.io/riya-portfolio](https://riyavdutta.github.io
 | `assets/tokens.css` | The design system: colour roles, label sizes, shadows, motion. Change a value here and it changes everywhere |
 | `assets/site.js` | Picks the home page's phone or desktop layout and runs its interactive parts |
 | `assets/case.css`, `assets/case.js` | Styles and interactions for the case studies and the Work page |
-| `assets/stickers.js`, `assets/stickers.css` | The sticker sheet, on every page |
 | `assets/img/`, `assets/video/` | Images and videos |
 | `docs/brief.md` | The decisions behind the site |
 | `docs/ideas.md` | Ideas for new interactive pieces |

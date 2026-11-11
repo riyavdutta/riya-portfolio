@@ -108,7 +108,6 @@ body{margin:0;background:var(--vanilla)}
 .rd a{color:inherit;text-decoration:none}
 .rd ul{list-style:none;margin:0;padding:0}
 .rd h1,.rd h2,.rd h3{margin:0}
-#catalogue{padding:var(--space-6) var(--space-4);max-width:var(--max-width);margin:0 auto;scroll-margin-top:3rem}
 .section-heading{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;margin-bottom:var(--space-4);color:var(--warm-brown)}
 .ul{background-image:linear-gradient(currentColor,currentColor);background-size:0% 1px;background-repeat:no-repeat;background-position:100% 100%;transition:background-size .35s cubic-bezier(.4,0,.2,1)}
 .ul:hover,.ul:focus-visible{background-size:100% 1px;background-position:0 100%}
@@ -341,295 +340,11 @@ body{margin:0;background:var(--vanilla)}
   text-wrap: balance;
 }
 
-@media (prefers-reduced-motion: reduce) {
-}
-
-.records__intro {
-  max-width: 34rem;
-  margin: 0 0 var(--space-5);
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-
-.crate {
-  --wood: var(--cocoa);
-  --wood-dark: var(--truffle);
-  --paint: var(--vanilla);
-  --paint-shade: var(--ivory-deep);
-  --bin: var(--truffle-deep);
-
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-  grid-template-rows: minmax(11rem, auto) auto;
-  gap: var(--space-4) var(--space-5);
-  align-items: end;
-}
-.crate .records__intro { grid-column: 1; grid-row: 1; margin: 0 0 var(--space-3); }
-.crate__bin { grid-column: 1; grid-row: 2; }
-.crate__faces { grid-column: 2; grid-row: 2; }
-
-
-.crate__bin {
-  position: relative;
-  height: 24rem;
-  border-radius: 4px 4px 6px 6px;
-  background: var(--bin);
-  box-shadow:
-    inset 0 -1.5rem 2rem rgba(0,0,0,0.45),
-    0 14px 30px rgba(43, 23, 17, 0.28);
-}
-
-.crate__bin::before {
-  content: "";
-  position: absolute;
-  inset: -0.55rem -0.55rem auto -0.55rem;
-  height: 0.55rem;
-  background: var(--wood);
-  border-radius: 3px 3px 0 0;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.25);
-}
-.crate__bin::after {
-  content: "";
-  position: absolute;
-  inset: -0.55rem -0.55rem 0 -0.55rem;
-  border-left: 0.55rem solid var(--wood);
-  border-right: 0.55rem solid var(--wood);
-  border-radius: 3px 3px 6px 6px;
-  pointer-events: none;
-}
-.crate__front {
-  position: absolute;
-  z-index: 3;
-  left: 0; right: 0; bottom: 0;
-  height: 44%;
-  background:
-    repeating-linear-gradient(180deg, transparent 0 calc(33% - 1px), rgba(67, 39, 32, 0.16) calc(33% - 1px) 33%),
-    linear-gradient(180deg, var(--paint), var(--paint-shade));
-  border-top: 0.45rem solid var(--wood);
-  border-bottom: 0.55rem solid var(--wood-dark);
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 -8px 16px rgba(0,0,0,0.35);
-  display: grid;
-  place-items: center;
-}
-.crate__stencil {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--cocoa);
-  padding: 0.3rem 0.7rem;
-  border: 2px solid currentColor;
-  opacity: 0.75;
-  
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -3 2.4'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -3 2.4'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
-
-
-.crate__spines {
-  position: absolute;
-  z-index: 2;
-  left: 8%; right: 8%; bottom: 20%;
-  height: 78%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 0.55rem;
-}
-.spine {
-  position: relative;
-  width: 2.7rem;
-  height: 100%;
-  padding: 0;
-  border: none;
-  border-radius: 3px 3px 0 0;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,0.18), transparent 30%, rgba(255,255,255,0.18) 70%, rgba(0,0,0,0.14)),
-    var(--sleeve);
-  box-shadow: 2px 0 0 rgba(0,0,0,0.18);
-  cursor: pointer;
-  font: inherit;
-  transform-origin: 50% 100%;
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.spine:nth-child(1) { height: 95%; transform: rotate(-2deg); }
-.spine:nth-child(2) { height: 100%; transform: rotate(1deg); }
-.spine:nth-child(3) { height: 92%; transform: rotate(-1deg); }
-.spine:nth-child(4) { height: 98%; transform: rotate(2deg); }
-.spine:nth-child(5) { height: 90%; transform: rotate(-1.5deg); }
-.spine:nth-child(6) { height: 96%; transform: rotate(1.5deg); }
-.spine:hover,
-.spine:focus-visible { transform: translateY(-0.4rem); filter: brightness(1.04); }
-.spine[aria-selected="true"] {
-  transform: translateY(-0.9rem);
-  box-shadow: 2px 0 0 rgba(0,0,0,0.18), 0 0 0 2px var(--label);
-}
-.spine:focus-visible { outline: 2px solid var(--vanilla); outline-offset: 2px; }
-.spine__text {
-  position: absolute;
-  left: 50%;
-  top: 38%; 
-  transform: translate(-50%, -50%) rotate(-90deg);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--truffle);
-  white-space: nowrap;
-}
-
-
-.crate__faces {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  align-self: end;
-  margin-bottom: 1rem;
-}
-.face {
-  position: absolute;
-  inset: 0;
-  transform: rotate(-3deg);
-  transform-origin: 50% 100%;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.face.is-hidden {
-  display: block;
-  visibility: hidden;
-  opacity: 0;
-  transform: rotate(0deg) translateY(1rem);
-  pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s 0.35s;
-}
-.face.is-out { opacity: 1; }
-
-.face__vinyl {
-  position: absolute;
-  z-index: 0;
-  left: 6%; right: 6%;
-  top: -50%; 
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background:
-    
-    radial-gradient(circle,
-      var(--truffle-deep) 0 1.1%, var(--label) 1.5% 15%,
-      rgba(0,0,0,0.35) 15.2% 15.8%, transparent 16.2%),
-    
-    radial-gradient(circle, transparent 0 16%, #1f1815 16.2% 19%, transparent 19.2%),
-    repeating-radial-gradient(circle, #2a221f 0 2px, #1a1412 2px 4px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(255,255,255,0.05);
-}
-
-.face__vinyl::before {
-  content: attr(data-no);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, 0.55rem);
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  color: var(--truffle);
-  opacity: 0.75;
-}
-
-.face__vinyl::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(from 200deg, transparent 0 12%, rgba(255,255,255,0.14) 20%, transparent 30%, transparent 55%, rgba(255,255,255,0.08) 62%, transparent 70%);
-}
-.face.is-out .face__vinyl { animation: vinyl-peek 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-@keyframes vinyl-peek {
-  from { transform: translateY(34%); }
-  to   { transform: translateY(0); }
-}
-.face__body {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  box-sizing: border-box;
-  background:
-    linear-gradient(160deg, rgba(255,255,255,0.22), transparent 45%, rgba(0,0,0,0.06)),
-    var(--sleeve);
-  border-radius: 3px;
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.06),
-    0 18px 34px rgba(43, 23, 17, 0.28),
-    0 3px 6px rgba(43, 23, 17, 0.14);
-  padding: var(--space-4) var(--space-4) var(--space-3);
-  display: flex;
-  flex-direction: column;
-  color: var(--truffle);
-}
-.face__no {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.14em;
-  color: var(--cocoa);
-}
-.face__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-  font-weight: 600;
-  line-height: 1.15;
-  margin: 0.35rem 0 0.25rem;
-  text-wrap: balance;
-}
-.face__org {
-  margin: 0;
-  font-size: var(--text-sm);
-  line-height: 1.35;
-  color: var(--cocoa);
-}
-.face__year {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  color: var(--cocoa);
-}
-.face__notes {
-  list-style: none;
-  margin: auto 0 0;
-  padding: var(--space-3) 0 0;
-  border-top: 1px dotted rgba(67, 39, 32, 0.4);
-  font-size: 0.86rem;
-  line-height: 1.45;
-}
-.face__notes li { padding-left: 1rem; position: relative; }
-.face__notes li + li { margin-top: 0.4rem; }
-.face__notes li::before { content: "\2013"; position: absolute; left: 0; color: var(--cocoa); }
-
-@media (max-width: 60rem) {
-  .crate { grid-template-columns: 1fr; grid-template-rows: auto; gap: var(--space-4); }
-  .crate .records__intro, .crate__bin, .crate__faces { grid-column: 1; grid-row: auto; }
-  .crate__faces { margin-top: clamp(7rem, 42vw, 11rem); }
-  .crate__bin { height: 17rem; }
-  .crate__spines { left: 6%; right: 6%; }
-  .spine { width: 2.4rem; }
-  .spine__text { font-size: 0.6rem; top: 34%; }
-  .crate__faces { max-width: 26rem; aspect-ratio: auto; min-height: 22rem; margin: 0 auto; width: 100%; }
-  .face { position: relative; transform: none; }
-  .face.is-hidden { display: none; }
-  .face.is-out { position: relative; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .spine, .face { transition: none; }
-}
 
 
 [role="dialog"] button:focus-visible,[role="dialog"] a:focus-visible{outline:2px solid #65232b;outline-offset:3px}
 
 [data-track]{scrollbar-width:none}[data-track]::-webkit-scrollbar{display:none}
-
-/* records: room to breathe */
-.records .face .face__title{line-height:1.2;margin:0.55rem 0 0.6rem}.records .face .face__org{line-height:1.5}.records .face .face__year{margin-top:0.6rem}.records .face .face__notes{margin-top:1.1rem;padding-top:1.1rem;line-height:1.75}.records .face .face__notes li+li{margin-top:0.85rem}
 </style>
 <style>html{scroll-behavior:smooth}@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}</style>
 <link rel="stylesheet" href="assets/home.css">
@@ -647,7 +362,6 @@ body{margin:0;background:var(--vanilla)}
 <a href="#about" style="padding: 12px 12px 10px; color: var(--vanilla); border-bottom: 1px solid transparent" class="navlink">About</a>
 <a href="#work" style="padding: 12px 12px 10px; color: var(--vanilla); border-bottom: 1px solid transparent" class="navlink">Work</a>
 <a href="#kit" style="padding: 12px 12px 10px; color: var(--vanilla); border-bottom: 1px solid transparent" class="navlink">Kit</a>
-<a href="#catalogue" style="padding: 12px 12px 10px; color: var(--vanilla); border-bottom: 1px solid transparent" class="navlink">Records</a>
 <a href="#contact" style="padding: 12px 12px 10px; color: var(--vanilla); border-bottom: 1px solid transparent" class="navlink">Contact</a>
 <button type="button" data-b-aria-pressed="{{quickPressed}}" data-on-click="toggleQuick" style="margin-left: 10px; min-height: 40px; padding: 0 14px; font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--vanilla); background: transparent; border: 1.5px dashed var(--blossom); border-radius: var(--radius-btn); cursor: pointer"><span data-t="quickLabel"></span></button>
 </nav>
@@ -739,7 +453,7 @@ body{margin:0;background:var(--vanilla)}
 <li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 16px; padding: 18px 0; border-top: 1px solid var(--ivory-deep)"><span style="grid-row: span 3; font-family: var(--font-display); font-style: italic; font-size: 44px; line-height: 0.9; color: var(--blossom-deep)">03</span><span style="font-family: var(--font-display); font-style: italic; font-size: 15px; letter-spacing: 0; color: var(--cherry)">Results</span><span style="font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.25; color: var(--truffle)">HDFC Bank, Management Trainee</span><span style="font-size: 15px; line-height: 1.55; color: var(--cocoa)">Branch revenue up 30% year on year; ₹1.36 crore CASA target met.&nbsp;</span></li>
 </ul>
 <p style="margin: 26px 0 0; font-size: 16px; line-height: 1.75; color: var(--cocoa)">The rigour came from odder places: a horticulture degree spent testing hypotheses on plants, a bank traineeship chasing deposit targets, an MBA in analytics, a summer tracking eyes in a Greek UI/UX lab. The ideas that used to live in a scrapbook now live in decks, campaigns and research, and I’m working out the rest as I go ^_^</p>
-<a class="ul" href="#catalogue" style="display: inline-block; margin-top: 22px; font-family: var(--font-display); font-style: italic; font-size: 15px; letter-spacing: 0; color: var(--cherry); padding: 6px 0">Full background in the records →</a>
+
 </div>
 </div>
 </section>
@@ -1198,125 +912,6 @@ body{margin:0;background:var(--vanilla)}
   </section>
 
 <div style="background: var(--vanilla)">
-  <section data-slot="s4" id="catalogue" class="records">
-    <h2 class="section-heading">Back catalogue</h2>
-
-    <div class="crate">
-      <p class="records__intro">
-        Everything else — school, the lab, the bank, and a few things still in the crate.
-        Flip through.
-      </p>
-      <div class="crate__bin">
-        <div class="crate__spines" role="tablist" aria-label="Records">
-          <button type="button" class="spine" role="tab" id="spine-01" aria-controls="face-01" data-b-aria-selected="{{sel0}}" data-b-tabindex="{{ti0}}" data-on-click="pick0" style="--sleeve: var(--sage); --label: var(--slate);">
-            <span class="spine__text">01 · MBA</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-02" aria-controls="face-02" data-b-aria-selected="{{sel1}}" data-b-tabindex="{{ti1}}" data-on-click="pick1" style="--sleeve: var(--blush); --label: var(--cherry);">
-            <span class="spine__text">02 · B.Sc.</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-03" aria-controls="face-03" data-b-aria-selected="{{sel2}}" data-b-tabindex="{{ti2}}" data-on-click="pick2" style="--sleeve: var(--slate); --label: var(--blossom);">
-            <span class="spine__text">03 · TRACE-BRL</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-04" aria-controls="face-04" data-b-aria-selected="{{sel3}}" data-b-tabindex="{{ti3}}" data-on-click="pick3" style="--sleeve: var(--ivory-warm); --label: var(--sage-deep);">
-            <span class="spine__text">04 · Aegean</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-05" aria-controls="face-05" data-b-aria-selected="{{sel4}}" data-b-tabindex="{{ti4}}" data-on-click="pick4" style="--sleeve: var(--pink); --label: var(--cocoa);">
-            <span class="spine__text">05 · HDFC</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-06" aria-controls="face-06" data-b-aria-selected="{{sel5}}" data-b-tabindex="{{ti5}}" data-on-click="pick5" style="--sleeve: var(--blossom); --label: var(--slate-deep);">
-            <span class="spine__text">06 · Bucharest</span>
-          </button>
-        </div>
-        <div class="crate__front" aria-hidden="true">
-          <span class="crate__stencil">RD · 2019 – 2026</span>
-        </div>
-      </div>
-
-      <div class="crate__faces">
-        <article data-b-class="face {{fc0}}" class="face" role="tabpanel" id="face-01" aria-labelledby="spine-01" style="--sleeve: var(--sage); --label: var(--slate);">
-          <span class="face__vinyl" data-no="01" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">01</span>
-            <h3 class="face__title">MBA, Marketing &amp; Business Analytics</h3>
-            <p class="face__org">LM Thapar School of Management</p>
-            <p class="face__year">2024 — 2026</p>
-            <ul class="face__notes">
-              <li>Marketing with business analytics and information systems.</li>
-              <li>Emerging Leaders Scholarship.</li>
-              <li>Time-series forecasting, decision theory, optimisation — the spreadsheet half.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc1}}" class="face" role="tabpanel" id="face-02" aria-labelledby="spine-02" style="--sleeve: var(--blush); --label: var(--cherry);">
-          <span class="face__vinyl" data-no="02" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">02</span>
-            <h3 class="face__title">B.Sc. (Hons.) Horticulture</h3>
-            <p class="face__org">Dr. YS Parmar University of Horticulture &amp; Forestry</p>
-            <p class="face__year">2019 — 2023</p>
-            <ul class="face__notes">
-              <li>Four years of field trials: hypotheses, plots, results.</li>
-              <li>First class with honours, top 10% of the cohort, university merit scholarship.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc2}}" class="face" role="tabpanel" id="face-03" aria-labelledby="spine-03" style="--sleeve: var(--slate); --label: var(--blossom);">
-          <span class="face__vinyl" data-no="03" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">03</span>
-            <h3 class="face__title">TRACE-BRL</h3>
-            <p class="face__org">Under review, <em>Cognition, Technology &amp; Work</em> (Springer Nature)</p>
-            <p class="face__year">2025 —</p>
-            <ul class="face__notes">
-              <li>A five-dimension maturity model for behavioural research labs, co-authored with Sapienza Rome and the University of the Aegean.</li>
-              <li>32 labs assessed worldwide; revised after peer review at <em>Behaviour &amp; Information Technology</em>.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc3}}" class="face" role="tabpanel" id="face-04" aria-labelledby="spine-04" style="--sleeve: var(--ivory-warm); --label: var(--sage-deep);">
-          <span class="face__vinyl" data-no="04" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">04</span>
-            <h3 class="face__title">Behavioural &amp; Cognitive Methods</h3>
-            <p class="face__org">University of the Aegean, Samos</p>
-            <p class="face__year">2025</p>
-            <ul class="face__notes">
-              <li>The summer behind the glass: Tobii eye-tracking, GSR and PPG, pupillometry, facial affect.</li>
-              <li>Analysis in SPSS and R. 25 UX labs benchmarked.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc4}}" class="face" role="tabpanel" id="face-05" aria-labelledby="spine-05" style="--sleeve: var(--pink); --label: var(--cocoa);">
-          <span class="face__vinyl" data-no="05" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">05</span>
-            <h3 class="face__title">Management Trainee</h3>
-            <p class="face__org">HDFC Bank</p>
-            <p class="face__year">2024 — 2025</p>
-            <ul class="face__notes">
-              <li>Branch revenue up 30% year on year; ₹1.36 crore CASA target met.</li>
-              <li>100+ leads a month across retail, insurance and loans.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc5}}" class="face" role="tabpanel" id="face-06" aria-labelledby="spine-06" style="--sleeve: var(--blossom); --label: var(--slate-deep);">
-          <span class="face__vinyl" data-no="06" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">06</span>
-            <h3 class="face__title">Bucharest Summer University</h3>
-            <p class="face__org">Bucharest University of Economic Studies</p>
-            <p class="face__year">2026</p>
-            <ul class="face__notes">
-              <li>Full scholarship: one of ~40 picked from 3,000+ applicants.</li>
-              <li>Crisis-management simulation run by ING; faculty from KPMG, Siemens and the National Bank of Romania.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </div>
-
-  </section>
-
 
   
 </div>
@@ -1435,7 +1030,7 @@ body{margin:0;background:var(--vanilla)}
 <li style="display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 16px; padding: 16px 0; border-top: 1px solid var(--ivory-deep)"><span style="grid-row: span 3; font-family: var(--font-display); font-style: italic; font-size: 34px; line-height: 0.9; color: var(--blossom-deep)">03</span><span style="font-family: var(--font-display); font-style: italic; font-size: 15px; letter-spacing: 0; color: var(--cherry)">Results</span><span style="font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.25; color: var(--truffle)">HDFC Bank, Management Trainee</span><span style="font-size: 14px; line-height: 1.55; color: var(--cocoa)">Branch revenue up 30% year on year; ₹1.36 crore CASA target met.</span></li>
 </ul>
 <p style="margin: 20px 0 0; font-size: 15px; line-height: 1.75; color: var(--cocoa)">The rigour came from odder places: a horticulture degree spent testing hypotheses on plants, a bank traineeship chasing deposit targets, an MBA in analytics, a summer tracking eyes in a Greek UI/UX lab. The ideas that used to live in a scrapbook now live in decks, campaigns and research, and I’m working out the rest as I go ^_^</p>
-<a class="ul" href="#catalogue" style="display: inline-block; margin-top: 22px; font-family: var(--font-display); font-style: italic; font-size: 15px; letter-spacing: 0; color: var(--cherry); padding: 6px 0">Full background in the records →</a>
+
 </div>
 </div>
 </section>
@@ -1897,125 +1492,6 @@ body{margin:0;background:var(--vanilla)}
   </section>
 
 <div style="background: var(--vanilla)">
-  <section data-slot="s4" id="catalogue" class="records">
-    <h2 class="section-heading">Back catalogue</h2>
-
-    <div class="crate">
-      <p class="records__intro">
-        Everything else &mdash; school, the lab, the bank, and a few things still in the crate.
-        Flip through.
-      </p>
-      <div class="crate__bin">
-        <div class="crate__spines" role="tablist" aria-label="Records">
-          <button type="button" class="spine" role="tab" id="spine-01" aria-controls="face-01" data-b-aria-selected="{{sel0}}" data-b-tabindex="{{ti0}}" data-on-click="pick0" style="--sleeve: var(--sage); --label: var(--slate);">
-            <span class="spine__text">01 &middot; MBA</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-02" aria-controls="face-02" data-b-aria-selected="{{sel1}}" data-b-tabindex="{{ti1}}" data-on-click="pick1" style="--sleeve: var(--blush); --label: var(--cherry);">
-            <span class="spine__text">02 &middot; B.Sc.</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-03" aria-controls="face-03" data-b-aria-selected="{{sel2}}" data-b-tabindex="{{ti2}}" data-on-click="pick2" style="--sleeve: var(--slate); --label: var(--blossom);">
-            <span class="spine__text">03 &middot; TRACE-BRL</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-04" aria-controls="face-04" data-b-aria-selected="{{sel3}}" data-b-tabindex="{{ti3}}" data-on-click="pick3" style="--sleeve: var(--ivory-warm); --label: var(--sage-deep);">
-            <span class="spine__text">04 &middot; Aegean</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-05" aria-controls="face-05" data-b-aria-selected="{{sel4}}" data-b-tabindex="{{ti4}}" data-on-click="pick4" style="--sleeve: var(--pink); --label: var(--cocoa);">
-            <span class="spine__text">05 &middot; HDFC</span>
-          </button>
-          <button type="button" class="spine" role="tab" id="spine-06" aria-controls="face-06" data-b-aria-selected="{{sel5}}" data-b-tabindex="{{ti5}}" data-on-click="pick5" style="--sleeve: var(--blossom); --label: var(--slate-deep);">
-            <span class="spine__text">06 &middot; Bucharest</span>
-          </button>
-        </div>
-        <div class="crate__front" aria-hidden="true">
-          <span class="crate__stencil">RD &middot; 2019 &ndash; 2026</span>
-        </div>
-      </div>
-
-      <div class="crate__faces">
-        <article data-b-class="face {{fc0}}" class="face" role="tabpanel" id="face-01" aria-labelledby="spine-01" style="--sleeve: var(--sage); --label: var(--slate);">
-          <span class="face__vinyl" data-no="01" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">01</span>
-            <h3 class="face__title">MBA, Marketing &amp; Business Analytics</h3>
-            <p class="face__org">LM Thapar School of Management</p>
-            <p class="face__year">2024 &mdash; 2026</p>
-            <ul class="face__notes">
-              <li>Marketing with business analytics and information systems.</li>
-              <li>Emerging Leaders Scholarship.</li>
-              <li>Time-series forecasting, decision theory, optimisation &mdash; the spreadsheet half.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc1}}" class="face" role="tabpanel" id="face-02" aria-labelledby="spine-02" style="--sleeve: var(--blush); --label: var(--cherry);">
-          <span class="face__vinyl" data-no="02" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">02</span>
-            <h3 class="face__title">B.Sc. (Hons.) Horticulture</h3>
-            <p class="face__org">Dr. YS Parmar University of Horticulture &amp; Forestry</p>
-            <p class="face__year">2019 &mdash; 2023</p>
-            <ul class="face__notes">
-              <li>Four years of field trials: hypotheses, plots, results.</li>
-              <li>First class with honours, top 10% of the cohort, university merit scholarship.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc2}}" class="face" role="tabpanel" id="face-03" aria-labelledby="spine-03" style="--sleeve: var(--slate); --label: var(--blossom);">
-          <span class="face__vinyl" data-no="03" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">03</span>
-            <h3 class="face__title">TRACE-BRL</h3>
-            <p class="face__org">Under review, <em>Cognition, Technology &amp; Work</em> (Springer Nature)</p>
-            <p class="face__year">2025 &mdash;</p>
-            <ul class="face__notes">
-              <li>A five-dimension maturity model for behavioural research labs, co-authored with Sapienza Rome and the University of the Aegean.</li>
-              <li>32 labs assessed worldwide; revised after peer review at <em>Behaviour &amp; Information Technology</em>.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc3}}" class="face" role="tabpanel" id="face-04" aria-labelledby="spine-04" style="--sleeve: var(--ivory-warm); --label: var(--sage-deep);">
-          <span class="face__vinyl" data-no="04" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">04</span>
-            <h3 class="face__title">Behavioural &amp; Cognitive Methods</h3>
-            <p class="face__org">University of the Aegean, Samos</p>
-            <p class="face__year">2025</p>
-            <ul class="face__notes">
-              <li>The summer behind the glass: Tobii eye-tracking, GSR and PPG, pupillometry, facial affect.</li>
-              <li>Analysis in SPSS and R. 25 UX labs benchmarked.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc4}}" class="face" role="tabpanel" id="face-05" aria-labelledby="spine-05" style="--sleeve: var(--pink); --label: var(--cocoa);">
-          <span class="face__vinyl" data-no="05" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">05</span>
-            <h3 class="face__title">Management Trainee</h3>
-            <p class="face__org">HDFC Bank</p>
-            <p class="face__year">2024 &mdash; 2025</p>
-            <ul class="face__notes">
-              <li>Branch revenue up 30% year on year; &#8377;1.36 crore CASA target met.</li>
-              <li>100+ leads a month across retail, insurance and loans.</li>
-            </ul>
-          </div>
-        </article>
-        <article data-b-class="face {{fc5}}" class="face" role="tabpanel" id="face-06" aria-labelledby="spine-06" style="--sleeve: var(--blossom); --label: var(--slate-deep);">
-          <span class="face__vinyl" data-no="06" aria-hidden="true"></span>
-          <div class="face__body">
-            <span class="face__no">06</span>
-            <h3 class="face__title">Bucharest Summer University</h3>
-            <p class="face__org">Bucharest University of Economic Studies</p>
-            <p class="face__year">2026</p>
-            <ul class="face__notes">
-              <li>Full scholarship: one of ~40 picked from 3,000+ applicants.</li>
-              <li>Crisis-management simulation run by ING; faculty from KPMG, Siemens and the National Bank of Romania.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </div>
-
-  </section>
-
 
   
 </div>
@@ -2104,7 +1580,7 @@ var DeskLayout = class extends DCLogic {
     }, 300);
   }
   onScroll() {
-    var ids = ['top', 'about', 'work', 'kit', 'catalogue', 'contact'];
+    var ids = ['top', 'about', 'work', 'kit', 'contact'];
     var h = document.documentElement;
     var max = Math.max(1, h.scrollHeight - window.innerHeight);
     var prog = Math.min(1, Math.max(0, window.scrollY / max));
@@ -2387,7 +1863,7 @@ var PhoneLayout = class extends DCLogic {
     }, 300);
   }
   onScroll() {
-    var ids = ['top', 'about', 'work', 'kit', 'catalogue', 'contact'];
+    var ids = ['top', 'about', 'work', 'kit', 'contact'];
     var h = document.documentElement;
     var max = Math.max(1, h.scrollHeight - window.innerHeight);
     var prog = Math.min(1, Math.max(0, window.scrollY / max));

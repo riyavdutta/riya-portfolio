@@ -1,8 +1,8 @@
 /* Home page only: torn-paper edges between sections, and the hero landing */
 
 /* each section opens with the torn bottom edge of the sheet above it */
-#about, #work, #lab, #kit, #catalogue, #contact { position: relative; }
-#about::before, #work::before, #lab::before, #kit::before, #catalogue::before, #contact::before {
+#about, #work, #lab, #kit, #contact { position: relative; }
+#about::before, #work::before, #lab::before, #kit::before, #contact::before {
   content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 18px; z-index: 3; pointer-events: none;
   -webkit-mask: var(--edge-down) repeat-x 0 0 / 240px 18px; mask: var(--edge-down) repeat-x 0 0 / 240px 18px;
   filter: drop-shadow(0 2px 1px rgba(43, 23, 17, 0.12));
@@ -13,8 +13,7 @@
 #work + #kit::before { background: #f6d8d6; }
 #lab + #kit::before { background: #f8e5d7; }
 #kit::before { background: #f6d8d6; }
-#catalogue::before { background: #382d29; }        /* the dark Kit above */
-#contact::before { background: #fcf7d9; }          /* vanilla Records above */
+#contact::before { background: #382d29; }          /* the dark Kit above */
 
 /* the hero: the name rises in, then the postcard lands on the table */
 @keyframes rd-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }

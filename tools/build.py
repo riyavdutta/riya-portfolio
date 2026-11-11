@@ -46,7 +46,7 @@ def top(root, work_href, current_work=True):
     cur = ' aria-current="page"' if current_work else ''
     return f'''<div class="top"><div class="wrap">
 <a class="top__name" href="{root}">Riya Dutta</a>
-<nav aria-label="Main"><a href="{work_href}"{cur}>Work</a><a class="ul" href="{root}#about">About</a><a class="ul" href="{root}#catalogue">Records</a><a class="ul" href="{root}#contact">Contact</a><a class="ul" href="{LINKEDIN}" rel="me">LinkedIn</a></nav>
+<nav aria-label="Main"><a href="{work_href}"{cur}>Work</a><a class="ul" href="{root}#about">About</a><a class="ul" href="{root}#contact">Contact</a><a class="ul" href="{LINKEDIN}" rel="me">LinkedIn</a></nav>
 </div></div>
 '''
 

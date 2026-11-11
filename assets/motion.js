@@ -15,7 +15,6 @@
     '#about > div > div:first-child', '#about > div > div:last-child > *',
     '#work > div > div:first-child',
     '.kit__title', '.kit .tray',
-    '#catalogue .records__intro', '#catalogue .crate',
     '#contact > div > div > *', '#contact form.pf',
     '#lab h2', '#lab a',
     // case studies and the Work page

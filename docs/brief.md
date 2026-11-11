@@ -15,7 +15,7 @@ A professional portfolio with a touch of personal branding. It should show what 
 
 ## 3. Content
 
-- **Home:** postcard hero, About with three proof points, Selected work (five folders), What's in my kit, Back catalogue (records), Contact.
+- **Home:** postcard hero, About with three proof points, Selected work (five folders), What's in my kit, Contact.
 - **Selected work, in order:** The Haunted CRM, The Founder Bottleneck, The Content Studio, the B2Ne website, CRM Graveyard. TRACE-BRL has its own case study, linked from About and listed on the Work page.
 - **Case studies:** brief, audience, idea, rules, the work itself, lead asset, look, how it was made. Results appear only once they've been measured. Each one is generated from a file in `content/cases/`.
 - **Work page:** every piece, filterable by Marketing, Design, Build and Research, so new projects slot in by tag.

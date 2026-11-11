@@ -30,7 +30,7 @@
 
   /* shape */
   --radius: 10px;
-  --radius-pill: 999px;
+  --radius-btn: 4px;        /* buttons: square-ish, like a postcard corner */
 
   /* motion: one curve, three speeds */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);

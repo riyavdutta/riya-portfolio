@@ -116,7 +116,7 @@ img, video { display: block; max-width: 100%; }
 .figure > * { flex: 1 1 340px; min-width: 0; }
 .figure img { width: 100%; border: 8px solid #fff; box-shadow: var(--shadow-print); transform: rotate(-2deg); }
 .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--cherry); color: var(--vanilla); font-family: var(--mono); font-size: var(--label); letter-spacing: var(--track); text-transform: uppercase; }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: var(--radius-btn); background: var(--cherry); color: var(--vanilla); font-family: var(--mono); font-size: var(--label); letter-spacing: var(--track); text-transform: uppercase; }
 .btn--line { background: transparent; color: var(--cherry); border: 1.5px solid var(--cherry); }
 
 /* the sheet: stamps + selected card */
@@ -141,7 +141,7 @@ img, video { display: block; max-width: 100%; }
 .view__media img, .view__media video { width: 100%; aspect-ratio: var(--ar, 4 / 5); object-fit: cover; background: #07081a; border: 5px solid #fff; box-shadow: var(--shadow-print); }
 .view__cap { font-size: 15px; line-height: 1.6; color: var(--cocoa); white-space: pre-line; }
 .view__ctrl { display: flex; align-items: center; gap: 8px; }
-.view__ctrl button { min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--cherry); background: transparent; color: var(--cherry); font-family: var(--mono); font-size: var(--label); cursor: pointer; }
+.view__ctrl button { min-height: 40px; padding: 0 16px; border-radius: var(--radius-btn); border: 1px solid var(--cherry); background: transparent; color: var(--cherry); font-family: var(--mono); font-size: var(--label); cursor: pointer; }
 .view__ctrl button + button { background: var(--cherry); color: var(--vanilla); }
 .view__ctrl span { margin-left: auto; font-family: var(--mono); font-size: var(--label); color: var(--cocoa); }
 .view__link { align-self: flex-start; font-family: var(--mono); font-size: var(--label); letter-spacing: var(--track); border-bottom: 1px solid currentColor; }
@@ -167,7 +167,7 @@ img, video { display: block; max-width: 100%; }
 .wi-head h1 { display: inline-block; padding: 18px 34px 12px; background: var(--cherry); color: var(--vanilla); font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 9vw, 98px); line-height: .9; transform: rotate(-1.5deg); }
 .wi-head p { flex: 1 1 300px; max-width: 26em; font-size: 20px; line-height: 1.55; font-style: italic; color: var(--cocoa); }
 .filters { display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 28px; font-family: var(--mono); font-size: 12px; }
-.filters button { min-height: 40px; padding: 0 16px; border: 1px solid var(--cherry); border-radius: 999px; background: transparent; color: var(--cherry); font: inherit; cursor: pointer; }
+.filters button { min-height: 40px; padding: 0 16px; border: 1px solid var(--cherry); border-radius: var(--radius-btn); background: transparent; color: var(--cherry); font: inherit; cursor: pointer; }
 .filters button[aria-pressed="true"] { background: var(--blossom); }
 .filters button b { font-weight: 400; opacity: .6; margin-left: 4px; }
 .postcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 34px 28px; padding-bottom: 110px; }

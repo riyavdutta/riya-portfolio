@@ -161,6 +161,17 @@ body{margin:0;background:var(--vanilla)}
 
 
 
+.kit-star {
+  position: absolute;
+  color: var(--kit-pink);
+  line-height: 1;
+  pointer-events: none;
+}
+.kit-star--1 { top: 4%;  left: 2%;  font-size: 2.6rem; transform: rotate(-12deg); }
+.kit-star--2 { top: 12%; right: 8%; font-size: 1.5rem; }
+.kit-star--3 { bottom: 6%; right: 4%; font-size: 2.2rem; transform: rotate(10deg); }
+
+
 .kit__title {
   display: flex;
   flex-direction: column;
@@ -304,7 +315,7 @@ body{margin:0;background:var(--vanilla)}
 @media (max-width: 47.99rem) {
   .tray { margin: 0; }
   .tray__handle { display: none; }
-
+  .kit-star--3 { display: none; }
 }
 
 
@@ -839,6 +850,9 @@ body{margin:0;background:var(--vanilla)}
 <!-- lab:start --><!-- lab:end -->
   <section data-slot="s3" id="kit" class="kit">
     <div class="kit__inner">
+      <span class="kit-star kit-star--1" aria-hidden="true">★</span>
+      <span class="kit-star kit-star--2" aria-hidden="true">★</span>
+      <span class="kit-star kit-star--3" aria-hidden="true">★</span>
 
       <h2 class="kit__title">
         <span class="kit__title-top">What’s</span>
@@ -1532,6 +1546,9 @@ body{margin:0;background:var(--vanilla)}
 <!-- lab:start --><!-- lab:end -->
   <section data-slot="s3" id="kit" class="kit">
     <div class="kit__inner">
+      <span class="kit-star kit-star--1" aria-hidden="true">&#9733;</span>
+      <span class="kit-star kit-star--2" aria-hidden="true">&#9733;</span>
+      <span class="kit-star kit-star--3" aria-hidden="true">&#9733;</span>
 
       <h2 class="kit__title">
         <span class="kit__title-top">What&rsquo;s</span>

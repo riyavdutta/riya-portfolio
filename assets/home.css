@@ -39,7 +39,7 @@ section[style*="radial-gradient(rgba(240,197,212,0.16)"] h1 + p + div { animatio
 /* contact: one big postcard. Message on the left, address and "Post it" on the right (see postbox.js) */
 .pf-wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px); }
 .pf-intro { text-align: center; margin-bottom: 40px; }
-.pf-intro h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(48px, 7vw, 72px); line-height: .98; color: var(--blossom); }
+.pf-intro h2 { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(48px, 7vw, 72px); line-height: .98; color: var(--blossom); }
 .pf-intro p { margin: 14px auto 0; font-size: 18px; line-height: 1.6; color: var(--ivory); }
 .pf-card { display: grid; grid-template-columns: 1.4fr 1px 1fr; gap: 0 32px; padding: 34px 36px; background: var(--vanilla); color: var(--truffle);
   box-shadow: var(--shadow-float); transform: rotate(-0.6deg); }
@@ -124,3 +124,6 @@ section[style*="radial-gradient(rgba(240,197,212,0.16)"] h1 + p + div { animatio
   .qvc__stamps b { font-size: 13px; }
   .qvc__stamps i { font-size: 10.5px; }
 }
+
+/* Kit: same rhythm as the other sections on phones */
+@media (max-width: 47.99rem) { .kit__inner { padding: 64px 16px 76px; } }

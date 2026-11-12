@@ -1,0 +1,41 @@
+/*
+ * Custom cursor (see cursor.js): a small cherry dot that becomes a perforated stamp
+ * with one word over things you can click, and leaves a faint postmark where you click.
+ * Only on devices with a mouse, and never for people who've asked for less motion.
+ */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+/* typing keeps the normal text caret */
+html.has-cursor input, html.has-cursor textarea, html.has-cursor [contenteditable] { cursor: text !important; }
+
+.rc { position: fixed; left: 0; top: 0; z-index: 10000; pointer-events: none; translate: -50% -50%; }
+.rc[hidden] { display: none; }
+
+/* the dot */
+.rc__dot { display: block; width: 10px; height: 10px; border-radius: 50%; background: #65232b; box-shadow: 0 0 0 2px #fcf7d9;
+  transition: opacity .12s; }
+
+/* the stamp: hidden until something clickable is under the cursor */
+.rc__stamp { position: absolute; left: 50%; top: 50%; translate: 12px 14px;   /* beside the pointer, so it never covers what you're clicking */ display: grid; place-items: center;
+  min-width: 58px; height: 44px; background: #fcf7d9; color: #65232b;
+  font: 400 10px/1 'Space Mono', monospace; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+  filter: drop-shadow(0 4px 6px rgba(43, 23, 17, .3));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 3px, #0000 96%, #000) -4px -4px / 8px 8px round;
+          mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 3px, #0000 96%, #000) -4px -4px / 8px 8px round;
+  padding: 5px; opacity: 0; scale: .3; rotate: -8deg; transform-origin: 0 0;
+  transition: opacity .2s steps(3, end), scale .2s steps(3, end), rotate .2s steps(3, end); }
+.rc__stamp > span { display: grid; place-items: center; width: 100%; height: 100%; padding: 0 10px; outline: 1px solid rgba(101, 35, 43, .35); outline-offset: -4px; }
+
+.rc.is-on .rc__stamp { opacity: 1; scale: 1; rotate: -4deg; }
+/* the press: a quick stop-motion thunk */
+.rc.is-down .rc__stamp { scale: .86; rotate: -2deg; }
+.rc.is-down .rc__dot { scale: .7; }
+
+/* the postmark left behind by a click: a double ring that fades in a few frames */
+.rc-mark { position: fixed; z-index: 9999; pointer-events: none; width: 46px; height: 46px; translate: -50% -50%; border-radius: 50%;
+  border: 2px solid #65232b; box-shadow: 0 0 0 2px #fcf7d9, inset 0 0 0 4px #fcf7d9, inset 0 0 0 5.5px #65232b;
+  animation: rc-mark .6s steps(4, end) forwards; }
+@keyframes rc-mark {
+  0%   { opacity: .9; scale: .6; rotate: -10deg; }
+  40%  { opacity: .8; scale: 1; }
+  100% { opacity: 0; scale: 1.15; rotate: 4deg; }
+}

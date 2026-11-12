@@ -138,6 +138,3 @@
 
 /* handwriting: Sacramento leaned right (the browser slants it about 14° from font-style: italic) */
 .sig { font-family: var(--font-script); font-style: italic; font-weight: 400; line-height: 1; }
-/* the stitched signature on the Quick view postcard: the letters traced in a dashed thread */
-.qvc__sig { display: block; width: min(280px, 80%); height: auto; margin: 4px 0 -16px; overflow: visible; }
-.qvc__sig text { font-family: var(--font-script); font-style: italic; font-size: 104px; fill: none; stroke: var(--cherry); stroke-width: 2.2; stroke-dasharray: 7 4; stroke-linecap: round; }

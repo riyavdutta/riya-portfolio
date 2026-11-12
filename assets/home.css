@@ -106,3 +106,32 @@
 
 /* Kit: same rhythm as the other sections on phones */
 @media (max-width: 47.99rem) { .kit__inner { padding: 64px 16px 76px; } }
+
+/* Work folders: the prints are pulled out by hand, stop-motion style (steps() makes them jump between poses).
+   Desktop: on hover, and dropped back on leave. Phones: pulled out once as the folder arrives.
+   A "piece" is each print (or browser window) in a folder; the Content Studio route card moves as one piece. */
+[data-on-pointermove^="tm_f"] > div > div:last-child > div > :not(svg),
+[data-on-pointermove^="tm_f"] > div > div:last-child > div:has(> svg) {
+  transition: translate .36s steps(4, end), rotate .36s steps(4, end), filter .36s steps(4, end);
+}
+@media (hover: hover) {
+  [data-on-pointermove^="tm_f"]:hover > div > div:last-child > div:has(> svg) { translate: 0 -12px; rotate: -1deg; filter: drop-shadow(0 14px 12px rgba(43, 23, 17, .22)); }
+  [data-on-pointermove^="tm_f"]:hover > div > div:last-child > div > :not(svg):nth-child(1) { translate: -10px -16px; rotate: -3deg; filter: drop-shadow(0 14px 12px rgba(43, 23, 17, .22)); }
+  [data-on-pointermove^="tm_f"]:hover > div > div:last-child > div > :not(svg):nth-child(2) { translate: 12px -24px; rotate: 3deg; filter: drop-shadow(0 16px 14px rgba(43, 23, 17, .24)); }
+}
+@keyframes cut-pull {
+  0%   { translate: 0 26px; rotate: 0deg; }
+  25%  { translate: 0 -12px; rotate: -2deg; }
+  50%  { translate: 0 -4px; rotate: 1.5deg; }
+  75%  { translate: 0 1px; rotate: -.5deg; }
+  100% { translate: 0 0; rotate: 0deg; }
+}
+@media (hover: none) {
+  [data-on-pointermove^="tm_f"] > [data-rv="in"] > div:last-child > div > :not(svg),
+  [data-on-pointermove^="tm_f"] > [data-rv="in"] > div:last-child > div:has(> svg) { animation: cut-pull .5s steps(1, end) .45s backwards; }
+  [data-on-pointermove^="tm_f"] > [data-rv="in"] > div:last-child > div > :not(svg):nth-child(2) { animation-delay: .6s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-on-pointermove^="tm_f"] > div > div:last-child > div > *,
+  [data-on-pointermove^="tm_f"] > div > div:last-child > div:has(> svg) { transition: none; animation: none; translate: none !important; rotate: none !important; filter: none !important; }
+}

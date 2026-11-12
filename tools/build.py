@@ -51,12 +51,6 @@ def top(root, work_href, current_work=True):
 '''
 
 
-def track(no):
-    stops = ''.join(f'<span class="track__stop"><i></i><span>{t}</span></span>' for t in ('Posted', 'Sorted', 'In transit', 'Delivered'))
-    return (f'<div class="track" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="wrap">'
-            f'<span class="mono">TRACKING · No. {no}</span><span class="track__rail"><span class="track__line"><span class="track__fill"></span></span>{stops}</span></div></div>\n')
-
-
 def foot(root):
     return (f'<footer class="foot"><div class="wrap"><span>Riya Dutta · 2026</span>'
             f'<span><a class="ul" href="{root}#contact">Contact</a> · <a class="ul" href="{LINKEDIN}" rel="me">LinkedIn</a></span></div></footer>\n'
@@ -198,7 +192,7 @@ def build_case(c):
     facts = ''.join(f'<dt>{k}</dt><dd>{v}</dd>' for k, v in c['facts'])
     body = ''.join(SECTIONS[s['type']](s, root) for s in c['sections'])
     nxt = c['next']
-    out = (head(c['title'] + ' · Riya Dutta', c['description'], root, f'work/{slug}/') + top(root, '../') + track(c['no']) +
+    out = (head(c['title'] + ' · Riya Dutta', c['description'], root, f'work/{slug}/') + top(root, '../') +
            f'''<main class="wrap">
 <nav class="crumb" aria-label="Breadcrumb"><a class="ul" href="../">Work</a> <span aria-hidden="true">/</span> No. {c["no"]}<b>· {c["credit"]}</b></nav>
 <section class="hero"><div class="hero__text"><span class="tag torn">{c["tag"]}</span><h1>{c["title"]}</h1><p class="hero__sub">{c["sub"]}</p><dl class="facts">{facts}</dl>{links(c, root)}</div>{hero_art}</section>

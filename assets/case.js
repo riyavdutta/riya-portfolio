@@ -1,23 +1,6 @@
-/* Case study pages: tracking bar, the stamp sheet viewer, and work index filters. */
+/* Case study pages: the stamp sheet viewer and work index filters. */
 (function () {
   'use strict';
-
-  // tracking bar: Posted → Sorted → In transit → Delivered as you read
-  var fill = document.querySelector('.track__fill');
-  var stops = document.querySelectorAll('.track__stop');
-  var bar = document.querySelector('.track[role="progressbar"]');
-  if (fill) {
-    var onScroll = function () {
-      var h = document.documentElement;
-      var p = Math.min(1, Math.max(0, window.scrollY / Math.max(1, h.scrollHeight - window.innerHeight)));
-      fill.style.width = (p * 100).toFixed(1) + '%';
-      var step = p >= 0.97 ? 3 : p >= 0.6 ? 2 : p >= 0.2 ? 1 : 0;
-      stops.forEach(function (s, i) { s.classList.toggle('on', i <= step); });
-      if (bar) bar.setAttribute('aria-valuenow', Math.round(p * 100));
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
 
   // stamp sheets: pick a stamp to see the piece large, with its caption
   document.querySelectorAll('[data-sheet]').forEach(function (sheet) {

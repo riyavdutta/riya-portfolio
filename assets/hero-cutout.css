@@ -1,12 +1,11 @@
 /*
- * Hero, paper-cutout version (prototype; used by hero-test.html).
+ * Home page hero, paper-cutout arrival.
  * Each piece arrives like stop-motion: it jumps between a few hand-set poses
  * (~10 frames a second) instead of gliding, and its shadow tightens as it lands.
- * Plays once on arrival, then everything is still. Runs only while html has .cut-play.
+ * Plays once on arrival, then everything is still.
  */
 
 /* the hero is the section holding the postcard (works in both the desktop and phone layouts) */
-
 /* cut-paper depth on the name: a tight shadow (the paper edge) and a soft one (its height off the table) */
 section:has(.pc) h1 > span {
   display: block; transform-origin: 30% 80%;
@@ -48,15 +47,16 @@ section:has(.pc) h1 > span {
   100% { opacity: 1; transform: none; }
 }
 
-html.cut-play section:has(.pc) .torn                { animation: cut-hop  .4s steps(1, end) .05s backwards; }
-html.cut-play section:has(.pc) h1 > span:first-child { animation: cut-drop .6s steps(1, end) .25s backwards; }
-html.cut-play section:has(.pc) h1 > span:last-child  { animation: cut-drop .6s steps(1, end) .55s backwards; }
-html.cut-play section:has(.pc) h1 + p               { animation: cut-hop  .4s steps(1, end) .95s backwards; }
-html.cut-play section:has(.pc) h1 + p + div         { animation: cut-hop  .4s steps(1, end) 1.1s backwards; }
-html.cut-play section:has(.pc) .pc                  { animation: cut-slide .7s steps(1, end) 1.05s backwards !important; }
-html.cut-play section:has(.pc) .pc > svg:first-child { animation: cut-clip .3s steps(1, end) 1.85s backwards; transform-origin: 50% 0; }
+section:has(.pc) .torn                { animation: cut-hop  .4s steps(1, end) .05s backwards; }
+section:has(.pc) h1 > span:first-child { animation: cut-drop .6s steps(1, end) .25s backwards; }
+section:has(.pc) h1 > span:last-child  { animation: cut-drop .6s steps(1, end) .55s backwards; }
+section:has(.pc) h1 + p               { animation: cut-hop  .4s steps(1, end) .95s backwards; }
+section:has(.pc) h1 + p + div         { animation: cut-hop  .4s steps(1, end) 1.1s backwards; }
+section:has(.pc) .pc                  { animation: cut-slide .7s steps(1, end) 1.05s backwards; }
+section:has(.pc) .pc > svg:first-child { animation: cut-clip .3s steps(1, end) 1.85s backwards; transform-origin: 50% 0; }
 
 /* no motion for people who've asked for less */
 @media (prefers-reduced-motion: reduce) {
-  html.cut-play section:has(.pc) * { animation: none !important; }
+  section:has(.pc) .torn, section:has(.pc) h1 > span, section:has(.pc) h1 + p, section:has(.pc) h1 + p + div,
+  section:has(.pc) .pc, section:has(.pc) .pc > svg:first-child { animation: none; }
 }

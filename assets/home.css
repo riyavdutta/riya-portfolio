@@ -32,7 +32,7 @@
 .pf-addr input { min-height: 40px; margin: 2px 0 14px; padding: 0; border: 0; border-bottom: 1px solid var(--rule); background: transparent; outline: none;
   font-family: var(--font-display); font-style: italic; font-size: 19px; color: var(--truffle); }
 .pf textarea:focus, .pf input:focus { border-color: var(--cherry); background-color: rgba(236, 170, 178, .08); }
-.pf textarea::placeholder { color: var(--ink-faint); opacity: .7; }
+.pf textarea::placeholder { color: var(--ink-faint); opacity: .7; font-family: var(--font-script); font-style: italic; font-size: 30px; }
 .pf-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
 .pf-airmail { font-family: var(--font-mono); font-size: var(--label-sm); letter-spacing: var(--track); color: var(--cocoa-soft); }
 .pf-stamp { position: relative; flex: none; width: 58px; transform: rotate(4deg); }
@@ -135,3 +135,9 @@
   [data-on-pointermove^="tm_f"] > div > div:last-child > div > *,
   [data-on-pointermove^="tm_f"] > div > div:last-child > div:has(> svg) { transition: none; animation: none; translate: none !important; rotate: none !important; filter: none !important; }
 }
+
+/* handwriting: Sacramento leaned right (the browser slants it about 14° from font-style: italic) */
+.sig { font-family: var(--font-script); font-style: italic; font-weight: 400; line-height: 1; }
+/* the stitched signature on the Quick view postcard: the letters traced in a dashed thread */
+.qvc__sig { display: block; width: min(280px, 80%); height: auto; margin: 4px 0 -16px; overflow: visible; }
+.qvc__sig text { font-family: var(--font-script); font-style: italic; font-size: 104px; fill: none; stroke: var(--cherry); stroke-width: 2.2; stroke-dasharray: 7 4; stroke-linecap: round; }

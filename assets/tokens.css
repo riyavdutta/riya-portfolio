@@ -17,6 +17,7 @@
   /* type */
   --label: 11px;            /* small uppercase labels */
   --label-sm: 10px;         /* labels inside cards and stamps */
+  --font-script: 'Sacramento', 'Segoe Script', cursive;   /* handwritten touches only: signatures, the postcard greeting */
   --track: 0.07em;          /* label letter spacing: kept light */
   --measure: 66ch;          /* longest comfortable reading line */
   --lh-text: 1.6;

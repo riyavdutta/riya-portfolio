@@ -381,3 +381,38 @@ p{max-width:none}
 .ask,.reveal{scroll-margin-bottom:24px}
 #play{scroll-margin-top:34px}
 @media (max-width:860px){.table .pcard{--cw:140px}.pull,.scale{height:310px}.scale .beam{top:225px}.scale .pivot{top:233px}.scale .pan .pcard{--cw:110px}}
+
+/* ===================== the end of the game: your hand, the reading, and the editable card ===================== */
+.final{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+.final .hand{height:400px;position:sticky;top:60px}
+#play .final h2{font-size:clamp(28px,3.4vw,44px);line-height:1.08}
+.reads{margin-top:20px;display:grid;gap:10px}
+.read{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:14px 16px;background:#ffffff10;border:1px solid #ffffff22;border-radius:12px}
+.read i{grid-row:span 3;font-style:normal;font:800 26px var(--grot);color:var(--blossom)}
+.read small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--pink)}
+.read b{font:700 20px var(--grot);color:var(--vanilla)}
+.read span{font-size:15px;color:var(--pink)}
+.plan{background:var(--vanilla);color:var(--truffle);border-radius:12px;padding:20px 22px;margin-top:18px}
+.plan .k{color:var(--cherry)}
+.plan dl{display:grid;grid-template-columns:70px 1fr;gap:10px 14px;margin-top:12px}
+.plan dt{font:800 14px var(--grot);color:var(--cherry);padding-top:2px}
+.plan dd{margin:0;font-size:16px;line-height:1.45}
+.plan dd button{display:block;margin-top:3px;background:none;border:0;padding:0;font-family:var(--mono);font-size:11px;color:var(--cherry);text-decoration:underline;text-underline-offset:3px}
+.compose{margin-top:20px;background:var(--vanilla);color:var(--truffle);border-radius:16px;padding:22px 24px;position:relative;box-shadow:10px 10px 0 #2a0f13;animation:pop .35s var(--spring);scroll-margin-bottom:24px}
+.compose .ix{position:absolute;left:16px;top:12px;color:var(--cherry);font-size:16px}
+.compose h3{font-family:var(--display);font-style:italic;font-size:30px;color:var(--cherry);margin:14px 0 10px}
+.compose .lab{display:block;font-family:var(--mono);font-size:11px;color:var(--cherry);margin:12px 0 6px;letter-spacing:.06em}
+.chipset{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--cherry);background:transparent;color:var(--cherry);border-radius:6px;padding:7px 11px;font:600 14px var(--grot)}
+.chip[aria-pressed=true]{background:var(--cherry);color:var(--vanilla)}
+.chip.hand-chip[aria-pressed=false]{text-decoration:line-through;opacity:.55}
+.compose textarea{width:100%;min-height:200px;border:0;resize:vertical;background:repeating-linear-gradient(transparent 0 31px,#e5d3c6 31px 32px);line-height:32px;font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);outline:none;padding:0}
+.compose .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compose input{width:100%;border:0;border-bottom:1.5px solid #d9c3b4;background:transparent;font-family:var(--display);font-style:italic;font-size:18px;padding:6px 0;outline:none;color:var(--ink)}
+.compose input:focus,.compose textarea:focus{border-color:var(--cherry)}
+.compose .err{font-family:var(--mono);font-size:11px;color:#a3243a;min-height:16px;margin-top:8px}
+.compose .acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.compose .send{background:var(--cherry);color:var(--vanilla);border:0;border-radius:6px;padding:13px 18px;font:800 15px var(--grot)}
+.compose .reset{background:none;border:0;font-family:var(--mono);font-size:11px;color:var(--cherry);text-decoration:underline}
+.compose .x{position:absolute;right:14px;top:12px;width:30px;height:30px;border-radius:50%;border:2px solid var(--cherry);background:none;color:var(--cherry);font-weight:800}
+@media (max-width:860px){.final{grid-template-columns:1fr}.final .hand{position:relative;top:0;height:300px}.compose .two{grid-template-columns:1fr}.compose{padding:18px}}

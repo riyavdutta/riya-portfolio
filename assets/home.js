@@ -43,6 +43,20 @@
       a: { img: 'haunted-crm-teaser.jpg', t: 'The Haunted CRM teaser', tr: 'a big promise', why: 'It’s a big promise: horror stories from inside your CRM, coming soon.', brief: 'Open with one big idea, then prove it post by post.' },
       b: { img: 'haunted-crm-three-forecasts.jpg', t: 'The Three Forecasts', tr: 'one specific problem', why: 'It’s one specific problem: three forecasts, and nobody knows which is real.', brief: 'Skip the slogan. Name one problem they have today.' } }
   ];
+  // How each round is read at the end. Round 1 tests what sticks, round 2 what you'd share, round 3 what earns a click.
+  var READ = [
+    { label: 'WHAT STICKS WITH YOU', mode: 'FLASH TEST', step: 'Hook',
+      a: { name: 'A cost you can see', clause: 'you remember the cost you can see', me: 'I remember the cost I can see', plan: 'Open on the visible damage: the stalled pipeline, the missed deal, the number that moved.' },
+      b: { name: 'A cost you can feel', clause: 'you remember the cost you can feel', me: 'I remember the cost I can feel', plan: 'Open on the feeling: the 2 a.m. worry, before any numbers.' },
+      none: { name: 'Nothing stuck yet', ev: 'Neither first line stayed with you.', clause: 'neither first line stuck with you', me: 'neither first line stuck with me', plan: 'Start with the first line: test a few until one is remembered.' } },
+    { label: 'WHAT YOU’D SHARE', mode: 'PULL', step: 'Tone',
+      a: { name: 'A straight joke', clause: 'you’d share the joke you’ve lived', me: 'I’d share the joke I’ve lived', plan: 'Keep the humour plain: the moment they’ve lived, told exactly as it happens.' },
+      b: { name: 'Absurd humour', clause: 'you’d share the joke that goes too far', me: 'I’d share the joke that goes too far', plan: 'Push one metaphor until it’s ridiculous, then land the point.' } },
+    { label: 'WHAT EARNS YOUR CLICK', mode: 'WEIGH IT', step: 'Ask',
+      a: { name: 'A big promise', clause: 'you click for a big promise', me: 'I click for a big promise', plan: 'Sell one big idea first, then prove it post by post.' },
+      b: { name: 'One specific problem', clause: 'you click for one specific problem', me: 'I click for one specific problem', plan: 'Name one problem they have today, and offer to fix that one.' } }
+  ];
+  var TOPICS = ['A campaign', 'My positioning', 'Working together', 'A research project', 'Just saying hi'];
   var game = $('#game'), r = 0, picks = [], tries = 0;
   function suit(s) { return s === 'a' ? '♥' : '♠'; }
   function card(s, x, cls, i) {
@@ -101,7 +115,7 @@
         (tries < 2 ? '<button class="go" type="button" id="again1">Flash them again</button>' : '') + '<button class="ghost" type="button" id="skip1">Skip this round</button></div></div>';
       if ($('#again1')) $('#again1').onclick = function () { $('#below').innerHTML = ''; toTop(); show($('#table'), x); };
       show_($('#below .reveal'));
-      $('#skip1').onclick = next;
+      $('#skip1').onclick = function () { picks[r] = { none: true, proj: x.p }; next(); };
     };
   }
 
@@ -154,7 +168,7 @@
 
   function decide(x, s, how) {
     var mine = x[s], last = r === R.length - 1, p = P[x.p];
-    picks.push({ pick: mine, s: s, proj: x.p });
+    picks[r] = { pick: mine, s: s, proj: x.p, how: how };
     $$('#game .pcard').forEach(function (c) { c.classList.remove('down'); if (c.dataset.s === s) c.classList.add('chosen'); else if (how === 'stuck') c.classList.add('out'); });
     burst();
     $('#below').innerHTML = '<div class="reveal" role="status"><h3>' + { stuck: '“' + mine.t + '” stuck.', pull: 'You pulled for “' + mine.t + '”.', weigh: 'The scale tipped for “' + mine.t + '”.' }[how] + '</h3>' +
@@ -166,19 +180,71 @@
   function next() { if (r === R.length - 1) end(); else { r++; round(); } }
 
   function end() {
-    var tr = picks.map(function (k) { return k.pick.tr; });
-    var text = tr.length === 3 ? 'You’re persuaded by ' + tr[0] + ', ' + tr[1] + ' and ' + tr[2] + '.' : tr.length ? 'You’re persuaded by ' + tr.join(' and ') + '.' : 'Nothing stuck this time.';
-    var h = tr.length ? text.replace('You’re persuaded by ', 'You’re persuaded by <em>').replace(/\.$/, '.</em>') : text;
-    game.innerHTML = '<div class="result"><div class="hand">' + picks.map(function (k, i) { return card(k.s, k.pick, '', i); }).join('') + '</div>' +
-      '<div><p class="k b">YOUR HAND</p><h2>' + h + '</h2>' +
-      '<div class="brief"><p class="k">HOW I’D WRITE A CAMPAIGN FOR YOU</p><ol>' + picks.map(function (k) { return '<li><b>' + k.pick.tr.charAt(0).toUpperCase() + k.pick.tr.slice(1) + '</b>' + k.pick.brief + '<button type="button" data-proj="' + k.proj + '">From ' + P[k.proj].t + ' →</button></li>'; }).join('') + '</ol></div>' +
-      '<div class="row"><button class="go" id="hello" type="button">Want to know what your audience would pick? Say hello →</button></div>' +
-      '<div class="row" style="margin-top:12px"><button class="ghost" id="again" type="button">Deal again</button><a class="ghost" href="#work">See all the work ↓</a></div></div></div>';
+    var rows = R.map(function (x, i) {
+      var k = picks[i] || { none: true, proj: x.p }, rd = READ[i], o = k.none ? rd.none : rd[k.s];
+      var ev = k.none ? o.ev : { stuck: 'You remembered ' + k.pick.line, pull: 'You pulled for ' + k.pick.t + '.', weigh: 'The scale tipped for ' + k.pick.t + '.' }[k.how];
+      return { k: k, rd: rd, o: o, ev: ev };
+    });
+    var sentence = rows[0].o.clause + ', ' + rows[1].o.clause + ', and ' + rows[2].o.clause + '.';
+    sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+    game.innerHTML = '<div class="final"><div class="hand">' + rows.map(function (w, i) { return w.k.none ? backCard() : card(w.k.s, w.k.pick, '', i); }).join('') + '</div><div>' +
+      '<p class="k b">YOUR HAND</p><h2>' + sentence + '</h2>' +
+      '<div class="reads">' + rows.map(function (w, i) { return '<div class="read"><i>0' + (i + 1) + '</i><small>' + w.rd.label + ' · ' + w.rd.mode + '</small><b>' + w.o.name + '</b><span>' + w.ev + '</span></div>'; }).join('') + '</div>' +
+      '<div class="plan"><p class="k">HOW I’D WRITE A CAMPAIGN FOR YOU</p><dl>' + rows.map(function (w) { return '<dt>' + w.rd.step + '</dt><dd>' + w.o.plan + '<button type="button" data-proj="' + w.k.proj + '">See it in ' + P[w.k.proj].t + ' →</button></dd>'; }).join('') + '</dl></div>' +
+      '<div class="row"><button class="go" id="hello" type="button">Send me your hand →</button><button class="ghost" id="again" type="button">Deal again</button><a class="ghost" href="#work">See all the work ↓</a></div>' +
+      '<div id="slot"></div></div></div>';
     $('#again').onclick = function () { intro(); toTop(); };
     $$('[data-proj]', game).forEach(function (b) { b.onclick = function () { openProject(+b.dataset.proj); }; });
+    $('#hello').onclick = function () { compose(rows); };
     toTop();
-    $('#hello').onclick = function () { sayHello('I played your game. My hand: ' + picks.map(function (k) { return k.pick.t; }).join(', ') + '. ' + text + '\n\nI’d like to talk about '); };
     burst();
+  }
+
+  // the editable card: pre-written from your hand, but every part can be changed before it goes
+  function compose(rows) {
+    var slot = $('#slot');
+    if ($('form', slot)) { $('textarea', slot).focus(); return; }
+    slot.innerHTML = '<form class="compose" novalidate><button class="x" type="button" aria-label="Close the card">×</button><span class="ix" aria-hidden="true">R ♥</span><h3>Your card to Riya</h3>' +
+      '<span class="lab" id="hc-l">INCLUDE FROM YOUR HAND (tap to leave one out)</span><div class="chipset" id="hc" role="group" aria-labelledby="hc-l">' +
+      rows.map(function (w, i) { return '<button type="button" class="chip hand-chip" aria-pressed="true" data-i="' + i + '">' + w.o.name + '</button>'; }).join('') + '</div>' +
+      '<span class="lab" id="tc-l">WHAT DO YOU WANT TO TALK ABOUT?</span><div class="chipset" id="tc" role="group" aria-labelledby="tc-l">' +
+      TOPICS.map(function (t) { return '<button type="button" class="chip" aria-pressed="false">' + t + '</button>'; }).join('') + '</div>' +
+      '<label class="lab" for="hand-msg">YOUR MESSAGE (write anything, it’s yours to edit)</label><textarea id="hand-msg"></textarea>' +
+      '<div class="two"><div><label class="lab" for="hand-nm">YOUR NAME</label><input id="hand-nm" autocomplete="name"></div><div><label class="lab" for="hand-em">YOUR EMAIL</label><input id="hand-em" type="email" autocomplete="email"></div></div>' +
+      '<p class="err" role="alert"></p><div class="acts"><button class="send" type="submit">Send from my mail app →</button><button class="reset" type="button" id="blank">Start from a blank card</button></div></form>';
+    var f = $('form', slot), ta = $('#hand-msg'), on = [true, true, true], topic = '', edited = false, mine = rows.map(function (w) { return w.o.me; });
+    function draft() {
+      var parts = mine.filter(function (_, i) { return on[i]; }), cl = '';
+      if (parts.length === 1) cl = parts[0];
+      else if (parts.length) cl = parts.slice(0, -1).join(', ') + (parts.length > 2 ? ',' : '') + ' and ' + parts[parts.length - 1];
+      return (cl ? 'Hi Riya,\nI played your game. ' + cl.charAt(0).toUpperCase() + cl.slice(1) + '.\n\nI’d like to talk about ' : 'Hi Riya,\n\nI’d like to talk about ') +
+        (topic ? topic.charAt(0).toLowerCase() + topic.slice(1) + '. ' : '');
+    }
+    ta.value = draft();
+    ta.addEventListener('input', function () { edited = true; $('.err', f).textContent = ''; });
+    $$('#hc .chip', f).forEach(function (c) { c.onclick = function () { var i = +c.dataset.i; on[i] = !on[i]; c.setAttribute('aria-pressed', on[i]); if (!edited) ta.value = draft(); }; });
+    $$('#tc .chip', f).forEach(function (c) {
+      c.onclick = function () {
+        var was = c.getAttribute('aria-pressed') === 'true';
+        $$('#tc .chip', f).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        c.setAttribute('aria-pressed', !was); topic = was ? '' : c.textContent;
+        if (!edited) ta.value = draft(); else if (topic) ta.value = ta.value.replace(/\s*$/, ' ') + topic.toLowerCase() + '. ';
+      };
+    });
+    $('#blank', f).onclick = function () { ta.value = 'Hi Riya,\n\n'; edited = true; ta.focus(); };
+    $('.x', f).onclick = function () { slot.innerHTML = ''; $('#hello').focus(); };
+    $$('input', f).forEach(function (i) { i.addEventListener('input', function () { $('.err', f).textContent = ''; }); });
+    f.onsubmit = function (e) {
+      e.preventDefault();
+      var m = ta.value.trim(), nm = $('#hand-nm').value.trim(), em = $('#hand-em').value.trim(), er = $('.err', f);
+      if (m.replace(/^Hi Riya,?/, '').trim().length < 3) { er.textContent = 'Write a line or two first.'; ta.focus(); return; }
+      if (em && !/^\S+@\S+\.\S+$/.test(em)) { er.textContent = 'That email looks unfinished.'; $('#hand-em').focus(); return; }
+      er.textContent = '';
+      location.href = 'mailto:riyavdutta@gmail.com?subject=' + encodeURIComponent('My hand, from your site' + (nm ? ' (' + nm + ')' : '')) +
+        '&body=' + encodeURIComponent(m + (nm || em ? '\n\n— ' + [nm, em].filter(Boolean).join(', ') : ''));
+    };
+    show_(f);
+    ta.focus({ preventScroll: true }); ta.setSelectionRange(ta.value.length, ta.value.length);
   }
   function burst() {
     if (reduce) return;
@@ -351,12 +417,6 @@
   new IntersectionObserver(function (es) {
     if (es[0].isIntersecting && !deskOpened) { deskOpened = true; APPS.mail(); setTimeout(APPS.heat, reduce ? 0 : 500); }
   }, { threshold: .35 }).observe(desk);
-  function sayHello(text) {
-    desk.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-    var w = APPS.mail(), ta = $('#m1', w);
-    if (ta && !ta.value.trim()) ta.value = text;
-    setTimeout(function () { if (ta) { ta.focus({ preventScroll: true }); ta.setSelectionRange(ta.value.length, ta.value.length); } }, reduce ? 0 : 700);
-  }
   $('#logo').onclick = function () { desk.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
 
   /* the heatmap: where this visitor's attention went on this page (cursor, plus where they paused while scrolling on phones) */

@@ -26,65 +26,151 @@
   clock(); setInterval(clock, 15000);
 
   /* ---------- 1. the choice ---------- */
-  // Each round sets two persuasion approaches against each other. 'tr' is the trait a pick reveals,
-  // 'why' explains the post in those terms, and 'brief' is how Riya would write for someone who picks it.
+  /* The game is dealt as playing cards. Three rounds, three ways to pick:
+   *   1 flash: two cards dealt face-down, flipped up for ~1.2s, then "which line do you remember?"
+   *   2 pull:  two face-up cards; drag the divider toward your pick
+   *   3 weigh: two cards on a scale; hold a side until it touches down
+   * Each pick reveals a trait ('tr'), the reason the post works ('why'), and how Riya would write
+   * for someone who picks it ('brief'). The result is "your hand": the three cards you kept. */
   var R = [
-    { q: 'Which one makes you stop scrolling?', p: 1,
-      a: { img: 'founder-bottleneck-sick-day.jpg', t: 'The Sick Day', tr: 'costs you can see', why: 'It shows a cost you can see: one day off, and the pipeline stops.', brief: 'Show the damage: the missed deal, the stalled pipeline, the number that moved.' },
-      b: { img: 'founder-bottleneck-sleepless-night.jpg', t: 'The Sleepless Night', tr: 'costs you can feel', why: 'It shows a cost you can feel: the deals you carry to bed.', brief: 'Lead with the feeling: the 2 a.m. worry, not the spreadsheet.' } },
-    { q: 'Which would you send to your sales team?', p: 4,
+    { mode: 'flash', q: 'Which line do you remember?', p: 1,
+      a: { img: 'founder-bottleneck-sick-day.jpg', t: 'The Sick Day', line: '“You stayed home. So did the pipeline.”', tr: 'costs you can see', why: 'It shows a cost you can see: one day off, and the pipeline stops.', brief: 'Show the damage: the missed deal, the stalled pipeline, the number that moved.' },
+      b: { img: 'founder-bottleneck-sleepless-night.jpg', t: 'The Sleepless Night', line: '“You went to bed. The deals came too.”', tr: 'costs you can feel', why: 'It shows a cost you can feel: the deals you carry to bed.', brief: 'Lead with the feeling: the 2 a.m. worry, not the spreadsheet.' } },
+    { mode: 'pull', q: 'Pull the line toward the one you’d send your sales team.', p: 4,
       a: { img: 'crm-graveyard-close-date.jpg', t: 'The Close Date', tr: 'a straight joke', why: 'It’s a straight joke: the close date that moves every month, exactly as it happens.', brief: 'Keep the joke plain. If they’ve lived it, they’ll laugh and share it.' },
       b: { img: 'crm-graveyard-ouija-board.jpg', t: 'The HubSpot Ouija Board', tr: 'absurd humour', why: 'It’s absurd humour: asking a Ouija board where the pipeline went.', brief: 'Push the metaphor until it’s ridiculous, then land the point.' } },
-    { q: 'Which poster gets your click?', p: 0,
+    { mode: 'weigh', q: 'Hold to add weight to the one you’d click.', p: 0,
       a: { img: 'haunted-crm-teaser.jpg', t: 'The Haunted CRM teaser', tr: 'a big promise', why: 'It’s a big promise: horror stories from inside your CRM, coming soon.', brief: 'Open with one big idea, then prove it post by post.' },
       b: { img: 'haunted-crm-three-forecasts.jpg', t: 'The Three Forecasts', tr: 'one specific problem', why: 'It’s one specific problem: three forecasts, and nobody knows which is real.', brief: 'Skip the slogan. Name one problem they have today.' } }
   ];
-  var game = $('#game'), r = 0, picks = [];
+  var game = $('#game'), r = 0, picks = [], tries = 0;
+  function suit(s) { return s === 'a' ? '♥' : '♠'; }
+  function card(s, x, cls, i) {
+    return '<div class="pcard ' + (cls || '') + '" data-s="' + s + '" style="--i:' + (i || 0) + '"><div class="pc-in"><div class="face">' +
+      '<span class="ix tl" aria-hidden="true">' + s.toUpperCase() + '<small>' + suit(s) + '</small></span><img src="' + IMG + x.img + '" alt="' + x.t + '" draggable="false">' +
+      '<span class="ix br" aria-hidden="true">' + s.toUpperCase() + '<small>' + suit(s) + '</small></span></div><div class="back"></div></div></div>';
+  }
+  function backCard() { return '<div class="pcard down" aria-hidden="true"><div class="pc-in"><div class="face"></div><div class="back"></div></div></div>'; }
+  function dots() { return '<div class="dots" aria-hidden="true">' + R.map(function (_, i) { return '<i class="' + (i <= r ? 'on' : '') + '"></i>'; }).join('') + '</div>'; }
+  function head(x) {
+    return dots() + '<p class="k b">ROUND ' + (r + 1) + ' OF 3<span class="mode">' + { flash: 'FLASH TEST', pull: 'PULL', weigh: 'WEIGH IT' }[x.mode] + '</span></p>' +
+      '<h2 class="round-h">' + (x.mode === 'flash' ? 'Watch closely. You get about a second.' : x.q) + '</h2>';
+  }
+  function later(fn, ms) { return setTimeout(fn, reduce ? 0 : ms); }
+
   function intro() {
     r = 0; picks = [];
-    game.innerHTML = '<p class="k b type" id="typeK"></p><h1 class="split">' + words('I study why people', '') + ' ' + words('choose.', 'em') + '<br>' + words('Let’s test you.', '', 5) + '</h1>' +
-      '<p class="lede fade">Three quick picks between real posts I made. Choose on instinct, and at the end I’ll tell you what persuades you, and how I’d write a campaign for you.</p>' +
-      '<div class="row fade"><button class="go mag" id="start" type="button">Start →</button><a class="ghost" href="#work">Just show me the work</a></div>' +
-      '<div class="fan" aria-hidden="true"><img src="' + IMG + 'crm-graveyard-ouija-board.jpg" alt="" draggable="false"><img src="' + IMG + 'haunted-crm-teaser.jpg" alt="" draggable="false"><img src="' + IMG + 'founder-bottleneck-sick-day.jpg" alt="" draggable="false"><span class="tip">drag me around, or click one to start ↗</span></div>';
-    $('#start').onclick = round;
+    game.innerHTML = '<div class="intro"><div><p class="k b type" id="typeK"></p><h1 class="split">' + words('I study why people', '') + ' ' + words('choose.', 'em') + '<br>' + words('Let’s test you.', '', 5) + '</h1>' +
+      '<p class="lede fade">Three rounds with real posts I made. Remember, pull, weigh. At the end I’ll tell you what persuades you, and how I’d write a campaign for you.</p>' +
+      '<div class="row fade"><button class="go mag" id="start" type="button">Deal me in →</button><a class="ghost" href="#work">Just show me the work</a></div></div>' +
+      '<div class="deck" id="deck" role="button" tabindex="0" aria-label="Shuffle and deal">' + backCard() + backCard() + backCard() + backCard() + '<p class="hint">click the deck to shuffle and deal</p></div></div>';
+    var go = function () { var d = $('#deck'); if (!d || d.classList.contains('shuffle')) return; d.classList.add('shuffle'); later(round, 900); };
+    $('#start').onclick = go; $('#deck').onclick = go;
+    $('#deck').onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
     typeOut($('#typeK'), 'RIYA DUTTA · MARKETING CONSULTANT');
-    fanToys(); magnet($('#start'));
+    magnet($('#start'));
   }
-  function round() {
-    var x = R[r];
-    game.innerHTML = '<div class="dots" aria-hidden="true">' + R.map(function (_, i) { return '<i class="' + (i <= r ? 'on' : '') + '"></i>'; }).join('') + '</div>' +
-      '<p class="k b">PICK ' + (r + 1) + ' OF 3</p><h2 style="font-size:clamp(32px,5vw,58px)">' + x.q + '</h2><div class="pair">' +
-      ['a', 'b'].map(function (s, i) { return '<button class="card" type="button" style="--i:' + i + '" data-s="' + s + '"><b>' + s.toUpperCase() + '</b><img src="' + IMG + x[s].img + '" alt="' + x[s].t + '"></button>'; }).join('<span class="or" aria-hidden="true">or</span>') + '</div><p class="keys">Click a card, or press <kbd>A</kbd> or <kbd>B</kbd></p>';
-    $$('.card', game).forEach(function (c) { c.onclick = function () { pick(c); }; tilt(c); });
-    $('.card', game).focus({ preventScroll: true });
+  function round() { tries = 0; var x = R[r]; ({ flash: flash, pull: pull, weigh: weigh })[x.mode](x); }
+
+  // 1 flash
+  function flash(x) {
+    game.innerHTML = head(x) + '<div class="table" id="table">' + card('a', x.a, 'down dealt', 0) + card('b', x.b, 'down dealt', 1) + '</div><div id="below"></div>';
+    var t = $('#table'), n = 3;
+    later(function tick() {
+      if (n > 0) { t.insertAdjacentHTML('beforeend', '<span class="count" aria-hidden="true">' + n + '</span>'); var c = $('.count', t); setTimeout(function () { c.remove(); }, 550); n--; later(tick, 600); return; }
+      show(t, x);
+    }, 900);
   }
-  function pick(c) {
-    var x = R[r], p = P[x.p], mine = x[c.dataset.s], last = r === R.length - 1;
-    picks.push({ pick: mine, proj: x.p });
-    $$('.card', game).forEach(function (o) { o.disabled = true; o.classList.add(o === c ? 'won' : 'lost'); });
+  function show(t, x) {
+    $$('.pcard', t).forEach(function (c) { c.classList.remove('down'); });
+    later(function () { $$('.pcard', t).forEach(function (c) { c.classList.add('down'); }); later(function () { ask(x); }, 500); }, reduce ? 3000 : 1200);
+  }
+  function ask(x) {
+    var lines = [['a', x.a.line], ['b', x.b.line]].sort(function () { return Math.random() - .5; });
+    $('#below').innerHTML = '<div class="ask"><h3>' + x.q + '</h3>' + lines.map(function (l) { return '<button class="line" type="button" data-s="' + l[0] + '">' + l[1] + '</button>'; }).join('') +
+      '<button class="none" type="button" id="none">I don’t remember either</button></div>';
+    $$('#below .line').forEach(function (b) { b.onclick = function () { decide(x, b.dataset.s, 'stuck'); }; });
+    $('#below .line').focus({ preventScroll: true });
+    $('#none').onclick = function () {
+      tries++;
+      $('#below').innerHTML = '<div class="reveal" role="status"><h3>Neither stuck.</h3><p>That’s a result too: both posts need a stronger first line.' + (tries < 2 ? ' Want one more look?' : '') + '</p><div class="row">' +
+        (tries < 2 ? '<button class="go" type="button" id="again1">Flash them again</button>' : '') + '<button class="ghost" type="button" id="skip1">Skip this round</button></div></div>';
+      if ($('#again1')) $('#again1').onclick = function () { $('#below').innerHTML = ''; show($('#table'), x); };
+      $('#skip1').onclick = next;
+    };
+  }
+
+  // 2 pull
+  function pull(x) {
+    game.innerHTML = head(x) + '<div class="pull" id="pull" role="slider" tabindex="0" aria-label="Drag toward your pick: left for ' + x.a.t + ', right for ' + x.b.t + '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">' +
+      '<div class="halves"><div class="half a">' + card('a', x.a, 'dealt', 0) + '</div><div class="half b">' + card('b', x.b, 'dealt', 1) + '</div></div>' +
+      '<div class="divider"></div><div class="knob" aria-hidden="true">⟷</div><span class="goal" style="left:16px">pull right for A</span><span class="goal" style="right:16px">pull left for B</span></div><div id="below"></div>';
+    var st = $('#pull'), on = false, done = false, v = 50;
+    function size(val) {
+      v = val; st.style.setProperty('--x', v + '%'); st.setAttribute('aria-valuenow', Math.round(v));
+      $('.half.a .pcard', st).style.setProperty('--w', v); $('.half.b .pcard', st).style.setProperty('--w', 100 - v);
+      if (!done && v > 78) { done = true; on = false; decide(x, 'a', 'pull'); }
+      if (!done && v < 22) { done = true; on = false; decide(x, 'b', 'pull'); }
+    }
+    size(50);
+    function set(e) { var b = st.getBoundingClientRect(); size(Math.min(94, Math.max(6, (e.clientX - b.left) / b.width * 100))); }
+    st.addEventListener('pointerdown', function (e) { if (done) return; on = true; st.setPointerCapture(e.pointerId); set(e); });
+    st.addEventListener('pointermove', function (e) { if (on && !done) set(e); });
+    st.addEventListener('pointerup', function () { on = false; });
+    st.addEventListener('keydown', function (e) { if (done) return; if (e.key === 'ArrowRight') { e.preventDefault(); size(Math.min(94, v + 8)); } if (e.key === 'ArrowLeft') { e.preventDefault(); size(Math.max(6, v - 8)); } });
+  }
+
+  // 3 weigh
+  function weigh(x) {
+    game.innerHTML = head(x) + '<div class="scale"><div class="beam" id="beam"><div class="pan l">' + card('a', x.a, 'dealt', 0) + '</div><div class="pan r">' + card('b', x.b, 'dealt', 1) + '</div></div><div class="pivot"></div></div>' +
+      '<div class="holds"><button class="hold" type="button" data-w="-1">Hold for A ♥</button><button class="hold" type="button" data-w="1">Hold for B ♠</button></div><div id="below"></div>';
+    var tilt = 0, dir = 0, done = false, last = performance.now(), beam = $('#beam'), MAX = 16;
+    var id = setInterval(function () {
+      var now = performance.now(), dt = Math.min(.1, (now - last) / 1000); last = now;
+      if (done || !beam.isConnected) return clearInterval(id);
+      if (dir) tilt = Math.max(-MAX, Math.min(MAX, tilt + dir * dt * 12)); else tilt *= Math.pow(.2, dt);
+      beam.style.setProperty('--tilt', tilt + 'deg');
+      if (Math.abs(tilt) >= MAX) { done = true; dir = 0; $$('.hold').forEach(function (b) { b.disabled = true; }); decide(x, tilt < 0 ? 'a' : 'b', 'weigh'); }
+    }, 16);
+    function press(w) { return function () { if (!done) dir = w; }; }
+    function lift() { dir = 0; }
+    $$('.hold').forEach(function (b) {
+      b.addEventListener('pointerdown', press(+b.dataset.w));
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (e) { b.addEventListener(e, lift); });
+      b.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); press(+b.dataset.w)(); } });
+      b.addEventListener('keyup', lift);
+    });
+    $$('#beam .pcard').forEach(function (c) {
+      var w = c.dataset.s === 'a' ? -1 : 1;
+      c.addEventListener('pointerdown', function (e) { c.setPointerCapture(e.pointerId); press(w)(); });
+      ['pointerup', 'pointercancel'].forEach(function (e) { c.addEventListener(e, lift); });
+    });
+  }
+
+  function decide(x, s, how) {
+    var mine = x[s], last = r === R.length - 1, p = P[x.p];
+    picks.push({ pick: mine, s: s, proj: x.p });
+    $$('#game .pcard').forEach(function (c) { c.classList.remove('down'); if (c.dataset.s === s) c.classList.add('chosen'); else if (how === 'stuck') c.classList.add('out'); });
     burst();
-    var d = document.createElement('div'); d.className = 'reveal'; d.setAttribute('role', 'status');
-    d.innerHTML = '<h3>You picked “' + mine.t + '”.</h3><p>' + mine.why + ' From <b>' + p.t + '</b>.</p>' +
-      '<div class="row"><button class="ghost" type="button" data-proj>Open the project</button><button class="go" type="button">' + (last ? 'See what persuades you →' : 'Next pick →') + '</button></div>';
-    game.appendChild(d);
-    $('.go', d).onclick = function () { if (last) end(); else { r++; round(); } };
-    $('[data-proj]', d).onclick = function () { openProject(x.p); };
+    $('#below').innerHTML = '<div class="reveal" role="status"><h3>' + { stuck: '“' + mine.t + '” stuck.', pull: 'You pulled for “' + mine.t + '”.', weigh: 'The scale tipped for “' + mine.t + '”.' }[how] + '</h3>' +
+      '<p>' + mine.why + ' From <b>' + p.t + '</b>.</p><div class="row"><button class="ghost" type="button" data-proj>Open the project</button><button class="go" type="button" id="next">' + (last ? 'See your hand →' : 'Next round →') + '</button></div></div>';
+    $('#next').onclick = next; $('[data-proj]', $('#below')).onclick = function () { openProject(x.p); };
+    $('#next').focus({ preventScroll: true });
   }
+  function next() { if (r === R.length - 1) end(); else { r++; round(); } }
+
   function end() {
     var tr = picks.map(function (k) { return k.pick.tr; });
-    var line = 'You’re persuaded by ' + tr[0] + ', ' + tr[1] + ' and ' + tr[2] + '.';
-    game.innerHTML = '<div class="result">' +
-      '<div><p class="k b">YOUR RESULT</p><h2>' + line.replace('You’re persuaded by ', 'You’re persuaded by <em>').replace(/\.$/, '.</em>') + '</h2>' +
+    var text = tr.length === 3 ? 'You’re persuaded by ' + tr[0] + ', ' + tr[1] + ' and ' + tr[2] + '.' : tr.length ? 'You’re persuaded by ' + tr.join(' and ') + '.' : 'Nothing stuck this time.';
+    var h = tr.length ? text.replace('You’re persuaded by ', 'You’re persuaded by <em>').replace(/\.$/, '.</em>') : text;
+    game.innerHTML = '<div class="result"><div class="hand">' + picks.map(function (k, i) { return card(k.s, k.pick, '', i); }).join('') + '</div>' +
+      '<div><p class="k b">YOUR HAND</p><h2>' + h + '</h2>' +
+      '<div class="brief"><p class="k">HOW I’D WRITE A CAMPAIGN FOR YOU</p><ol>' + picks.map(function (k) { return '<li><b>' + k.pick.tr.charAt(0).toUpperCase() + k.pick.tr.slice(1) + '</b>' + k.pick.brief + '<button type="button" data-proj="' + k.proj + '">From ' + P[k.proj].t + ' →</button></li>'; }).join('') + '</ol></div>' +
       '<div class="row"><button class="go" id="hello" type="button">Want to know what your audience would pick? Say hello →</button></div>' +
-      '<div class="row" style="margin-top:14px"><button class="ghost" id="again" type="button">Play again</button><a class="ghost" href="#work">See all the work ↓</a></div></div>' +
-      '<div class="brief"><p class="k">HOW I’D WRITE A CAMPAIGN FOR YOU</p><ol>' +
-      picks.map(function (k) { return '<li><b>' + k.pick.tr.charAt(0).toUpperCase() + k.pick.tr.slice(1) + '</b>' + k.pick.brief + '<button type="button" data-proj="' + k.proj + '">From ' + P[k.proj].t + ' →</button></li>'; }).join('') +
-      '</ol></div></div>';
+      '<div class="row" style="margin-top:12px"><button class="ghost" id="again" type="button">Deal again</button><a class="ghost" href="#work">See all the work ↓</a></div></div></div>';
     $('#again').onclick = intro;
     $$('[data-proj]', game).forEach(function (b) { b.onclick = function () { openProject(+b.dataset.proj); }; });
-    $('#hello').onclick = function () {
-      sayHello('I played your game. My picks: ' + picks.map(function (k) { return k.pick.t; }).join(', ') + '. ' + line + '\n\nI’d like to talk about ');
-    };
+    $('#hello').onclick = function () { sayHello('I played your game. My hand: ' + picks.map(function (k) { return k.pick.t; }).join(', ') + '. ' + text + '\n\nI’d like to talk about '); };
     burst();
   }
   function burst() {
@@ -114,31 +200,6 @@
     var b = el.getBoundingClientRect(), dx = e.clientX - (b.left + b.width / 2), dy = e.clientY - (b.top + b.height / 2), d = Math.hypot(dx, dy);
     el.style.transform = d < 160 ? 'translate(' + dx * .22 + 'px,' + dy * .22 + 'px) rotate(' + dx * .02 + 'deg)' : '';
   });
-  function tilt(card) {
-    if (reduce || phone.matches) return;
-    card.addEventListener('mousemove', function (e) {
-      var b = card.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
-      card.style.setProperty('--ry', x * 18 + 'deg'); card.style.setProperty('--rx', -y * 18 + 'deg');
-    });
-    card.addEventListener('mouseleave', function () { card.style.setProperty('--ry', '0deg'); card.style.setProperty('--rx', '0deg'); });
-  }
-  // the fanned posters: drag and fling them; a click (no drag) starts the game
-  function fanToys() {
-    $$('.fan img', game).forEach(function (im) {
-      var sx, sy, moved, base = getComputedStyle(im).rotate;
-      im.addEventListener('pointerdown', function (e) {
-        sx = e.clientX; sy = e.clientY; moved = false; im.setPointerCapture(e.pointerId); im.classList.add('drag');
-        im.onpointermove = function (m) {
-          var dx = m.clientX - sx, dy = m.clientY - sy; if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
-          im.style.translate = dx + 'px ' + dy + 'px'; im.style.rotate = 'calc(' + base + ' + ' + dx * .06 + 'deg)';
-        };
-      });
-      im.addEventListener('pointerup', function () {
-        im.onpointermove = null; im.classList.remove('drag'); im.style.translate = ''; im.style.rotate = '';
-        if (!moved) round();
-      });
-    });
-  }
   // the spotlight and the drifting A/B follow the cursor
   (function () {
     var play = $('#play'), bg = $('.ab-bg');
@@ -149,12 +210,6 @@
       if (bg) { bg.style.setProperty('--px', (x - .5) * -40 + 'px'); bg.style.setProperty('--py', (y - .5) * -30 + 'px'); }
     });
   })();
-  // A / B keys pick a card during a round
-  addEventListener('keydown', function (e) {
-    if (e.metaKey || e.ctrlKey || e.altKey || /INPUT|TEXTAREA/.test((e.target || {}).tagName || '')) return;
-    var k = (e.key || '').toLowerCase(); if (k !== 'a' && k !== 'b') return;
-    var c = $('#game .card[data-s="' + k + '"]:not([disabled])'); if (c) c.click();
-  });
   intro();
 
   /* ---------- 2. kinetic index ---------- */

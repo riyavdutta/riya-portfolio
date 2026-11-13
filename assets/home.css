@@ -292,3 +292,83 @@ p{max-width:none}
 .pair:has(.won)+.keys{visibility:hidden}
 .pair{margin-top:36px}
 @media (max-width:1000px){.fan{display:block;position:relative;right:auto;top:auto;translate:none;width:310px;height:270px;margin:34px auto 0}.fan img{width:150px;border-width:7px}.fan img:nth-child(1){left:0;top:30px}.fan img:nth-child(2){left:78px;top:0}.fan img:nth-child(3){left:156px;top:40px}}
+
+
+/* ===================== the game, dealt as playing cards (replaces the fan and the old cards) ===================== */
+.fan,.pair,.keys,.or{display:none!important}
+:root{--cw:230px}
+.intro{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px}
+.mode{display:inline-block;margin-left:10px;padding:3px 8px;border-radius:4px;background:#ffffff1a;font-family:var(--mono);font-size:11px;color:var(--pink)}
+#play h2.round-h{font-size:clamp(30px,4.4vw,54px)}
+.pcard{width:var(--cw);aspect-ratio:5/7;perspective:1100px;position:relative;flex:none}
+.pc-in{position:absolute;inset:0;transition:transform .55s var(--ease);transform-style:preserve-3d}
+.pcard.down .pc-in{transform:rotateY(180deg)}
+.pcard .face,.pcard .back{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 24px 40px -18px #000c}
+.pcard .face{background:var(--vanilla);padding:34px 14px;display:grid;place-items:center}
+.pcard .face img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;outline:1px solid #43272033}
+.ix{position:absolute;font:700 20px/.95 var(--display);text-align:center;color:var(--suit,var(--cherry))}
+.ix small{display:block;font-size:17px}
+.ix.tl{left:10px;top:8px}.ix.br{right:10px;bottom:8px;rotate:180deg}
+.pcard[data-s="b"]{--suit:#1d1513}
+.pcard .back{transform:rotateY(180deg);background:var(--cherry);border:8px solid var(--vanilla);overflow:hidden}
+.pcard .back::before{content:"";position:absolute;inset:6px;border-radius:6px;border:1.5px solid var(--blossom);background:repeating-linear-gradient(45deg,transparent 0 9px,#ecaab244 9px 10px),repeating-linear-gradient(-45deg,transparent 0 9px,#ecaab244 9px 10px)}
+.pcard .back::after{content:"RD";position:absolute;left:50%;top:50%;translate:-50% -50%;width:66px;height:66px;border-radius:50%;background:var(--cherry);border:2px solid var(--blossom);display:grid;place-items:center;font:italic 700 24px var(--display);color:var(--blossom)}
+.pcard.dealt{animation:dealcard .7s var(--spring) backwards;animation-delay:calc(var(--i,0)*140ms)}
+@keyframes dealcard{from{transform:translate(420px,-320px) rotate(40deg)}}
+.pcard.chosen .face{box-shadow:0 0 0 4px var(--blossom),0 30px 50px -18px #000c}
+.pcard.chosen::after{content:"MY PICK";position:absolute;right:-16px;top:18px;rotate:12deg;z-index:3;padding:7px 11px;border:3px solid var(--cherry);border-radius:6px;background:var(--blossom);color:var(--cherry);font:800 14px var(--grot);letter-spacing:.06em;animation:stamp .35s var(--spring) both}
+.pcard.out{transition:transform .6s var(--ease),opacity .5s;transform:translateY(100px) rotate(14deg);opacity:0}
+.deck{position:relative;height:420px;cursor:pointer;outline-offset:8px}
+.deck .pcard{position:absolute;left:50%;top:50%;margin:calc(var(--cw)*-.7) 0 0 calc(var(--cw)*-.5);transition:transform .45s var(--spring)}
+.deck .pcard:nth-child(1){transform:rotate(-8deg) translate(-6px,6px)}.deck .pcard:nth-child(2){transform:rotate(-3deg) translate(-2px,2px)}
+.deck .pcard:nth-child(3){transform:rotate(3deg)}.deck .pcard:nth-child(4){transform:rotate(9deg) translate(4px,-4px)}
+.deck:hover .pcard:nth-child(1),.deck:focus-visible .pcard:nth-child(1){transform:rotate(-24deg) translate(-90px,20px)}
+.deck:hover .pcard:nth-child(2),.deck:focus-visible .pcard:nth-child(2){transform:rotate(-9deg) translate(-32px,-6px)}
+.deck:hover .pcard:nth-child(3),.deck:focus-visible .pcard:nth-child(3){transform:rotate(7deg) translate(32px,-6px)}
+.deck:hover .pcard:nth-child(4),.deck:focus-visible .pcard:nth-child(4){transform:rotate(22deg) translate(92px,18px)}
+.deck .pcard{animation:dealcard .7s var(--spring) backwards}
+.deck .pcard:nth-child(2){animation-delay:.12s}.deck .pcard:nth-child(3){animation-delay:.24s}.deck .pcard:nth-child(4){animation-delay:.36s}
+.deck.shuffle .pcard{animation:riffle .45s var(--ease) 2}
+.deck.shuffle .pcard:nth-child(even){animation-direction:reverse}
+@keyframes riffle{50%{transform:translateX(110px) rotate(12deg)}}
+.deck .hint{position:absolute;left:0;right:0;bottom:-6px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--pink)}
+.table{display:flex;justify-content:center;align-items:center;gap:40px;margin-top:22px;min-height:360px;position:relative}
+.count{position:absolute;top:50%;left:50%;translate:-50% -50%;font:800 120px var(--grot);color:var(--blossom);text-shadow:0 10px 30px #0008;z-index:5;animation:pulse .6s var(--ease)}
+@keyframes pulse{from{scale:1.6;opacity:0}}
+.ask{margin:22px auto 0;max-width:560px;display:grid;gap:10px;text-align:center;animation:pop .35s var(--spring)}
+.ask h3{font-family:var(--display);font-size:28px}
+.ask .line{background:var(--vanilla);color:var(--cherry);border:0;border-radius:10px;padding:14px 16px;font:600 18px var(--grot);transition:transform .15s}
+.ask .line:hover{transform:translateY(-2px) rotate(-.5deg)}
+.ask .none{background:none;border:0;color:var(--pink);font-family:var(--mono);font-size:12px;text-decoration:underline}
+.pull{position:relative;width:min(760px,100%);height:420px;margin:22px auto 0;border-radius:18px;overflow:hidden;cursor:ew-resize;touch-action:none;user-select:none;background:#4a1820}
+.pull .halves{position:absolute;inset:0;display:flex}
+.pull .half{height:100%;display:grid;place-items:center;overflow:hidden}
+.pull .half.a{flex:0 0 var(--x,50%);background:#561c25}.pull .half.b{flex:1 1 auto;background:#3d1219}
+.pull .pcard{--cw:min(220px,calc(var(--w,50) * 4.2px))}
+.pull .divider{position:absolute;top:0;bottom:0;left:var(--x,50%);width:4px;margin-left:-2px;background:var(--vanilla)}
+.pull .knob{position:absolute;top:50%;left:var(--x,50%);width:58px;height:58px;border-radius:50%;background:var(--vanilla);color:var(--cherry);display:grid;place-items:center;translate:-50% -50%;font:800 20px var(--grot);box-shadow:0 10px 24px #0007}
+.pull .goal{position:absolute;top:14px;font-family:var(--mono);font-size:11px;color:var(--pink);opacity:.8}
+.scale{position:relative;height:430px;margin-top:10px}
+.scale .beam{position:absolute;left:50%;top:330px;width:min(620px,92%);height:10px;translate:-50% 0;background:var(--vanilla);border-radius:5px;transform:rotate(var(--tilt,0deg));transition:transform .08s linear}
+.scale .pivot{position:absolute;left:50%;top:338px;translate:-50% 0;width:0;height:0;border:26px solid transparent;border-bottom:52px solid var(--vanilla);border-top:0}
+.scale .pan{position:absolute;bottom:10px}.scale .pan.l{left:0}.scale .pan.r{right:0}
+.scale .pan .pcard{--cw:200px;transform:rotate(calc(var(--tilt,0deg) * -1));transform-origin:50% 100%;cursor:grab;touch-action:none}
+.holds{display:flex;justify-content:center;gap:14px;margin-top:6px}
+.hold{background:var(--vanilla);color:var(--cherry);border:0;border-radius:40px;padding:14px 22px;font:700 16px var(--grot);touch-action:none;user-select:none}
+.hold:active{scale:.95;background:var(--blossom)}.hold:disabled{opacity:.4}
+.hand{position:relative;height:430px}
+.hand .pcard{position:absolute;left:50%;top:40px;--cw:190px;margin-left:-95px;transform-origin:50% 120%;animation:dealcard .7s var(--spring) backwards;animation-delay:calc(var(--i)*160ms)}
+.hand .pcard:nth-child(1){transform:rotate(-16deg) translateX(-60px)}.hand .pcard:nth-child(2){transform:translateY(-14px);z-index:2}.hand .pcard:nth-child(3){transform:rotate(16deg) translateX(60px)}
+.result{grid-template-columns:1fr 1.1fr}
+@media (max-width:860px){
+  :root{--cw:150px}
+  .intro{grid-template-columns:1fr}
+  .deck{height:300px}
+  .table{gap:14px;min-height:260px}
+  .pull{height:330px}
+  .scale{height:330px}.scale .beam{top:240px}.scale .pivot{top:248px}.scale .pan .pcard{--cw:120px}
+  .hand{height:320px}.hand .pcard{--cw:140px;margin-left:-70px}
+  .count{font-size:90px}
+  .pcard .face{padding:24px 10px}.ix{font-size:15px}.ix small{font-size:13px}
+}
+@media (prefers-reduced-motion: reduce){.deck .pcard,.pcard.dealt,.hand .pcard{animation:none}}

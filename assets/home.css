@@ -372,3 +372,12 @@ p{max-width:none}
   .pcard .face{padding:24px 10px}.ix{font-size:15px}.ix small{font-size:13px}
 }
 @media (prefers-reduced-motion: reduce){.deck .pcard,.pcard.dealt,.hand .pcard{animation:none}}
+
+/* rounds: smaller cards and tighter spacing so a round fits on one screen more often */
+.table .pcard{--cw:200px}
+.table{min-height:300px;margin-top:14px}
+.pull,.scale{height:380px}
+.scale .beam{top:290px}.scale .pivot{top:298px}.scale .pan .pcard{--cw:180px}
+.ask,.reveal{scroll-margin-bottom:24px}
+#play{scroll-margin-top:34px}
+@media (max-width:860px){.table .pcard{--cw:140px}.pull,.scale{height:310px}.scale .beam{top:225px}.scale .pivot{top:233px}.scale .pan .pcard{--cw:110px}}

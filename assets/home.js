@@ -57,6 +57,9 @@
       '<h2 class="round-h">' + (x.mode === 'flash' ? 'Watch closely. You get about a second.' : x.q) + '</h2>';
   }
   function later(fn, ms) { return setTimeout(fn, reduce ? 0 : ms); }
+  // keep the game on screen: jump back to its top for each round, and show new blocks as they appear
+  function toTop() { var p = $('#play'); if (Math.abs(p.getBoundingClientRect().top) > 4) p.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+  function show_(el) { if (el) setTimeout(function () { el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' }); }, 60); }
 
   function intro() {
     r = 0; picks = [];
@@ -70,7 +73,7 @@
     typeOut($('#typeK'), 'RIYA DUTTA · MARKETING CONSULTANT');
     magnet($('#start'));
   }
-  function round() { tries = 0; var x = R[r]; ({ flash: flash, pull: pull, weigh: weigh })[x.mode](x); }
+  function round() { tries = 0; var x = R[r]; ({ flash: flash, pull: pull, weigh: weigh })[x.mode](x); toTop(); }
 
   // 1 flash
   function flash(x) {
@@ -91,11 +94,13 @@
       '<button class="none" type="button" id="none">I don’t remember either</button></div>';
     $$('#below .line').forEach(function (b) { b.onclick = function () { decide(x, b.dataset.s, 'stuck'); }; });
     $('#below .line').focus({ preventScroll: true });
+    show_($('#below .ask'));
     $('#none').onclick = function () {
       tries++;
       $('#below').innerHTML = '<div class="reveal" role="status"><h3>Neither stuck.</h3><p>That’s a result too: both posts need a stronger first line.' + (tries < 2 ? ' Want one more look?' : '') + '</p><div class="row">' +
         (tries < 2 ? '<button class="go" type="button" id="again1">Flash them again</button>' : '') + '<button class="ghost" type="button" id="skip1">Skip this round</button></div></div>';
-      if ($('#again1')) $('#again1').onclick = function () { $('#below').innerHTML = ''; show($('#table'), x); };
+      if ($('#again1')) $('#again1').onclick = function () { $('#below').innerHTML = ''; toTop(); show($('#table'), x); };
+      show_($('#below .reveal'));
       $('#skip1').onclick = next;
     };
   }
@@ -156,6 +161,7 @@
       '<p>' + mine.why + ' From <b>' + p.t + '</b>.</p><div class="row"><button class="ghost" type="button" data-proj>Open the project</button><button class="go" type="button" id="next">' + (last ? 'See your hand →' : 'Next round →') + '</button></div></div>';
     $('#next').onclick = next; $('[data-proj]', $('#below')).onclick = function () { openProject(x.p); };
     $('#next').focus({ preventScroll: true });
+    show_($('#below .reveal'));
   }
   function next() { if (r === R.length - 1) end(); else { r++; round(); } }
 
@@ -168,8 +174,9 @@
       '<div class="brief"><p class="k">HOW I’D WRITE A CAMPAIGN FOR YOU</p><ol>' + picks.map(function (k) { return '<li><b>' + k.pick.tr.charAt(0).toUpperCase() + k.pick.tr.slice(1) + '</b>' + k.pick.brief + '<button type="button" data-proj="' + k.proj + '">From ' + P[k.proj].t + ' →</button></li>'; }).join('') + '</ol></div>' +
       '<div class="row"><button class="go" id="hello" type="button">Want to know what your audience would pick? Say hello →</button></div>' +
       '<div class="row" style="margin-top:12px"><button class="ghost" id="again" type="button">Deal again</button><a class="ghost" href="#work">See all the work ↓</a></div></div></div>';
-    $('#again').onclick = intro;
+    $('#again').onclick = function () { intro(); toTop(); };
     $$('[data-proj]', game).forEach(function (b) { b.onclick = function () { openProject(+b.dataset.proj); }; });
+    toTop();
     $('#hello').onclick = function () { sayHello('I played your game. My hand: ' + picks.map(function (k) { return k.pick.t; }).join(', ') + '. ' + text + '\n\nI’d like to talk about '); };
     burst();
   }

@@ -230,29 +230,6 @@ def build_index(w):
     print('wrote work/index.html')
 
 
-def build_lab_shelf(w):
-    lab = [i for i in w['items'] if 'Lab' in i['tags']]
-    home = ROOT / 'index.html'
-    s = home.read_text()
-    assert s.count('<!-- lab:start -->') == 2, 'lab markers missing from index.html'
-    shelf = ''
-    if lab:
-        cards = ''
-        for it in lab:
-            pic = it['svg'] if it.get('svg') else f'<img src="{it["img"]}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">'
-            cards += (f'<a href="work/{it["href"]}" style="flex:1 1 260px;max-width:360px;display:flex;flex-direction:column;background:#fffdf0;box-shadow:0 20px 40px -28px rgba(67,39,32,.6)">'
-                      f'<span style="display:block;aspect-ratio:16/10;overflow:hidden;background:var(--{it.get("color", "sage")})">{pic}</span>'
-                      f'<span style="display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--cocoa)">{it["kind"]}</span>'
-                      f'<span style="font-family:var(--font-display);font-size:24px;line-height:1.1;color:var(--truffle)">{it["title"]}</span>'
-                      f'<span style="font-size:15px;line-height:1.5;color:var(--cocoa)">{it["blurb"]}</span></span></a>')
-        shelf = ('<section id="lab" aria-labelledby="lab-h" style="background:var(--ivory);color:var(--truffle);padding:88px clamp(16px,4vw,56px) 96px">'
-                 '<div style="max-width:1080px;margin:0 auto"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 24px;margin-bottom:36px">'
-                 '<h2 id="lab-h" style="margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(44px,6vw,64px);line-height:.95">The <em style="color:var(--cherry)">lab</em></h2>'
-                 f'<span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--cocoa-soft)">PASSION PROJECTS · LIVE</span></div>'
-                 f'<div style="display:flex;flex-wrap:wrap;gap:28px">{cards}</div></div></section>')
-    s = re.sub(r'<!-- lab:start -->.*?<!-- lab:end -->', '<!-- lab:start -->' + shelf.replace('\\', '\\\\') + '<!-- lab:end -->', s, flags=re.S)
-    home.write_text(s)
-    print('home lab shelf:', len(lab), 'projects')
 
 
 if __name__ == '__main__':
@@ -260,4 +237,3 @@ if __name__ == '__main__':
         build_case(json.loads(f.read_text()))
     work = json.loads((ROOT / 'content' / 'work.json').read_text())
     build_index(work)
-    build_lab_shelf(work)

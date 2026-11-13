@@ -42,18 +42,20 @@
   var game = $('#game'), r = 0, picks = [];
   function intro() {
     r = 0; picks = [];
-    game.innerHTML = '<p class="k b">RIYA DUTTA · MARKETING CONSULTANT</p><h1>I study why people <em>choose.</em><br>Let’s test you.</h1>' +
-      '<p class="lede">Three quick picks between real posts I made. Choose on instinct, and at the end I’ll tell you what persuades you, and how I’d write a campaign for you.</p>' +
-      '<div class="row"><button class="go" id="start" type="button">Start →</button><a class="ghost" href="#work">Just show me the work</a></div>' +
-      '<div class="fan" aria-hidden="true"><img src="' + IMG + 'crm-graveyard-ouija-board.jpg" alt=""><img src="' + IMG + 'haunted-crm-teaser.jpg" alt=""><img src="' + IMG + 'founder-bottleneck-sick-day.jpg" alt=""></div>';
+    game.innerHTML = '<p class="k b type" id="typeK"></p><h1 class="split">' + words('I study why people', '') + ' ' + words('choose.', 'em') + '<br>' + words('Let’s test you.', '', 5) + '</h1>' +
+      '<p class="lede fade">Three quick picks between real posts I made. Choose on instinct, and at the end I’ll tell you what persuades you, and how I’d write a campaign for you.</p>' +
+      '<div class="row fade"><button class="go mag" id="start" type="button">Start →</button><a class="ghost" href="#work">Just show me the work</a></div>' +
+      '<div class="fan" aria-hidden="true"><img src="' + IMG + 'crm-graveyard-ouija-board.jpg" alt="" draggable="false"><img src="' + IMG + 'haunted-crm-teaser.jpg" alt="" draggable="false"><img src="' + IMG + 'founder-bottleneck-sick-day.jpg" alt="" draggable="false"><span class="tip">drag me around, or click one to start ↗</span></div>';
     $('#start').onclick = round;
+    typeOut($('#typeK'), 'RIYA DUTTA · MARKETING CONSULTANT');
+    fanToys(); magnet($('#start'));
   }
   function round() {
     var x = R[r];
     game.innerHTML = '<div class="dots" aria-hidden="true">' + R.map(function (_, i) { return '<i class="' + (i <= r ? 'on' : '') + '"></i>'; }).join('') + '</div>' +
       '<p class="k b">PICK ' + (r + 1) + ' OF 3</p><h2 style="font-size:clamp(32px,5vw,58px)">' + x.q + '</h2><div class="pair">' +
-      ['a', 'b'].map(function (s) { return '<button class="card" type="button" data-s="' + s + '"><b>' + s.toUpperCase() + '</b><img src="' + IMG + x[s].img + '" alt="' + x[s].t + '"></button>'; }).join('') + '</div>';
-    $$('.card', game).forEach(function (c) { c.onclick = function () { pick(c); }; });
+      ['a', 'b'].map(function (s, i) { return '<button class="card" type="button" style="--i:' + i + '" data-s="' + s + '"><b>' + s.toUpperCase() + '</b><img src="' + IMG + x[s].img + '" alt="' + x[s].t + '"></button>'; }).join('<span class="or" aria-hidden="true">or</span>') + '</div><p class="keys">Click a card, or press <kbd>A</kbd> or <kbd>B</kbd></p>';
+    $$('.card', game).forEach(function (c) { c.onclick = function () { pick(c); }; tilt(c); });
     $('.card', game).focus({ preventScroll: true });
   }
   function pick(c) {
@@ -94,6 +96,65 @@
       host.appendChild(s); setTimeout(s.remove.bind(s), 2200);
     }
   }
+  // ---- small motion helpers for the opening ----
+  function words(text, wrap, start) {
+    return text.split(' ').map(function (w, k) {
+      var inner = wrap ? '<' + wrap + '>' + w + '</' + wrap + '>' : w;
+      return '<span class="w"><span style="--i:' + ((start || (wrap ? 4 : 0)) + k) + '">' + inner + '</span></span>';
+    }).join(' ');
+  }
+  function typeOut(el, text) {
+    if (!el) return; if (reduce) { el.textContent = text; return; }
+    var k = 0, id = setInterval(function () { el.textContent = text.slice(0, ++k); if (k >= text.length) clearInterval(id); }, 28);
+  }
+  var magEl = null;
+  function magnet(el) { magEl = el; }
+  if (!reduce) $('#play').addEventListener('mousemove', function (e) {
+    var el = magEl; if (!el || !el.isConnected || phone.matches) return;
+    var b = el.getBoundingClientRect(), dx = e.clientX - (b.left + b.width / 2), dy = e.clientY - (b.top + b.height / 2), d = Math.hypot(dx, dy);
+    el.style.transform = d < 160 ? 'translate(' + dx * .22 + 'px,' + dy * .22 + 'px) rotate(' + dx * .02 + 'deg)' : '';
+  });
+  function tilt(card) {
+    if (reduce || phone.matches) return;
+    card.addEventListener('mousemove', function (e) {
+      var b = card.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+      card.style.setProperty('--ry', x * 18 + 'deg'); card.style.setProperty('--rx', -y * 18 + 'deg');
+    });
+    card.addEventListener('mouseleave', function () { card.style.setProperty('--ry', '0deg'); card.style.setProperty('--rx', '0deg'); });
+  }
+  // the fanned posters: drag and fling them; a click (no drag) starts the game
+  function fanToys() {
+    $$('.fan img', game).forEach(function (im) {
+      var sx, sy, moved, base = getComputedStyle(im).rotate;
+      im.addEventListener('pointerdown', function (e) {
+        sx = e.clientX; sy = e.clientY; moved = false; im.setPointerCapture(e.pointerId); im.classList.add('drag');
+        im.onpointermove = function (m) {
+          var dx = m.clientX - sx, dy = m.clientY - sy; if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
+          im.style.translate = dx + 'px ' + dy + 'px'; im.style.rotate = 'calc(' + base + ' + ' + dx * .06 + 'deg)';
+        };
+      });
+      im.addEventListener('pointerup', function () {
+        im.onpointermove = null; im.classList.remove('drag'); im.style.translate = ''; im.style.rotate = '';
+        if (!moved) round();
+      });
+    });
+  }
+  // the spotlight and the drifting A/B follow the cursor
+  (function () {
+    var play = $('#play'), bg = $('.ab-bg');
+    if (!play || reduce) return;
+    play.addEventListener('mousemove', function (e) {
+      var b = play.getBoundingClientRect(), x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height;
+      play.style.setProperty('--mx', x * 100 + '%'); play.style.setProperty('--my', y * 100 + '%');
+      if (bg) { bg.style.setProperty('--px', (x - .5) * -40 + 'px'); bg.style.setProperty('--py', (y - .5) * -30 + 'px'); }
+    });
+  })();
+  // A / B keys pick a card during a round
+  addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey || /INPUT|TEXTAREA/.test((e.target || {}).tagName || '')) return;
+    var k = (e.key || '').toLowerCase(); if (k !== 'a' && k !== 'b') return;
+    var c = $('#game .card[data-s="' + k + '"]:not([disabled])'); if (c) c.click();
+  });
   intro();
 
   /* ---------- 2. kinetic index ---------- */
@@ -263,6 +324,14 @@
       'You lingered longest on <b>' + (top ? names[top] : 'the game') + '</b>. Watching where attention goes is what I do for brands: it’s the eye-tracking work, in miniature. Nothing here leaves your browser.';
   }
 
+
+  /* ---------- scroll reveals ---------- */
+  (function () {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var groups = [['#path h2, #about h2, #path .k, #about .k', 0], ['#kList li', .07], ['#bento .t', .06], ['#contact .ico', .06]];
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+    groups.forEach(function (g) { $$(g[0]).forEach(function (el, i) { el.setAttribute('data-rv', ''); el.style.setProperty('--d', (g[1] * i) + 's'); io.observe(el); }); });
+  })();
   /* ---------- ⌘K jump bar ---------- */
   var cmd = $('#cmd'), ci = $('#cmdIn'), cl = $('#cmdList'), sel = 0, cmdOpener = null;
   var items = [['The game', 'Home', '#play'], ['Selected work', 'Section', '#work'], ['The path', 'Section', '#path'], ['About', 'Section', '#about'], ['Say hello', 'Desktop', '#contact'], ['All work', 'Page', 'work/']]

@@ -45,12 +45,12 @@ p{max-width:none}
 .go:hover{transform:translateY(-3px) rotate(-1deg)}
 .ghost{background:transparent;border:1.5px solid var(--blossom);color:var(--vanilla);border-radius:6px;padding:14px 18px;font-family:var(--mono);font-size:12px;text-decoration:none;display:inline-block}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:26px}
-.fan{position:absolute;right:3%;top:62%;width:420px;height:440px;translate:0 -50%;pointer-events:none}
+.fan{position:absolute;right:3%;top:62%;width:420px;height:440px;translate:0 -50%;z-index:3}
 .fan img{position:absolute;width:230px;aspect-ratio:4/5;object-fit:cover;border:10px solid var(--vanilla);border-radius:8px;box-shadow:0 30px 50px -20px #000a;transition:rotate .5s var(--spring),translate .5s var(--spring)}
 .fan img:nth-child(1){left:0;top:40px;rotate:-12deg}.fan img:nth-child(2){left:95px;top:0;rotate:2deg;z-index:2}.fan img:nth-child(3){left:190px;top:60px;rotate:14deg}
 #play:hover .fan img:nth-child(1){rotate:-18deg;translate:-20px 0}#play:hover .fan img:nth-child(3){rotate:20deg;translate:20px 0}
 .dots{display:flex;gap:8px;margin-bottom:16px}.dots i{width:34px;height:6px;border-radius:3px;background:#ffffff33}.dots i.on{background:var(--blossom)}
-.pair{display:flex;gap:30px;justify-content:center;margin-top:20px}
+.pair{display:flex;gap:30px;justify-content:center;align-items:center;margin-top:20px;perspective:1000px}
 .card{width:260px;border:0;padding:12px;background:var(--vanilla);border-radius:10px;transition:transform .45s var(--ease),opacity .4s;position:relative}
 .card img{aspect-ratio:4/5;object-fit:cover;border-radius:6px;width:100%}
 .card b{position:absolute;top:-14px;left:-14px;width:44px;height:44px;border-radius:50%;background:var(--blossom);color:var(--cherry);display:grid;place-items:center;font:800 20px var(--grot)}
@@ -222,3 +222,73 @@ p{max-width:none}
   .win-b{max-height:none}
 }
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.stop{opacity:1;transform:none}}
+
+
+/* ===================== life and depth (added) =====================
+ * Opening: spotlight that follows the cursor, giant A/or/B drifting behind, the headline rising
+ * in word by word, posters you can drag and fling, a start button that leans toward you.
+ * Game: cards deal in, tilt in 3D, an "or" badge between them, A/B keys, a stamp on your pick.
+ * Page: sections are stacked sheets that slide over each other; content rises in on scroll.
+ */
+#play{background:radial-gradient(600px circle at var(--mx,70%) var(--my,40%),#7d2f39 0%,transparent 60%),var(--cherry)}
+#play .wrap{position:relative;z-index:2}
+.ab-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:2vw;pointer-events:none;z-index:0;
+  font-family:var(--display);font-weight:700;font-style:italic;font-size:min(42vw,560px);line-height:1;color:transparent;-webkit-text-stroke:1.5px #ffffff1c;
+  translate:var(--px,0) var(--py,0);transition:translate .6s var(--ease)}
+.ab-bg span:nth-child(2){font-size:.28em;-webkit-text-stroke:0;color:#ffffff12;font-style:normal;font-family:var(--grot)}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.split .w>span{display:inline-block;animation:rise .8s var(--ease) both;animation-delay:calc(var(--i)*70ms + .1s)}
+@keyframes rise{from{transform:translateY(105%) rotate(4deg)}}
+.lede.fade,.row.fade{animation:fadeup .7s var(--ease) both;animation-delay:.6s}
+.row.fade{animation-delay:.75s}
+@keyframes fadeup{from{opacity:0;transform:translateY(16px)}}
+.fan img{cursor:grab;touch-action:none;user-select:none;-webkit-user-drag:none;transition:rotate .5s var(--spring),translate .5s var(--spring),scale .2s}
+.fan img:hover{scale:1.04}
+.fan img.drag{cursor:grabbing;transition:none;z-index:9;scale:1.06}
+.fan .tip{position:absolute;left:30px;bottom:-34px;font-family:var(--mono);font-size:11px;color:var(--pink);opacity:.85;rotate:-3deg}
+.fan img:nth-child(1){animation:deal .7s var(--spring) both .35s}.fan img:nth-child(2){animation:deal .7s var(--spring) both .5s}.fan img:nth-child(3){animation:deal .7s var(--spring) both .65s}
+@keyframes deal{from{opacity:0;transform:translate(120px,160px) rotate(30deg)}}
+.go.mag{transition:transform .25s var(--ease)}
+.k.type{border-right:2px solid var(--blossom);padding-right:4px;white-space:nowrap;overflow:hidden;display:inline-block;animation:blink .8s steps(1) 4}
+@keyframes blink{50%{border-color:transparent}}
+
+.card{animation:deal .65s var(--spring) backwards;animation-delay:calc(var(--i)*120ms)}
+.card img{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .2s ease-out}
+.card.won::after{content:"MY PICK";position:absolute;right:-18px;top:22px;rotate:12deg;padding:8px 12px;border:3px solid var(--cherry);border-radius:6px;
+  background:var(--blossom);color:var(--cherry);font:800 15px var(--grot);letter-spacing:.06em;animation:stamp .35s var(--spring) both}
+@keyframes stamp{from{scale:2.4;opacity:0}}
+.or{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--vanilla);color:var(--cherry);
+  font:italic 700 24px var(--display);box-shadow:0 0 0 6px #ffffff22;animation:spin-in .6s var(--spring) both .25s;z-index:2}
+@keyframes spin-in{from{transform:scale(0) rotate(-180deg)}}
+.pair:has(.won) .or{opacity:0;transition:opacity .3s}
+.keys{margin-top:16px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--pink);opacity:.8}
+.keys kbd{border:1px solid #ffffff55;border-radius:4px;padding:1px 6px;margin:0 2px}
+
+/* stacked sheets: each section slides over the one before */
+#work,#path,#about,#contact{border-radius:34px 34px 0 0;margin-top:-34px;box-shadow:0 -24px 50px -26px #000c}
+#work{z-index:2}#path{z-index:3}#about{z-index:4}#contact{z-index:5}
+#play{padding-bottom:104px}
+#work{padding-top:80px}
+.foot{position:relative;z-index:6}
+
+/* scroll reveals (set up by home.js) */
+[data-rv]{opacity:0;translate:0 34px;transition:opacity .7s var(--ease),translate .8s var(--ease);transition-delay:var(--d,0s)}
+[data-rv].in{opacity:1;translate:0 0}
+.klist li[data-rv]{translate:-40px 0}
+.klist li[data-rv].in{translate:0 0}
+
+@media (max-width:760px){
+  .or{width:40px;height:40px;font-size:16px;margin:0 -14px}
+  .pair{gap:0}
+  .card.won::after{right:-6px;font-size:12px;padding:5px 8px}
+  .keys{display:none}
+  #work,#path,#about,#contact{border-radius:24px 24px 0 0;margin-top:-24px}
+  .ab-bg{font-size:62vw}
+}
+@media (hover:none){.fan .tip{display:none}}
+@media (prefers-reduced-motion: reduce){[data-rv]{opacity:1;translate:none}.ab-bg{translate:none}}
+#game h1.split{font-size:clamp(46px,6.2vw,84px);max-width:8.4em}
+@media (max-width:1000px){#game h1.split{max-width:none}}
+.pair:has(.won)+.keys{visibility:hidden}
+.pair{margin-top:36px}
+@media (max-width:1000px){.fan{display:block;position:relative;right:auto;top:auto;translate:none;width:310px;height:270px;margin:34px auto 0}.fan img{width:150px;border-width:7px}.fan img:nth-child(1){left:0;top:30px}.fan img:nth-child(2){left:78px;top:0}.fan img:nth-child(3){left:156px;top:40px}}

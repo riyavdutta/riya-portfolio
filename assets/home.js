@@ -26,16 +26,24 @@
   clock(); setInterval(clock, 15000);
 
   /* ---------- 1. the choice ---------- */
+  // Each round sets two persuasion approaches against each other. 'tr' is the trait a pick reveals,
+  // 'why' explains the post in those terms, and 'brief' is how Riya would write for someone who picks it.
   var R = [
-    { q: 'Which one makes you stop scrolling?', a: { img: 'founder-bottleneck-sick-day.jpg', t: 'The Sick Day' }, b: { img: 'founder-bottleneck-sleepless-night.jpg', t: 'The Sleepless Night' }, p: 1 },
-    { q: 'Which would you send to your sales team?', a: { img: 'crm-graveyard-close-date.jpg', t: 'The Close Date' }, b: { img: 'crm-graveyard-ouija-board.jpg', t: 'The HubSpot Ouija Board' }, p: 4 },
-    { q: 'Which poster gets your click?', a: { img: 'haunted-crm-teaser.jpg', t: 'The Haunted CRM teaser' }, b: { img: 'haunted-crm-three-forecasts.jpg', t: 'The Three Forecasts' }, p: 0 }
+    { q: 'Which one makes you stop scrolling?', p: 1,
+      a: { img: 'founder-bottleneck-sick-day.jpg', t: 'The Sick Day', tr: 'costs you can see', why: 'It shows a cost you can see: one day off, and the pipeline stops.', brief: 'Show the damage: the missed deal, the stalled pipeline, the number that moved.' },
+      b: { img: 'founder-bottleneck-sleepless-night.jpg', t: 'The Sleepless Night', tr: 'costs you can feel', why: 'It shows a cost you can feel: the deals you carry to bed.', brief: 'Lead with the feeling: the 2 a.m. worry, not the spreadsheet.' } },
+    { q: 'Which would you send to your sales team?', p: 4,
+      a: { img: 'crm-graveyard-close-date.jpg', t: 'The Close Date', tr: 'a straight joke', why: 'It’s a straight joke: the close date that moves every month, exactly as it happens.', brief: 'Keep the joke plain. If they’ve lived it, they’ll laugh and share it.' },
+      b: { img: 'crm-graveyard-ouija-board.jpg', t: 'The HubSpot Ouija Board', tr: 'absurd humour', why: 'It’s absurd humour: asking a Ouija board where the pipeline went.', brief: 'Push the metaphor until it’s ridiculous, then land the point.' } },
+    { q: 'Which poster gets your click?', p: 0,
+      a: { img: 'haunted-crm-teaser.jpg', t: 'The Haunted CRM teaser', tr: 'a big promise', why: 'It’s a big promise: horror stories from inside your CRM, coming soon.', brief: 'Open with one big idea, then prove it post by post.' },
+      b: { img: 'haunted-crm-three-forecasts.jpg', t: 'The Three Forecasts', tr: 'one specific problem', why: 'It’s one specific problem: three forecasts, and nobody knows which is real.', brief: 'Skip the slogan. Name one problem they have today.' } }
   ];
   var game = $('#game'), r = 0, picks = [];
   function intro() {
     r = 0; picks = [];
     game.innerHTML = '<p class="k b">RIYA DUTTA · MARKETING CONSULTANT</p><h1>I study why people <em>choose.</em><br>Let’s test you.</h1>' +
-      '<p class="lede">Three quick picks between real posts I made. Choose on instinct, and each pick shows you where it came from.</p>' +
+      '<p class="lede">Three quick picks between real posts I made. Choose on instinct, and at the end I’ll tell you what persuades you, and how I’d write a campaign for you.</p>' +
       '<div class="row"><button class="go" id="start" type="button">Start →</button><a class="ghost" href="#work">Just show me the work</a></div>' +
       '<div class="fan" aria-hidden="true"><img src="' + IMG + 'crm-graveyard-ouija-board.jpg" alt=""><img src="' + IMG + 'haunted-crm-teaser.jpg" alt=""><img src="' + IMG + 'founder-bottleneck-sick-day.jpg" alt=""></div>';
     $('#start').onclick = round;
@@ -50,21 +58,32 @@
   }
   function pick(c) {
     var x = R[r], p = P[x.p], mine = x[c.dataset.s], last = r === R.length - 1;
-    picks.push(mine.t);
+    picks.push({ pick: mine, proj: x.p });
     $$('.card', game).forEach(function (o) { o.disabled = true; o.classList.add(o === c ? 'won' : 'lost'); });
     burst();
     var d = document.createElement('div'); d.className = 'reveal'; d.setAttribute('role', 'status');
-    d.innerHTML = '<h3>You picked “' + mine.t + '”.</h3><p>It’s from <b>' + p.t + '</b> (' + p.k + ').</p>' +
-      '<div class="row"><button class="ghost" type="button" data-proj>Open the project</button><button class="go" type="button">' + (last ? 'See your result →' : 'Next pick →') + '</button></div>';
+    d.innerHTML = '<h3>You picked “' + mine.t + '”.</h3><p>' + mine.why + ' From <b>' + p.t + '</b>.</p>' +
+      '<div class="row"><button class="ghost" type="button" data-proj>Open the project</button><button class="go" type="button">' + (last ? 'See what persuades you →' : 'Next pick →') + '</button></div>';
     game.appendChild(d);
     $('.go', d).onclick = function () { if (last) end(); else { r++; round(); } };
     $('[data-proj]', d).onclick = function () { openProject(x.p); };
   }
   function end() {
-    game.innerHTML = '<p class="k b">THAT’S THREE CHOICES</p><h2>Three picks,<br><em>three campaigns.</em></h2>' +
-      '<p class="lede">You chose ' + picks.map(function (t) { return '“' + t + '”'; }).join(', ') + '. That’s the job: working out what makes people pick one thing over another, then making the thing they pick.</p>' +
-      '<div class="row"><a class="go" href="#work">See all the work ↓</a><button class="ghost" id="again" type="button">Play again</button></div>';
-    $('#again').onclick = intro; burst();
+    var tr = picks.map(function (k) { return k.pick.tr; });
+    var line = 'You’re persuaded by ' + tr[0] + ', ' + tr[1] + ' and ' + tr[2] + '.';
+    game.innerHTML = '<div class="result">' +
+      '<div><p class="k b">YOUR RESULT</p><h2>' + line.replace('You’re persuaded by ', 'You’re persuaded by <em>').replace(/\.$/, '.</em>') + '</h2>' +
+      '<div class="row"><button class="go" id="hello" type="button">Want to know what your audience would pick? Say hello →</button></div>' +
+      '<div class="row" style="margin-top:14px"><button class="ghost" id="again" type="button">Play again</button><a class="ghost" href="#work">See all the work ↓</a></div></div>' +
+      '<div class="brief"><p class="k">HOW I’D WRITE A CAMPAIGN FOR YOU</p><ol>' +
+      picks.map(function (k) { return '<li><b>' + k.pick.tr.charAt(0).toUpperCase() + k.pick.tr.slice(1) + '</b>' + k.pick.brief + '<button type="button" data-proj="' + k.proj + '">From ' + P[k.proj].t + ' →</button></li>'; }).join('') +
+      '</ol></div></div>';
+    $('#again').onclick = intro;
+    $$('[data-proj]', game).forEach(function (b) { b.onclick = function () { openProject(+b.dataset.proj); }; });
+    $('#hello').onclick = function () {
+      sayHello('I played your game. My picks: ' + picks.map(function (k) { return k.pick.t; }).join(', ') + '. ' + line + '\n\nI’d like to talk about ');
+    };
+    burst();
   }
   function burst() {
     if (reduce) return;
@@ -176,7 +195,7 @@
       var w = win('mail', 'New message — to Riya Dutta', '<form class="mail" novalidate><p class="hi">Hello Riya,</p><label for="m1">Message</label><textarea id="m1"></textarea>' +
         '<label for="m2">Your name</label><input id="m2" autocomplete="name"><label for="m3">Your email</label><input id="m3" type="email" autocomplete="email">' +
         '<p class="err" role="alert"></p><button class="pill" type="submit">Send from my mail app →</button></form>', 170 + off(), 40 + off(), 420);
-      var f = $('form', w); if (!f || f.dataset.ok) return; f.dataset.ok = 1;
+      var f = $('form', w); if (!f || f.dataset.ok) return w; f.dataset.ok = 1;
       f.onsubmit = function (e) {
         e.preventDefault();
         var m = $('#m1', f).value.trim(), em = $('#m3', f).value.trim(), nm = $('#m2', f).value.trim(), er = $('.err', f);
@@ -186,6 +205,7 @@
         location.href = 'mailto:riyavdutta@gmail.com?subject=' + encodeURIComponent('Hello' + (nm ? ' from ' + nm : '')) + '&body=' + encodeURIComponent(m + (nm || em ? '\n\n— ' + [nm, em].filter(Boolean).join(', ') : ''));
       };
       $$('input,textarea', f).forEach(function (i) { i.addEventListener('input', function () { $('.err', f).textContent = ''; }); });
+      return w;
     },
     heat: function () {
       var w = win('heat', 'Where you looked', '<div class="heat"><canvas></canvas><p></p></div>', 620 + off(), 40 + off(), 360);
@@ -208,6 +228,12 @@
   new IntersectionObserver(function (es) {
     if (es[0].isIntersecting && !deskOpened) { deskOpened = true; APPS.mail(); setTimeout(APPS.heat, reduce ? 0 : 500); }
   }, { threshold: .35 }).observe(desk);
+  function sayHello(text) {
+    desk.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    var w = APPS.mail(), ta = $('#m1', w);
+    if (ta && !ta.value.trim()) ta.value = text;
+    setTimeout(function () { if (ta) { ta.focus({ preventScroll: true }); ta.setSelectionRange(ta.value.length, ta.value.length); } }, reduce ? 0 : 700);
+  }
   $('#logo').onclick = function () { desk.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
 
   /* the heatmap: where this visitor's attention went on this page (cursor, plus where they paused while scrolling on phones) */

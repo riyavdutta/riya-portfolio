@@ -1,6 +1,6 @@
 # Riya Dutta · Portfolio
 
-The source of [riyavdutta.github.io/riya-portfolio](https://riyavdutta.github.io/riya-portfolio/).
+The source of [riya-folio.vercel.app](https://riya-folio.vercel.app/).
 
 ## What's here
 

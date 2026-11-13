@@ -11,7 +11,7 @@ Strings in the content files are trusted HTML (they're written for this site); p
 import html, json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE_URL = 'https://riyavdutta.github.io/riya-portfolio/'
+SITE_URL = 'https://riya-folio.vercel.app/'
 LINKEDIN = 'https://www.linkedin.com/in/riyaa-duttaa'
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Space+Mono:wght@400;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">')

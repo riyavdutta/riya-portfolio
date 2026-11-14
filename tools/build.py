@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE_URL = 'https://riya-folio.vercel.app/'
 LINKEDIN = 'https://www.linkedin.com/in/riyaa-duttaa'
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Space+Mono:wght@400;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Space+Mono:wght@400;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">')
 esc = html.escape
 
 
@@ -161,6 +161,17 @@ def sec_route(s, root):
     intro = f'<p class="copy" style="margin-bottom:26px">{s["intro"]}</p>' if s.get('intro') else ''
     key = f'<p class="route-key"><i></i>{s["key"]}</p>' if s.get('key') else ''
     return f'<section>{kick_title(s)}{intro}<ol class="route">{items}</ol>{key}</section>'
+
+
+def sec_studiorun(s, root):
+    # the interactive run (assets/studio-run.js); the plain list of stops stays as the no-script fallback
+    you = ' class="you"'
+    items = ''.join(f'<li{you if x.get("you") else ""}><strong>{x["t"]}</strong><span>{x["d"]}</span></li>' for x in s['items'])
+    intro = f'<p class="copy" style="margin-bottom:26px">{s["intro"]}</p>' if s.get('intro') else ''
+    data = json.dumps({k: s[k] for k in ('items', 'rules', 'post')}, ensure_ascii=False).replace('</', '<\\/')
+    return (f'<section>{kick_title(s)}{intro}<ol class="route srun-static">{items}</ol>'
+            f'<div class="srun" data-root="{root}" hidden><ol class="srun-stops" aria-label="The eleven stops"></ol><div class="srun-stage" aria-live="polite"></div></div>'
+            f'<script type="application/json" class="srun-data">{data}</script><script src="{root}assets/studio-run.js" defer></script></section>')
 
 
 def sec_text(s, root):

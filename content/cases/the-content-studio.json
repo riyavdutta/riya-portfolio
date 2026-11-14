@@ -41,9 +41,10 @@
    ]
   },
   {
-   "type": "route",
-   "kick": "THE ROUTE",
-   "title": "From brief to posted, in eleven stops.",
+   "type": "studiorun",
+   "kick": "THE ROUTE, LIVE",
+   "title": "Watch one real post go from brief to posted.",
+   "intro": "This is “The Night Shift”, the first post of The Founder Bottleneck. Click any stop, or press Run it and follow it through all eleven. The four stops marked RD are where I sign off.",
    "items": [
     {
      "t": "Brief",
@@ -94,7 +95,116 @@
      "you": true
     }
    ],
-   "key": "Where I sign off."
+   "rules": [
+    {
+     "t": "The visual is the hook",
+     "d": "One statement per image; one line of at most eight words per slide or scene."
+    },
+    {
+     "t": "No invented numbers",
+     "d": "No statistics, prices or figures that can’t be backed up."
+    },
+    {
+     "t": "No client names",
+     "d": "Client work stays out of public posts."
+    },
+    {
+     "t": "The precision test",
+     "d": "Every noun has one meaning to a B2B tech founder: not “forecast” but “sales forecast”, not “list” but “CRM contact list”."
+    },
+    {
+     "t": "Pain, not solutions",
+     "d": "Posts show the problem and what it costs. The fix is a conversation, not a free how-to."
+    }
+   ],
+   "post": {
+    "title": "The Night Shift",
+    "when": "Mon 12 Oct · 11:15",
+    "day": "Mon 12 Oct",
+    "time": "11:15",
+    "video": "assets/video/founder-bottleneck-01.mp4",
+    "poster": "assets/img/founder-bottleneck-01.jpg",
+    "caption": [
+     "Your team logged off hours ago.",
+     "But the proposal, the pricing question and the follow-up only you can send are still open on your laptop.",
+     "So dinner waits. Then the evening goes.",
+     "The work didn't stop. It waited for you.",
+     "What's still waiting on you tonight?"
+    ],
+    "cta": "If this sounds like your week, DM me BOTTLENECK.",
+    "brief": [
+     [
+      "FOR",
+      "Founders of small and mid-sized B2B tech companies"
+     ],
+     [
+      "ABOUT",
+      "Chapter 1 of The Founder Bottleneck: it costs your evenings"
+     ],
+     [
+      "FORMAT",
+      "Video"
+     ],
+     [
+      "GOES OUT",
+      "Mon 12 Oct · 11:15"
+     ],
+     [
+      "READER SHOULD",
+      "Reply in private: “If this sounds like your week, DM me BOTTLENECK.”"
+     ]
+    ],
+    "plan": [
+     {
+      "day": "MON 12",
+      "c": "#FFB14E",
+      "t": "It costs your evenings",
+      "slot": "11:15 · The Night Shift"
+     },
+     {
+      "day": "TUE 13",
+      "c": "#FFB14E",
+      "t": "It costs your evenings"
+     },
+     {
+      "day": "WED 14",
+      "c": "#8FB4FF",
+      "t": "It costs your buyers"
+     },
+     {
+      "day": "THU 15",
+      "c": "#8FB4FF",
+      "t": "It costs your buyers"
+     },
+     {
+      "day": "FRI 16",
+      "c": "#ecaab2",
+      "t": "It costs your next year"
+     }
+    ],
+    "files": [
+     [
+      "finished/",
+      0
+     ],
+     [
+      "└ founder-bottleneck/",
+      0
+     ],
+     [
+      "   └ 2026-10-12 · the-night-shift/",
+      1
+     ],
+     [
+      "      ├ video.mp4",
+      1
+     ],
+     [
+      "      └ caption.txt",
+      1
+     ]
+    ]
+   }
   },
   {
    "type": "rules",

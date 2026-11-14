@@ -16,7 +16,7 @@ A professional portfolio with a touch of personal branding. It should show what 
 ## 3. Content
 
 - **Home:** postcard hero, About with three proof points, Selected work (five folders), What's in my kit, Contact.
-- **Selected work, in order:** The Haunted CRM, The Founder Bottleneck, The Content Studio, the B2Ne website, CRM Graveyard. TRACE-BRL has its own case study, linked from About and listed on the Work page.
+- **Selected work, in order:** The Haunted CRM, The Founder Bottleneck, The Content Studio, the B2Ne website, CRM Graveyard. TRACE-BRL has its own case study, linked from About and listed on the Work page. The Gifting Index, an independent live data site (gifting-index.vercel.app), is listed on the Work page only.
 - **Case studies:** brief, audience, idea, rules, the work itself, lead asset, look, how it was made. Results appear only once they've been measured. Each one is generated from a file in `content/cases/`.
 - **Work page:** every piece, filterable by Marketing, Design, Build and Research, so new projects slot in by tag.
 - **Credits:** B2Ne campaigns are "Made for B2Ne", and Riya ran them end to end: concept, copy, design, video, posting and analysis. The B2Ne website is "Co-built with B2Ne’s founder" (the founder isn’t named on the site); Riya made the About, How We Help, Services, Pricing and Nexus Academy pages; the site's seven menu pages are shown on her portfolio. B2Ne has approved showing this work.

@@ -1,5 +1,5 @@
 {
- "description": "Work by Riya Dutta: LinkedIn campaigns, a website, the content system behind them, and research on how people decide.",
+ "description": "Work by Riya Dutta: LinkedIn campaigns, a website, the content system behind them, research on how people decide, and a live data site.",
  "intro": "Campaigns, a website, the system that makes the campaigns, and research. Filter by what each piece shows.",
  "filters": [
   "Marketing",
@@ -86,6 +86,20 @@
    "color": "sage",
    "tags": [
     "Research"
+   ]
+  },
+  {
+   "no": "007",
+   "href": "the-gifting-index/",
+   "title": "The Gifting Index",
+   "kind": "LIVE DATA SITE · 2026",
+   "blurb": "Which luxury fragrance houses get bought as gifts? Google searches and Wikipedia data, updated daily.",
+   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"December lift in Google searches: Jo Malone ×2.02, Diptyque ×2.04, Le Labo ×1.58, Byredo ×1.52\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#f6d8d6\"/><rect x=\"12\" y=\"12\" width=\"616\" height=\"376\" fill=\"#fffdf0\"/><rect x=\"20\" y=\"20\" width=\"600\" height=\"360\" fill=\"none\" stroke=\"#e2c9b3\" stroke-width=\"2\" stroke-dasharray=\"2 5\"/><text x=\"60\" y=\"52\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"2\" fill=\"#856a56\">THE GIFTING INDEX · DECEMBER SEARCHES</text><text x=\"60\" y=\"68\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#856a56\">- - -  A TYPICAL MONTH</text><rect x=\"88.6\" y=\"144.8\" width=\"72.8\" height=\"185.2\" fill=\"#65232b\"/><text x=\"125.0\" y=\"134.8\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×2.02</text><text x=\"125.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">JO MALONE</text><rect x=\"218.6\" y=\"143.0\" width=\"72.8\" height=\"187.0\" fill=\"#56707f\"/><text x=\"255.0\" y=\"133.0\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×2.04</text><text x=\"255.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">DIPTYQUE</text><rect x=\"348.6\" y=\"185.2\" width=\"72.8\" height=\"144.8\" fill=\"#b4546e\"/><text x=\"385.0\" y=\"175.2\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×1.58</text><text x=\"385.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">LE LABO</text><rect x=\"478.6\" y=\"190.7\" width=\"72.8\" height=\"139.3\" fill=\"#8a6d2f\"/><text x=\"515.0\" y=\"180.7\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×1.52</text><text x=\"515.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">BYREDO</text><line x1=\"54\" x2=\"586\" y1=\"238.3\" y2=\"238.3\" stroke=\"#432720\" stroke-width=\"1\" stroke-dasharray=\"3 4\" opacity=\".6\"/></svg>",
+   "color": "blush",
+   "tags": [
+    "Marketing",
+    "Research",
+    "Build"
    ]
   }
  ]

@@ -16,8 +16,7 @@
     { t: 'The Founder Bottleneck', k: 'LinkedIn campaign · Oct 2026', s: 'the-founder-bottleneck', img: 'founder-bottleneck-sick-day.jpg', c: '#0b0c22', n: [['15', 'pieces'], ['3', 'chapters'], ['4', 'videos']], d: 'One week, fifteen pieces on what stops when everything runs through the founder: images, carousels and short videos.' },
     { t: 'The Content Studio', k: 'System · 2026', s: 'the-content-studio', img: null, c: '#07081a', n: [['11', 'stops'], ['1', 'brief in'], ['1', 'post out']], d: 'The production system behind every campaign here: a brief goes in, and a checked, captioned post comes out. Videos, carousels and soundtracks are built in code.' },
     { t: 'The B2Ne website', k: 'Website · 2026', s: 'the-b2ne-website', img: 'b2ne-how-we-help.jpg', c: '#dfe9ff', n: [['5', 'pages I made']], d: 'Co-built with B2Ne’s founder. I made the About, How We Help, Services, Pricing and Nexus Academy pages.' },
-    { t: 'CRM Graveyard', k: 'LinkedIn series · 2026', s: 'crm-graveyard', img: 'crm-graveyard-close-date.jpg', c: '#0a1466', n: [['14', 'posts'], ['2', 'videos']], d: 'Fourteen posts and two short videos. One B2Ne look, a different visual idea for every post, tracked in a ledger so nothing repeats.' },
-    { t: 'TRACE-BRL', k: 'Research · 2025 –', s: 'trace-brl', img: null, c: '#cfe3c1', n: [['5', 'dimensions'], ['32', 'research initiatives']], d: 'A five-dimension maturity model for behavioural research labs, applied across 32 research initiatives. Co-authored; under review at Cognition, Technology & Work.' }
+    { t: 'CRM Graveyard', k: 'LinkedIn series · 2026', s: 'crm-graveyard', img: 'crm-graveyard-close-date.jpg', c: '#0a1466', n: [['14', 'posts'], ['2', 'videos']], d: 'Fourteen posts and two short videos. One B2Ne look, a different visual idea for every post, tracked in a ledger so nothing repeats.' }
   ];
 
   /* ---------- clock (menu bar and bento) ---------- */

@@ -220,18 +220,19 @@
       return (cl ? 'Hi Riya,\nI played your game. ' + cl.charAt(0).toUpperCase() + cl.slice(1) + '.\n\nI’d like to talk about ' : 'Hi Riya,\n\nI’d like to talk about ') +
         (topic ? topic.charAt(0).toLowerCase() + topic.slice(1) + '. ' : '');
     }
-    ta.value = draft();
-    ta.addEventListener('input', function () { edited = true; $('.err', f).textContent = ''; });
-    $$('#hc .chip', f).forEach(function (c) { c.onclick = function () { var i = +c.dataset.i; on[i] = !on[i]; c.setAttribute('aria-pressed', on[i]); if (!edited) ta.value = draft(); }; });
+    function fit() { ta.style.height = 'auto'; ta.style.height = Math.max(160, ta.scrollHeight + 6) + 'px'; }
+    ta.value = draft(); setTimeout(fit, 0);
+    ta.addEventListener('input', function () { edited = true; $('.err', f).textContent = ''; fit(); });
+    $$('#hc .chip', f).forEach(function (c) { c.onclick = function () { var i = +c.dataset.i; on[i] = !on[i]; c.setAttribute('aria-pressed', on[i]); if (!edited) ta.value = draft(); fit(); }; });
     $$('#tc .chip', f).forEach(function (c) {
       c.onclick = function () {
         var was = c.getAttribute('aria-pressed') === 'true';
         $$('#tc .chip', f).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
         c.setAttribute('aria-pressed', !was); topic = was ? '' : c.textContent;
-        if (!edited) ta.value = draft(); else if (topic) ta.value = ta.value.replace(/\s*$/, ' ') + topic.toLowerCase() + '. ';
+        if (!edited) ta.value = draft(); else if (topic) ta.value = ta.value.replace(/\s*$/, ' ') + topic.toLowerCase() + '. '; fit();
       };
     });
-    $('#blank', f).onclick = function () { ta.value = 'Hi Riya,\n\n'; edited = true; ta.focus(); };
+    $('#blank', f).onclick = function () { ta.value = 'Hi Riya,\n\n'; edited = true; fit(); ta.focus(); };
     $('.x', f).onclick = function () { slot.innerHTML = ''; $('#hello').focus(); };
     $$('input', f).forEach(function (i) { i.addEventListener('input', function () { $('.err', f).textContent = ''; }); });
     f.onsubmit = function (e) {

@@ -416,3 +416,34 @@ p{max-width:none}
 .compose .reset{background:none;border:0;font-family:var(--mono);font-size:11px;color:var(--cherry);text-decoration:underline}
 .compose .x{position:absolute;right:14px;top:12px;width:30px;height:30px;border-radius:50%;border:2px solid var(--cherry);background:none;color:var(--cherry);font-weight:800}
 @media (max-width:860px){.final{grid-template-columns:1fr}.final .hand{position:relative;top:0;height:300px}.compose .two{grid-template-columns:1fr}.compose{padding:18px}}
+
+/* ===================== phone fixes ===================== */
+/* pull round: cards size to their half instead of a fixed width, labels sit below them */
+.pull .half .pcard{width:min(76%,220px)}
+.pull .goal{top:auto;bottom:10px}
+/* links inside the reading and plan read left to right */
+.plan dd button,.brief li button{text-align:left}
+/* long presses on the scale should hold, not select text */
+.hold,.scale .pan .pcard{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+@media (max-width:760px){
+  /* your hand: smaller, lower, clear of the menu bar */
+  .final .hand{height:300px;margin-top:8px}
+  .final .hand .pcard{--cw:124px;margin-left:-62px;top:44px}
+  .final .hand .pcard:nth-child(1){transform:rotate(-14deg) translateX(-62px)}
+  .final .hand .pcard:nth-child(3){transform:rotate(14deg) translateX(62px)}
+  /* plan: label above its line */
+  .plan dl{grid-template-columns:1fr;gap:2px}
+  .plan dd{margin-bottom:12px}
+  .read{grid-template-columns:34px 1fr;padding:12px}
+  .read i{font-size:22px}
+  /* the card */
+  .compose textarea{font-size:17px;line-height:30px;background:repeating-linear-gradient(transparent 0 29px,#e5d3c6 29px 30px)}
+  /* work list: number beside the title even when it wraps */
+  .klist button{display:grid;grid-template-columns:32px 1fr;gap:2px 10px;align-items:baseline}
+  .klist em{grid-column:2;margin-left:0;width:auto}
+  /* about tiles grow to fit their words */
+  .bento{grid-auto-rows:minmax(140px,auto)}
+  .bento .flip{min-height:150px}
+  .bento .poll{grid-column:1/-1}
+  .t .quote{font-size:20px}
+}

@@ -6,7 +6,7 @@
  *   #work     decoding list, image follows the cursor, click = the pieces spiral into the campaign
  *   #look     a torch over every campaign
  *   #path     pinned scroll through five stops
- *   #about    bento (flips, poll, live clock)
+ *   #about    bento (flips, live clock); its headline words change colour on hover
  *   #table    posts you can throw
  *   #contact  "Let's talk." with a magnetic button and the desktop windows
  * Behaviour is in home.js. Phones get their own layouts at the bottom.
@@ -249,7 +249,7 @@ section{position:relative}
 .t b{font:800 22px/1.1 var(--display);color:var(--b)}
 .t b.quote{font-size:26px;letter-spacing:-.02em}
 .t p{font-size:15px;line-height:1.45}
-.s2{grid-column:span 2}.r2{grid-row:span 2}.full{grid-column:1/-1}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.r2{grid-row:span 2}.full{grid-column:1/-1}
 .t.dark{background:var(--b);border:0;color:var(--cream)}.t.dark b{color:var(--cream)}.t.dark small{color:#f4efe6aa}
 .t.photo{padding:0;overflow:hidden;background:center 30%/cover}
 .clock{font:800 50px var(--display);letter-spacing:-.02em;color:var(--cream);font-variant-numeric:tabular-nums}
@@ -263,10 +263,6 @@ section{position:relative}
 .flip .fb{transform:rotateY(180deg);background:var(--c,var(--b));color:var(--fg,var(--cream));border:0}
 .flip .fb b,.flip .fb small{color:inherit}.flip .fb small{opacity:.75}
 .flip .fh{position:absolute;right:16px;bottom:14px;font:700 10px var(--display);letter-spacing:.1em;color:var(--mute)}
-.poll>div{display:flex;gap:8px;margin-top:8px}
-.poll button{flex:1;border:2px solid var(--b);border-radius:999px;background:var(--paper);color:var(--b);padding:10px;font:700 14px var(--display);position:relative;overflow:hidden}
-.poll button i{position:absolute;inset:0 auto 0 0;width:0;background:var(--c,#80002033);transition:width .6s}
-.poll button span{position:relative}
 
 /* ---------- 6. throw the posts ---------- */
 .tablesec{padding:90px 0}
@@ -365,8 +361,7 @@ section{position:relative}
   .pin .big b{font-size:24px}.pin .big p{font-size:14px}.pin .big em{font-size:13px;margin-bottom:6px}
   .pin .steps li{grid-template-columns:90px 1fr;padding:7px 0}.pin .steps b{font-size:15px}.pin .steps small{font-size:12px}
   .pinhint{display:none}
-  .bento{grid-template-columns:1fr 1fr;gap:10px}.s2,.full{grid-column:1/-1}
-  .bento .poll{grid-column:1/-1}
+  .bento{grid-template-columns:1fr 1fr;gap:10px}.s2,.s3,.full{grid-column:1/-1}
   .clock{font-size:38px}
   .t b.quote{font-size:21px}
   .toss{height:420px}.toss img{width:110px;border-width:4px}

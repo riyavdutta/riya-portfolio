@@ -1,6 +1,6 @@
 /*
  * Home page behaviour. Section by section, matching home.css.
- * Nothing leaves the browser: the poll and the heatmap live in memory only.
+ * Nothing leaves the browser: the heatmap lives in memory only.
  */
 (function () {
   'use strict';
@@ -23,11 +23,21 @@
     { t: 'The Founder Bottleneck', k: 'LinkedIn campaign · Oct 2026', s: 'the-founder-bottleneck', img: 'founder-bottleneck-sick-day.jpg', pieces: seq('founder-bottleneck-', 15), n: [['15', 'pieces'], ['3', 'chapters'], ['4', 'videos']], d: 'One week, fifteen pieces on what stops when everything runs through the founder: images, carousels and short videos.' },
     { t: 'The Content Studio', k: 'System · 2026', s: 'the-content-studio', img: 'content-studio-route.svg', pieces: Array(11).join('.').split('.').map(function () { return 'content-studio-route.svg'; }), n: [['11', 'stops'], ['1', 'brief in'], ['1', 'post out']], d: 'The production system behind every campaign here: a brief goes in, and a checked, captioned post comes out. Videos, carousels and soundtracks are built in code.' },
     { t: 'The B2Ne website', k: 'Website · 2026', s: 'the-b2ne-website', img: 'b2ne-page-how-we-help.jpg', pieces: ['b2ne-page-about-us.jpg', 'b2ne-page-how-we-help.jpg', 'b2ne-page-nexus-academy.jpg', 'b2ne-page-our-crew.jpg', 'b2ne-page-pricing.jpg', 'b2ne-page-services.jpg', 'b2ne-page-website-health-check.jpg'], n: [['5', 'pages I made']], d: 'Co-built with B2Ne’s founder. I made the About, How We Help, Services, Pricing and Nexus Academy pages.' },
-    { t: 'CRM Graveyard', k: 'LinkedIn series · 2026', s: 'crm-graveyard', img: 'crm-graveyard-close-date.jpg', pieces: seq('crm-graveyard-', 16), n: [['14', 'posts'], ['2', 'videos']], d: 'Fourteen posts and two short videos. One B2Ne look, a different visual idea for every post, tracked in a ledger so nothing repeats.' }
+    { t: 'CRM Graveyard', k: 'LinkedIn series · 2026', s: 'crm-graveyard', img: 'crm-graveyard-close-date.jpg', pieces: seq('crm-graveyard-', 16), n: [['14', 'posts'], ['2', 'videos']], d: 'Fourteen posts and two short videos. One B2Ne look, a different visual idea for every post, tracked in a ledger so nothing repeats.' },
+    { t: 'The Gifting Index', k: 'Live data site · 2026', s: 'the-gifting-index', img: 'gifting-index-december.svg', pieces: ['december', 'diptyque', 'jo-malone', 'le-labo', 'byredo', 'finding'].map(function (x) { return 'gifting-index-' + x + '.svg'; }), n: [['4', 'fragrance houses'], ['8', 'Decembers'], ['2', 'live signals']], d: 'Which luxury fragrance houses do people buy as gifts? Google searches and Wikipedia data, refreshed every morning: Jo Malone and Diptyque roughly double every December; Le Labo and Byredo rise by about half.' }
   ];
 
   /* ---------- fun colours on headlines ---------- */
   // (the bright colours are kept for the opening headline only; everything else stays burgundy)
+  // the About headline: hover or tap a word and it takes a new bright colour
+  (function () {
+    var h = $('#about-h'), rnd = function (not) { var c; do { c = FUN[Math.floor(Math.random() * FUN.length)]; } while (c === not); return c; };
+    h.innerHTML = h.textContent.split(' ').map(function (w) { return '<span class="fw">' + w + '</span>'; }).join(' ');
+    $$('.fw', h).forEach(function (w) {
+      var go = function () { w.style.color = rnd(w.style.color); w.classList.add('pop'); setTimeout(function () { w.classList.remove('pop'); }, 300); };
+      w.addEventListener('mouseenter', go); w.addEventListener('click', go);
+    });
+  })();
 
   /* ---------- clock (menu bar and bento) ---------- */
   function timeIn() { return new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }); }
@@ -446,14 +456,6 @@
   $$('#bento .flip').forEach(function (f, i) {
     var c = FUN[(i * 3 + 2) % FUN.length]; f.style.setProperty('--c', c); f.style.setProperty('--fg', ink(c));
     f.onclick = function () { f.style.transform = ''; f.classList.toggle('on'); f.setAttribute('aria-pressed', f.classList.contains('on')); };
-  });
-  var votes = { a: 0, b: 0 };
-  $$('.poll button').forEach(function (b, i) {
-    b.style.setProperty('--c', FUN[i ? 3 : 4] + '55');
-    b.onclick = function () {
-      votes[b.dataset.v]++; var tot = votes.a + votes.b;
-      $$('.poll button').forEach(function (x) { var pc = Math.round(votes[x.dataset.v] / tot * 100); $('i', x).style.width = pc + '%'; $('span', x).textContent = (x.dataset.v === 'a' ? 'Ghosts ' : 'Founders ') + pc + '%'; });
-    };
   });
 
   /* ---------- 6. throwable posts ---------- */

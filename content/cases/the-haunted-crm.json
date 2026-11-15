@@ -1,0 +1,360 @@
+{
+ "slug": "the-haunted-crm",
+ "no": "001",
+ "year": "2026",
+ "credit": "MADE FOR B2NE",
+ "tag": "Campaign · Halloween 2026",
+ "title": "The Haunted CRM",
+ "sub": "A Halloween campaign for B2Ne that told the everyday problems inside a sales team’s tools as horror stories.",
+ "description": "A Halloween LinkedIn campaign for B2Ne that told the everyday problems inside a sales team’s tools as horror stories. Concept, copy, design, video and posting by Riya Dutta.",
+ "postmark": "MADE FOR B2NE · 6–10 OCT ·",
+ "facts": [
+  [
+   "CLIENT",
+   "B2Ne (Business To Nexus)"
+  ],
+  [
+   "FOR",
+   "Founders and sales leads at small and mid-sized Nordic tech companies"
+  ],
+  [
+   "RAN",
+   "6–10 Oct 2026, on LinkedIn"
+  ],
+  [
+   "MADE",
+   "6 images, 7 carousels and 2 videos, plus a teaser, a trailer and a checklist"
+  ],
+  [
+   "MY ROLE",
+   "Everything, end to end: concept, copy, design, video, posting and reading the results. I run B2Ne’s LinkedIn campaigns on my own."
+  ]
+ ],
+ "hero": {
+  "img": "assets/img/haunted-crm-teaser.jpg",
+  "alt": "The Haunted CRM teaser post"
+ },
+ "sections": [
+  {
+   "type": "cards",
+   "items": [
+    {
+     "k": "THE BRIEF",
+     "t": "Grow B2Ne’s organic audience on LinkedIn, and use the campaign as a test: how people react to different kinds of series, what they interact with, and when they’re most active."
+    },
+    {
+     "k": "THE AUDIENCE",
+     "t": "Founders and sales leads at small and mid-sized tech companies in the Nordics: the people who own the contact list, the automatic emails, the sales spreadsheet and the open deals."
+    }
+   ]
+  },
+  {
+   "type": "statement",
+   "kick": "THE IDEA",
+   "title": "Your sales tools are haunted.",
+   "lead": "Not by monsters. By the things nobody cleaned up.",
+   "tiles": [
+    {
+     "t": "Ghost contacts",
+     "d": "People who stopped replying years ago, still marked “active”."
+    },
+    {
+     "t": "Zombie emails",
+     "d": "Automatic emails nobody remembers setting up, still going out every Monday at 06:00."
+    },
+    {
+     "t": "The cursed spreadsheet",
+     "d": "Built for three months, still holding the sales numbers years later."
+    },
+    {
+     "t": "Dead deals",
+     "d": "No next step written down, still counted as open."
+    },
+    {
+     "t": "The haunted inbox",
+     "d": "A customer’s message on the website contact form that nobody answers."
+    }
+   ],
+   "close": "Every story ends where B2Ne starts: someone has to own the clean-up."
+  },
+  {
+   "type": "rules",
+   "kick": "THE RULES",
+   "title": "Checked line by line before anything shipped.",
+   "items": [
+    {
+     "t": "Plain",
+     "d": "Someone with no sales, marketing or tech background understands every word. No “pipeline”, no “workflow”, no “RevOps”."
+    },
+    {
+     "t": "Concrete",
+     "d": "Name the exact thing: contact list, automatic email, sales spreadsheet, contact form. Never just “tools” or “process”."
+    },
+    {
+     "t": "No invented statistics",
+     "d": "Numbers are details of the story, like Deal #4471 or 06:00, never claims about the market."
+    },
+    {
+     "t": "Short",
+     "d": "One headline and at most one short line per slide or scene. Cut words, not reading time."
+    }
+   ]
+  },
+  {
+   "type": "sheet",
+   "kick": "THE WEEK",
+   "title": "Five days, fifteen posts.",
+   "intro": "Three posts a day at the same three times (Stockholm time), so every format and topic got tested in every slot. Pick a post to read what went out with it.",
+   "items": [
+    {
+     "no": "01",
+     "title": "Sales Forecast Spreadsheet",
+     "when": "Tue 6 Oct · 08:00",
+     "text": "Somewhere on your shared drive is a spreadsheet nobody is allowed to close.\nIt started as a stopgap. Now your sales forecast depends on it, and nobody spots the broken formula until the board meeting.\nFinding where the forecast really lives is where we start at business2nexus.com\nWhere does yours live today?",
+     "img": "assets/img/haunted-crm-01.jpg",
+     "fmt": "Video",
+     "video": "assets/video/haunted-crm-01.mp4"
+    },
+    {
+     "no": "02",
+     "title": "CRM Contacts Nobody Owns",
+     "when": "Tue 6 Oct · 12:00",
+     "text": "Your CRM contact count goes up every month. Your replies don't.\nNobody owns the old contacts, so every campaign keeps reaching the same silent names.\nWe build CRMs where every contact has an owner: business2nexus.com\nWhen did your team last remove one?",
+     "img": "assets/img/haunted-crm-02.jpg",
+     "fmt": "Carousel",
+     "slides": [
+      "assets/img/haunted-crm-02-s1.jpg",
+      "assets/img/haunted-crm-02-s2.jpg",
+      "assets/img/haunted-crm-02-s3.jpg",
+      "assets/img/haunted-crm-02-s4.jpg",
+      "assets/img/haunted-crm-02-s5.jpg"
+     ]
+    },
+    {
+     "no": "03",
+     "title": "Website Contact Form",
+     "when": "Tue 6 Oct · 15:00",
+     "text": "Marketing built the form. Sales owns the pipeline. Support watches the inbox.\nSo who replies when a buyer asks for pricing?\nClosing gaps like this between marketing and sales is what we do at business2nexus.com",
+     "img": "assets/img/haunted-crm-03.jpg",
+     "fmt": "Image"
+    },
+    {
+     "no": "04",
+     "title": "Automated Emails Nobody Checks",
+     "when": "Wed 7 Oct · 08:00",
+     "text": "Your company still sends emails nobody on your team has read in a long time.\nEnded webinars, old offers, signatures from people who left. Your buyers read every one as your company today.\nIt's often where we find the oldest ghosts at business2nexus.com",
+     "img": "assets/img/haunted-crm-04.jpg",
+     "fmt": "Carousel",
+     "slides": [
+      "assets/img/haunted-crm-04-s1.jpg",
+      "assets/img/haunted-crm-04-s2.jpg",
+      "assets/img/haunted-crm-04-s3.jpg",
+      "assets/img/haunted-crm-04-s4.jpg",
+      "assets/img/haunted-crm-04-s5.jpg"
+     ]
+    },
+    {
+     "no": "05",
+     "title": "More CRM Contacts",
+     "when": "Wed 7 Oct · 12:00",
+     "text": "A bigger contact list looks like progress on a dashboard.\nBut contacts who stopped replying years ago aren't pipeline. They're noise around your real buyers.\nWe help teams find the buyers who are actually there: business2nexus.com",
+     "img": "assets/img/haunted-crm-05.jpg",
+     "fmt": "Image"
+    },
+    {
+     "no": "06",
+     "title": "Deals That Stopped Moving",
+     "when": "Wed 7 Oct · 15:00",
+     "text": "Your pipeline looks full. Some of it hasn't moved in months.\nNobody wants to mark a deal lost, so the forecast keeps counting revenue that won't come.\nSeparating live deals from haunted ones is part of our work at business2nexus.com\nHow much of your pipeline would survive a phone call today?",
+     "img": "assets/img/haunted-crm-06.jpg",
+     "fmt": "Carousel",
+     "slides": [
+      "assets/img/haunted-crm-06-s1.jpg",
+      "assets/img/haunted-crm-06-s2.jpg",
+      "assets/img/haunted-crm-06-s3.jpg",
+      "assets/img/haunted-crm-06-s4.jpg",
+      "assets/img/haunted-crm-06-s5.jpg"
+     ]
+    },
+    {
+     "no": "07",
+     "title": "Website Form Leads",
+     "when": "Thu 8 Oct · 08:00",
+     "text": "The buyer didn't go quiet. They went to whoever replied first.\nMarketing, sales and support all saw the pricing request in info@. Nobody owned it.\nWe set up the path from website form to a named rep at business2nexus.com",
+     "img": "assets/img/haunted-crm-07.jpg",
+     "fmt": "Video",
+     "video": "assets/video/haunted-crm-07.mp4"
+    },
+    {
+     "no": "08",
+     "title": "The Monday Sales Meeting",
+     "when": "Thu 8 Oct · 12:00",
+     "text": "The first question in your sales meeting shouldn't be \"which spreadsheet?\"\nWhen nobody trusts the CRM, everyone keeps a copy, and the copies never match.\nGetting to one sales number everyone believes is what we do at business2nexus.com",
+     "img": "assets/img/haunted-crm-08.jpg",
+     "fmt": "Carousel",
+     "slides": [
+      "assets/img/haunted-crm-08-s1.jpg",
+      "assets/img/haunted-crm-08-s2.jpg",
+      "assets/img/haunted-crm-08-s3.jpg",
+      "assets/img/haunted-crm-08-s4.jpg",
+      "assets/img/haunted-crm-08-s5.jpg"
+     ]
+    },
+    {
+     "no": "09",
+     "title": "Nurture Emails",
+     "when": "Thu 8 Oct · 15:00",
+     "text": "A nurture sequence in your email tool is still promoting last year's webinar.\nNobody switched it off, because nobody knew it was on.\nWe find the emails nobody owns at business2nexus.com",
+     "img": "assets/img/haunted-crm-09.jpg",
+     "fmt": "Image"
+    },
+    {
+     "no": "10",
+     "title": "The Weekend Ghost",
+     "when": "Fri 9 Oct · 08:00",
+     "text": "Friday evening, a buyer fills in your website contact form.\nBut it lands in the shared info@ inbox, and nobody is named to answer it.\nSo on Monday you find it under the newsletters. They've already booked a demo elsewhere.\nWho reads your info@ inbox on a weekend?",
+     "img": "assets/img/haunted-crm-10.jpg",
+     "fmt": "Carousel",
+     "slides": [
+      "assets/img/haunted-crm-10-s1.jpg",
+      "assets/img/haunted-crm-10-s2.jpg",
+      "assets/img/haunted-crm-10-s3.jpg",
+      "assets/img/haunted-crm-10-s4.jpg"
+     ]
+    },
+    {
+     "no": "11",
+     "title": "The Three Forecasts",
+     "when": "Fri 9 Oct · 12:00",
+     "text": "Forecast. Forecast FINAL. Forecast FINAL use this.\nEach tab was the real sales forecast once. But nobody owns the spreadsheet, so nobody deletes the old ones.\nSo before every sales meeting, someone asks which number to trust.\nWhich tab does your team open first?",
+     "img": "assets/img/haunted-crm-11.jpg",
+     "fmt": "Image"
+    },
+    {
+     "no": "12",
+     "title": "The Quiet Stage",
+     "when": "Fri 9 Oct · 15:00",
+     "text": "The proposal went out, and the deal moved to \"Proposal sent\".\nBut nobody set a next step, so the deal card never moved again.\nSo the stage fills up one forgotten deal at a time, and nobody notices until the pipeline review.\nWhich stage in your sales pipeline has gone quiet?",
+     "img": "assets/img/haunted-crm-12.jpg",
+     "fmt": "Image"
+    },
+    {
+     "no": "13",
+     "title": "The Booth Ghosts",
+     "when": "Sat 10 Oct · 08:00",
+     "text": "The event went well, and the badge scans from your booth went into the CRM that week.\nBut nobody was named to follow up, so every contact waited for someone else.\nWeeks later, a sales rep finally emails. The reply: \"Sorry, which company are you?\"\nWho follows up on your event leads?",
+     "img": "assets/img/haunted-crm-13.jpg",
+     "fmt": "Carousel",
+     "slides": [
+      "assets/img/haunted-crm-13-s1.jpg",
+      "assets/img/haunted-crm-13-s2.jpg",
+      "assets/img/haunted-crm-13-s3.jpg",
+      "assets/img/haunted-crm-13-s4.jpg"
+     ]
+    },
+    {
+     "no": "14",
+     "title": "The Ghost Signature",
+     "when": "Sat 10 Oct · 12:00",
+     "text": "A new customer signs, and your automated welcome email goes out.\nBut it's signed by someone who left the company, so their first reply bounces.\nNobody notices, because nobody is named to check that email.\nWhen did someone last read your welcome email?",
+     "img": "assets/img/haunted-crm-14.jpg",
+     "fmt": "Carousel",
+     "slides": [
+      "assets/img/haunted-crm-14-s1.jpg",
+      "assets/img/haunted-crm-14-s2.jpg",
+      "assets/img/haunted-crm-14-s3.jpg",
+      "assets/img/haunted-crm-14-s4.jpg"
+     ]
+    },
+    {
+     "no": "15",
+     "title": "The Zombie Deal",
+     "when": "Sat 10 Oct · 15:00",
+     "text": "Nobody has touched this deal in weeks. There's no next step and no close date.\nBut it's still in the sales forecast, still \"warm\" in someone's head.\nSo the forecast counts money that isn't coming.\nWhich deal in your sales forecast is already dead?",
+     "img": "assets/img/haunted-crm-15.jpg",
+     "fmt": "Image"
+    }
+   ]
+  },
+  {
+   "type": "figure",
+   "kick": "THE LEAD ASSET",
+   "title": "Is your CRM haunted?",
+   "img": "assets/img/haunted-crm-checklist.jpg",
+   "alt": "The ‘Is your CRM haunted?’ checklist: eleven symptoms to tick",
+   "paras": [
+    "On the last day, the first comment carried a checklist of eleven symptoms. Ticked more than a few? DM “HAUNTED”. Every reply got the checklist with a short personal note: no pitch, and an easy way out.",
+    "The checklist names the symptoms, never the fixes. The fix is the conversation."
+   ]
+  },
+  {
+   "type": "palette",
+   "kick": "THE LOOK",
+   "title": "Office things as horror props.",
+   "swatches": [
+    {
+     "n": "Night",
+     "hex": "#07081A",
+     "use": "ground"
+    },
+    {
+     "n": "Navy",
+     "hex": "#051367",
+     "use": "ground"
+    },
+    {
+     "n": "Indigo",
+     "hex": "#2D31FA",
+     "use": "ground"
+    },
+    {
+     "n": "Ice",
+     "hex": "#DFF6FF",
+     "use": "type"
+    },
+    {
+     "n": "Pumpkin",
+     "hex": "#FF6A00",
+     "use": "what is wrong"
+    },
+    {
+     "n": "Slime",
+     "hex": "#C7F000",
+     "use": "what is undead"
+    }
+   ],
+   "pairs": [
+    [
+     "Contact cards",
+     "ghosts"
+    ],
+    [
+     "Automatic emails",
+     "glowing zombie steps"
+    ],
+    [
+     "Spreadsheet cells",
+     "spreading ERRORs"
+    ],
+    [
+     "Deals",
+     "gravestones"
+    ],
+    [
+     "A website message",
+     "a ghost passed from team to team"
+    ]
+   ],
+   "note": "Type is Space Grotesk, large and tight. Pumpkin marks what’s wrong; slime marks what’s undead, and later, what’s fixed."
+  },
+  {
+   "type": "band",
+   "kick": "HOW IT WAS MADE",
+   "text": "Every post, carousel, video and soundtrack was built in one Remotion project, so a single command rebuilds the whole set after a copy change."
+  }
+ ],
+ "next": {
+  "href": "../the-founder-bottleneck/",
+  "title": "The Founder Bottleneck"
+ }
+}

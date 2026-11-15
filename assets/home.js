@@ -454,7 +454,8 @@
     t.addEventListener('mouseleave', function () { t.style.transform = ''; });
   });
   $$('#bento .flip').forEach(function (f, i) {
-    var c = FUN[(i * 3 + 2) % FUN.length]; f.style.setProperty('--c', c); f.style.setProperty('--fg', ink(c));
+    // one colour family per tile, no two alike: emerald, magenta, electric blue
+    var c = ['#00a36c', '#d02b8f', '#2f5bff'][i % 3]; f.style.setProperty('--c', c); f.style.setProperty('--fg', ink(c));
     f.onclick = function () { f.style.transform = ''; f.classList.toggle('on'); f.setAttribute('aria-pressed', f.classList.contains('on')); };
   });
 

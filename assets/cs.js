@@ -24,7 +24,13 @@
   var kin = $('#kin'), txt = kin.textContent, li = 0;
   kin.innerHTML = txt.split(' ').map(function (w) { return '<span class="w" aria-hidden="true">' + w.split('').map(function (ch) { return '<span class="l" style="--i:' + (li++) + '">' + ch + '</span>'; }).join('') + '</span>'; }).join(' ') + '<span class="sr-only">' + txt + '</span>';
   var L = $$('.l', kin);
-  function settle() { kin.classList.add('settle'); setTimeout(function () { kin.classList.remove('settle'); }, 600 + L.length * 28 + 1100); }
+  // the bright colours, used on the title only (as on the home page's opening line)
+  var FUN = ['#2f5bff', '#00a36c', '#7a3cff', '#d02b8f', '#00a9bd', '#e3bd00', '#0a74da', '#6cb800', '#a86bff', '#1fa0ff'];
+  function catchColour(s) { if (s._hot) return; s._hot = 1; s.style.color = FUN[Math.floor(Math.random() * FUN.length)]; setTimeout(function () { s.style.color = ''; s._hot = 0; }, 1100); }
+  // a wave of colour runs across the title, letter by letter
+  function wave() { if (reduce) return; L.forEach(function (s, i) { setTimeout(function () { catchColour(s); }, i * 45); }); }
+  function settle() { kin.classList.add('settle'); setTimeout(function () { kin.classList.remove('settle'); wave(); }, 600 + L.length * 28 + 1100); }
+  kin.addEventListener('click', wave);
   var pics = posts.filter(function (p) { return p.img; }).slice(0, 16);
   if (reduce || pics.length < 4 || scrollY > 100) settle();
   else {
@@ -44,10 +50,14 @@
     setTimeout(function () { go = true; }, 700);
     setTimeout(finish, 2500); // never let the opening hold the page
   }
-  // afterwards the title lightens where the cursor is
+  // afterwards the title lightens where the cursor is, and the letters nearest it catch a colour
   if (!touch && !reduce) $('.hero').addEventListener('mousemove', function (e) {
     if (kin.classList.contains('settle')) return;
-    L.forEach(function (s) { var b = s.getBoundingClientRect(), d = Math.hypot(b.left + b.width / 2 - e.clientX, b.top + b.height / 2 - e.clientY), f = Math.max(0, 1 - d / 240); s.style.fontVariationSettings = "'wght' " + Math.round(800 - f * 600) + ",'opsz' 96"; });
+    L.forEach(function (s) {
+      var b = s.getBoundingClientRect(), d = Math.hypot(b.left + b.width / 2 - e.clientX, b.top + b.height / 2 - e.clientY), f = Math.max(0, 1 - d / 240);
+      s.style.fontVariationSettings = "'wght' " + Math.round(800 - f * 600) + ",'opsz' 96";
+      if (f > .75) catchColour(s);
+    });
   });
   var cov = $('#cover>img, #cover>svg');
   if (cov && !touch && !reduce) {
@@ -129,29 +139,54 @@
   }
   addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
 
-  /* ---------- the strip: drag or flick through the posts ---------- */
-  var strip = $('#strip');
-  if (strip) {
-    var belt = $('.belt', strip), x = 0, v = 0, down = false, lx = 0, moved = 0, hint = $('.hintrow');
-    var minX = function () { return Math.min(0, strip.clientWidth - belt.scrollWidth); };
-    if (touch) { strip.style.overflowX = 'auto'; strip.addEventListener('scroll', function () { var m = strip.scrollWidth - strip.clientWidth; hint.style.setProperty('--sx', m ? strip.scrollLeft / m : 0); }, { passive: true }); }
+  /* ---------- the posts: scrolling carries them past the centre, one at a time ---------- */
+  var pinw = $('#pinw');
+  if (pinw) {
+    var strip = $('#strip'), belt = $('.belt', strip), cards = $$('.post', belt), nowCard = -1, cx = null, vid = null;
+    var centres = [];
+    function measure() { centres = cards.map(function (c) { return c.offsetLeft + c.offsetWidth / 2; }); }
+    function first(t) { return (t || '').split('\n')[0]; }
+    function setNow(i) {
+      if (i === nowCard) return; nowCard = i; var p = posts[i], tx = $('.ntext', pinw);
+      cards.forEach(function (c, k) { c.classList.toggle('now', k === i); });
+      $('#ncnt').textContent = (i < 9 ? '0' : '') + (i + 1) + ' / ' + (posts.length < 10 ? '0' : '') + posts.length;
+      tx.classList.add('swap');
+      setTimeout(function () { $('#nwhen').textContent = [p.fmt, p.when].filter(Boolean).join(' · '); $('#ntitle').textContent = p.title; $('#nline').textContent = first(p.text); tx.classList.remove('swap'); }, reduce ? 0 : 160);
+      // the post in the middle plays its video, quietly, until it moves on
+      if (vid) { vid.remove(); vid = null; }
+      if (p.video && !reduce) { vid = document.createElement('video'); vid.src = p.video; vid.muted = true; vid.loop = true; vid.playsInline = true; vid.autoplay = true; vid.setAttribute('aria-hidden', 'true'); $('.pic', cards[i]).appendChild(vid); var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    }
+    function progress() { var b = pinw.getBoundingClientRect(); return Math.min(1, Math.max(0, -b.top / Math.max(1, pinw.offsetHeight - innerHeight))); }
+    function target() {
+      var idx = progress() * (cards.length - 1), i0 = Math.floor(idx), i1 = Math.min(cards.length - 1, i0 + 1), fr = idx - i0;
+      return { c: centres[i0] + (centres[i1] - centres[i0]) * fr, idx: idx };
+    }
+    function paint() {
+      var w = strip.clientWidth / 2, step = cards.length > 1 ? (centres[1] - centres[0]) : 300;
+      belt.style.transform = 'translateX(' + (w - cx) + 'px)';
+      cards.forEach(function (c, k) {
+        var d = (centres[k] - cx) / step, a = Math.min(2, Math.abs(d));
+        c.style.transform = 'scale(' + (1.08 - a * .16) + ') rotate(' + (d > 0 ? 1 : -1) * Math.min(a, 1.5) * 4 + 'deg) translateY(' + a * 14 + 'px)';
+        c.style.opacity = 1 - a * .28;
+      });
+    }
+    measure(); addEventListener('resize', function () { measure(); });
+    // keyboard: tabbing to a post scrolls the page to it
+    cards.forEach(function (c, k) { c.addEventListener('focus', function () { var top = pinw.getBoundingClientRect().top + scrollY, run = pinw.offsetHeight - innerHeight; scrollTo({ top: top + run * k / Math.max(1, cards.length - 1), behavior: 'auto' }); }); });
+    if (reduce) { setNow(0); }
     else {
-      strip.addEventListener('pointerdown', function (e) { down = true; moved = 0; lx = e.clientX; v = 0; strip.classList.add('drag'); });
-      addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - lx; lx = e.clientX; moved += Math.abs(dx); x += dx; v = dx; });
-      addEventListener('pointerup', function () { down = false; strip.classList.remove('drag'); });
-      strip.addEventListener('click', function (e) { if (moved > 6) { e.stopPropagation(); e.preventDefault(); } }, true);
-      strip.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { x -= e.deltaX; e.preventDefault(); } }, { passive: false });
-      var vis = true; if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(strip);
+      var vis = true; if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(pinw);
       (function f() {
-        if (vis || down) {
-          var mn = minX(); if (!down) { x += v; v *= .93; }
-          x = Math.max(mn - 40, Math.min(40, x)); if (!down) { if (x > 0) x *= .85; if (x < mn) x = mn + (x - mn) * .85; }
-          belt.style.transform = 'translateX(' + x + 'px)'; hint.style.setProperty('--sx', mn ? x / mn : 0);
+        if (vis || cx === null) {
+          var t = target();
+          cx = cx === null ? t.c : cx + (t.c - cx) * .14;   // ease toward the scroll position, so it glides
+          paint();
+          // the highlighted post is the one actually in the middle, not where the scroll is heading
+          var near = 0; centres.forEach(function (c, k) { if (Math.abs(c - cx) < Math.abs(centres[near] - cx)) near = k; }); setNow(near);
+          $('.now', pinw).style.setProperty('--sx', progress());
         }
         requestAnimationFrame(f);
       })();
-      // keyboard: tabbing to a post brings it into view
-      belt.addEventListener('focusin', function (e) { var p = e.target.closest('.post'); if (!p) return; var sb = strip.getBoundingClientRect(), pb = p.getBoundingClientRect(); if (pb.left < sb.left) x += sb.left - pb.left + 40; else if (pb.right > sb.right) x -= pb.right - sb.right + 40; v = 0; });
     }
   }
 

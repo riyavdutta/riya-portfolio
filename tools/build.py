@@ -195,7 +195,7 @@ SECTIONS = {k[4:]: v for k, v in globals().items() if k.startswith('sec_')}
 
 CS_FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
             '<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">')
-CS_VER = '1'
+CS_VER = '2'
 strip_tags = lambda x: re.sub(r'<[^>]+>', '', x)
 
 
@@ -284,7 +284,8 @@ class Case:
     def sheet(self, s):
         ar = s.get('aspect', '4 / 5').replace(' ', '')
         w, h = (float(v) for v in ar.split('/'))
-        pw = '340px' if w / h > 1.2 else '210px'
+        wide = w / h > 1.2
+        pw = 'min(420px,46vh,72vw)' if wide else 'min(240px,26vh,56vw)'
         cards, prev = '', None
         for i, p in enumerate(self.posts):
             m = re.match(r'^(\w{3} \d{1,2} \w{3}) · ', p.get('when', ''))
@@ -292,13 +293,16 @@ class Case:
                 cards += f'<span class="day" aria-hidden="true">{m.group(1).upper()}</span>'
                 prev = m.group(1)
             fmt = f'<span class="fmt">{esc(p["fmt"].upper())}</span>' if p.get('fmt') else ''
-            cards += (f'<button class="post" type="button" data-open="{i}"><span class="pic"><img src="{p["img"]}" alt="" loading="lazy">{fmt}</span>'
+            cards += (f'<button class="post" type="button" data-open="{i}"><span class="pic"><img src="{p["img"]}" alt="" loading="lazy">{fmt}<span class="open" aria-hidden="true">Open ↗</span></span>'
                       f'<span class="t">{esc(p["title"])}</span><span class="when">{esc(p.get("when", ""))}</span></button>')
         intro = f'<p class="sub">{s["intro"]}</p>' if s.get('intro') else ''
         self.cap_label = s.get('caption_label', 'THE CAPTION')
-        return (self.open(s, 'week') + f'<div class="wrap">{self.head(s)}{intro}</div>'
+        # scroll-driven: the page holds while scrolling carries the posts past the centre, one at a time
+        n = len(self.posts)
+        return (self.open(s, 'week') + f'<div class="pinw" id="pinw" style="--n:{n}"><div class="stick"><div class="wrap head">{self.head(s)}{intro}</div>'
                 f'<div class="strip" id="strip" style="--ar:{ar};--pw:{pw}"><div class="belt">{cards}</div></div>'
-                f'<div class="wrap hintrow"><span>Drag or swipe · {len(self.posts)} {"pieces" if len(self.posts) != 1 else "piece"}</span><span class="bar2" aria-hidden="true"><i></i></span></div></section>')
+                f'<div class="wrap now" aria-live="polite"><span class="cnt" id="ncnt">01 / {n:02d}</span><div class="ntext"><small id="nwhen"></small><b id="ntitle"></b><p id="nline"></p></div>'
+                f'<span class="bar2" aria-hidden="true"><i></i></span></div></div></div></section>')
 
     def palette(self, s):
         sw = ''.join(f'<button type="button" data-hex="{x["hex"]}" style="background:{x["hex"]};color:{"#2a1a1e" if light(x["hex"]) else "#f4efe6"}"><small>{x["hex"]} · {x["use"]}</small><b>{x["n"]}</b></button>' for x in s['swatches'])

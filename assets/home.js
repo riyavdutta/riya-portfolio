@@ -428,7 +428,7 @@
       $('.pinhint').style.opacity = p > .92 ? 0 : 1;
       if (k !== last) {
         last = k; $('#bigY').textContent = S[k][0]; $('#bigT').textContent = S[k][1]; $('#bigO').textContent = S[k][2]; $('#bigM').textContent = S[k][3];
-        var bg = k % 2 ? '#5e0018' : '#800020'; big.style.background = bg; big.style.color = ink(bg);
+        var bg = k === S.length - 1 ? '#800020' : FUN[(k * 3) % FUN.length]; big.style.background = bg; big.style.color = ink(bg);
       }
     }
     addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
@@ -444,10 +444,12 @@
     t.addEventListener('mouseleave', function () { t.style.transform = ''; });
   });
   $$('#bento .flip').forEach(function (f, i) {
-        f.onclick = function () { f.style.transform = ''; f.classList.toggle('on'); f.setAttribute('aria-pressed', f.classList.contains('on')); };
+    var c = FUN[(i * 3 + 2) % FUN.length]; f.style.setProperty('--c', c); f.style.setProperty('--fg', ink(c));
+    f.onclick = function () { f.style.transform = ''; f.classList.toggle('on'); f.setAttribute('aria-pressed', f.classList.contains('on')); };
   });
   var votes = { a: 0, b: 0 };
   $$('.poll button').forEach(function (b, i) {
+    b.style.setProperty('--c', FUN[i ? 3 : 4] + '55');
     b.onclick = function () {
       votes[b.dataset.v]++; var tot = votes.a + votes.b;
       $$('.poll button').forEach(function (x) { var pc = Math.round(votes[x.dataset.v] / tot * 100); $('i', x).style.width = pc + '%'; $('span', x).textContent = (x.dataset.v === 'a' ? 'Ghosts ' : 'Founders ') + pc + '%'; });
@@ -484,7 +486,8 @@
 
   /* ---------- 7. the desktop ---------- */
   var desk = $('#desk'), z = 10, n = 0, open = {};
-  var WC = { mail: '#ebe2d4', heat: '#ebe2d4', studio: '#ebe2d4', kit: '#ebe2d4', links: '#ebe2d4' };
+  var WC = { mail: '#2f5bff', heat: '#00a36c', studio: '#7a3cff', kit: '#e3bd00', links: '#d02b8f' };
+  $$('.ico').forEach(function (b) { var c = WC[b.dataset.open], i = $('i', b); i.style.setProperty('--c', c); i.style.setProperty('--fg', ink(c)); });
     function win(id, title, html, x, y, w) {
     if (open[id] && open[id].isConnected) { open[id].style.zIndex = ++z; if (phone.matches) open[id].scrollIntoView({ behavior: 'smooth', block: 'nearest' }); return open[id]; }
     var el = document.createElement('div'); el.className = 'win'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', title);
@@ -529,7 +532,7 @@
     studio: function () {
       var st = ['Brief', 'Plan', 'Copy', 'Check', 'Approve', 'Build', 'Render', 'Check', 'Deliver', 'Watch', 'Post'];
       var w = win('studio', 'Content Studio', '<p style="margin-bottom:12px">The route every post takes, from brief to posted piece.</p><div class="route">' +
-        st.map(function (s, i) { return '<span>' + (i < 9 ? '0' : '') + (i + 1) + '<br>' + s + '</span>'; }).join('') +
+        st.map(function (s, i) { return '<span style="--c:' + FUN[i % FUN.length] + ';--fg:' + ink(FUN[i % FUN.length]) + '">' + (i < 9 ? '0' : '') + (i + 1) + '<br>' + s + '</span>'; }).join('') +
         '</div><p style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="pill" type="button" data-run>Run a brief through it ▶</button><a class="pill--line" href="' + CASE + 'the-content-studio/">Case study</a></p>', 300 + off(), 110 + off(), 440);
       $('[data-run]', w).onclick = function () { var sp = $$('.route span', w); sp.forEach(function (s) { s.classList.remove('lit'); }); sp.forEach(function (s, i) { setTimeout(function () { s.classList.add('lit'); }, reduce ? 0 : i * 180); }); };
       return w;

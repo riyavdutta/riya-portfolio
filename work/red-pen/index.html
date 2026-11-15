@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Red Pen · Riya Dutta</title>
+<meta name="description" content="Red Pen: a free copy checker by Riya Dutta. Paste any marketing copy and it marks what to cut and why, then scores your rewrite as you type.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Red Pen · Riya Dutta">
+<meta property="og:description" content="Red Pen: a free copy checker by Riya Dutta. Paste any marketing copy and it marks what to cut and why, then scores your rewrite as you type.">
+<meta property="og:image" content="https://riya-folio.vercel.app/assets/og.jpg">
+<meta property="og:url" content="https://riya-folio.vercel.app/work/red-pen/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4efe6">
+<link rel="canonical" href="https://riya-folio.vercel.app/work/red-pen/">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f4efe6;--paper:#fffcf6;--b:#800020;--b-deep:#5e0018;--body:#33292c;--mute:#7d726b;--line:#ddd2c6;--you:#2f5bff;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;--read:'Source Serif 4',Georgia,serif;--ease:cubic-bezier(.2,.7,.2,1);--spring:cubic-bezier(.2,.9,.3,1.2)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;overflow-x:clip;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--body);font-family:var(--read);-webkit-font-smoothing:antialiased;overflow-x:clip}
+button{font:inherit;color:inherit;cursor:pointer}
+::selection{background:var(--b);color:var(--cream)}
+:focus-visible{outline:2px solid var(--b);outline-offset:3px}
+.lab{font:600 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+h1,h2{font-family:var(--display);color:var(--b);text-wrap:balance}
+h2{font-weight:800;font-size:clamp(34px,4.6vw,64px);line-height:.94;letter-spacing:-.04em;margin:10px 0 26px}
+.sub{font-size:clamp(17px,1.6vw,20px);line-height:1.55;max-width:34em}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;border:1.5px solid var(--b);background:var(--b);color:var(--cream);font:700 15px var(--display);text-decoration:none;transition:transform .25s var(--ease)}
+.pill:hover{transform:translateY(-2px)}
+.pill--line{background:transparent;color:var(--b)}
+.pill[hidden]{display:none}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* frame of the page */
+.top{position:fixed;left:0;right:0;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:linear-gradient(var(--cream) 60%,transparent)}
+.top b{font:800 16px var(--display);color:var(--b);letter-spacing:-.02em}
+.top a{font:600 13px var(--display);color:var(--mute);text-decoration:none}
+.rail{position:fixed;right:22px;top:50%;translate:0 -50%;display:flex;flex-direction:column;gap:12px;z-index:10}
+.rail a{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--b);display:block;transition:background .3s,transform .3s}
+.rail a.on{background:var(--b);transform:scale(1.25)}
+.scene{min-height:100svh;display:flex;align-items:center;padding:96px 0 72px}
+.in{width:100%;max-width:1120px;margin:0 auto;padding:0 32px}
+
+/* 0. opening */
+.title{font:800 clamp(80px,15vw,220px)/.82 var(--display);letter-spacing:-.06em;margin:14px 0 26px}
+.title span{display:inline-block;transition:color .5s var(--ease),transform .3s var(--spring)}
+.title span:hover{transform:translateY(-6px) rotate(-3deg)}
+.line{font:800 clamp(28px,3.4vw,46px)/1.05 var(--display);letter-spacing:-.03em;color:var(--b);margin-bottom:18px}
+.line s{text-decoration:none;position:relative;color:var(--mute)}
+.line s::after{content:"";position:absolute;left:-4px;right:-4px;top:54%;height:5px;border-radius:3px;background:var(--b);transform:scaleX(0) rotate(-2deg);transform-origin:left;animation:strike .7s .9s var(--ease) forwards}
+.line em{font-style:normal;color:var(--you);display:inline-block;opacity:0;transform:translateY(8px);animation:up .5s 1.5s var(--ease) forwards}
+@keyframes strike{to{transform:scaleX(1) rotate(-2deg)}}
+@keyframes up{to{opacity:1;transform:none}}
+.small{font:500 13px/1.5 var(--display);color:var(--mute);margin-top:26px;max-width:46em}
+
+/* a piece of copy */
+.grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:start}
+.layers{display:grid}
+.layers>*{grid-area:1/1;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.layers .after{opacity:0;transform:translateY(10px);pointer-events:none}
+.flip .layers .before{opacity:0;transform:translateY(-10px);pointer-events:none}
+.flip .layers .after{opacity:1;transform:none;pointer-events:auto}
+.frame{background:var(--paper);border:1.5px solid var(--b);border-radius:20px;overflow:hidden;box-shadow:0 26px 50px -34px rgba(94,0,24,.6)}
+.ctl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:18px}
+.count{font:600 14px var(--display);color:var(--mute)}
+.count b{color:var(--you)}
+.ba{display:inline-flex;border:1.5px solid var(--b);border-radius:999px;padding:3px}
+.ba[hidden]{display:none}
+.ba button{border:0;background:none;border-radius:999px;padding:8px 16px;font:700 14px var(--display);color:var(--b);transition:background .3s,color .3s}
+.ba button.on{background:var(--b);color:var(--cream)}
+
+/* words you can cross out */
+.w{border:0;background:none;padding:0;font:inherit;color:inherit;position:relative;display:inline;cursor:pointer;border-radius:4px;transition:background .2s,color .4s}
+.w:hover{background:#2f5bff14}
+.w::before,.w::after{content:"";position:absolute;left:-1px;right:-1px;border-radius:3px;pointer-events:none;transform:scaleX(0);transform-origin:left}
+.w::before{top:62%;height:.09em;min-height:2px;background:var(--you);transition:transform .25s var(--ease)}
+.w.me::before{transform:scaleX(1)}
+.w::after{top:46%;height:.13em;min-height:3px;background:var(--b);transition:transform .45s var(--ease);transition-delay:var(--d,0s)}
+.w.rp:not(.end)::after{right:-.34em}
+.w.rp.tilt::after{rotate:-1.6deg}
+.marked .w.rp::after{transform:scaleX(1)}
+.marked .w.rp{color:#33292c8c}
+.marked .w{cursor:default}
+.marked .w:hover{background:none}
+.marked .w.keep{color:inherit}
+.nm{display:inline-flex;align-items:center;justify-content:center;width:1.5em;height:1.5em;border-radius:50%;background:var(--b);color:var(--cream);font:800 11px/1 var(--display);vertical-align:super;margin-right:3px;transform:scale(0);transition:transform .35s var(--spring);transition-delay:var(--d,0s)}
+.piece .nm{width:0;margin:0;overflow:hidden}
+.piece.marked .nm{width:1.5em;margin-right:3px;transform:scale(1)}
+@media (hover:none){.w:hover{background:none}}
+
+/* the notes beside the copy */
+.notes{position:relative}
+.ask{font:700 20px/1.3 var(--display);color:var(--b);letter-spacing:-.01em}
+.ask small{display:block;font:500 15px/1.5 var(--read);color:var(--body);margin-top:6px}
+.nl{list-style:none;padding:0;display:grid;gap:14px;margin-top:4px}
+.nl li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:16.5px;line-height:1.5;opacity:0;transform:translateX(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:var(--d,0s)}
+.nl li b{width:26px;height:26px;border-radius:50%;background:var(--b);color:var(--cream);font:800 12px var(--display);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.marked .nl li{opacity:1;transform:none}
+.score{font:700 17px/1.4 var(--display);color:var(--b);margin-bottom:16px;min-height:1.4em}
+.score em{font-style:normal;color:var(--you)}
+.stage{display:grid}
+.stage>*{grid-area:1/1;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.stage .s1,.stage .s2{opacity:0;pointer-events:none;transform:translateY(10px)}
+.marked .stage .s0{opacity:0;pointer-events:none}
+.marked .stage .s1{opacity:1;pointer-events:auto;transform:none}
+.flip .stage .s1{opacity:0;pointer-events:none}
+.flip .stage .s2{opacity:1;pointer-events:auto;transform:none}
+.rule{font:800 clamp(30px,3.4vw,46px)/1 var(--display);letter-spacing:-.035em;color:var(--b);margin:8px 0 22px}
+.meter{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:16px}
+.meter div{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:10px;font:600 14px var(--display);color:var(--mute)}
+.meter output{font:800 22px var(--display);letter-spacing:-.02em;color:var(--b);font-variant-numeric:tabular-nums}
+.meter output i{font-style:normal;color:var(--mute);font-weight:500;margin:0 6px}
+
+/* 1. homepage */
+.web .chrome{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1.5px solid var(--b)}
+.web .chrome i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--b)}
+.web .chrome span{margin-left:10px;flex:1;max-width:260px;font:500 12px var(--display);color:var(--mute);background:var(--cream);border-radius:999px;padding:5px 12px}
+.web .body{padding:clamp(28px,4vw,54px)}
+.web .nav{display:flex;gap:18px;font:600 12px var(--display);color:var(--mute);margin-bottom:clamp(26px,4vw,44px)}
+.web .nav b{color:var(--b);margin-right:auto}
+.web .hl{font:800 clamp(25px,2.8vw,38px)/1.08 var(--display);letter-spacing:-.03em;color:var(--b)}
+.web .dk{font-size:17px;line-height:1.5;margin-top:14px;color:var(--body)}
+.web .cta{display:inline-block;margin-top:24px;padding:11px 18px;border-radius:999px;background:var(--b);color:var(--cream);font:700 13px var(--display)}
+
+/* 2. lock screen */
+.lock{background:linear-gradient(160deg,#800020,#3d0010);padding:34px clamp(18px,4vw,46px) 56px;color:var(--cream);text-align:center}
+.lock .t{font:300 clamp(60px,7vw,92px)/1 var(--display);letter-spacing:-.04em}
+.lock .d{font:600 14px var(--display);opacity:.75;margin:4px 0 34px}
+.note{background:#fffcf6f2;color:var(--body);border-radius:22px;padding:14px 16px;text-align:left;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.note .ic{width:40px;height:40px;border-radius:11px;background:var(--b);color:var(--cream);display:flex;align-items:center;justify-content:center;font:800 18px var(--display)}
+.note .hd{display:flex;justify-content:space-between;font:700 13px var(--display);color:var(--body)}
+.note .hd span{font-weight:500;color:var(--mute)}
+.note .tx{font:500 16px/1.4 var(--display);margin-top:3px}
+
+/* 3. email */
+.mail .meta{border-bottom:1px solid var(--line);padding:16px 22px;display:grid;gap:6px;font:500 13px var(--display);color:var(--mute)}
+.mail .meta b{color:var(--body);font-weight:700}
+.mail .meta .subj{font:800 20px var(--display);color:var(--b);letter-spacing:-.02em;margin-top:6px}
+.mail .msg{padding:22px;font-size:18px;line-height:1.6}
+.mail .msg p+p{margin-top:12px}
+.mail .sig{color:var(--mute);font-size:15px;margin-top:16px}
+
+/* 4. product page */
+.shop{display:grid;grid-template-columns:.8fr 1fr}
+.shop .pic{background:#efe4d6;display:flex;align-items:flex-end;justify-content:center;padding:28px 10px 0;min-height:280px;position:relative}
+.jar{width:54%;max-width:150px;aspect-ratio:3/4;border-radius:14px 14px 20px 20px;background:linear-gradient(90deg,#5e0018,#800020 45%,#a2283f 60%,#800020);position:relative;margin-bottom:28px}
+.jar::before{content:"";position:absolute;left:50%;top:-22px;width:3px;height:20px;background:#33292c;translate:-50% 0}
+.jar::after{content:"";position:absolute;left:50%;top:-44px;width:14px;height:24px;border-radius:50% 50% 45% 45%;background:radial-gradient(circle at 50% 70%,#fff3c4,#e3bd00 60%,transparent 62%);translate:-50% 0;animation:flick 2.4s ease-in-out infinite}
+.jar span{position:absolute;left:12%;right:12%;top:34%;background:var(--paper);border-radius:4px;padding:8px 4px;text-align:center;font:800 11px/1.1 var(--display);color:var(--b);letter-spacing:.04em}
+@keyframes flick{50%{transform:scaleY(1.12) rotate(2deg)}}
+.shop .info{padding:clamp(22px,3vw,36px)}
+.shop .nmn{font:800 26px/1 var(--display);letter-spacing:-.03em;color:var(--b)}
+.shop .pr{font:600 14px var(--display);color:var(--mute);margin:8px 0 16px}
+.shop .ds{font-size:17px;line-height:1.55}
+.shop .ds .lead{font:800 21px/1.15 var(--display);color:var(--b);letter-spacing:-.02em;display:block;margin-bottom:8px}
+.shop .add{display:inline-block;margin-top:20px;padding:11px 18px;border-radius:999px;background:var(--b);color:var(--cream);font:700 13px var(--display)}
+
+/* your copy */
+.pad{padding:20px 22px}
+.pad[hidden],.rw[hidden]{display:none}
+textarea{display:block;width:100%;margin-top:10px;border:0;background:transparent;resize:vertical;font:400 18px/1.6 var(--read);color:var(--body);outline:none;min-height:150px}
+textarea::placeholder{color:#7d726b99}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-top:1px solid var(--line);padding-top:14px;margin-top:8px}
+.chips .lab{margin-right:4px}
+.chip{border:1.5px solid var(--b);background:none;border-radius:999px;padding:6px 12px;font:600 13px var(--display);color:var(--b);transition:background .2s,color .2s}
+.chip:hover{background:var(--b);color:var(--cream)}
+.ohd{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.link{border:0;background:none;font:700 13px var(--display);color:var(--b);text-decoration:underline;text-underline-offset:3px;padding:4px}
+.marked-out{font:400 19px/1.75 var(--read);margin-top:12px;word-wrap:break-word}
+.m{background:none;color:inherit;position:relative}
+.m.s{color:#33292c8c;text-decoration:line-through;text-decoration-color:var(--b);text-decoration-thickness:.14em}
+.m.u{text-decoration:underline wavy var(--you);text-decoration-thickness:1.5px;text-underline-offset:4px}
+.m .nm{transform:scale(1);margin-right:2px}
+.m.u .nm{background:var(--you)}
+.key{display:flex;flex-wrap:wrap;gap:16px;font:500 13px var(--display);color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.key s{text-decoration-color:var(--b);text-decoration-thickness:2px;color:var(--body)}
+.key u{text-decoration:underline wavy var(--you);text-underline-offset:3px;color:var(--body)}
+.verdict{font:800 clamp(24px,2.6vw,34px)/1.05 var(--display);letter-spacing:-.03em;color:var(--b);margin:6px 0 18px}
+.verdict em{font-style:normal;color:var(--you)}
+.fl{list-style:none;padding:0;display:grid;gap:14px;margin:0 0 20px}
+.fl li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:16px;line-height:1.5;animation:up .45s var(--ease) both}
+.fl li>b{width:26px;height:26px;border-radius:50%;background:var(--b);color:var(--cream);font:800 12px var(--display);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.fl li.self>b{background:var(--you)}
+.fl strong{font:700 16px var(--display);color:var(--b);display:block}
+.fl q{font-style:italic;color:var(--mute);quotes:none}
+.fl .r{display:inline-block;margin-top:6px;font:700 13px var(--display);color:var(--b);border:1.5px solid var(--b);border-radius:999px;padding:3px 10px}
+.rw{margin-top:34px}
+.meter.live output .up{color:#00a36c}
+.meter.live output .dn{color:var(--b)}
+.still{font:500 14px/1.5 var(--display);color:var(--mute);margin-top:14px}
+.still b{color:var(--b)}
+
+/* the end */
+.big{font:800 clamp(52px,8.4vw,124px)/.88 var(--display);letter-spacing:-.05em;color:var(--b);margin:12px 0 22px}
+.big em{font-style:normal;color:var(--you)}
+.tally{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:34px 0 30px}
+.tile{border:1.5px solid var(--b);border-radius:20px;padding:18px;background:var(--paper);min-height:150px;display:flex;flex-direction:column}
+.tile:first-child{background:var(--b)}
+.tile:first-child .k,.tile:first-child .v,.tile:first-child .v i{color:var(--cream)}
+.tile .k{font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.tile .v{margin-top:auto;font:800 clamp(30px,3.4vw,46px)/1 var(--display);letter-spacing:-.04em;color:var(--b);font-variant-numeric:tabular-nums}
+.tile .v i{font-style:normal;font-weight:400;color:var(--mute);margin:0 4px}
+.tile.yours{border-color:var(--you)}
+.tile.yours .v{color:var(--you)}
+.rules{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.rules li{border:1.5px solid var(--b);border-radius:999px;padding:9px 16px;font:700 15px var(--display);color:var(--b)}
+.rules li b{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--b);color:var(--cream);font-size:11px;align-items:center;justify-content:center;margin-right:8px}
+
+@media (max-width:1240px){.rail{display:none}}
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;gap:26px}
+  .tally{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .in{padding:0 16px}
+  .top{padding:14px 16px}
+  .scene{padding:84px 0 56px}
+  .shop{grid-template-columns:1fr}
+  .shop .pic{min-height:200px}
+  .jar{width:34%}
+  .web .nav span{display:none}
+  .mail .msg{font-size:17px}
+  .ctl{flex-direction:column;align-items:stretch}
+  .ctl .pill{justify-content:center}
+  .ba{align-self:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01s!important;animation-duration:.01s!important;animation-delay:0s!important;transition-delay:0s!important}
+}
+</style>
+</head>
+<body>
+<header class="top"><b>Red Pen</b><a href="../../">Riya Dutta</a></header>
+<nav class="rail" id="rail" aria-label="Steps"></nav>
+
+<main>
+<section class="scene" id="s0">
+  <div class="in">
+    <p class="lab">A copy experiment</p>
+    <h1 class="title" id="title" aria-label="Red Pen"></h1>
+    <p class="line">Copy about <s>us</s> <em>you.</em></p>
+    <p class="sub">Paste any copy you're working on: a homepage, an email, a post, your LinkedIn headline. The red pen marks what to cut, tells you why, and checks your rewrite as you type.</p>
+    <div class="row" style="margin-top:28px"><a class="pill" href="#yours">Mark up your copy ↓</a><a class="pill pill--line" href="#s1">Warm up on four classics</a></div>
+    <p class="small">Everything runs in your browser. Nothing you paste is sent anywhere.</p>
+  </div>
+</section>
+
+<section class="scene" id="yours">
+  <div class="in">
+    <p class="lab">Your copy</p>
+    <h2>Hand me something you wrote.</h2>
+    <div class="grid tool">
+      <div>
+        <div class="frame pad" id="inWrap">
+          <label class="lab" for="src">Paste it here</label>
+          <textarea id="src" rows="7" placeholder="We are a passionate team dedicated to delivering innovative solutions…"></textarea>
+          <div class="chips"><span class="lab">Or try</span></div>
+        </div>
+        <div class="frame pad" id="outWrap" hidden>
+          <div class="ohd"><span class="lab">Marked up</span><button class="link" id="edit">Edit original</button></div>
+          <div class="marked-out" id="out"></div>
+          <p class="key"><span><s class="k1">struck</s> cut it</span><span><u class="k2">underlined</u> turn it round to the reader</span></p>
+        </div>
+        <div class="ctl"><span class="count" id="srcCount"></span><button class="pill" id="mark">Mark it up</button></div>
+      </div>
+      <div class="notes">
+        <div id="report"><p class="ask">What the pen looks for<small>Throat-clearing, urgency with nothing at stake, words that say what a thing <em>is</em> instead of what it <em>does</em>, ranking words like “premium”, filler, and sentences that are about the sender instead of the reader.</small></p></div>
+      </div>
+    </div>
+
+    <div class="grid tool rw" id="rw" hidden>
+      <div>
+        <div class="frame pad">
+          <div class="ohd"><label class="lab" for="dst">Your rewrite</label><button class="link" id="copy">Copy</button></div>
+          <textarea id="dst" rows="6" placeholder="Start with what the reader gets…"></textarea>
+        </div>
+        <p class="small">Tip: write the first sentence starting with “You”, then delete the word “You” and see if it still works.</p>
+      </div>
+      <div class="notes">
+        <p class="lab">As you type</p>
+        <div class="meter live" id="live"></div>
+        <p class="still" id="still"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="pieces"></div>
+<section class="scene" id="end">
+  <div class="in">
+    <p class="lab">What the pen found</p>
+    <h2 class="big">Every cut was <em>the same cut.</em></h2>
+    <p class="sub">Words about the company. Take them out and what's left is about the reader, and it's shorter too.</p>
+    <div class="tally" id="tally"></div>
+    <ul class="rules" id="rules"></ul>
+    <div class="row"><a class="pill" href="#yours">Now mark up yours ↑</a><button class="pill pill--line" id="again">Mark them again</button><a class="pill pill--line" href="../../#work">See my work</a></div>
+  </div>
+</section>
+</main>
+
+<script>
+/* Each piece: the original in segments [text, note number or 0], my notes, the rewrite and its one rule. */
+const P=[
+ {kind:'web',lab:'A software homepage',h:'A homepage that could belong to anyone.',
+  orig:[['We are a leading provider of',1],['innovative,',2],['AI-powered',0],['solutions',3],['that empower businesses to unlock their full potential.',4]],
+  notes:['Nobody wakes up wanting a provider. Say what it does.','Every homepage says innovative. A word everyone uses can’t make you stand out.','Solutions to what? Name the problem.','Unlocking potential is a poster, not a promise. How would I know you’d done it?'],
+  after:['Answer customer emails in half the time.','AI drafts the reply. You check it and send.'],
+  rule:'Say what it does, not what it is.'},
+ {kind:'push',lab:'A push notification',h:'The notification you swipe away.',
+  orig:[['Don’t miss out! 🎉',1],['Check out our amazing new features',2],['in the latest update!',3]],
+  notes:['Miss out on what? Urgency only works when something’s at stake.','“Features” is our word. Readers want the one thing that makes their day easier.','Of course it’s in the update. That’s where updates go.'],
+  after:['You can now split a bill in two taps.'],
+  rule:'One thing, and make it theirs.'},
+ {kind:'mail',lab:'A cold email',h:'The cold email that starts with the sender.',
+  orig:[['Hi there,',1],['I hope this email finds you well.',2],['My name is Sam and I’m reaching out from Brightlane because',3],['we help companies drive growth.',4]],
+  notes:['“Hi there” says you didn’t look up my name. It takes ten seconds.','The line everyone skims. Your first sentence is the subject line’s second chance.','Your signature already says who you are.','This could go to anyone, which is why it’ll go nowhere.'],
+  after:['Hi Priya, your pricing page has three plans. Your demo form asks about one.','Two teams like yours fixed this. Want their fix?'],
+  rule:'Open with them, not you.'},
+ {kind:'shop',lab:'A product page',h:'The product page that tells you how to feel.',
+  orig:[['Our luxurious,',1],['hand-poured candle',0],['is crafted with the finest premium ingredients',2],['to create an unforgettable sensory experience.',3]],
+  notes:['Calling it luxurious is the least luxurious thing you can do. Let the details say it.','Finest and premium in one breath. Which ingredients? That’s the part I want.','Don’t tell me it’s unforgettable. Give me something to remember.'],
+  after:['Fig leaf, cedar and a little smoke.','Sixty hours of burn, so you can light it all winter.'],
+  rule:'Show it, don’t rank it.'}
+];
+
+const SELF=/\b(we|our|ours|us|i|my|i[’']m|we[’']re)\b/gi, YOU=/\b(you|your|yours|you[’']re)\b/gi;
+const cnt=(s,re)=>(s.match(re)||[]).length, wc=s=>s.trim().split(/\s+/).filter(Boolean).length;
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+/* the original, as words you can tap */
+function words(p,i){
+  let k=0;
+  return p.orig.map(([t,n],si)=>t.split(' ').map((w,wi,a)=>{
+    const rp=n?' rp'+(wi===a.length-1?' end':'')+(si%2?' tilt':''):' keep';
+    const d=n?` style="--d:${(n-1)*.35+wi*.07}s"`:'';
+    const num=n&&wi===0?`<span class="nm" style="--d:${(n-1)*.35}s">${n}</span>`:'';
+    const b=`<button class="w${rp}" data-i="${k++}"${d}>${esc(w)}</button>`;
+    return num?`<span style="white-space:nowrap">${num}${b}</span>`:b;
+  }).join(' ')).join(' ');
+}
+/* each kind of copy sits in its own setting */
+function frame(p,body,isAfter){
+  const a=p.after;
+  if(p.kind==='web') return `<div class="frame web"><div class="chrome"><i></i><i></i><i></i><span>www.example.com</span></div><div class="body"><div class="nav"><b>Brand</b><span>Product</span><span>Pricing</span><span>Log in</span></div>${isAfter?`<p class="hl">${a[0]}</p><p class="dk">${a[1]}</p>`:`<p class="hl">${body}</p>`}<span class="cta">${isAfter?'Try it on your inbox':'Learn more'}</span></div></div>`;
+  if(p.kind==='push') return `<div class="frame lock"><div class="t">9:41</div><div class="d">Sunday 15 November</div><div class="note"><div class="ic">T</div><div><div class="hd">Tally <span>now</span></div><div class="tx">${isAfter?a[0]:body}</div></div></div></div>`;
+  if(p.kind==='mail') return `<div class="frame mail"><div class="meta"><div>From <b>Sam, Brightlane</b></div><div>To <b>Priya</b></div><div class="subj">${isAfter?'Your demo form':'Quick question'}</div></div><div class="msg">${isAfter?`<p>${a[0]}</p><p>${a[1]}</p>`:`<p>${body}</p>`}<p class="sig">Sam</p></div></div>`;
+  return `<div class="frame shop"><div class="pic"><div class="jar"><span>WINTER<br>FIG</span></div></div><div class="info"><p class="nmn">Winter Fig</p><p class="pr">Candle · 300 g</p><p class="ds">${isAfter?`<span class="lead">${a[0]}</span>${a[1]}`:body}</p><span class="add">Add to basket</span></div></div>`;
+}
+
+const host=document.getElementById('pieces'), state=[];
+P.forEach((p,i)=>{
+  const before=p.orig.map(s=>s[0]).join(' '), after=p.after.join(' ');
+  p.stat={w:[wc(before),wc(after)],s:[cnt(before,SELF),cnt(after,SELF)],y:[cnt(before,YOU),cnt(after,YOU)]};
+  const sec=document.createElement('section');
+  sec.className='scene piece';sec.id='s'+(i+1);
+  sec.innerHTML=`<div class="in">
+    <p class="lab">${String(i+1).padStart(2,'0')} / 0${P.length} · ${p.lab}</p>
+    <h2>${p.h}</h2>
+    <div class="grid">
+      <div>
+        <div class="layers"><div class="before">${frame(p,words(p,i),false)}</div><div class="after" aria-hidden="true">${frame(p,'',true)}</div></div>
+        <div class="ctl">
+          <span class="count" aria-live="polite">Tap any word to cross it out.</span>
+          <div class="ba" hidden><button class="on" data-v="0">Before</button><button data-v="1">After</button></div>
+          <button class="pill go">Show my red pen</button>
+        </div>
+      </div>
+      <div class="notes"><div class="stage">
+        <div class="s0"><p class="ask">What would you cut?<small>Cross out every word that isn’t pulling its weight. There’s no wrong answer, only a shorter one.</small></p></div>
+        <div class="s1"><p class="score"></p><ol class="nl">${p.notes.map((n,j)=>`<li style="--d:${j*.35+.2}s"><b>${j+1}</b><span>${n}</span></li>`).join('')}</ol></div>
+        <div class="s2"><p class="lab">The rule</p><p class="rule">${p.rule}</p>
+          <div class="meter">
+            <div>Words<output>${p.stat.w[0]}<i>→</i>${p.stat.w[1]}</output></div>
+            <div>About us (we, our, I, my)<output>${p.stat.s[0]}<i>→</i>${p.stat.s[1]}</output></div>
+            <div>About you (you, your)<output>${p.stat.y[0]}<i>→</i>${p.stat.y[1]}</output></div>
+          </div></div>
+      </div></div>
+    </div></div>`;
+  host.appendChild(sec);
+  const st={phase:0,mine:0,agree:0};state.push(st);
+  const ws=[...sec.querySelectorAll('.before .w')], count=sec.querySelector('.count'), go=sec.querySelector('.go'), ba=sec.querySelector('.ba');
+  const tick=()=>{const n=ws.filter(w=>w.classList.contains('me')).length;count.innerHTML=n?`You’ve cut <b>${n}</b> word${n>1?'s':''}.`:'Tap any word to cross it out.'};
+  ws.forEach(w=>w.addEventListener('click',()=>{if(st.phase)return;w.classList.toggle('me');w.setAttribute('aria-pressed',w.classList.contains('me'));tick()}));
+  ws.forEach(w=>w.setAttribute('aria-pressed','false'));
+  const show=v=>{sec.classList.toggle('flip',!!v);ba.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.v===v));
+    sec.querySelector('.before').setAttribute('aria-hidden',!!v);sec.querySelector('.after').setAttribute('aria-hidden',!v)};
+  ba.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(+b.dataset.v)});
+  go.addEventListener('click',()=>{
+    if(st.phase===0){
+      st.phase=1;
+      const me=ws.filter(w=>w.classList.contains('me')), rp=ws.filter(w=>w.classList.contains('rp'));
+      st.mine=rp.length;st.agree=me.filter(w=>w.classList.contains('rp')).length;st.cut=me.length;
+      const extra=st.cut-st.agree;
+      sec.querySelector('.score').innerHTML=!st.cut?`You’d leave it alone. I cut <em>${st.mine}</em> of ${ws.length} words.`
+        :st.agree===st.mine&&!extra?`<em>You cut exactly what I cut.</em> Have you done this before?`
+        :`You cut <em>${st.cut}</em>. <em>${st.agree}</em> of those are mine too${extra?`, and ${extra} I’d keep`:''}.`;
+      sec.classList.add('marked');count.textContent='';go.textContent='Read the rewrite';
+    } else if(st.phase===1){
+      st.phase=2;show(1);ba.hidden=false;go.textContent=i<P.length-1?'Next piece ↓':'See the tally ↓';done();
+    } else {
+      document.getElementById(i<P.length-1?'s'+(i+2):'end').scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+/* the tally adds up whatever's been marked */
+function done(){
+  const seen=P.filter((p,i)=>state[i].phase===2), sum=k=>[0,1].map(j=>seen.reduce((a,p)=>a+p.stat[k][j],0));
+  const w=sum('w'),s=sum('s'),y=sum('y'), cut=state.reduce((a,x)=>a+(x.cut||0),0), ag=state.reduce((a,x)=>a+(x.agree||0),0), mine=state.reduce((a,x)=>a+(x.phase?x.mine:0),0);
+  document.getElementById('tally').innerHTML=`
+    <div class="tile"><span class="k">Words</span><span class="v">${w[0]}<i>→</i>${w[1]}</span></div>
+    <div class="tile"><span class="k">About us</span><span class="v">${s[0]}<i>→</i>${s[1]}</span></div>
+    <div class="tile"><span class="k">About you</span><span class="v">${y[0]}<i>→</i>${y[1]}</span></div>
+    <div class="tile yours"><span class="k">Your pen</span><span class="v">${mine?Math.round(ag/mine*100):0}%</span><span class="k" style="margin-top:6px;text-transform:none;letter-spacing:0">of my cuts, ${cut} words in all</span></div>`;
+  document.getElementById('rules').innerHTML=seen.map(p=>`<li><b>${P.indexOf(p)+1}</b>${p.rule}</li>`).join('');
+}
+done();
+document.getElementById('again').addEventListener('click',()=>location.reload());
+
+/* ---------- your copy: the red pen as a tool ---------- */
+/* What the pen looks for, in priority order: where two overlap, the earlier one wins. */
+const CATS=[
+ {name:'Throat-clearing',note:'Lines readers skip on their way to the point. Delete them and see if anything is lost.',rule:'Start with the second sentence.',
+  re:/\b(i hope (this|you|all|everyone)[^.!?\n]*|hope you[’']?re (doing )?well|i[’']m (reaching|writing) (out )?(to|because)?|i am (reaching|writing) (out )?(to|because)?|just (wanted to|checking in|following up|a quick)|i wanted to [a-z]+|my name is [a-z]+|hi there|dear sir( or |\/)madam|to whom it may concern|check out|click here|learn more|as you (may )?know|we are (pleased|excited|thrilled) to( announce)?|i[’']m (so )?(excited|thrilled) to( announce| share)?)\b/gi},
+ {name:'Urgency with nothing at stake',note:'Pressure only works when the reader can see what they’d lose.',rule:'Say what they’d lose.',
+  re:/\b(don[’']?t miss( out)?|hurry|act (now|fast)|limited time( only)?|last chance|while stocks last|before it[’']?s too late|you won[’']?t want to miss|exclusive offer)\b/gi},
+ {name:'Says what it is, not what it does',note:'Words every company uses about itself. A reader can’t picture any of them.',rule:'Say what it does, not what it is.',
+  re:/\b(leading|innovative|innovation|cutting[- ]edge|world[- ]class|best[- ]in[- ]class|state[- ]of[- ]the[- ]art|revolutionary|next[- ]gen(eration)?|game[- ]chang(ing|er)|seamless(ly)?|robust|holistic|synerg(y|ies)|solutions?|empower(s|ing)?|unlock(s|ing)?|leverag(e|es|ing)|drive (growth|results|value|impact)|driving (growth|results|value|impact)|transform(s|ing|ative)?|full potential|one[- ]stop[- ]shop|end[- ]to[- ]end|scalable|tailored|bespoke|passionate|dedicated|results[- ]driven|proven track record|dynamic|thought leader(ship)?|value[- ]added|disrupt(ive|ing)?)\b/gi},
+ {name:'Ranking instead of showing',note:'Telling me it’s great makes me doubt it. Swap the adjective for a detail I can check.',rule:'Show it, don’t rank it.',
+  re:/\b(luxurious|luxury|premium|finest|high[- ]quality|top[- ]quality|amazing|incredible|unforgettable|exceptional|unparalleled|unmatched|stunning|ultimate|best|awesome|world[- ]famous|second to none|outstanding|superior|excellent)\b/gi},
+ {name:'Filler',note:'Words that add length, not meaning.',rule:'Cut it and read it again.',
+  re:/\b(very|really|just|actually|basically|simply|truly|literally|in order to|at the end of the day|needless to say|that being said|quite|extremely)\b/gi},
+ {name:'About the sender (we, I, our)',note:'Fine in small doses, but count them against “you”. The reader is looking for themselves.',rule:'Open with them, not you.',self:true,
+  re:/\b(we[’']re|we[’']ve|we[’']ll|i[’']m|i[’']ve|i[’']ll|ours|our|us|we|my|me|i)\b/gi}
+];
+const US=/\b(we[’']re|we[’']ve|we[’']ll|i[’']m|i[’']ve|i[’']ll|ours|our|us|we|my|me|i)\b/gi;
+function analyze(t){
+  const all=[];
+  CATS.forEach((c,ci)=>{c.re.lastIndex=0;let m;while((m=c.re.exec(t))){if(!m[0])break;all.push({s:m.index,e:m.index+m[0].length,c:ci,t:m[0]})}});
+  const acc=[];
+  all.forEach(h=>{if(!acc.some(a=>h.s<a.e&&a.s<h.e))acc.push(h)}); /* already in priority order */
+  acc.sort((a,b)=>a.s-b.s);
+  const sents=t.split(/(?<=[.!?])\s+|\n+/).map(s=>s.trim()).filter(s=>/\w/.test(s));
+  const lens=sents.map(wc);
+  return {t,acc,words:/\w/.test(t)?wc(t):0,us:cnt(t,US),you:cnt(t,YOU),sents:sents.length,longest:Math.max(0,...lens),
+    bang:(t.match(/!/g)||[]).length,cuts:acc.filter(h=>!CATS[h.c].self).length};
+}
+function render(a){
+  const order=[];a.acc.forEach(h=>{if(!order.includes(h.c))order.push(h.c)});
+  let html='',i=0;const seen=new Set();
+  a.acc.forEach(h=>{
+    html+=esc(a.t.slice(i,h.s));
+    const n=seen.has(h.c)?'':`<span class="nm">${order.indexOf(h.c)+1}</span>`;seen.add(h.c);
+    const sp=h.t.indexOf(' '), first=sp<0?h.t:h.t.slice(0,sp), rest=sp<0?'':h.t.slice(sp);
+    html+=`<mark class="m ${CATS[h.c].self?'u':'s'}">${n?`<span style="white-space:nowrap">${n}${esc(first)}</span>`:esc(first)}${esc(rest)}</mark>`;i=h.e;
+  });
+  html+=esc(a.t.slice(i));
+  return {html:html.replace(/\n/g,'<br>'),order};
+}
+function report(a,order){
+  let v;
+  if(!a.words) v='Paste something first.';
+  else if(!a.acc.length) v='<em>Clean.</em> Nothing for the red pen. Now read it aloud: where you take a breath, end the sentence.';
+  else if(a.us>a.you&&(a.us>=3||!a.cuts)) v=`It’s mostly about the sender: <em>${a.us}</em> “we/I/our” to <em>${a.you}</em> “you”.`;
+  else { const top=order.filter(c=>!CATS[c].self).sort((x,y)=>a.acc.filter(h=>h.c===y).length-a.acc.filter(h=>h.c===x).length)[0];
+    v=`${a.cuts} thing${a.cuts>1?'s':''} to cut. Start here: <em>${CATS[top].rule}</em>`; }
+  const items=order.map((c,j)=>{const hs=a.acc.filter(h=>h.c===c), uniq=[...new Set(hs.map(h=>h.t.toLowerCase()))].slice(0,4);
+    return `<li class="${CATS[c].self?'self':''}" style="animation-delay:${j*.12}s"><b>${j+1}</b><span><strong>${CATS[c].name} ×${hs.length}</strong>${uniq.map(u=>`<q>“${esc(u)}”</q>`).join(', ')}. ${CATS[c].note}<br><span class="r">${CATS[c].rule}</span></span></li>`}).join('');
+  const extra=[];
+  if(a.longest>25) extra.push(`Your longest sentence is <b>${a.longest}</b> words. Split it.`);
+  if(a.bang>1) extra.push(`<b>${a.bang}</b> exclamation marks. One is plenty; none is usually better.`);
+  return `<p class="verdict">${v}</p>${items?`<ol class="fl">${items}</ol>`:''}${extra.length?`<p class="still">${extra.join(' ')}</p>`:''}
+    <div class="meter"><div>Words<output>${a.words}</output></div><div>About us (we, our, I, my)<output>${a.us}</output></div><div>About you (you, your)<output>${a.you}</output></div><div>Longest sentence<output>${a.longest}</output></div></div>`;
+}
+const src=document.getElementById('src'),dst=document.getElementById('dst'),out=document.getElementById('out'),rep=document.getElementById('report'),
+  inWrap=document.getElementById('inWrap'),outWrap=document.getElementById('outWrap'),markBtn=document.getElementById('mark'),rw=document.getElementById('rw'),srcCount=document.getElementById('srcCount');
+const store={get:k=>{try{return localStorage.getItem('redpen.'+k)||''}catch(e){return ''}},set:(k,v)=>{try{localStorage.setItem('redpen.'+k,v)}catch(e){}}};
+let base=null;
+const SAMPLES=[['A LinkedIn headline','Passionate, results-driven marketing professional with a proven track record of driving growth for leading brands.'],...P.map(p=>[p.lab.replace(/^An? /,'').replace(/^./,c=>c.toUpperCase()),p.orig.map(s=>s[0]).join(' ')])];
+const chips=document.querySelector('#yours .chips');
+SAMPLES.forEach(([l,t])=>{const b=document.createElement('button');b.className='chip';b.textContent=l;b.onclick=()=>{src.value=t;srcTick();doMark()};chips.appendChild(b)});
+function srcTick(){const n=/\w/.test(src.value)?wc(src.value):0;srcCount.textContent=n?`${n} words`:'';store.set('src',src.value)}
+function doMark(){
+  if(!/\w/.test(src.value)){src.focus();return}
+  base=analyze(src.value);const r=render(base);
+  out.innerHTML=r.html;rep.innerHTML=report(base,r.order);
+  inWrap.hidden=true;outWrap.hidden=false;markBtn.hidden=true;srcCount.textContent='';
+  rw.hidden=false;if(!dst.value)dst.value=store.get('dst');live();
+}
+function live(){
+  if(!base)return;const a=analyze(dst.value);store.set('dst',dst.value);
+  const row=(k,x,y,goodDown)=>{const c=y===x?'':((y<x)===goodDown?'up':'dn');return `<div>${k}<output>${x}<i>→</i><span class="${c}">${dst.value.trim()?y:'–'}</span></output></div>`};
+  document.getElementById('live').innerHTML=row('Words',base.words,a.words,true)+row('About us',base.us,a.us,true)+row('About you',base.you,a.you,false)+row('Things to cut',base.cuts,a.cuts,true);
+  const left=[...new Set(a.acc.filter(h=>!CATS[h.c].self).map(h=>h.t.toLowerCase()))];
+  document.getElementById('still').innerHTML=!dst.value.trim()?'Write your version and the numbers move as you type.'
+    :left.length?`Still flagged: ${left.slice(0,8).map(w=>`<b>${esc(w)}</b>`).join(', ')}`
+    :a.you>=a.us?'Nothing left for the red pen, and it’s about the reader. Ship it.':'Nothing left to cut. Now turn one “we” into a “you”.';
+}
+src.addEventListener('input',srcTick);dst.addEventListener('input',live);
+markBtn.addEventListener('click',doMark);
+src.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey))doMark()});
+document.getElementById('edit').addEventListener('click',()=>{inWrap.hidden=false;outWrap.hidden=true;markBtn.hidden=false;markBtn.textContent='Mark it up again';srcTick();src.focus()});
+document.getElementById('copy').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(dst.value);e.target.textContent='Copied'}catch(x){dst.select();e.target.textContent='Selected: press ⌘C'}setTimeout(()=>e.target.textContent='Copy',1600)});
+src.value=store.get('src');srcTick();
+
+/* the title: each letter picks up a bright colour as you pass */
+const C=['#2f5bff','#00a36c','#7a3cff','#d02b8f','#00a9bd','#0a74da','#a86bff','#1fa0ff'];
+const T=document.getElementById('title');
+T.innerHTML=[...'Red Pen'].map(c=>c===' '?' ':`<span>${c}</span>`).join('');
+T.querySelectorAll('span').forEach((s,i)=>s.addEventListener('pointerenter',()=>{s.style.color=C[(i+Math.floor(Math.random()*C.length))%C.length];clearTimeout(s._t);s._t=setTimeout(()=>s.style.color='',1400)}));
+
+/* the step dots */
+const rail=document.getElementById('rail'), scenes=[...document.querySelectorAll('.scene')];
+rail.innerHTML=scenes.map(s=>`<a href="#${s.id}" aria-label="${s.querySelector('.lab').textContent}"></a>`).join('');
+const dots=[...rail.children];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)dots.forEach((d,i)=>d.classList.toggle('on',scenes[i]===e.target))}),{threshold:.5});
+scenes.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

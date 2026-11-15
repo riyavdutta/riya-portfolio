@@ -16,7 +16,6 @@
   var FUN = ['#2f5bff', '#00a36c', '#7a3cff', '#d02b8f', '#00a9bd', '#e3bd00', '#0a74da', '#6cb800', '#a86bff', '#1fa0ff'];
   function light(hex) { var n = parseInt(hex.slice(1), 16), r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; return (0.299 * r + 0.587 * g + 0.114 * b) > 150; }
   function ink(hex) { return light(hex) ? '#2a1a1e' : '#f4efe6'; }
-  function rnd(not) { var c; do { c = FUN[Math.floor(Math.random() * FUN.length)]; } while (c === not); return c; }
 
   // the projects (same copy as content/work.json and the case pages)
   var P = [
@@ -28,26 +27,7 @@
   ];
 
   /* ---------- fun colours on headlines ---------- */
-  // split a headline into words; hovering or tapping a word gives it a new colour
-  function funify(h, col) {
-    if (!h.dataset.fw) {
-      h.dataset.fw = 1;
-      h.innerHTML = h.textContent.split(' ').map(function (w) { return '<span class="fw">' + w + '</span>'; }).join(' ');
-      $$('.fw', h).forEach(function (w) {
-        var go = function () { w.dataset.own = 1; w.style.color = rnd(w.style.color); w.classList.add('pop'); setTimeout(function () { w.classList.remove('pop'); }, 300); };
-        w.addEventListener('mouseenter', go); w.addEventListener('click', go);
-      });
-    }
-    if (col) $$('.fw', h).forEach(function (w) { if (!w.dataset.own) w.style.color = col; });
-  }
-  var H2 = $$('main > section > .wrap > h2, #path > .wrap > h2');
-  H2.forEach(function (h) { funify(h); });
-  if ('IntersectionObserver' in window) {
-    var sio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { var c = FUN[H2.indexOf(e.target) % FUN.length]; funify(e.target, c); $('#dot').style.background = c; } });
-    }, { threshold: .6 });
-    H2.forEach(function (h) { sio.observe(h); });
-  }
+  // (the bright colours are kept for the opening headline only; everything else stays burgundy)
 
   /* ---------- clock (menu bar and bento) ---------- */
   function timeIn() { return new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }); }
@@ -120,7 +100,6 @@
     return dots() + '<p class="lab">Round ' + (r + 1) + ' of 3<span class="mode">' + { flash: 'FLASH TEST', pull: 'PULL', weigh: 'WEIGH IT' }[x.mode] + '</span></p>' +
       '<h2 class="round-h">' + (x.mode === 'flash' ? 'Watch closely. You get a couple of seconds.' : x.q) + '</h2>';
   }
-  function colourHead() { var h = $('.round-h', game) || $('.final h2', game); if (h) funify(h, FUN[(r * 3 + 1) % FUN.length]); }
   function later(fn, ms) { return setTimeout(fn, reduce ? 0 : ms); }
   // keep the game on screen: jump back to its top for each round, and show new blocks as they appear
   function toTop() { var p = $('#play'), bh = $('.bar').offsetHeight; if (Math.abs(p.getBoundingClientRect().top - bh) > 4) p.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
@@ -137,7 +116,10 @@
       var t = 0;
       breathe = setInterval(function () {
         if (!k.isConnected) return clearInterval(breathe);
-        t += .05; kinL.forEach(function (s, i) { s.style.fontVariationSettings = "'wght' " + Math.round(200 + (Math.sin(t - i * .35) + 1) / 2 * 600) + ",'opsz' 96"; });
+        t += .05; kinL.forEach(function (s, i) {
+          var wv = (Math.sin(t - i * .35) + 1) / 2; s.style.fontVariationSettings = "'wght' " + Math.round(200 + wv * 600) + ",'opsz' 96";
+          if (wv > .97 && !s._hot) { s._hot = 1; s.style.color = FUN[Math.floor(Math.random() * FUN.length)]; setTimeout(function () { s.style.color = ''; s._hot = 0; }, 1100); }
+        });
       }, 50);
     }
   }
@@ -166,14 +148,14 @@
     typeOut($('#typeK'), 'Riya Dutta · Marketing consultant');
     magnet($('#start'), 150, .2);
   }
-  function round() { tries = 0; var x = R[r]; ({ flash: flash, pull: pull, weigh: weigh })[x.mode](x); colourHead(); toTop(); }
+  function round() { tries = 0; var x = R[r]; ({ flash: flash, pull: pull, weigh: weigh })[x.mode](x); toTop(); }
 
   // 1 flash
   function flash(x) {
     game.innerHTML = head(x) + '<div class="felt" id="felt">' + card('a', x.a, 'down dealt', 0) + card('b', x.b, 'down dealt', 1) + '</div><div id="below"></div>';
     var t = $('#felt'), n = 3;
     later(function tick() {
-      if (n > 0) { t.insertAdjacentHTML('beforeend', '<span class="count" aria-hidden="true" style="--c:' + FUN[n * 2 % FUN.length] + '">' + n + '</span>'); var c = $('.count', t); setTimeout(function () { c.remove(); }, 550); n--; later(tick, 600); return; }
+      if (n > 0) { t.insertAdjacentHTML('beforeend', '<span class="count" aria-hidden="true">' + n + '</span>'); var c = $('.count', t); setTimeout(function () { c.remove(); }, 550); n--; later(tick, 600); return; }
       show(t, x);
     }, 900);
   }
@@ -245,7 +227,7 @@
   }
 
   function decide(x, s, how) {
-    var mine = x[s], last = r === R.length - 1, p = P[x.p], col = FUN[(r * 3 + 1) % FUN.length];
+    var mine = x[s], last = r === R.length - 1, p = P[x.p], col = '#800020';
     picks[r] = { pick: mine, s: s, proj: x.p, how: how };
     $$('#game .pcard').forEach(function (c) {
       c.classList.remove('down');
@@ -271,11 +253,10 @@
     sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
     game.innerHTML = '<div class="final"><div class="hand">' + rows.map(function (w, i) { return w.k.none ? backCard() : card(w.k.s, w.k.pick, '', i); }).join('') + '</div><div>' +
       '<p class="lab">Your hand</p><h2>' + sentence + '</h2>' +
-      '<div class="reads">' + rows.map(function (w, i) { return '<div class="read" style="--c:' + FUN[(i * 3 + 1) % FUN.length] + '"><i>0' + (i + 1) + '</i><small>' + w.rd.label + ' · ' + w.rd.mode + '</small><b>' + w.o.name + '</b><span>' + w.ev + '</span></div>'; }).join('') + '</div>' +
+      '<div class="reads">' + rows.map(function (w, i) { return '<div class="read"><i>0' + (i + 1) + '</i><small>' + w.rd.label + ' · ' + w.rd.mode + '</small><b>' + w.o.name + '</b><span>' + w.ev + '</span></div>'; }).join('') + '</div>' +
       '<div class="plan"><p class="lab">How I’d write a campaign for you</p><dl>' + rows.map(function (w) { return '<dt>' + w.rd.step + '</dt><dd>' + w.o.plan + '<button type="button" data-proj="' + w.k.proj + '">See it in ' + P[w.k.proj].t + ' →</button></dd>'; }).join('') + '</dl></div>' +
       '<div class="row"><button class="go" id="hello" type="button">Send me your hand →</button><button class="ghost" id="again" type="button">Deal again</button><a class="ghost" href="#work">See all the work ↓</a></div>' +
       '<div id="slot"></div></div></div>';
-    funify($('.final h2', game), FUN[2]);
     $('#again').onclick = function () { intro(); toTop(); };
     $$('[data-proj]', game).forEach(function (b) { b.onclick = function () { gatherOpen(+b.dataset.proj); }; });
     $('#hello').onclick = function () { compose(rows); };
@@ -335,7 +316,7 @@
     var host = $('#play');
     for (var i = 0; i < 26; i++) {
       var s = document.createElement('i'); s.className = 'confetti';
-      s.style.left = Math.random() * 100 + '%'; s.style.background = FUN[i % FUN.length]; s.style.animationDelay = Math.random() * .4 + 's';
+      s.style.left = Math.random() * 100 + '%'; s.style.background = ['#800020', '#5e0018', '#d9a3ad', '#fffcf6'][i % 4]; s.style.animationDelay = Math.random() * .4 + 's';
       host.appendChild(s); setTimeout(s.remove.bind(s), 2200);
     }
   }
@@ -386,7 +367,7 @@
     $$('.th', ov).forEach(function (x) { x.remove(); });
     core.classList.remove('on'); ov.classList.remove('done');
     core.innerHTML = '<small>' + p.k.toUpperCase() + '</small><h3>' + p.t + '</h3><p>' + p.d + '</p><div class="nums">' +
-      p.n.map(function (x, k) { return '<div style="--c:' + FUN[(i * 2 + k * 3) % FUN.length] + '"><b data-to="' + x[0] + '">' + x[0] + '</b>' + x[1].toUpperCase() + '</div>'; }).join('') +
+      p.n.map(function (x, k) { return '<div><b data-to="' + x[0] + '">' + x[0] + '</b>' + x[1].toUpperCase() + '</div>'; }).join('') +
       '</div><a class="btn" href="' + CASE + p.s + '/">Read the case study →</a>';
     ov.setAttribute('aria-label', p.t);
     ov.classList.add('on'); document.body.style.overflow = 'hidden';
@@ -447,7 +428,7 @@
       $('.pinhint').style.opacity = p > .92 ? 0 : 1;
       if (k !== last) {
         last = k; $('#bigY').textContent = S[k][0]; $('#bigT').textContent = S[k][1]; $('#bigO').textContent = S[k][2]; $('#bigM').textContent = S[k][3];
-        var bg = k === S.length - 1 ? '#800020' : FUN[(k * 3) % FUN.length]; big.style.background = bg; big.style.color = ink(bg);
+        var bg = k % 2 ? '#5e0018' : '#800020'; big.style.background = bg; big.style.color = ink(bg);
       }
     }
     addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
@@ -463,12 +444,10 @@
     t.addEventListener('mouseleave', function () { t.style.transform = ''; });
   });
   $$('#bento .flip').forEach(function (f, i) {
-    var c = FUN[(i * 3 + 2) % FUN.length]; f.style.setProperty('--c', c); f.style.setProperty('--fg', ink(c));
-    f.onclick = function () { f.style.transform = ''; f.classList.toggle('on'); f.setAttribute('aria-pressed', f.classList.contains('on')); };
+        f.onclick = function () { f.style.transform = ''; f.classList.toggle('on'); f.setAttribute('aria-pressed', f.classList.contains('on')); };
   });
   var votes = { a: 0, b: 0 };
   $$('.poll button').forEach(function (b, i) {
-    b.style.setProperty('--c', FUN[i ? 3 : 4] + '55');
     b.onclick = function () {
       votes[b.dataset.v]++; var tot = votes.a + votes.b;
       $$('.poll button').forEach(function (x) { var pc = Math.round(votes[x.dataset.v] / tot * 100); $('i', x).style.width = pc + '%'; $('span', x).textContent = (x.dataset.v === 'a' ? 'Ghosts ' : 'Founders ') + pc + '%'; });
@@ -505,9 +484,8 @@
 
   /* ---------- 7. the desktop ---------- */
   var desk = $('#desk'), z = 10, n = 0, open = {};
-  var WC = { mail: '#2f5bff', heat: '#00a36c', studio: '#7a3cff', kit: '#e3bd00', links: '#d02b8f' };
-  $$('.ico').forEach(function (b) { var c = WC[b.dataset.open], i = $('i', b); i.style.setProperty('--c', c); i.style.setProperty('--fg', ink(c)); });
-  function win(id, title, html, x, y, w) {
+  var WC = { mail: '#ebe2d4', heat: '#ebe2d4', studio: '#ebe2d4', kit: '#ebe2d4', links: '#ebe2d4' };
+    function win(id, title, html, x, y, w) {
     if (open[id] && open[id].isConnected) { open[id].style.zIndex = ++z; if (phone.matches) open[id].scrollIntoView({ behavior: 'smooth', block: 'nearest' }); return open[id]; }
     var el = document.createElement('div'); el.className = 'win'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', title);
     el.style.left = x + 'px'; el.style.top = y + 'px'; if (w) el.style.width = w + 'px'; el.style.zIndex = ++z;
@@ -551,7 +529,7 @@
     studio: function () {
       var st = ['Brief', 'Plan', 'Copy', 'Check', 'Approve', 'Build', 'Render', 'Check', 'Deliver', 'Watch', 'Post'];
       var w = win('studio', 'Content Studio', '<p style="margin-bottom:12px">The route every post takes, from brief to posted piece.</p><div class="route">' +
-        st.map(function (s, i) { return '<span style="--c:' + FUN[i % FUN.length] + ';--fg:' + ink(FUN[i % FUN.length]) + '">' + (i < 9 ? '0' : '') + (i + 1) + '<br>' + s + '</span>'; }).join('') +
+        st.map(function (s, i) { return '<span>' + (i < 9 ? '0' : '') + (i + 1) + '<br>' + s + '</span>'; }).join('') +
         '</div><p style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="pill" type="button" data-run>Run a brief through it ▶</button><a class="pill--line" href="' + CASE + 'the-content-studio/">Case study</a></p>', 300 + off(), 110 + off(), 440);
       $('[data-run]', w).onclick = function () { var sp = $$('.route span', w); sp.forEach(function (s) { s.classList.remove('lit'); }); sp.forEach(function (s, i) { setTimeout(function () { s.classList.add('lit'); }, reduce ? 0 : i * 180); }); };
       return w;

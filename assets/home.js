@@ -26,7 +26,7 @@
 
   /* ---------- 1. the choice ---------- */
   /* The game is dealt as playing cards. Three rounds, three ways to pick:
-   *   1 flash: two cards dealt face-down, flipped up for ~1.2s, then "which line do you remember?"
+   *   1 flash: two cards dealt face-down, flipped up for ~2.5s, then "which line do you remember?"
    *   2 pull:  two face-up cards; drag the divider toward your pick
    *   3 weigh: two cards on a scale; hold a side until it touches down
    * Each pick reveals a trait ('tr'), the reason the post works ('why'), and how Riya would write
@@ -67,7 +67,7 @@
   function dots() { return '<div class="dots" aria-hidden="true">' + R.map(function (_, i) { return '<i class="' + (i <= r ? 'on' : '') + '"></i>'; }).join('') + '</div>'; }
   function head(x) {
     return dots() + '<p class="k b">ROUND ' + (r + 1) + ' OF 3<span class="mode">' + { flash: 'FLASH TEST', pull: 'PULL', weigh: 'WEIGH IT' }[x.mode] + '</span></p>' +
-      '<h2 class="round-h">' + (x.mode === 'flash' ? 'Watch closely. You get about a second.' : x.q) + '</h2>';
+      '<h2 class="round-h">' + (x.mode === 'flash' ? 'Watch closely. You get a couple of seconds.' : x.q) + '</h2>';
   }
   function later(fn, ms) { return setTimeout(fn, reduce ? 0 : ms); }
   // keep the game on screen: jump back to its top for each round, and show new blocks as they appear
@@ -99,7 +99,7 @@
   }
   function show(t, x) {
     $$('.pcard', t).forEach(function (c) { c.classList.remove('down'); });
-    later(function () { $$('.pcard', t).forEach(function (c) { c.classList.add('down'); }); later(function () { ask(x); }, 500); }, reduce ? 3000 : 1200);
+    later(function () { $$('.pcard', t).forEach(function (c) { c.classList.add('down'); }); later(function () { ask(x); }, 500); }, reduce ? 4000 : 2500);
   }
   function ask(x) {
     var lines = [['a', x.a.line], ['b', x.b.line]].sort(function () { return Math.random() - .5; });

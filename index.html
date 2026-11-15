@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="assets/tokens.css">
 <title>Riya Dutta · Marketing and research</title>
 <meta name="description" content="Riya Dutta: marketer and consumer behaviour researcher. B2B tech marketing, brand and LinkedIn campaigns, and research on how people decide.">
 <meta property="og:type" content="website">
@@ -13,99 +12,110 @@
 <meta property="og:url" content="https://riya-folio.vercel.app/">
 <link rel="canonical" href="https://riya-folio.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4efe6">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&amp;family=Space+Mono:wght@400;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/home.css?v=12">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/home.css?v=20">
 </head>
 <body>
 
-<nav class="bar" aria-label="Main">
-  <button class="logo" id="logo" type="button" title="Open the desktop">● Riya OS</button>
-  <a href="#work">Work</a><a href="#path" class="hide-s">Path</a><a href="#about">About</a><a href="#contact">Say hello</a>
-  <span class="r"><button id="cmdBtn" type="button" class="hide-s" aria-label="Jump to anything"><kbd>⌘K</kbd></button><span id="barClock" class="hide-s"></span></span>
-</nav>
+<header class="bar"><div class="wrap">
+  <a class="me" href="#play"><i id="dot" aria-hidden="true"></i>Riya Dutta</a>
+  <nav aria-label="Main"><a href="#work" data-t="Work">Work</a><a href="#look" data-t="Look around">Look around</a><a href="#path" data-t="Path">Path</a><a href="#about" data-t="About">About</a></nav>
+  <div class="r"><span id="barClock" class="hide-s"></span><button id="cmdBtn" type="button" class="kbd hide-s" aria-label="Jump to anything"><kbd>⌘K</kbd></button><a class="hi" id="hiBtn" href="#contact">Say hello</a></div>
+</div></header>
 
 <main>
-<!-- 1. the choice -->
-<section id="play" aria-label="Introduction">
-  <div class="ab-bg" aria-hidden="true"><span>A</span><span>or</span><span>B</span></div>
+<!-- 1. the game: the opening is the first hand -->
+<section id="play" class="hero" aria-label="Introduction">
   <div class="wrap" id="game">
-    <p class="k b">RIYA DUTTA · MARKETING CONSULTANT</p>
-    <h1>I study why people <em>choose.</em></h1>
+    <p class="lab">Riya Dutta · Marketing consultant</p>
+    <h1 class="kin">I study why people choose.</h1>
     <p class="lede">I study why people choose one thing over another, and build brands and products that get chosen.</p>
   </div>
-  <a class="skip" href="#work">Skip to the work ↓</a>
 </section>
+
+<!-- the marquee: speeds up and leans with your scroll -->
+<div class="mq" aria-hidden="true"><div class="mrow" id="r1"></div><div class="mrow o" id="r2"></div></div>
 
 <!-- 2. selected work -->
-<section id="work" aria-label="Selected work">
-  <div class="marq" aria-hidden="true"><span>I STUDY WHY PEOPLE CHOOSE ONE THING OVER ANOTHER · AND BUILD BRANDS AND PRODUCTS THAT GET CHOSEN · SELECTED WORK · </span><span>I STUDY WHY PEOPLE CHOOSE ONE THING OVER ANOTHER · AND BUILD BRANDS AND PRODUCTS THAT GET CHOSEN · SELECTED WORK · </span></div>
-  <div class="wrap">
-    <h2 class="kname" id="kName">SELECTED WORK</h2>
-    <ul class="klist" id="kList">
-      <li><button type="button" data-i="0"><i>01</i><strong>The Haunted CRM</strong><em>LINKEDIN CAMPAIGN · HALLOWEEN 2026</em></button></li>
-      <li><button type="button" data-i="1"><i>02</i><strong>The Founder Bottleneck</strong><em>LINKEDIN CAMPAIGN · OCT 2026</em></button></li>
-      <li><button type="button" data-i="2"><i>03</i><strong>The Content Studio</strong><em>SYSTEM · 2026</em></button></li>
-      <li><button type="button" data-i="3"><i>04</i><strong>The B2Ne website</strong><em>WEBSITE · 2026</em></button></li>
-      <li><button type="button" data-i="4"><i>05</i><strong>CRM Graveyard</strong><em>LINKEDIN SERIES · 2026</em></button></li>
-    </ul>
-    <a class="allwork" href="work/">See every project, with filters →</a>
-  </div>
-  <img class="float" id="kFloat" alt="">
-  <div class="sheet" id="kSheet" role="region" aria-label="Project" aria-live="polite"></div>
-</section>
+<section id="work" class="work" aria-labelledby="work-h"><div class="wrap">
+  <p class="lab">Selected work</p>
+  <h2 id="work-h">Five projects. Pick one.</h2>
+  <p class="sub">Hover a name to see it. Click, and its pieces gather into the campaign.</p>
+  <div class="list" id="list"></div>
+  <a class="allwork" href="work/">See every project, with filters →</a>
+</div></section>
+<img class="follow" id="follow" alt="">
+<div class="open" id="open" role="dialog" aria-modal="true" aria-label="Project"><button class="x" id="closeOpen" type="button">Close ✕</button><div class="core" id="core"></div></div>
 
-<!-- 3. the path -->
-<section id="path" aria-labelledby="path-h"><div class="wrap">
-  <p class="k" style="color:var(--cherry)">HOW I GOT HERE</p>
-  <h2 id="path-h">The rigour came from <em>odder places.</em></h2>
-  <div class="pathbox" id="pathBox">
-    <svg viewBox="0 0 1000 1100" preserveAspectRatio="none" aria-hidden="true"><path id="pathLine" d="M500 0 C 500 120, 200 140, 200 230 S 800 360, 800 450 S 200 590, 200 680 S 800 820, 800 900 S 500 1020, 500 1100" fill="none" stroke="#65232b" stroke-width="4" stroke-linecap="round"/></svg>
-    <button type="button" class="stop" aria-expanded="false" style="left:calc(20% - 150px);top:140px"><small>2019 – 2023 · <span>click for more</span></small><h3>B.Sc. (Hons.) Horticulture</h3><p>Dr. YS Parmar University of Horticulture and Forestry</p><span class="more">A horticulture degree spent testing hypotheses on plants.</span></button>
-    <button type="button" class="stop" aria-expanded="false" style="left:calc(80% - 150px);top:360px"><small>2024 – 2025 · <span>click for more</span></small><h3>Management Trainee</h3><p>HDFC Bank</p><span class="more">A bank traineeship chasing deposit targets: branch revenue up 30% year on year; ₹1.36 crore CASA target met.</span></button>
-    <button type="button" class="stop" aria-expanded="false" style="left:calc(20% - 150px);top:590px"><small>2024 – 2026 · <span>click for more</span></small><h3>MBA, Marketing and Business Analytics</h3><p>LM Thapar School of Management</p><span class="more">An MBA in analytics, on the Emerging Leaders scholarship.</span></button>
-    <button type="button" class="stop" aria-expanded="false" style="left:calc(80% - 150px);top:810px"><small>2025 · <span>click for more</span></small><h3>Research Intern, ISLab</h3><p>University of the Aegean · Samos</p><span class="more">A summer tracking eyes in a Greek UI/UX lab, in behavioural and cognitive methods. Third prize at DIGIBUS.</span></button>
-    <button type="button" class="stop" aria-expanded="false" style="left:calc(50% - 150px);top:1000px"><small>2026 – now · <span>click for more</span></small><h3>Marketing Consultant</h3><p>Business To Nexus (B2Ne) and Nodinite · Remote</p><span class="more">The ideas that used to live in a scrapbook now live in decks, campaigns and research.</span></button>
-  </div>
+<!-- 3. look around: a torch over every campaign -->
+<section id="look" class="look" aria-labelledby="look-h"><div class="wrap">
+  <p class="lab">Look around</p>
+  <h2 id="look-h">See only where you look.</h2>
+  <p class="sub">Every campaign, under one wash of colour. Your cursor (or finger) is the torch. It’s how I study attention, turned into a way to browse.</p>
+  <div class="torch" id="torch"><div class="grid" id="tgrid"></div><div class="dark"></div><div class="thint" id="thint">Move to look around</div><div class="say" id="tsay" aria-live="polite"></div></div>
 </div></section>
 
-<!-- 4. about -->
-<section id="about" aria-labelledby="about-h"><div class="wrap">
-  <p class="k b">ABOUT</p>
-  <h2 id="about-h">I study why people choose <em>one thing over another.</em></h2>
+<!-- 4. the path: pinned, five stops -->
+<section id="path" class="path" aria-labelledby="path-h">
+  <div class="wrap"><p class="lab">How I got here</p><h2 id="path-h">The rigour came from odder places.</h2></div>
+  <div class="pin" id="pin"><div class="stick wrap">
+    <div class="big" id="bigcard" aria-live="polite"><small id="bigY"></small><b id="bigT"></b><em id="bigO"></em><p id="bigM"></p></div>
+    <div><ol class="steps" id="steps"></ol><div class="meter"><i></i></div><p class="pinhint">Keep scrolling</p></div>
+  </div></div>
+</section>
+
+<!-- 5. about -->
+<section id="about" class="about" aria-labelledby="about-h"><div class="wrap">
+  <p class="lab">About</p>
+  <h2 id="about-h">I study why people choose one thing over another.</h2>
   <div class="bento" id="bento">
-    <div class="t s2" style="--c:var(--vanilla);--fg:var(--truffle)"><small>WHAT I DO</small><h3 class="quote">…and build brands and products that get chosen.</h3><p>I’m a marketer who studies how people decide: what they notice, what they trust, and what makes them act.</p></div>
+    <div class="t s2"><small>WHAT I DO</small><b class="quote">…and build brands and products that get chosen.</b><p>I’m a marketer who studies how people decide: what they notice, what they trust, and what makes them act.</p></div>
     <div class="t photo r2" style="background-image:url(assets/img/riya-mountains.jpg)" role="img" aria-label="Riya Dutta in the mountains"></div>
-    <div class="t" style="--c:var(--cherry)"><small>IN HIMACHAL PRADESH IT’S</small><div class="clock" id="bClock">--:--</div></div>
-    <button type="button" class="t flip s2" aria-pressed="false" style="--c:var(--tile);--c2:var(--mint)"><span class="fi"><span class="fa"><small>RESEARCH</small><h3>Co-author, TRACE-BRL</h3><p>A maturity model for behavioural research labs.</p><span class="hint">CLICK TO FLIP</span></span><span class="fb"><small>STATUS</small><h3>Under review</h3><p>At <em>Cognition, Technology &amp; Work</em> (Springer Nature), with Sapienza University of Rome and the University of the Aegean.</p></span></span></button>
-    <div class="t poll" style="--c:var(--butter);--fg:var(--ink)"><small>QUICK POLL</small><b>Ghost story or founder story?</b><div><button type="button" data-v="a"><i></i><span>Ghosts</span></button><button type="button" data-v="b"><i></i><span>Founders</span></button></div></div>
-    <button type="button" class="t flip" aria-pressed="false" style="--c:var(--sky);--fg:var(--ink);--c2:var(--vanilla)"><span class="fi"><span class="fa"><small>BRAND FROM ZERO</small><h3>B2Ne</h3><span class="hint">FLIP</span></span><span class="fb"><small>BUILT AS A TEAM OF ONE</small><p>Positioning, website, pitch deck and content.</p></span></span></button>
-    <button type="button" class="t flip" aria-pressed="false" style="--c:var(--blossom);--fg:var(--cherry);--c2:var(--vanilla)"><span class="fi"><span class="fa"><small>RESULTS</small><h3>HDFC Bank</h3><span class="hint">FLIP</span></span><span class="fb"><small>MANAGEMENT TRAINEE</small><p>Branch revenue up 30% year on year; ₹1.36 crore CASA target met.</p></span></span></button>
-    <div class="t s2" style="--c:var(--vanilla);--fg:var(--ink)"><small>AWARDS</small><div class="chips"><span style="background:var(--mint)">Bucharest · full scholarship, ~40 of 3,000+ · 2026</span><span style="background:var(--pink)">Emerging Leaders scholarship · LM Thapar</span><span style="background:var(--sky)">DIGIBUS · third prize · 2025</span></div></div>
-    <div class="t full" style="--c:var(--tile)"><small>KIT</small><div class="chips"><span>HubSpot</span><span>LinkedIn</span><span>WordPress</span><span>Figma</span><span>Tobii · GSR</span><span>SPSS · JMP · R</span></div><p style="opacity:.8">Strategy on Monday, Figma on Tuesday, SPSS by Friday.</p></div>
+    <div class="t dark"><small>IN HIMACHAL PRADESH IT’S</small><span class="clock" id="bClock">--:--</span></div>
+    <button type="button" class="t flip s2" aria-pressed="false"><span class="fi"><span class="fa"><small>RESEARCH</small><b>Co-author, TRACE-BRL</b><p>A maturity model for behavioural research labs.</p><span class="fh">CLICK TO FLIP</span></span><span class="fb"><small>STATUS</small><b>Under review</b><p>At <em>Cognition, Technology &amp; Work</em> (Springer Nature), with Sapienza University of Rome and the University of the Aegean.</p></span></span></button>
+    <div class="t poll"><small>QUICK POLL</small><b>Ghost story or founder story?</b><div><button type="button" data-v="a"><i></i><span>Ghosts</span></button><button type="button" data-v="b"><i></i><span>Founders</span></button></div></div>
+    <button type="button" class="t flip" aria-pressed="false"><span class="fi"><span class="fa"><small>BRAND FROM ZERO</small><b>B2Ne</b><span class="fh">FLIP</span></span><span class="fb"><small>BUILT AS A TEAM OF ONE</small><p>Positioning, website, pitch deck and content.</p></span></span></button>
+    <button type="button" class="t flip" aria-pressed="false"><span class="fi"><span class="fa"><small>RESULTS</small><b>HDFC Bank</b><span class="fh">FLIP</span></span><span class="fb"><small>MANAGEMENT TRAINEE</small><p>Branch revenue up 30% year on year; ₹1.36 crore CASA target met.</p></span></span></button>
+    <div class="t s2"><small>AWARDS</small><div class="chips"><span>Bucharest · full scholarship, ~40 of 3,000+ · 2026</span><span>Emerging Leaders scholarship · LM Thapar</span><span>DIGIBUS · third prize · 2025</span></div></div>
+    <div class="t full dark"><small>KIT</small><div class="chips"><span>HubSpot</span><span>LinkedIn</span><span>WordPress</span><span>Figma</span><span>Tobii · GSR</span><span>SPSS · JMP · R</span></div><p>Strategy on Monday, Figma on Tuesday, SPSS by Friday.</p></div>
   </div>
 </div></section>
 
-<!-- 5. the desktop -->
-<section id="contact" aria-labelledby="contact-h">
-  <h2 id="contact-h" class="sr-only">Say hello</h2>
-  <div class="icons">
-    <button class="ico" type="button" data-open="mail"><i style="--c:var(--pink)" aria-hidden="true">@</i>Say hello</button>
-    <button class="ico" type="button" data-open="heat"><i style="--c:var(--butter)" aria-hidden="true">◎</i>Where you looked</button>
-    <button class="ico" type="button" data-open="studio"><i style="--c:#07081a;color:var(--sky)" aria-hidden="true">▶</i>Content Studio</button>
-    <button class="ico" type="button" data-open="kit"><i style="--c:var(--sky)" aria-hidden="true">✦</i>Kit</button>
-    <button class="ico" type="button" data-open="links"><i style="--c:var(--mint)" aria-hidden="true">in</i>Links</button>
+<!-- 6. a few favourites to throw -->
+<section id="table" class="tablesec" aria-labelledby="table-h"><div class="wrap">
+  <p class="lab">A few favourites</p>
+  <h2 id="table-h">Pick them up. Throw them.</h2>
+  <div class="toss" id="toss"><p class="thint2">Drag and fling a post</p></div>
+</div></section>
+
+<!-- 7. say hello: the desktop -->
+<section id="contact" class="hello" aria-labelledby="contact-h"><div class="wrap">
+  <p class="lab">Say hello</p>
+  <h2 id="contact-h">Let’s talk.</h2>
+  <p class="sub">Tell me what you’re working on. Write to me here, or open the other windows on the desk.</p>
+  <button class="mag" id="mag" type="button">Say hello</button>
+  <div class="desk" id="desk">
+    <div class="icons">
+      <button class="ico" type="button" data-open="mail"><i aria-hidden="true">@</i>Say hello</button>
+      <button class="ico" type="button" data-open="heat"><i aria-hidden="true">◎</i>Where you looked</button>
+      <button class="ico" type="button" data-open="studio"><i aria-hidden="true">▶</i>Content Studio</button>
+      <button class="ico" type="button" data-open="kit"><i aria-hidden="true">✦</i>Kit</button>
+      <button class="ico" type="button" data-open="links"><i aria-hidden="true">in</i>Links</button>
+    </div>
+    <noscript><p class="nojs"><a href="mailto:riyavdutta@gmail.com">riyavdutta@gmail.com</a> · <a href="https://www.linkedin.com/in/riyaa-duttaa">LinkedIn</a></p></noscript>
   </div>
-  <noscript><p style="padding:120px 0 0 160px;font-size:20px"><a href="mailto:riyavdutta@gmail.com">riyavdutta@gmail.com</a> · <a href="https://www.linkedin.com/in/riyaa-duttaa">LinkedIn</a></p></noscript>
-</section>
+  <div class="links"><a href="mailto:riyavdutta@gmail.com">riyavdutta@gmail.com</a><a href="https://www.linkedin.com/in/riyaa-duttaa" rel="me">LinkedIn ↗</a></div>
+</div></section>
 </main>
 
-<footer class="foot"><span>© 2026 Riya Dutta</span><span><a href="mailto:riyavdutta@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/riyaa-duttaa" rel="me">LinkedIn</a> · <a href="work/">All work</a></span></footer>
+<footer class="foot"><div class="wrap"><span>© 2026 Riya Dutta</span><span><a href="mailto:riyavdutta@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/riyaa-duttaa" rel="me">LinkedIn</a> · <a href="work/">All work</a></span></div></footer>
 
 <div class="cmd" id="cmd" role="dialog" aria-modal="true" aria-label="Jump to"><div><input id="cmdIn" placeholder="Jump to a project or section…" aria-label="Jump to a project or section"><ul id="cmdList"></ul></div></div>
 
-<script src="assets/home.js?v=13"></script>
+<script src="assets/home.js?v=20"></script>
 </body>
 </html>

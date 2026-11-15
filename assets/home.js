@@ -438,7 +438,8 @@
       $('.pinhint').style.opacity = p > .92 ? 0 : 1;
       if (k !== last) {
         last = k; $('#bigY').textContent = S[k][0]; $('#bigT').textContent = S[k][1]; $('#bigO').textContent = S[k][2]; $('#bigM').textContent = S[k][3];
-        var bg = k === S.length - 1 ? '#800020' : FUN[(k * 3) % FUN.length]; big.style.background = bg; big.style.color = ink(bg);
+        // one colour family per stop, alternating cool and warm, ending on burgundy: ultraviolet, lemon, turquoise, magenta
+        var bg = ['#7a3cff', '#e3bd00', '#00a9bd', '#d02b8f', '#800020'][k]; big.style.background = bg; big.style.color = ink(bg);
       }
     }
     addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();

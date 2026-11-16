@@ -98,20 +98,6 @@
    "case": true
   },
   {
-   "no": "008",
-   "href": "red-pen/",
-   "title": "Fluff Check",
-   "kind": "COPY TOOL · 2026",
-   "blurb": "Pour in your copy and get its facts label: how much is fluff, and what to cut.",
-   "tags": [
-    "Lab",
-    "Marketing",
-    "Build"
-   ],
-   "img": "assets/img/fluff-check.svg",
-   "live": "https://fluff-check.vercel.app/"
-  },
-  {
    "no": "009",
    "href": "fire-flowers/",
    "title": "Fire Flowers",

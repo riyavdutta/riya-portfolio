@@ -14,7 +14,6 @@ The source of [riya-folio.vercel.app](https://riya-folio.vercel.app/).
 | `404.html` | Shown for any missing page; built from `content/work.json`, every link absolute |
 | `assets/cs.css`, `assets/cs.js` | Styles and interactions for the case studies (and the shared header, buttons and footer) |
 | `assets/work.css`, `assets/work.js` | The Work page and 404 page, on top of `cs.css` |
-| `work/red-pen/` | Red Pen, the copy tool: a standalone page, not built from `content/` |
 | `assets/img/`, `assets/video/` | Images and videos |
 | `docs/brief.md` | The decisions behind the site |
 | `docs/ideas.md` | Ideas for new interactive pieces |

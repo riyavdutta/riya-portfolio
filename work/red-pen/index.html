@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#f4efe6;--paper:#fffcf6;--b:#800020;--b-deep:#5e0018;--body:#33292c;--mute:#7d726b;--line:#ddd2c6;--you:#2f5bff;
+:root{--cream:#f4efe6;--paper:#fffcf6;--b:#800020;--b-deep:#5e0018;--body:#33292c;--mute:#7d726b;--line:#ddd2c6;--you:#d02b8f;
   --display:'Bricolage Grotesque',system-ui,sans-serif;--read:'Source Serif 4',Georgia,serif;--ease:cubic-bezier(.2,.7,.2,1);--spring:cubic-bezier(.2,.9,.3,1.2)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;overflow-x:clip;-webkit-text-size-adjust:100%}
@@ -63,7 +63,6 @@ h2{font-weight:800;font-size:clamp(34px,4.6vw,64px);line-height:.94;letter-spaci
 .layers{display:grid}
 .layers>*{grid-area:1/1;transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .layers .after{opacity:0;transform:translateY(10px);pointer-events:none}
-.flip .layers .before{opacity:0;transform:translateY(-10px);pointer-events:none}
 .flip .layers .after{opacity:1;transform:none;pointer-events:auto}
 .frame{background:var(--paper);border:1.5px solid var(--b);border-radius:20px;overflow:hidden;box-shadow:0 26px 50px -34px rgba(94,0,24,.6)}
 .ctl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:18px}
@@ -75,23 +74,36 @@ h2{font-weight:800;font-size:clamp(34px,4.6vw,64px);line-height:.94;letter-spaci
 .ba button.on{background:var(--b);color:var(--cream)}
 
 /* words you can cross out */
-.w{border:0;background:none;padding:0;font:inherit;color:inherit;position:relative;display:inline;cursor:pointer;border-radius:4px;transition:background .2s,color .4s}
-.w:hover{background:#2f5bff14}
+.w{border:0;background:none;padding:0;font:inherit;color:inherit;position:relative;display:inline;cursor:var(--pen,pointer);border-radius:4px;transition:color .4s}
+/* the pen: hovering a word previews the stroke, clicking draws it */
+.piece:not(.marked) .before .frame{cursor:var(--pen,auto)}
 .w::before,.w::after{content:"";position:absolute;left:-1px;right:-1px;border-radius:3px;pointer-events:none;transform:scaleX(0);transform-origin:left}
-.w::before{top:62%;height:.09em;min-height:2px;background:var(--you);transition:transform .25s var(--ease)}
-.w.me::before{transform:scaleX(1)}
+.w::before{top:calc(48% + var(--y,0px));height:.11em;min-height:2.5px;background:var(--you);border-radius:2px 5px 3px 6px;rotate:var(--r,-1deg);transition:transform .22s var(--ease),opacity .2s}
+.piece:not(.marked) .w:not(.me):hover::before{transform:scaleX(1);opacity:.28}
+.w.me::before{transform:scaleX(1);opacity:1}
+.marked .w::before{top:calc(66% + var(--y,0px));transition:transform .22s var(--ease),top .4s var(--ease)}
 .w::after{top:46%;height:.13em;min-height:3px;background:var(--b);transition:transform .45s var(--ease);transition-delay:var(--d,0s)}
 .w.rp:not(.end)::after{right:-.34em}
 .w.rp.tilt::after{rotate:-1.6deg}
-.marked .w.rp::after{transform:scaleX(1)}
-.marked .w.rp{color:#33292c8c}
+/* the red pen, one edit at a time: the current edit is highlighted, earlier ones stay quietly marked */
+.seg.cur .w.rp::after,.seg.past .w.rp::after{transform:scaleX(1)}
+.seg.cur .w.rp,.seg.past .w.rp{color:#33292c8c}
+.seg.past .w.rp::after{opacity:.5}
 .marked .w{cursor:default}
 .marked .w:hover{background:none}
-.marked .w.keep{color:inherit}
-.nm{display:inline-flex;align-items:center;justify-content:center;width:1.5em;height:1.5em;border-radius:50%;background:var(--b);color:var(--cream);font:800 11px/1 var(--display);vertical-align:super;margin-right:3px;transform:scale(0);transition:transform .35s var(--spring);transition-delay:var(--d,0s)}
-.piece .nm{width:0;margin:0;overflow:hidden}
-.piece.marked .nm{width:1.5em;margin-right:3px;transform:scale(1)}
-@media (hover:none){.w:hover{background:none}}
+.ri{display:none;text-decoration:none;color:var(--b)}
+.ri.cur,.ri.past{display:inline}
+.ri.cur{background:#80002014;border-radius:6px;padding:.02em .22em;box-decoration-break:clone;-webkit-box-decoration-break:clone;animation:inkin .5s .3s var(--ease) both}
+@keyframes inkin{from{opacity:0;filter:blur(3px)}}
+.blank{font-style:italic;color:var(--mute);border-bottom:2px dashed currentColor;padding:0 .08em}
+.clean .w.rp,.clean .w::before{display:none}
+.clean .ri{display:inline;background:none;padding:0;animation:none}
+.step{margin-top:6px}
+.step b{color:var(--b)}
+.one{font:600 clamp(19px,1.8vw,23px)/1.35 var(--display);color:var(--body);letter-spacing:-.01em;margin-top:8px;animation:up .4s var(--ease) both}
+.back[hidden]{display:none}
+.why{font:500 14px/1.5 var(--display);color:var(--mute);margin-top:14px}
+.w:focus-visible::before{transform:scaleX(1);opacity:.28}
 
 /* the notes beside the copy */
 .notes{position:relative}
@@ -190,7 +202,7 @@ textarea::placeholder{color:#7d726b99}
 .fl q{font-style:italic;color:var(--mute);quotes:none}
 .fl .r{display:inline-block;margin-top:6px;font:700 13px var(--display);color:var(--b);border:1.5px solid var(--b);border-radius:999px;padding:3px 10px}
 .rw{margin-top:34px}
-.meter.live output .up{color:#00a36c}
+.meter.live output .up{color:var(--you)}
 .meter.live output .dn{color:var(--b)}
 .still{font:500 14px/1.5 var(--display);color:var(--mute);margin-top:14px}
 .still b{color:var(--b)}
@@ -293,8 +305,8 @@ textarea::placeholder{color:#7d726b99}
 <section class="scene" id="end">
   <div class="in">
     <p class="lab">What the pen found</p>
-    <h2 class="big">Every cut was <em>the same cut.</em></h2>
-    <p class="sub">Words about the company. Take them out and what's left is about the reader, and it's shorter too.</p>
+    <h2 class="big">Every cut left <em>a blank.</em></h2>
+    <p class="sub">Take out the words about the company and you find what the copy never said: what it does, who it’s for, what they get. Find the blanks in yours.</p>
     <div class="tally" id="tally"></div>
     <ul class="rules" id="rules"></ul>
     <div class="row"><a class="pill" href="#yours">Now mark up yours ↑</a><button class="pill pill--line" id="again">Mark them again</button><a class="pill pill--line" href="../../#work">See my work</a></div>
@@ -306,24 +318,20 @@ textarea::placeholder{color:#7d726b99}
 /* Each piece: the original in segments [text, note number or 0], my notes, the rewrite and its one rule. */
 const P=[
  {kind:'web',lab:'A software homepage',h:'A homepage that could belong to anyone.',
-  orig:[['We are a leading provider of',1],['innovative,',2],['AI-powered',0],['solutions',3],['that empower businesses to unlock their full potential.',4]],
-  notes:['Nobody wakes up wanting a provider. Say what it does.','Every homepage says innovative. A word everyone uses can’t make you stand out.','Solutions to what? Name the problem.','Unlocking potential is a poster, not a promise. How would I know you’d done it?'],
-  after:['Answer customer emails in half the time.','AI drafts the reply. You check it and send.'],
+  orig:[['We are a leading provider of',1,''],['innovative,',2,''],['AI-powered',0],['solutions',3,'[the job it does]'],['that empower businesses to unlock their full potential.',4,'for [who it’s for], so [what they get].']],
+  notes:['Nobody is looking for a provider. Start with what it does.','Every homepage says innovative. It tells the reader nothing.','Solutions to what? Name the job it does.','Unlocking potential is a poster, not a promise. Say who it’s for and what they get.'],
   rule:'Say what it does, not what it is.'},
  {kind:'push',lab:'A push notification',h:'The notification you swipe away.',
-  orig:[['Don’t miss out! 🎉',1],['Check out our amazing new features',2],['in the latest update!',3]],
-  notes:['Miss out on what? Urgency only works when something’s at stake.','“Features” is our word. Readers want the one thing that makes their day easier.','Of course it’s in the update. That’s where updates go.'],
-  after:['You can now split a bill in two taps.'],
+  orig:[['Don’t miss out! 🎉',1,''],['Check out our amazing new features',2,'You can now [the one new thing they can do]'],['in the latest update!',3,'[in how many taps].']],
+  notes:['Miss out on what? Urgency only works when something’s at stake.','“Features” is our word. The reader wants the one thing they can now do.','Of course it’s in the update. That’s where updates go. Say how quick it is instead.'],
   rule:'One thing, and make it theirs.'},
  {kind:'mail',lab:'A cold email',h:'The cold email that starts with the sender.',
-  orig:[['Hi there,',1],['I hope this email finds you well.',2],['My name is Sam and I’m reaching out from Brightlane because',3],['we help companies drive growth.',4]],
-  notes:['“Hi there” says you didn’t look up my name. It takes ten seconds.','The line everyone skims. Your first sentence is the subject line’s second chance.','Your signature already says who you are.','This could go to anyone, which is why it’ll go nowhere.'],
-  after:['Hi Priya, your pricing page has three plans. Your demo form asks about one.','Two teams like yours fixed this. Want their fix?'],
+  orig:[['Hi there,',1,'Hi [their name],'],['I hope this email finds you well.',2,''],['My name is Sam and I’m reaching out from Brightlane because',3,'[one thing you noticed about their business].'],['we help companies drive growth.',4,'Here’s how [a team like theirs] fixed it.']],
+  notes:['“Hi there” says you didn’t look up their name.','The line everyone skims past. Get to the point.','Your signature already says who you are. Open with something about them.','This could go to anyone. Show you know their world.'],
   rule:'Open with them, not you.'},
  {kind:'shop',lab:'A product page',h:'The product page that tells you how to feel.',
-  orig:[['Our luxurious,',1],['hand-poured candle',0],['is crafted with the finest premium ingredients',2],['to create an unforgettable sensory experience.',3]],
-  notes:['Calling it luxurious is the least luxurious thing you can do. Let the details say it.','Finest and premium in one breath. Which ingredients? That’s the part I want.','Don’t tell me it’s unforgettable. Give me something to remember.'],
-  after:['Fig leaf, cedar and a little smoke.','Sixty hours of burn, so you can light it all winter.'],
+  orig:[['Our luxurious,',1,'A'],['hand-poured candle',0],['is crafted with the finest premium ingredients',2,'of [what it smells of].'],['to create an unforgettable sensory experience.',3,'[One detail they can check: burn time, size, where it’s made].']],
+  notes:['Calling it luxurious is the least luxurious thing you can do.','Finest and premium in one breath. Which ingredients? Name them.','Don’t tell me it’s unforgettable. Give me something to remember.'],
   rule:'Show it, don’t rank it.'}
 ];
 
@@ -331,16 +339,14 @@ const SELF=/\b(we|our|ours|us|i|my|i[’']m|we[’']re)\b/gi, YOU=/\b(you|your|y
 const cnt=(s,re)=>(s.match(re)||[]).length, wc=s=>s.trim().split(/\s+/).filter(Boolean).length;
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 
-/* the original, as words you can tap */
-function words(p,i){
+/* the original, as words you can tap; each cut's replacement sits right after it */
+const fill=t=>esc(t).replace(/\[([^\]]+)\]/g,'<span class="blank">$1</span>');
+function words(p){
   let k=0;
-  return p.orig.map(([t,n],si)=>t.split(' ').map((w,wi,a)=>{
-    const rp=n?' rp'+(wi===a.length-1?' end':'')+(si%2?' tilt':''):' keep';
-    const d=n?` style="--d:${(n-1)*.35+wi*.07}s"`:'';
-    const num=n&&wi===0?`<span class="nm" style="--d:${(n-1)*.35}s">${n}</span>`:'';
-    const b=`<button class="w${rp}" data-i="${k++}"${d}>${esc(w)}</button>`;
-    return num?`<span style="white-space:nowrap">${num}${b}</span>`:b;
-  }).join(' ')).join(' ');
+  return p.orig.map(([t,n,to],si)=>{
+    const ws=t.split(' ').map((w,wi,a)=>`<button class="w${n?' rp'+(wi===a.length-1?' end':'')+(si%2?' tilt':''):' keep'}" data-i="${k++}" style="--d:${(wi*.05).toFixed(2)}s">${esc(w)}</button>`).join(' ');
+    return `<span class="seg" data-n="${n}">${ws}</span>`+(n&&to?` <ins class="ri" data-n="${n}">${fill(to)}</ins>`:'');
+  }).join(' ');
 }
 /* each kind of copy sits in its own setting */
 function frame(p,body,isAfter){
@@ -353,8 +359,9 @@ function frame(p,body,isAfter){
 
 const host=document.getElementById('pieces'), state=[];
 P.forEach((p,i)=>{
-  const before=p.orig.map(s=>s[0]).join(' '), after=p.after.join(' ');
-  p.stat={w:[wc(before),wc(after)],s:[cnt(before,SELF),cnt(after,SELF)],y:[cnt(before,YOU),cnt(after,YOU)]};
+  const before=p.orig.map(s=>s[0]).join(' '), after=p.orig.map(s=>s[1]?(s[2]||''):s[0]).filter(Boolean).join(' ');
+  p.stat={cut:p.orig.filter(s=>s[1]).reduce((a,s)=>a+wc(s[0]),0),total:wc(before),s:[cnt(before,SELF),cnt(after.replace(/\[[^\]]*\]/g,''),SELF)],blanks:(after.match(/\[/g)||[]).length};
+  const N=p.notes.length;
   const sec=document.createElement('section');
   sec.className='scene piece';sec.id='s'+(i+1);
   sec.innerHTML=`<div class="in">
@@ -362,45 +369,57 @@ P.forEach((p,i)=>{
     <h2>${p.h}</h2>
     <div class="grid">
       <div>
-        <div class="layers"><div class="before">${frame(p,words(p,i),false)}</div><div class="after" aria-hidden="true">${frame(p,'',true)}</div></div>
+        <div class="layers"><div class="before">${frame(p,words(p),false)}</div></div>
         <div class="ctl">
           <span class="count" aria-live="polite">Tap any word to cross it out.</span>
-          <div class="ba" hidden><button class="on" data-v="0">Before</button><button data-v="1">After</button></div>
-          <button class="pill go">Show my red pen</button>
+          <div class="ba" hidden><button data-v="0">All edits</button><button class="on" data-v="1">Clean copy</button></div>
+          <span class="row"><button class="link back" hidden>← Back</button><button class="pill go">Show my red pen</button></span>
         </div>
       </div>
       <div class="notes"><div class="stage">
         <div class="s0"><p class="ask">What would you cut?<small>Cross out every word that isn’t pulling its weight. There’s no wrong answer, only a shorter one.</small></p></div>
-        <div class="s1"><p class="score"></p><ol class="nl">${p.notes.map((n,j)=>`<li style="--d:${j*.35+.2}s"><b>${j+1}</b><span>${n}</span></li>`).join('')}</ol></div>
+        <div class="s1" aria-live="polite"><p class="score"></p><p class="lab step"></p><p class="one"></p></div>
         <div class="s2"><p class="lab">The rule</p><p class="rule">${p.rule}</p>
           <div class="meter">
-            <div>Words<output>${p.stat.w[0]}<i>→</i>${p.stat.w[1]}</output></div>
+            <div>Words cut<output>${p.stat.cut}<i>of</i>${p.stat.total}</output></div>
             <div>About us (we, our, I, my)<output>${p.stat.s[0]}<i>→</i>${p.stat.s[1]}</output></div>
-            <div>About you (you, your)<output>${p.stat.y[0]}<i>→</i>${p.stat.y[1]}</output></div>
-          </div></div>
+            <div>Blanks to fill<output>${p.stat.blanks}</output></div>
+          </div>
+          <p class="why">The blanks are what the original never told the reader. A better word can’t fill them; only the facts can.</p></div>
       </div></div>
     </div></div>`;
   host.appendChild(sec);
   const st={phase:0,mine:0,agree:0};state.push(st);
-  const ws=[...sec.querySelectorAll('.before .w')], count=sec.querySelector('.count'), go=sec.querySelector('.go'), ba=sec.querySelector('.ba');
+  let step=0;
+  const ws=[...sec.querySelectorAll('.before .w')], count=sec.querySelector('.count'), go=sec.querySelector('.go'), ba=sec.querySelector('.ba'),
+    back=sec.querySelector('.back'), stepEl=sec.querySelector('.step'), one=sec.querySelector('.one');
   const tick=()=>{const n=ws.filter(w=>w.classList.contains('me')).length;count.innerHTML=n?`You’ve cut <b>${n}</b> word${n>1?'s':''}.`:'Tap any word to cross it out.'};
-  ws.forEach(w=>w.addEventListener('click',()=>{if(st.phase)return;w.classList.toggle('me');w.setAttribute('aria-pressed',w.classList.contains('me'));tick()}));
+  ws.forEach(w=>w.addEventListener('click',()=>{if(st.phase)return;if(!w.classList.contains('me')){w.style.setProperty('--r',(Math.random()*3.2-1.6).toFixed(2)+'deg');w.style.setProperty('--y',(Math.random()*3-1.5).toFixed(1)+'px')}w.classList.toggle('me');w.setAttribute('aria-pressed',w.classList.contains('me'));tick()}));
   ws.forEach(w=>w.setAttribute('aria-pressed','false'));
-  const show=v=>{sec.classList.toggle('flip',!!v);ba.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.v===v));
-    sec.querySelector('.before').setAttribute('aria-hidden',!!v);sec.querySelector('.after').setAttribute('aria-hidden',!v)};
+  /* paint the edits up to the current one */
+  const paint=()=>{
+    sec.querySelectorAll('.before [data-n]').forEach(e=>{const n=+e.dataset.n;if(!n)return;e.classList.toggle('cur',n===step);e.classList.toggle('past',n<step)});
+    if(step<=N){stepEl.innerHTML=`Edit <b>${step}</b> of ${N}`;one.textContent=p.notes[step-1];one.style.animation='none';one.offsetWidth;one.style.animation='';}
+    back.hidden=st.phase!==1||step<=1;
+    go.textContent=st.phase===1?(step<N?'Next edit →':'See the clean copy'):go.textContent;
+  };
+  const show=v=>{sec.classList.toggle('clean',!!v);ba.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.v===v))};
   ba.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(+b.dataset.v)});
+  back.addEventListener('click',()=>{if(st.phase===1&&step>1){step--;paint()}});
   go.addEventListener('click',()=>{
     if(st.phase===0){
       st.phase=1;
       const me=ws.filter(w=>w.classList.contains('me')), rp=ws.filter(w=>w.classList.contains('rp'));
       st.mine=rp.length;st.agree=me.filter(w=>w.classList.contains('rp')).length;st.cut=me.length;
       const extra=st.cut-st.agree;
-      sec.querySelector('.score').innerHTML=!st.cut?`You’d leave it alone. I cut <em>${st.mine}</em> of ${ws.length} words.`
-        :st.agree===st.mine&&!extra?`<em>You cut exactly what I cut.</em> Have you done this before?`
+      sec.querySelector('.score').innerHTML=!st.cut?`You’d leave it alone. I’d make ${N} edits.`
+        :st.agree===st.mine&&!extra?`<em>You cut exactly what I cut.</em> Here’s why.`
         :`You cut <em>${st.cut}</em>. <em>${st.agree}</em> of those are mine too${extra?`, and ${extra} I’d keep`:''}.`;
-      sec.classList.add('marked');count.textContent='';go.textContent='Read the rewrite';
+      sec.classList.add('marked');count.textContent='';step=1;paint();
     } else if(st.phase===1){
-      st.phase=2;show(1);ba.hidden=false;go.textContent=i<P.length-1?'Next piece ↓':'See the tally ↓';done();
+      if(step<N){step++;paint();return}
+      st.phase=2;step=N+1;paint();sec.classList.add('flip');show(1);ba.hidden=false;back.hidden=true;
+      go.textContent=i<P.length-1?'Next piece ↓':'See the tally ↓';done();
     } else {
       document.getElementById(i<P.length-1?'s'+(i+2):'end').scrollIntoView({behavior:'smooth'});
     }
@@ -409,12 +428,13 @@ P.forEach((p,i)=>{
 
 /* the tally adds up whatever's been marked */
 function done(){
-  const seen=P.filter((p,i)=>state[i].phase===2), sum=k=>[0,1].map(j=>seen.reduce((a,p)=>a+p.stat[k][j],0));
-  const w=sum('w'),s=sum('s'),y=sum('y'), cut=state.reduce((a,x)=>a+(x.cut||0),0), ag=state.reduce((a,x)=>a+(x.agree||0),0), mine=state.reduce((a,x)=>a+(x.phase?x.mine:0),0);
+  const seen=P.filter((p,i)=>state[i].phase===2), add=f=>seen.reduce((a,p)=>a+f(p),0);
+  const cutW=add(p=>p.stat.cut), totW=add(p=>p.stat.total), s0=add(p=>p.stat.s[0]), s1=add(p=>p.stat.s[1]), bl=add(p=>p.stat.blanks),
+    cut=state.reduce((a,x)=>a+(x.cut||0),0), ag=state.reduce((a,x)=>a+(x.agree||0),0), mine=state.reduce((a,x)=>a+(x.phase?x.mine:0),0);
   document.getElementById('tally').innerHTML=`
-    <div class="tile"><span class="k">Words</span><span class="v">${w[0]}<i>→</i>${w[1]}</span></div>
-    <div class="tile"><span class="k">About us</span><span class="v">${s[0]}<i>→</i>${s[1]}</span></div>
-    <div class="tile"><span class="k">About you</span><span class="v">${y[0]}<i>→</i>${y[1]}</span></div>
+    <div class="tile"><span class="k">Words cut</span><span class="v">${cutW}<i>of</i>${totW}</span></div>
+    <div class="tile"><span class="k">About us</span><span class="v">${s0}<i>→</i>${s1}</span></div>
+    <div class="tile"><span class="k">Blanks to fill</span><span class="v">${bl}</span></div>
     <div class="tile yours"><span class="k">Your pen</span><span class="v">${mine?Math.round(ag/mine*100):0}%</span><span class="k" style="margin-top:6px;text-transform:none;letter-spacing:0">of my cuts, ${cut} words in all</span></div>`;
   document.getElementById('rules').innerHTML=seen.map(p=>`<li><b>${P.indexOf(p)+1}</b>${p.rule}</li>`).join('');
 }
@@ -506,6 +526,10 @@ src.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey))do
 document.getElementById('edit').addEventListener('click',()=>{inWrap.hidden=false;outWrap.hidden=true;markBtn.hidden=false;markBtn.textContent='Mark it up again';srcTick();src.focus()});
 document.getElementById('copy').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(dst.value);e.target.textContent='Copied'}catch(x){dst.select();e.target.textContent='Selected: press ⌘C'}setTimeout(()=>e.target.textContent='Copy',1600)});
 src.value=store.get('src');srcTick();
+
+/* the pen cursor: a blue-ink pen, nib at the bottom left (the click point) */
+const PEN=`<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><g transform='translate(3 29) rotate(-135)' stroke='#fffcf6' stroke-width='1.2' stroke-linejoin='round'><path d='M0 0 L-3.2 7 L3.2 7 Z' fill='#33292c'/><circle cx='0' cy='1.6' r='1.1' fill='#d02b8f' stroke='none'/><rect x='-3.6' y='7' width='7.2' height='16' rx='1.5' fill='#800020'/><rect x='-3.6' y='19' width='7.2' height='2.2' fill='#fffcf6' stroke='none'/><rect x='-3.6' y='23' width='7.2' height='5' rx='2' fill='#5e0018'/></g></svg>`;
+document.documentElement.style.setProperty('--pen',`url("data:image/svg+xml,${encodeURIComponent(PEN)}") 3 29, crosshair`);
 
 /* the title: each letter picks up a bright colour as you pass */
 const C=['#2f5bff','#00a36c','#7a3cff','#d02b8f','#00a9bd','#0a74da','#a86bff','#1fa0ff'];

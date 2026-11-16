@@ -424,7 +424,7 @@
   var S = [
     { y: '2019 – 2023', short: 'Horticulture', t: 'B.Sc. (Hons.) Horticulture', o: 'Dr. YS Parmar University of Horticulture and Forestry', m: 'A horticulture degree spent testing hypotheses on plants.', yrs: 4, c: '#7a3cff' },
     { y: '2024 – 2025', short: 'HDFC Bank', t: 'Management Trainee', o: 'HDFC Bank', m: 'A bank traineeship chasing deposit targets: branch revenue up 30% year on year; ₹1.36 crore CASA target met.', yrs: 1, c: '#e3bd00' },
-    { y: '2024 – 2026', short: 'MBA, analytics', t: 'MBA, Marketing and Business Analytics', o: 'LM Thapar School of Management', m: 'An MBA in analytics, on the Emerging Leaders scholarship.', yrs: 2, c: '#00a9bd' },
+    { y: '2024 – 2026', short: 'MBA, marketing and analytics', t: 'MBA, Marketing and Business Analytics', o: 'LM Thapar School of Management', m: 'An MBA in analytics, on the Emerging Leaders scholarship.', yrs: 2, c: '#00a9bd' },
     { y: '2025', short: 'Eye-tracking, Samos', t: 'Research Intern, ISLab', o: 'University of the Aegean · Samos', m: 'A summer tracking eyes in a Greek UI/UX lab, in behavioural and cognitive methods. Third prize at DIGIBUS.', yrs: .4, c: '#d02b8f' },
     { y: '2026 – now', short: 'Marketing consultant', t: 'Marketing Consultant', o: 'Business To Nexus (B2Ne) and Nodinite · Remote', m: 'The ideas that used to live in a scrapbook now live in decks, campaigns and research.', yrs: 1, c: '#800020' }
   ];

@@ -1,0 +1,56 @@
+/*
+ * Work page and 404. Sits on top of cs.css (colours, type, the header bar, buttons, footer).
+ * Built by tools/build.py from content/work.json; behaviour is in assets/work.js.
+ */
+:root{--pop:#d02b8f}
+
+/* the big title: letters pick up a bright colour as you pass (work.js) */
+.big-t{font:800 clamp(64px,11vw,168px)/.86 var(--display);letter-spacing:-.055em;color:var(--b);user-select:none}
+.big-t span{display:inline-block;transition:color .5s var(--ease),transform .3s var(--spring)}
+.big-t span:hover{transform:translateY(-6px) rotate(-3deg)}
+
+/* ---------- work ---------- */
+.w-head{padding:64px 0 30px}
+.w-head .row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.w-head .sub{max-width:46ch;margin-top:18px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 30px}
+.filters button{border:1.5px solid var(--b);background:none;border-radius:999px;padding:9px 16px;font:700 14px var(--display);color:var(--b);transition:background .25s,color .25s,transform .25s var(--spring)}
+.filters button b{font-weight:600;opacity:.6;margin-left:3px}
+.filters button:hover{transform:translateY(-2px)}
+.filters button[aria-pressed="true"]{background:var(--b);color:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;padding-bottom:90px}
+.card{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:24px;background:var(--paper);border:1.5px solid var(--b);overflow:hidden;
+  transition:transform .45s var(--spring),box-shadow .45s var(--ease),opacity .4s var(--ease),scale .4s var(--ease)}
+.card:hover{transform:translateY(-8px) rotate(-.4deg);box-shadow:0 30px 50px -30px rgba(94,0,24,.55)}
+.card.out{opacity:0;scale:.94;pointer-events:none}
+.card.gone{display:none}
+.card .pic{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:1.5px solid var(--b);background:#efe4d6}
+.card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.card:hover .pic img{transform:scale(1.045)}
+.card .use{position:absolute;top:14px;right:14px;font:700 12px var(--display);letter-spacing:.06em;border-radius:999px;padding:6px 11px;background:var(--pop);color:#fff}
+.card .txt{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.card h2{font:800 clamp(28px,2.8vw,40px)/1 var(--display);letter-spacing:-.035em;color:var(--b);margin:8px 0 10px;display:flex;justify-content:space-between;gap:12px}
+.card h2 i{font-style:normal;transition:transform .35s var(--spring)}
+.card:hover h2 i{transform:translateX(6px)}
+.card .bl{font-size:17px;line-height:1.5}
+.card .tg{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.card .tg span{font:600 12px var(--display);color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.card .go{margin-top:auto;padding-top:20px;font:700 15px var(--display);color:var(--b)}
+
+/* ---------- 404 ---------- */
+.nf{min-height:calc(100svh - var(--bar));display:flex;align-items:center;padding:60px 0}
+.nf .grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:center}
+.nf h1{font:800 clamp(44px,6vw,84px)/.95 var(--display);letter-spacing:-.045em;color:var(--b);margin:14px 0 4px}
+.nf h1 s{text-decoration:none;position:relative;color:var(--mute)}
+.nf h1 s::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:.09em;border-radius:3px;background:var(--pop);transform:scaleX(0) rotate(-2deg);transform-origin:left;animation:nfstrike .7s .7s var(--ease) forwards}
+@keyframes nfstrike{to{transform:scaleX(1) rotate(-2deg)}}
+.nf .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.nf .list{border-top:1px solid var(--line)}
+.nf .list a{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.nf .list b{font:800 22px var(--display);letter-spacing:-.02em;color:var(--b);transition:transform .3s var(--ease)}
+.nf .list a:hover b{transform:translateX(10px)}
+.nf .list small{font:600 12px var(--display);color:var(--mute);text-align:right}
+
+@media (max-width:820px){.cards{grid-template-columns:1fr}.nf .grid{grid-template-columns:1fr;gap:36px}}
+@media (max-width:560px){.w-head{padding:40px 0 14px}.card .txt{padding:18px 18px 20px}.bar .back{display:none}}
+@media (prefers-reduced-motion:reduce){.card,.card .pic img,.big-t span{transition:none}.nf h1 s::after{animation:none;transform:scaleX(1) rotate(-2deg)}}

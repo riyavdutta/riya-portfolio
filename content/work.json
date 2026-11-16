@@ -1,14 +1,13 @@
 {
  "description": "Work by Riya Dutta: LinkedIn campaigns, a website, the content system behind them, research on how people decide, a live data site and a copy tool.",
- "intro": "Campaigns, a website, the system that makes the campaigns, and research. Filter by what each piece shows.",
+ "intro": "Campaigns, a website, research, a live data site and a tool you can use on your own copy. Filter by what each piece shows.",
  "filters": [
   "Marketing",
   "Brand",
   "Product",
   "Design",
   "Build",
-  "Research",
-  "Lab"
+  "Research"
  ],
  "items": [
   {
@@ -18,7 +17,6 @@
    "kind": "LINKEDIN CAMPAIGN · HALLOWEEN 2026",
    "blurb": "Fifteen CRM problems told as ghost stories across five days.",
    "img": "assets/img/haunted-crm-teaser.jpg",
-   "color": "slate-soft",
    "tags": [
     "Marketing",
     "Design"
@@ -31,7 +29,6 @@
    "kind": "LINKEDIN CAMPAIGN · OCT 2026",
    "blurb": "One week, three chapters, on what stops when everything runs through the founder.",
    "img": "assets/img/founder-bottleneck-sick-day.jpg",
-   "color": "vanilla",
    "tags": [
     "Marketing",
     "Design"
@@ -43,12 +40,11 @@
    "title": "The Content Studio",
    "kind": "SYSTEM · 2026",
    "blurb": "The production system behind every campaign, from brief to posted piece.",
-   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"The route from brief to post, eleven stops\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#07081A\"/><rect x=\"10\" y=\"10\" width=\"620\" height=\"380\" fill=\"none\" stroke=\"#2D31FA\" stroke-opacity=\".5\" stroke-dasharray=\"4 6\"/><text x=\"32\" y=\"34\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"2\" fill=\"#8FB4FF\">THE CONTENT STUDIO · ROUTE</text><path d=\"M40,70 L227,70 L413,70 L600,70 L600,207 L413,207 L227,207 L40,207 L40,344 L227,344 L413,344\" fill=\"none\" stroke=\"#DFF6FF\" stroke-opacity=\".55\" stroke-width=\"2\" stroke-dasharray=\"5 6\"/><circle cx=\"40\" cy=\"70\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"40\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">01</text><text x=\"40\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">BRIEF</text><circle cx=\"227\" cy=\"70\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"227\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">02</text><text x=\"227\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">PLAN</text><circle cx=\"413\" cy=\"70\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"413\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">03</text><text x=\"413\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">COPY</text><circle cx=\"600\" cy=\"70\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"600\" y=\"74\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">04</text><text x=\"600\" y=\"104\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">CHECK</text><circle cx=\"600\" cy=\"207\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"600\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">05</text><text x=\"600\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">APPROVE</text><circle cx=\"413\" cy=\"207\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"413\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">06</text><text x=\"413\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">BUILD</text><circle cx=\"227\" cy=\"207\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"227\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">07</text><text x=\"227\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">RENDER</text><circle cx=\"40\" cy=\"207\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"40\" y=\"211\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">08</text><text x=\"40\" y=\"241\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">CHECK</text><circle cx=\"40\" cy=\"344\" r=\"15\" fill=\"#fcf7d9\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"40\" y=\"348\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">09</text><text x=\"40\" y=\"378\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">DELIVER</text><circle cx=\"227\" cy=\"344\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"227\" y=\"348\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">10</text><text x=\"227\" y=\"378\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">WATCH</text><circle cx=\"413\" cy=\"344\" r=\"15\" fill=\"#ecaab2\" stroke=\"#2D31FA\" stroke-width=\"2\"/><text x=\"413\" y=\"348\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" fill=\"#051367\">11</text><text x=\"413\" y=\"378\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"1\" fill=\"#DFF6FF\">POST</text></svg>",
-   "color": "slate",
    "tags": [
     "Build",
     "Marketing"
-   ]
+   ],
+   "img": "assets/img/content-studio-route.svg"
   },
   {
    "no": "004",
@@ -57,7 +53,6 @@
    "kind": "WEBSITE · 2026",
    "blurb": "How to look credible with nothing to show. Co-built with the founder.",
    "img": "assets/img/b2ne-page-how-we-help.jpg",
-   "color": "ivory-deep",
    "tags": [
     "Marketing",
     "Build"
@@ -70,7 +65,6 @@
    "kind": "LINKEDIN SERIES · 2026",
    "blurb": "Fourteen posts and two videos, a different visual idea for every post.",
    "img": "assets/img/crm-graveyard-close-date.jpg",
-   "color": "pink",
    "tags": [
     "Marketing",
     "Design"
@@ -82,11 +76,10 @@
    "title": "TRACE-BRL",
    "kind": "RESEARCH · 2025 –",
    "blurb": "A maturity model for behavioural research labs, under review.",
-   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"TRACE-BRL manuscript title page\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#b7c9a8\"/><g transform=\"translate(320.0 200.0) rotate(-3)\"><rect x=\"-217.60000000000002\" y=\"-160.0\" width=\"435.20000000000005\" height=\"320.0\" fill=\"#fcf7d9\"/><text x=\"-179.20000000000002\" y=\"-115.99999999999999\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"2\" fill=\"#856a56\">MANUSCRIPT</text><text x=\"-179.20000000000002\" y=\"-60.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#432720\">TRACE-BRL</text><text x=\"-179.20000000000002\" y=\"-24.0\" font-family=\"Source Serif 4, Georgia, serif\" font-size=\"11\" fill=\"#604734\">A maturity model for</text><text x=\"-179.20000000000002\" y=\"-9.0\" font-family=\"Source Serif 4, Georgia, serif\" font-size=\"11\" fill=\"#604734\">behavioural research labs</text><text x=\"-179.20000000000002\" y=\"108.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#65232b\">32</text><text x=\"-139.20000000000002\" y=\"108.0\" font-family=\"Space Mono, monospace\" font-size=\"9\" fill=\"#604734\">INITIATIVES</text><text x=\"12.8\" y=\"108.0\" font-family=\"Playfair Display, serif\" font-size=\"30\" fill=\"#65232b\">5</text><text x=\"34.8\" y=\"108.0\" font-family=\"Space Mono, monospace\" font-size=\"9\" fill=\"#604734\">DIMENSIONS</text><g transform=\"translate(128.0 -132.0) rotate(9)\"><rect x=\"-46\" y=\"-12\" width=\"92\" height=\"24\" fill=\"none\" stroke=\"#65232b\" stroke-width=\"2\" rx=\"3\"/><text y=\"4\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"2\" fill=\"#65232b\">UNDER REVIEW</text></g></g></svg>",
-   "color": "sage",
    "tags": [
     "Research"
-   ]
+   ],
+   "img": "assets/img/trace-brl-card.svg"
   },
   {
    "no": "007",
@@ -94,13 +87,12 @@
    "title": "The Gifting Index",
    "kind": "LIVE DATA SITE · 2026",
    "blurb": "Which luxury fragrance houses get bought as gifts? Google searches and Wikipedia data, updated daily.",
-   "svg": "<svg viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"December lift in Google searches: Jo Malone ×2.0, Diptyque ×2.0, Le Labo ×1.6, Byredo ×1.5\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"640\" height=\"400\" fill=\"#f6d8d6\"/><rect x=\"12\" y=\"12\" width=\"616\" height=\"376\" fill=\"#fffdf0\"/><rect x=\"20\" y=\"20\" width=\"600\" height=\"360\" fill=\"none\" stroke=\"#e2c9b3\" stroke-width=\"2\" stroke-dasharray=\"2 5\"/><text x=\"60\" y=\"52\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"2\" fill=\"#856a56\">THE GIFTING INDEX · DECEMBER SEARCHES</text><text x=\"60\" y=\"68\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#856a56\">- - -  A TYPICAL MONTH</text><rect x=\"88.6\" y=\"144.8\" width=\"72.8\" height=\"185.2\" fill=\"#65232b\"/><text x=\"125.0\" y=\"134.8\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×2.0</text><text x=\"125.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">JO MALONE</text><rect x=\"218.6\" y=\"143.0\" width=\"72.8\" height=\"187.0\" fill=\"#56707f\"/><text x=\"255.0\" y=\"133.0\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×2.0</text><text x=\"255.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">DIPTYQUE</text><rect x=\"348.6\" y=\"185.2\" width=\"72.8\" height=\"144.8\" fill=\"#b4546e\"/><text x=\"385.0\" y=\"175.2\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×1.6</text><text x=\"385.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">LE LABO</text><rect x=\"478.6\" y=\"190.7\" width=\"72.8\" height=\"139.3\" fill=\"#8a6d2f\"/><text x=\"515.0\" y=\"180.7\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"26\" fill=\"#432720\">×1.5</text><text x=\"515.0\" y=\"348.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">BYREDO</text><line x1=\"54\" x2=\"586\" y1=\"238.3\" y2=\"238.3\" stroke=\"#432720\" stroke-width=\"1\" stroke-dasharray=\"3 4\" opacity=\".6\"/></svg>",
-   "color": "blush",
    "tags": [
     "Marketing",
     "Research",
     "Build"
-   ]
+   ],
+   "img": "assets/img/gifting-index-december.svg"
   },
   {
    "no": "008",
@@ -108,12 +100,12 @@
    "title": "Red Pen",
    "kind": "COPY TOOL · 2026",
    "blurb": "Paste any copy. It marks what to cut and why, then checks your rewrite as you type.",
-   "svg": "<svg preserveAspectRatio=\"xMidYMid slice\" viewBox=\"0 0 640 400\" role=\"img\" aria-label=\"Red Pen: 'We are a leading provider of innovative solutions' struck through, leaving 'AI-powered [the job it does] for [who it's for]' with blanks to fill\"><rect width=\"640\" height=\"400\" rx=\"18\" fill=\"#fffcf6\"/><text x=\"40\" y=\"56\" font-family=\"Bricolage Grotesque, system-ui, sans-serif\" font-weight=\"600\" font-size=\"13\" letter-spacing=\"2\" fill=\"#7d726b\">RED PEN · PASTE YOUR COPY</text><g font-family=\"Bricolage Grotesque, system-ui, sans-serif\" font-weight=\"800\" font-size=\"32\" fill=\"#80002059\"><text x=\"40\" y=\"118\" textLength=\"450\" lengthAdjust=\"spacingAndGlyphs\">We are a leading provider of</text><text x=\"40\" y=\"164\" textLength=\"320\" lengthAdjust=\"spacingAndGlyphs\">innovative solutions.</text></g><g stroke-linecap=\"round\"><line x1=\"36\" y1=\"108\" x2=\"496\" y2=\"103\" stroke=\"#800020\" stroke-width=\"5\"/><line x1=\"36\" y1=\"154\" x2=\"364\" y2=\"151\" stroke=\"#800020\" stroke-width=\"5\"/><line x1=\"38\" y1=\"121\" x2=\"250\" y2=\"124\" stroke=\"#d02b8f\" stroke-width=\"3.5\"/><line x1=\"38\" y1=\"167\" x2=\"200\" y2=\"165\" stroke=\"#d02b8f\" stroke-width=\"3.5\"/></g><g font-family=\"Bricolage Grotesque, system-ui, sans-serif\" font-size=\"40\" letter-spacing=\"-1\"><text x=\"40\" y=\"250\" font-weight=\"800\" fill=\"#800020\" textLength=\"226\" lengthAdjust=\"spacingAndGlyphs\">AI-powered</text><text x=\"284\" y=\"250\" font-weight=\"600\" font-style=\"italic\" fill=\"#7d726b\" textLength=\"300\" lengthAdjust=\"spacingAndGlyphs\">the job it does</text><text x=\"40\" y=\"306\" font-weight=\"800\" fill=\"#800020\" textLength=\"58\" lengthAdjust=\"spacingAndGlyphs\">for</text><text x=\"114\" y=\"306\" font-weight=\"600\" font-style=\"italic\" fill=\"#7d726b\" textLength=\"238\" lengthAdjust=\"spacingAndGlyphs\">who it’s for</text><text x=\"356\" y=\"306\" font-weight=\"800\" fill=\"#800020\">.</text></g><g stroke=\"#7d726b\" stroke-width=\"2.5\" stroke-dasharray=\"7 6\"><line x1=\"284\" y1=\"262\" x2=\"584\" y2=\"262\"/><line x1=\"114\" y1=\"318\" x2=\"352\" y2=\"318\"/></g><line x1=\"40\" y1=\"340\" x2=\"600\" y2=\"340\" stroke=\"#ddd2c6\" stroke-width=\"1.5\"/><g font-family=\"Bricolage Grotesque, system-ui, sans-serif\"><text x=\"40\" y=\"372\" font-weight=\"600\" font-size=\"14\" letter-spacing=\"1.5\" fill=\"#7d726b\">WORDS CUT</text><text x=\"146\" y=\"372\" font-weight=\"800\" font-size=\"20\" fill=\"#800020\">16 of 17</text><text x=\"270\" y=\"372\" font-weight=\"600\" font-size=\"14\" letter-spacing=\"1.5\" fill=\"#7d726b\">BLANKS TO FILL</text><text x=\"414\" y=\"372\" font-weight=\"800\" font-size=\"20\" fill=\"#d02b8f\">3</text></g></svg>",
-   "color": "vanilla",
    "tags": [
     "Marketing",
     "Build"
-   ]
+   ],
+   "img": "assets/img/red-pen.svg",
+   "tool": true
   }
  ]
 }

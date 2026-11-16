@@ -15,7 +15,7 @@
   // filters: cards that don't match fade out, then step aside
   var bar = document.querySelector('.filters');
   if (!bar) return;
-  var cards = Array.from(document.querySelectorAll('.card'));
+  var cards = Array.from(document.querySelectorAll('#work-cards .card'));
   bar.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });

@@ -263,31 +263,47 @@ def w_head(title, desc, root, path, extra=''):
     return cs_head(title, desc, root, path).replace('</head>', f'<link rel="stylesheet" href="{root}assets/work.css?v={WORK_VER}">{extra}\n</head>')
 
 
-WORK_VER = '2'
+WORK_VER = '3'
+
+
+def is_lab(it):
+    return 'Lab' in it['tags']
+
+
+def work_card(it, root):
+    tg = ''.join(f'<span>{t}</span>' for t in it['tags'])
+    return (f'<a class="card" href="{it["href"]}" data-tags="{" ".join(t.lower() for t in it["tags"])}">'
+            f'<div class="pic" style="view-transition-name: case-{it["href"].strip("/")}"><img src="{asset(root, it["img"])}" alt="" loading="lazy"></div>'
+            f'<div class="txt"><p class="lab">{it["kind"]}</p><h2>{it["title"]}<i aria-hidden="true">→</i></h2><p class="bl">{it["blurb"]}</p>'
+            f'<div class="tg">{tg}</div><span class="go">Read the case study →</span></div></a>')
+
+
+def lab_card(it, root):
+    # the picture and title open the project's own site; a case study, if there is one, is a quiet second link
+    how = f'<a class="how" href="{it["href"]}">How I made it →</a>' if it.get('case') else ''
+    return (f'<div class="card lab-card"><a class="pic" href="{it["live"]}" target="_blank" rel="noopener"><img src="{asset(root, it["img"])}" alt="" loading="lazy"><span class="use">Open ↗</span></a>'
+            f'<div class="txt"><p class="lab">{it["kind"]}</p><h2><a href="{it["live"]}" target="_blank" rel="noopener">{it["title"]}</a></h2><p class="bl">{it["blurb"]}</p>{how}</div></div>')
 
 
 def build_index(w):
     root = '../'
     items = list(reversed(w['items']))   # newest first
-    count = lambda t: sum(t in i['tags'] for i in items)
+    work = [i for i in items if not is_lab(i)]
+    lab = [i for i in items if is_lab(i)]
+    count = lambda t: sum(t in i['tags'] for i in work)
     tags = [t for t in w['filters'] if count(t)]
-    filt = f'<button type="button" data-tag="all" aria-pressed="true">All <b>{len(items)}</b></button>' + ''.join(
+    filt = f'<button type="button" data-tag="all" aria-pressed="true">All <b>{len(work)}</b></button>' + ''.join(
         f'<button type="button" data-tag="{t.lower()}" aria-pressed="false">{t} <b>{count(t)}</b></button>' for t in tags)
-    cards = ''
-    for it in items:
-        tool = it.get('tool')
-        tg = ''.join(f'<span>{t}</span>' for t in it['tags'])
-        cards += (f'<a class="card" href="{it["href"]}" data-tags="{" ".join(t.lower() for t in it["tags"])}">'
-                  f'<div class="pic" style="view-transition-name: case-{it["href"].strip("/")}"><img src="{asset(root, it["img"])}" alt="" loading="lazy">'
-                  f'{"<span class=use>Use it</span>" if tool else ""}</div>'
-                  f'<div class="txt"><p class="lab">{it["kind"]}</p><h2>{it["title"]}<i aria-hidden="true">→</i></h2><p class="bl">{it["blurb"]}</p>'
-                  f'<div class="tg">{tg}</div><span class="go">{"Try it" if tool else "Read the case study"} →</span></div></a>')
+    cards = ''.join(work_card(it, root) for it in work)
+    labsec = (f'<section class="lab-sec" id="lab"><div class="w-head"><p class="lab">Lab</p><div class="row"><h2 class="big-t" aria-label="Lab">Lab</h2>'
+              f'<p class="sub">{w.get("lab_intro", "")}</p></div></div><div class="cards">{"".join(lab_card(it, root) for it in lab)}</div></section>') if lab else ''
     out = (w_head('Work · Riya Dutta', w['description'], root, 'work/') +
            f'''<header class="bar"><div class="wrap"><a class="me" href="{root}"><i aria-hidden="true"></i>Riya Dutta</a><a class="back" href="{root}">← Home</a><a class="hi" href="{root}#contact">Say hello</a></div></header>
 <main class="wrap">
 <section class="w-head"><p class="lab">Work</p><div class="row"><h1 class="big-t" aria-label="All work">All work</h1><p class="sub">{w["intro"]}</p></div></section>
 <div class="filters" role="group" aria-label="Filter the work">{filt}</div>
-<div class="cards">{cards}</div>
+<div class="cards" id="work-cards">{cards}</div>
+{labsec}
 </main>
 <footer class="foot"><div class="wrap"><span>© 2026 Riya Dutta</span><span><a href="{root}#contact">Say hello</a> · <a href="{LINKEDIN}" rel="me">LinkedIn</a></span></div></footer>
 <script src="{root}assets/work.js?v={WORK_VER}"></script>
@@ -302,7 +318,7 @@ def build_404(w):
     # GitHub Pages and Vercel serve this at any missing address, at any depth, so every link is absolute
     root = SITE_URL
     items = list(reversed(w['items']))
-    quick = ''.join(f'<a href="{root}work/{it["href"]}"><b>{it["title"]}</b><small>{it["kind"]}</small></a>' for it in items)
+    quick = ''.join(f'<a href="{it["live"] if it.get("live") and not it.get("case") else root + "work/" + it["href"]}"><b>{it["title"]}</b><small>{"LAB · " if is_lab(it) else ""}{it["kind"]}</small></a>' for it in items)
     out = (w_head('Page not found · Riya Dutta', 'This page could not be found.', root, '') +
            f'''<header class="bar"><div class="wrap"><a class="me" href="{root}"><i aria-hidden="true"></i>Riya Dutta</a><a class="hi" href="{root}#contact">Say hello</a></div></header>
 <main class="nf"><div class="wrap grid">

@@ -1,14 +1,13 @@
 {
  "description": "Work by Riya Dutta: LinkedIn campaigns, a website, the content system behind them, research on how people decide, a live data site and a copy tool.",
- "intro": "Campaigns, a website, research, a live data site and a tool you can use on your own copy. Filter by what each piece shows.",
+ "intro": "Campaigns, a website, research, and the system that makes the campaigns.",
  "filters": [
   "Marketing",
   "Brand",
   "Product",
   "Design",
   "Build",
-  "Research",
-  "Lab"
+  "Research"
  ],
  "items": [
   {
@@ -89,30 +88,34 @@
    "kind": "LIVE DATA SITE · 2026",
    "blurb": "Which luxury fragrance houses get bought as gifts? Google searches and Wikipedia data, updated daily.",
    "tags": [
+    "Lab",
     "Marketing",
     "Research",
     "Build"
    ],
-   "img": "assets/img/gifting-index-december.svg"
+   "img": "assets/img/gifting-index-december.svg",
+   "live": "https://gifting-index.vercel.app/",
+   "case": true
   },
   {
    "no": "008",
    "href": "red-pen/",
-   "title": "Red Pen",
+   "title": "Fluff Check",
    "kind": "COPY TOOL · 2026",
-   "blurb": "Paste any copy. It marks what to cut and why, then checks your rewrite as you type.",
+   "blurb": "Pour in your copy and get its facts label: how much is fluff, and what to cut.",
    "tags": [
+    "Lab",
     "Marketing",
     "Build"
    ],
-   "img": "assets/img/red-pen.svg",
-   "tool": true
+   "img": "assets/img/fluff-check.svg",
+   "live": "https://fluff-check.vercel.app/"
   },
   {
    "no": "009",
    "href": "fire-flowers/",
    "title": "Fire Flowers",
-   "kind": "LAB · GAME · 2026",
+   "kind": "GAME · 2026",
    "blurb": "Fireworks over a river by night, real flowers by day. A small game in the browser.",
    "tags": [
     "Lab",
@@ -120,7 +123,9 @@
     "Build"
    ],
    "img": "assets/img/fire-flowers.svg",
-   "tool": true
+   "live": "https://fire-flowers.vercel.app/",
+   "case": true
   }
- ]
+ ],
+ "lab_intro": "Things I make on my own time. Each one has a site of its own."
 }

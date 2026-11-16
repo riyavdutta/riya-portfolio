@@ -24,7 +24,7 @@ def asset(root, p):
 
 CS_FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
             '<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">')
-CS_VER = '2'
+CS_VER = '3'
 strip_tags = lambda x: re.sub(r'<[^>]+>', '', x)
 
 
@@ -94,6 +94,12 @@ class Case:
             tiles = '<div class="tiles">' + ''.join(f'<button type="button" class="tile{" on" if i == 0 else ""}" aria-expanded="{"true" if i == 0 else "false"}"><b>{i + 1:02d}</b><strong>{t["t"]}</strong><span>{t["d"]}</span></button>' for i, t in enumerate(s['tiles'])) + '</div>'
         close = f'<p class="close after">{s["close"]}</p>' if s.get('close') else ''
         return self.open(s, 'idea') + f'<div class="wrap">{self.head(s)}{lead}{paras}{tiles}{close}{self.links(s)}</div></section>'
+
+    def play(self, s):
+        # a live project, playable right on the page
+        note = f'<p class="note">{s["note"]}</p>' if s.get('note') else ''
+        return (self.open(s, 'playsec') + f'<div class="wrap">{self.head(s)}<div class="stage">'
+                f'<iframe src="{s["src"]}" title="{esc(s["alt"])}" loading="lazy" allow="autoplay; fullscreen"></iframe></div>{note}{self.links(s)}</div></section>')
 
     def chapters(self, s):
         days = lambda t: [int(x) for x in re.findall(r'\b(\d{1,2})\b', t)]

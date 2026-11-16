@@ -7,7 +7,8 @@
   "Product",
   "Design",
   "Build",
-  "Research"
+  "Research",
+  "Lab"
  ],
  "items": [
   {
@@ -105,6 +106,20 @@
     "Build"
    ],
    "img": "assets/img/red-pen.svg",
+   "tool": true
+  },
+  {
+   "no": "009",
+   "href": "fire-flowers/",
+   "title": "Fire Flowers",
+   "kind": "LAB · GAME · 2026",
+   "blurb": "Fireworks over a river by night, real flowers by day. A small game in the browser.",
+   "tags": [
+    "Lab",
+    "Design",
+    "Build"
+   ],
+   "img": "assets/img/fire-flowers.svg",
    "tool": true
   }
  ]

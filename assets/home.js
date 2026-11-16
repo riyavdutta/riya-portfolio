@@ -419,29 +419,62 @@
     }
   })();
 
-  /* ---------- 4. the path: pinned scroll through five stops ---------- */
+  /* ---------- 4. the path: a vine grows as you scroll, and a flower blooms at each stop ---------- */
+  // short names sit on the picture; the rest opens on tap
   var S = [
-    ['2019 – 2023', 'B.Sc. (Hons.) Horticulture', 'Dr. YS Parmar University of Horticulture and Forestry', 'A horticulture degree spent testing hypotheses on plants.'],
-    ['2024 – 2025', 'Management Trainee', 'HDFC Bank', 'A bank traineeship chasing deposit targets: branch revenue up 30% year on year; ₹1.36 crore CASA target met.'],
-    ['2024 – 2026', 'MBA, Marketing and Business Analytics', 'LM Thapar School of Management', 'An MBA in analytics, on the Emerging Leaders scholarship.'],
-    ['2025', 'Research Intern, ISLab', 'University of the Aegean · Samos', 'A summer tracking eyes in a Greek UI/UX lab, in behavioural and cognitive methods. Third prize at DIGIBUS.'],
-    ['2026 – now', 'Marketing Consultant', 'Business To Nexus (B2Ne) and Nodinite · Remote', 'The ideas that used to live in a scrapbook now live in decks, campaigns and research.']
+    { y: '2019 – 2023', short: 'Horticulture', t: 'B.Sc. (Hons.) Horticulture', o: 'Dr. YS Parmar University of Horticulture and Forestry', m: 'A horticulture degree spent testing hypotheses on plants.', yrs: 4, c: '#7a3cff' },
+    { y: '2024 – 2025', short: 'HDFC Bank', t: 'Management Trainee', o: 'HDFC Bank', m: 'A bank traineeship chasing deposit targets: branch revenue up 30% year on year; ₹1.36 crore CASA target met.', yrs: 1, c: '#e3bd00' },
+    { y: '2024 – 2026', short: 'MBA, analytics', t: 'MBA, Marketing and Business Analytics', o: 'LM Thapar School of Management', m: 'An MBA in analytics, on the Emerging Leaders scholarship.', yrs: 2, c: '#00a9bd' },
+    { y: '2025', short: 'Eye-tracking, Samos', t: 'Research Intern, ISLab', o: 'University of the Aegean · Samos', m: 'A summer tracking eyes in a Greek UI/UX lab, in behavioural and cognitive methods. Third prize at DIGIBUS.', yrs: .4, c: '#d02b8f' },
+    { y: '2026 – now', short: 'Marketing consultant', t: 'Marketing Consultant', o: 'Business To Nexus (B2Ne) and Nodinite · Remote', m: 'The ideas that used to live in a scrapbook now live in decks, campaigns and research.', yrs: 1, c: '#800020' }
   ];
-  $('#steps').innerHTML = S.map(function (s) { return '<li><small>' + s[0] + '</small><b>' + s[1] + '</b></li>'; }).join('');
   (function () {
-    var pin = $('#pin'), li = $$('#steps li'), big = $('#bigcard'), last = -1;
-    function upd() {
-      var b = pin.getBoundingClientRect(), total = pin.offsetHeight - innerHeight, p = Math.min(1, Math.max(0, -b.top / total)), k = Math.min(S.length - 1, Math.floor(p * S.length * .999));
-      pin.style.setProperty('--p', p.toFixed(3));
-      li.forEach(function (x, i) { x.classList.toggle('on', i <= k); x.classList.toggle('now', i === k); });
-      $('.pinhint').style.opacity = p > .92 ? 0 : 1;
-      if (k !== last) {
-        last = k; $('#bigY').textContent = S[k][0]; $('#bigT').textContent = S[k][1]; $('#bigO').textContent = S[k][2]; $('#bigM').textContent = S[k][3];
-        // one colour family per stop, alternating cool and warm, ending on burgundy: ultraviolet, lemon, turquoise, magenta
-        var bg = ['#7a3cff', '#e3bd00', '#00a9bd', '#d02b8f', '#800020'][k]; big.style.background = bg; big.style.color = ink(bg);
-      }
+    var NS = 'http://www.w3.org/2000/svg', vine = $('#vine'), pin = $('#pin'), box = $('#story'), stem, L1, flowers = [], leaves = [];
+    function el(t, a, p) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+    function tell(i) { var s = S[i]; box.style.setProperty('--c', s.c); $('small', box).textContent = s.y + ' · ' + s.o; $('b', box).textContent = s.t; $('p', box).textContent = s.m; box.classList.add('on'); }
+    $('.x', box).onclick = function () { box.classList.remove('on'); };
+    // nudge any label that runs off the picture back inside it
+    function fit() { var W = vine.viewBox.baseVal.width; $$('text', vine).forEach(function (t) { var b = t.getBBox(), x = +t.getAttribute('x'); if (b.x + b.width > W - 6) t.setAttribute('x', x - (b.x + b.width - (W - 6))); else if (b.x < 6) t.setAttribute('x', x + (6 - b.x)); }); }
+    function build() {
+      vine.innerHTML = ''; var P = innerWidth < 760, W = P ? 400 : 1000, H = P ? 760 : 600;
+      vine.setAttribute('viewBox', '0 0 ' + W + ' ' + H); vine.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      // the stem winds up from the bottom; on phones it climbs straight up the screen
+      var d = P ? 'M200 750 C 120 660, 300 600, 220 520 S 90 400, 180 330 S 320 220, 220 150 S 150 60, 210 20'
+                : 'M40 560 C 160 560, 160 420, 260 420 S 380 520, 470 430 S 560 250, 660 270 S 760 380, 830 260 S 900 80, 960 70';
+      el('path', { d: d, class: 'ghost' }, vine); stem = el('path', { d: d, class: 'stem' }, vine); L1 = stem.getTotalLength();
+      stem.style.strokeDasharray = L1; stem.style.strokeDashoffset = L1;
+      var at = [.1, .31, .52, .73, .97];
+      leaves = [.05, .2, .42, .62, .84].map(function (t, i) {
+        var p = stem.getPointAtLength(L1 * t), q = stem.getPointAtLength(L1 * Math.min(1, t + .01)), ang = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI + (i % 2 ? 60 : -60);
+        var g = el('g', { transform: 'translate(' + p.x + ' ' + p.y + ') rotate(' + ang + ')' }, vine), lf = el('ellipse', { cx: 18, cy: 0, rx: 18, ry: 7, class: 'leaf' }, g);
+        lf.style.transform = 'scale(0)'; return { t: t, lf: lf };
+      });
+      flowers = S.map(function (s, i) {
+        var p = stem.getPointAtLength(L1 * at[i]), r = i === 4 ? 26 : 18 + s.yrs * 2.5;
+        var g = el('g', { class: 'flower', tabindex: 0, role: 'button', 'aria-label': s.y + ', ' + s.t + ', ' + s.o }, vine), bl = el('g', { class: 'bloom' }, g);
+        for (var k = 0; k < 7; k++) el('ellipse', { cx: p.x, cy: p.y - r * .9, rx: r * .48, ry: r * .9, fill: s.c, 'fill-opacity': .92, transform: 'rotate(' + k * 360 / 7 + ' ' + p.x + ' ' + p.y + ')' }, bl);
+        el('circle', { cx: p.x, cy: p.y, r: r * .42, fill: i === 4 ? '#f4efe6' : '#800020' }, bl);
+        // labels: on phones beside the flower; on wide screens alternately above and below, so neighbours never touch
+        var tx, y0, anchor;
+        if (P) { var right = p.x < 200; tx = p.x + (right ? r + 18 : -(r + 18)); anchor = right ? 'start' : 'end'; y0 = p.y - 6; }
+        else { var up = i % 2 === 0 && i !== 4; anchor = i === 0 ? 'start' : i === 4 ? 'end' : 'middle'; tx = i === 0 ? p.x - 20 : i === 4 ? p.x + 20 : p.x; y0 = up ? p.y - r * 2 - 40 : p.y + r * 2 + 26; }
+        el('text', { x: tx, y: y0, class: 'yr', 'text-anchor': anchor }, g).textContent = s.y;
+        var nm = el('text', { x: tx, y: y0 + (P ? 26 : 28), class: 'nm', 'text-anchor': anchor }, g); nm.textContent = s.short; if (P) nm.style.fontSize = '20px';
+        var open = function () { tell(i); };
+        g.addEventListener('click', open); g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+        return { g: g, t: at[i] };
+      });
+      fit(); grow();
     }
-    addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+    function grow() {
+      var b = pin.getBoundingClientRect(), p = reduce ? 1 : Math.min(1, Math.max(0, -b.top / Math.max(1, pin.offsetHeight - innerHeight))), d = Math.min(1, p * 1.06);
+      stem.style.strokeDashoffset = L1 * (1 - d);
+      flowers.forEach(function (f) { f.g.classList.toggle('on', d >= f.t); });
+      leaves.forEach(function (l) { l.lf.style.transform = d >= l.t ? 'scale(1)' : 'scale(0)'; });
+    }
+    build();
+    addEventListener('scroll', grow, { passive: true });
+    var rw, lastW = innerWidth; addEventListener('resize', function () { clearTimeout(rw); rw = setTimeout(function () { if ((innerWidth < 760) !== (lastW < 760)) build(); else grow(); lastW = innerWidth; }, 150); });
   })();
 
   /* ---------- 5. bento ---------- */

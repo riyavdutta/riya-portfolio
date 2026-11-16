@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/home.css?v=25">
+<link rel="stylesheet" href="assets/home.css?v=26">
 </head>
 <body>
 
@@ -70,10 +70,11 @@
 
 <!-- 4. the path: pinned, five stops -->
 <section id="path" class="path" aria-labelledby="path-h">
-  <div class="wrap"><p class="lab">How I got here</p><h2 id="path-h">The rigour came from odder places.</h2></div>
-  <div class="pin" id="pin"><div class="stick wrap">
-    <div class="big" id="bigcard" aria-live="polite"><small id="bigY"></small><b id="bigT"></b><em id="bigO"></em><p id="bigM"></p></div>
-    <div><ol class="steps" id="steps"></ol><div class="meter"><i></i></div><p class="pinhint">Keep scrolling</p></div>
+  <div class="wrap"><p class="lab">How I got here</p><h2 id="path-h">The rigour came from odder places.</h2><p class="sub">It started with plants.</p></div>
+  <div class="pin" id="pin"><div class="stage">
+    <p class="vtip">Tap a flower</p>
+    <svg id="vine" class="vine" role="group" aria-label="A vine with five flowers, one for each stop on the way here"></svg>
+    <div class="story" id="story" role="status"><button class="x" type="button" aria-label="Close">×</button><small></small><b></b><p></p></div>
   </div></div>
 </section>
 
@@ -124,6 +125,6 @@
 
 <div class="cmd" id="cmd" role="dialog" aria-modal="true" aria-label="Jump to"><div><input id="cmdIn" placeholder="Jump to a project or section…" aria-label="Jump to a project or section"><ul id="cmdList"></ul></div></div>
 
-<script src="assets/home.js?v=27"></script>
+<script src="assets/home.js?v=28"></script>
 </body>
 </html>

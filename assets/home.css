@@ -5,7 +5,7 @@
  *   .mq       a marquee that speeds up and leans with your scroll
  *   #work     decoding list, image follows the cursor, click = the pieces spiral into the campaign
  *   #look     a torch over every campaign
- *   #path     pinned scroll through five stops
+ *   #path     a vine grows as you scroll; a flower blooms at each stop
  *   #about    bento (flips, live clock); its headline words change colour on hover
  *   #table    posts you can throw
  *   #contact  "Let's talk." with a magnetic button and the desktop windows
@@ -220,25 +220,32 @@ section{position:relative}
 .torch .say{position:absolute;left:24px;bottom:20px;font:700 15px var(--display);color:var(--cream);pointer-events:none}
 .torch .thint{position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(28px,4vw,48px) var(--display);color:var(--cream);pointer-events:none;transition:opacity .4s;letter-spacing:-.02em}
 
-/* ---------- 4. the path, pinned ---------- */
+/* ---------- 4. the path: a vine grows as you scroll; each stop is a flower ---------- */
 .path{padding-top:90px}
 .pin{height:420vh;position:relative}
-.pin .stick{position:sticky;top:var(--bar);height:calc(100vh - var(--bar));display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.pin .big{border-radius:calc(30px * (1 - var(--p,0)) + 12px);background:var(--b);color:var(--cream);aspect-ratio:4/5;width:min(470px,100%);max-height:calc(100vh - var(--bar) - 40px);justify-self:center;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;
-  transform:scale(calc(.75 + var(--p,0) * .25)) rotate(calc(-5deg * (1 - var(--p,0))));box-shadow:0 40px 60px -30px #5e0018aa;transition:background .5s,color .5s}
-.pin .big small{font:600 13px var(--display);letter-spacing:.1em;opacity:.8}
-.pin .big b{font:800 clamp(30px,3.4vw,48px)/1 var(--display);letter-spacing:-.03em;margin:8px 0 6px}
-.pin .big em{font:600 15px var(--display);font-style:normal;opacity:.85;margin-bottom:12px}
-.pin .big p{font-size:17px;line-height:1.5;opacity:.95}
-.pin .steps{list-style:none;padding:0}
-.pin .steps li{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);opacity:.3;transition:opacity .4s}
-.pin .steps li.on{opacity:1}
-.pin .steps li.now b{color:var(--b)}
-.pin .steps small{font:600 13px var(--display);color:var(--mute)}
-.pin .steps b{font:700 18px var(--display);transition:color .3s}
-.pin .meter{height:4px;background:var(--line);border-radius:2px;margin-top:20px;overflow:hidden}
-.pin .meter i{display:block;height:100%;width:calc(var(--p,0) * 100%);background:var(--b)}
-.pinhint{margin-top:12px;font:600 13px var(--display);color:var(--mute);transition:opacity .4s}
+.pin .stage{position:sticky;top:var(--bar);height:calc(100vh - var(--bar));overflow:hidden}
+.vine{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.vine .stem{fill:none;stroke:var(--b);stroke-width:5;stroke-linecap:round}
+.vine .ghost{fill:none;stroke:#80002018;stroke-width:5;stroke-linecap:round;stroke-dasharray:2 12}
+.vine .leaf{fill:#00a36c;transform-box:fill-box;transform-origin:0% 50%;transition:transform .6s var(--spring)}
+.flower{cursor:pointer}
+.flower:focus{outline:none}
+.flower .bloom{transform-box:fill-box;transform-origin:center;transform:scale(0) rotate(-90deg);transition:transform .8s var(--spring)}
+.flower.on .bloom{transform:none}
+.flower:hover .bloom,.flower:focus-visible .bloom{transform:scale(1.12) rotate(18deg)}
+.flower text{font-family:var(--display);opacity:0;transition:opacity .5s .3s;paint-order:stroke;stroke:var(--cream);stroke-width:7px;stroke-linejoin:round}
+.flower.on text{opacity:1}
+.flower .yr{font-size:15px;font-weight:700;fill:var(--mute);letter-spacing:.06em}
+.flower .nm{font-size:26px;font-weight:800;fill:var(--b);letter-spacing:-.02em}
+.vtip{position:absolute;right:28px;top:22px;font:600 13px var(--display);color:var(--mute);z-index:2}
+/* the story card: only for the curious, opens on tap */
+.story{position:absolute;left:50%;bottom:24px;translate:-50% 0;width:min(520px,calc(100% - 32px));background:var(--paper);border-radius:18px;box-shadow:0 30px 50px -24px #5e001880;padding:18px 44px 18px 24px;
+  border-left:8px solid var(--c,var(--b));opacity:0;transform:translateY(20px) scale(.96);transition:opacity .3s,transform .4s var(--spring);pointer-events:none;z-index:3}
+.story.on{opacity:1;transform:none;pointer-events:auto}
+.story small{font:700 11px var(--display);letter-spacing:.12em;color:var(--mute)}
+.story b{display:block;font:800 22px/1.1 var(--display);color:var(--b);margin:4px 0 6px}
+.story p{font-size:16px;line-height:1.5}
+.story .x{position:absolute;right:12px;top:10px;border:0;background:none;font:800 20px var(--display);color:var(--mute)}
 
 /* ---------- 5. about ---------- */
 .about{padding:90px 0}
@@ -356,11 +363,7 @@ section{position:relative}
   .nums b{font-size:38px}
   .torch{height:420px}.torch .grid{grid-template-columns:repeat(3,1fr)}
   .path{padding-top:64px}
-  .pin .stick{grid-template-columns:1fr;align-content:center;gap:16px}
-  .pin .big{width:min(62%,300px);padding:18px;aspect-ratio:4/5}
-  .pin .big b{font-size:24px}.pin .big p{font-size:14px}.pin .big em{font-size:13px;margin-bottom:6px}
-  .pin .steps li{grid-template-columns:90px 1fr;padding:7px 0}.pin .steps b{font-size:15px}.pin .steps small{font-size:12px}
-  .pinhint{display:none}
+  .vtip{right:18px;top:auto;bottom:16px}
   .bento{grid-template-columns:1fr 1fr;gap:10px}.s2,.s3,.full{grid-column:1/-1}
   .clock{font-size:38px}
   .t b.quote{font-size:21px}

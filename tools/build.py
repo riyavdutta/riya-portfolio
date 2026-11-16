@@ -257,7 +257,7 @@ def w_head(title, desc, root, path, extra=''):
     return cs_head(title, desc, root, path).replace('</head>', f'<link rel="stylesheet" href="{root}assets/work.css?v={WORK_VER}">{extra}\n</head>')
 
 
-WORK_VER = '1'
+WORK_VER = '2'
 
 
 def build_index(w):
@@ -296,7 +296,7 @@ def build_404(w):
     # GitHub Pages and Vercel serve this at any missing address, at any depth, so every link is absolute
     root = SITE_URL
     items = list(reversed(w['items']))
-    quick = ''.join(f'<a href="{root}work/{it["href"]}"><b>{it["title"]}</b><small>{it["kind"].title()}</small></a>' for it in items)
+    quick = ''.join(f'<a href="{root}work/{it["href"]}"><b>{it["title"]}</b><small>{it["kind"]}</small></a>' for it in items)
     out = (w_head('Page not found · Riya Dutta', 'This page could not be found.', root, '') +
            f'''<header class="bar"><div class="wrap"><a class="me" href="{root}"><i aria-hidden="true"></i>Riya Dutta</a><a class="hi" href="{root}#contact">Say hello</a></div></header>
 <main class="nf"><div class="wrap grid">

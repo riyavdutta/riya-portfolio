@@ -1,0 +1,1 @@
+{"version":"0.0.1","configurations":[{"name":"mock","runtimeExecutable":"/bin/sh","runtimeArgs":["-c","cd /private/tmp/claude-501/-Users-riyadutta-Downloads-Portfolio-riya-portfolio/70271b80-f9c1-4465-bdfa-5c6563a366e8/scratchpad/mock && exec python3 -m http.server 4192"],"port":4192}]}

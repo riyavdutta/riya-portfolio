@@ -293,6 +293,7 @@
       return (cl ? 'Hi Riya,\nI played your game. ' + cl.charAt(0).toUpperCase() + cl.slice(1) + '.\n\nI’d like to talk about ' : 'Hi Riya,\n\nI’d like to talk about ') +
         (topic ? topic.charAt(0).toLowerCase() + topic.slice(1) + '. ' : '');
     }
+    function shift(t, nx) { t.setAttribute('x', nx); $$('tspan', t).forEach(function (ts) { ts.setAttribute('x', nx); }); }
     function fit() { ta.style.height = 'auto'; ta.style.height = Math.max(160, ta.scrollHeight + 6) + 'px'; }
     ta.value = draft(); setTimeout(fit, 0);
     ta.addEventListener('input', function () { edited = true; $('.err', f).textContent = ''; fit(); });
@@ -422,19 +423,20 @@
   /* ---------- 4. the path: a vine grows as you scroll, and a flower blooms at each stop ---------- */
   // short names sit on the picture; the rest opens on tap
   var S = [
-    { y: '2019 – 2023', short: 'Horticulture', t: 'B.Sc. (Hons.) Horticulture', o: 'Dr. YS Parmar University of Horticulture and Forestry', m: 'A horticulture degree spent testing hypotheses on plants.', yrs: 4, c: '#7a3cff' },
-    { y: '2024 – 2025', short: 'HDFC Bank', t: 'Management Trainee', o: 'HDFC Bank', m: 'A bank traineeship chasing deposit targets: branch revenue up 30% year on year; ₹1.36 crore CASA target met.', yrs: 1, c: '#e3bd00' },
-    { y: '2024 – 2026', short: 'MBA, marketing and analytics', t: 'MBA, Marketing and Business Analytics', o: 'LM Thapar School of Management', m: 'An MBA in analytics, on the Emerging Leaders scholarship.', yrs: 2, c: '#00a9bd' },
-    { y: '2025', short: 'Eye-tracking, Samos', t: 'Research Intern, ISLab', o: 'University of the Aegean · Samos', m: 'A summer tracking eyes in a Greek UI/UX lab, in behavioural and cognitive methods. Third prize at DIGIBUS.', yrs: .4, c: '#d02b8f' },
-    { y: '2026 – now', short: 'Marketing consultant', t: 'Marketing Consultant', o: 'Business To Nexus (B2Ne) and Nodinite · Remote', m: 'The ideas that used to live in a scrapbook now live in decks, campaigns and research.', yrs: 1, c: '#800020' }
+    { y: '2019 – 2023', short: 'B.Sc. (Hons.) Horticulture', t: 'B.Sc. (Hons.) Horticulture', o: 'Dr. YS Parmar University of Horticulture and Forestry', m: 'A horticulture degree spent testing hypotheses on plants.', yrs: 4, c: '#7a3cff' },
+    { y: '2024 – 2025', short: 'Management Trainee, HDFC Bank', t: 'Management Trainee', o: 'HDFC Bank', m: 'A bank traineeship chasing deposit targets: branch revenue up 30% year on year; ₹1.36 crore CASA target met.', yrs: 1, c: '#e3bd00' },
+    { y: '2024 – 2026', short: 'MBA, Marketing and Business Analytics', t: 'MBA, Marketing and Business Analytics', o: 'LM Thapar School of Management', m: 'An MBA in analytics, on the Emerging Leaders scholarship.', yrs: 2, c: '#00a9bd' },
+    { y: '2025', short: 'Research Intern, ISLab', t: 'Research Intern, ISLab', o: 'University of the Aegean · Samos', m: 'A summer tracking eyes in a Greek UI/UX lab, in behavioural and cognitive methods. Third prize at DIGIBUS.', yrs: .4, c: '#d02b8f' },
+    { y: '2026 – now', short: 'Marketing Consultant', t: 'Marketing Consultant', o: 'Business To Nexus (B2Ne) and Nodinite · Remote', m: 'The ideas that used to live in a scrapbook now live in decks, campaigns and research.', yrs: 1, c: '#800020' }
   ];
   (function () {
     var NS = 'http://www.w3.org/2000/svg', vine = $('#vine'), pin = $('#pin'), box = $('#story'), stem, L1, flowers = [], leaves = [];
     function el(t, a, p) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
     function tell(i) { var s = S[i]; box.style.setProperty('--c', s.c); $('small', box).textContent = s.y + ' · ' + s.o; $('b', box).textContent = s.t; $('p', box).textContent = s.m; box.classList.add('on'); }
     $('.x', box).onclick = function () { box.classList.remove('on'); };
+    function wrap(t, max) { var out = [], cur = ''; t.split(' ').forEach(function (w) { if (cur && (cur + ' ' + w).length > max) { out.push(cur); cur = w; } else cur = cur ? cur + ' ' + w : w; }); if (cur) out.push(cur); return out; }
     // nudge any label that runs off the picture back inside it
-    function fit() { var W = vine.viewBox.baseVal.width; $$('text', vine).forEach(function (t) { var b = t.getBBox(), x = +t.getAttribute('x'); if (b.x + b.width > W - 6) t.setAttribute('x', x - (b.x + b.width - (W - 6))); else if (b.x < 6) t.setAttribute('x', x + (6 - b.x)); }); }
+    function fit() { var W = vine.viewBox.baseVal.width; $$('text', vine).forEach(function (t) { var b = t.getBBox(), x = +t.getAttribute('x'); if (b.x + b.width > W - 6) shift(t, x - (b.x + b.width - (W - 6))); else if (b.x < 6) shift(t, x + (6 - b.x)); }); }
     function build() {
       vine.innerHTML = ''; var P = innerWidth < 760, W = P ? 400 : 1000, H = P ? 760 : 600;
       vine.setAttribute('viewBox', '0 0 ' + W + ' ' + H); vine.setAttribute('preserveAspectRatio', 'xMidYMid meet');
@@ -455,11 +457,14 @@
         for (var k = 0; k < 7; k++) el('ellipse', { cx: p.x, cy: p.y - r * .9, rx: r * .48, ry: r * .9, fill: s.c, 'fill-opacity': .92, transform: 'rotate(' + k * 360 / 7 + ' ' + p.x + ' ' + p.y + ')' }, bl);
         el('circle', { cx: p.x, cy: p.y, r: r * .42, fill: i === 4 ? '#f4efe6' : '#800020' }, bl);
         // labels: on phones beside the flower; on wide screens alternately above and below, so neighbours never touch
-        var tx, y0, anchor;
-        if (P) { var right = p.x < 200; tx = p.x + (right ? r + 18 : -(r + 18)); anchor = right ? 'start' : 'end'; y0 = p.y - 6; }
-        else { var up = i % 2 === 0 && i !== 4; anchor = i === 0 ? 'start' : i === 4 ? 'end' : 'middle'; tx = i === 0 ? p.x - 20 : i === 4 ? p.x + 20 : p.x; y0 = up ? p.y - r * 2 - 40 : p.y + r * 2 + 26; }
+        // the full name, wrapped onto short lines so long ones stay compact
+        var lines = wrap(s.short, P ? 15 : 20), lh = P ? 22 : 26, tx, y0, anchor;
+        if (P) { var right = p.x < 200; tx = p.x + (right ? r * 1.25 + 14 : -(r * 1.25 + 14)); anchor = right ? 'start' : 'end'; y0 = p.y - 6 - (lines.length - 1) * lh / 2; }
+        else { var up = i % 2 === 0 && i !== 4; anchor = i === 0 ? 'start' : i === 4 ? 'end' : 'middle'; tx = i === 0 ? p.x - 20 : i === 4 ? p.x + 20 : p.x; y0 = up ? p.y - r * 2 - 40 - (lines.length - 1) * lh : p.y + r * 2 + 26; }
         el('text', { x: tx, y: y0, class: 'yr', 'text-anchor': anchor }, g).textContent = s.y;
-        var nm = el('text', { x: tx, y: y0 + (P ? 26 : 28), class: 'nm', 'text-anchor': anchor }, g); nm.textContent = s.short; if (P) nm.style.fontSize = '20px';
+        var nm = el('text', { x: tx, y: y0 + (P ? 24 : 28), class: 'nm', 'text-anchor': anchor }, g);
+        lines.forEach(function (ln, k) { var ts = el('tspan', { x: tx, dy: k ? lh : 0 }, nm); ts.textContent = ln; });
+        nm.style.fontSize = P ? '18px' : '23px';
         var open = function () { tell(i); };
         g.addEventListener('click', open); g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
         return { g: g, t: at[i] };

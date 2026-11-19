@@ -5,8 +5,8 @@
  "credit": "INDEPENDENT · LAB",
  "tag": "Lab · 2026",
  "title": "Market Day",
- "sub": "A small game about why people buy. You mind a stall at a hill market for a day, choose what the chalkboard says, and five villagers decide.",
- "description": "Market Day: a small browser game by Riya Dutta. Mind a hill-market stall, pick the sign, and learn why each villager buys or walks away.",
+ "sub": "A small game about why people buy. You mind a stall at a hill market for a day, set the prices, choose what the chalkboard says, and five villagers decide.",
+ "description": "Market Day: a small browser game by Riya Dutta. Set the prices, pick the sign, and learn why each villager buys or walks away.",
  "postmark": "LIVE · MARKET-DAY · VERCEL ·",
  "facts": [
   [
@@ -14,8 +14,8 @@
    "A game in the browser, nothing to download"
   ],
   [
-   "THE CHOICE",
-   "One chalkboard sign in the morning, one chance to change it at lunch"
+   "THE CHOICES",
+   "Six price tags and a chalkboard sign, with one chance to change the sign at lunch"
   ],
   [
    "MY PART",
@@ -52,10 +52,10 @@
   {
    "type": "play",
    "kick": "PLAY",
-   "title": "Pick a sign, open up.",
+   "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "Tap the chalkboard to choose what it says, then open the stall. At lunch you can change the sign once. At dusk, the ledger shows who bought and why."
+   "note": "Tap Set prices to change the six price tags, then tap the chalkboard to choose what it says. Open the stall, and change the sign once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid. The best possible day takes ₹1,240."
   },
   {
    "type": "cards",
@@ -66,7 +66,7 @@
     },
     {
      "k": "THE LEDGER",
-     "t": "Nobody is scored on what they spent. The ledger shows the reason behind each sale, and what would have changed a no."
+     "t": "Every villager has a limit, and the right nudge stretches it. The ledger shows each reason and each limit, so the next day you can price a little smarter."
     }
    ]
   },
@@ -77,15 +77,15 @@
    "tiles": [
     {
      "t": "Pip and Kiko",
-     "d": "Pip the goat falls for the decoy: the big ₹400 jar makes the medium one look cheap. Kiko the yak is anchored by the ₹900 shawl."
+     "d": "Pip the goat pays more for the medium honey when the big jar costs twice as much: the decoy. Kiko the yak pays more for a cap when the shawl beside it is pricey: the anchor."
     },
     {
      "t": "Juno and Nell",
-     "d": "Juno the monal only hurries when stock is short. Nell the pika follows a crowd, or a sign that says everyone else already chose."
+     "d": "Juno the monal pays up to ₹150 for apples if stock looks short. Nell the pika pays ₹120, but only once a crowd has bought. Price the apples for one, and you may lose the other."
     },
     {
      "t": "Wren",
-     "d": "Wren the red panda wants to know where it was made. Local wins her over."
+     "d": "Wren the red panda wants to know where it was made. Tell her it is local, and keep the small jar at ₹200 or less."
     }
    ]
   },
@@ -93,7 +93,7 @@
    "type": "text",
    "kick": "WHY IT’S HERE",
    "paras": [
-    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into a morning at a hill market. A perfect day is possible, but it takes the right sign at the right time."
+    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into a morning at a hill market. A perfect day is possible, but it takes the right prices, and the right sign at the right time."
    ],
    "links": [
     {

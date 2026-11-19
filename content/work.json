@@ -111,6 +111,22 @@
    "img": "assets/img/fire-flowers.svg",
    "live": "https://fire-flowers.vercel.app/",
    "case": true
+  },
+  {
+   "no": "010",
+   "href": "market-day/",
+   "title": "Market Day",
+   "kind": "GAME · 2026",
+   "blurb": "Mind a stall at a hill market for a day. Pick the sign, then see who buys and why.",
+   "tags": [
+    "Lab",
+    "Marketing",
+    "Design",
+    "Build"
+   ],
+   "img": "assets/img/market-day.jpg",
+   "live": "https://market-day-beige.vercel.app/",
+   "case": true
   }
  ],
  "lab_intro": "Things I make on my own time. Each one has a site of its own."

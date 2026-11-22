@@ -5,8 +5,8 @@
  "credit": "INDEPENDENT · LAB",
  "tag": "Lab · 2026",
  "title": "Market Day",
- "sub": "A small game about why people buy. You mind a stall at a hill market for a day, set the prices, choose what the chalkboard says, and five villagers decide.",
- "description": "Market Day: a small browser game by Riya Dutta. Set the prices, pick the sign, and learn why each villager buys or walks away.",
+ "sub": "A small game about why people buy. Mind a stall at a hill market, set the prices, choose the sign, and watch the villagers decide. Then come back for Festival day.",
+ "description": "Market Day: a small browser game by Riya Dutta. Two market days, nine nudges and nine villagers. Set the prices, pick the sign, and learn why each one buys or walks away.",
  "postmark": "LIVE · MARKET-DAY · VERCEL ·",
  "facts": [
   [
@@ -15,7 +15,11 @@
   ],
   [
    "THE CHOICES",
-   "Six price tags and a chalkboard sign, with one chance to change the sign at lunch"
+   "Price tags and a chalkboard sign; on Festival day, a free-taste tray and prices ending in 9"
+  ],
+  [
+   "TWO DAYS",
+   "A first market day, then Festival day, where happy customers come back"
   ],
   [
    "MY PART",
@@ -23,7 +27,7 @@
   ],
   [
    "BUILT WITH",
-   "One HTML file: every tree, stall and villager drawn in SVG"
+   "One HTML file: every villager drawn in SVG, every sound and voice made in the browser"
   ],
   [
    "LIVE",
@@ -55,14 +59,14 @@
    "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "Tap Set prices to change the six price tags, then tap the chalkboard to choose what it says. Open the stall, and change the sign once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid. The best possible day takes ₹1,240."
+   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid. Finish the day to unlock Festival day."
   },
   {
    "type": "cards",
    "items": [
     {
      "k": "THE IDEA",
-     "t": "Most of marketing is a nudge, not a price cut. Here you can watch five of them work on five shoppers, one at a time."
+     "t": "Most of marketing is a nudge, not a price cut. Here you can watch nine of them at work on nine shoppers, one at a time."
     },
     {
      "k": "THE LEDGER",
@@ -73,7 +77,7 @@
   {
    "type": "statement",
    "kick": "THE VILLAGERS",
-   "title": "Five shoppers, five reasons.",
+   "title": "Nine shoppers, nine reasons.",
    "tiles": [
     {
      "t": "Pip and Kiko",
@@ -86,6 +90,10 @@
     {
      "t": "Wren",
      "d": "Wren the red panda wants to know where it was made. Tell her it is local, and keep the small jar at ₹200 or less."
+    },
+    {
+     "t": "Festival day",
+     "d": "Lumi the marmot buys after a free taste. Bo the snow leopard cub hates to miss the last day of the season. Gus the black bear loves a price ending in 9, and eats every free taste. Pip and Wren come back loyal if you won them the day before."
     }
    ]
   },
@@ -93,7 +101,7 @@
    "type": "text",
    "kick": "WHY IT’S HERE",
    "paras": [
-    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into a morning at a hill market. A perfect day is possible, but it takes the right prices, and the right sign at the right time."
+    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into two days at a hill market. A perfect day is possible on both, but it takes the right prices, and the right nudge at the right time."
    ],
    "links": [
     {

@@ -356,15 +356,24 @@
     })();
   })();
 
-  /* ---------- 2. work: decode on hover, image follows, click = the pieces spiral into the campaign ---------- */
-  $('#list').innerHTML = P.map(function (p, i) { return '<button type="button" data-i="' + i + '"><i>0' + (i + 1) + '</i><b>' + p.t + '</b><small>' + p.k.toUpperCase() + '</small></button>'; }).join('');
-  var fol = $('#follow');
-  addEventListener('mousemove', function (e) { if (fol.classList.contains('on')) { fol.style.left = (e.clientX + 130) + 'px'; fol.style.top = e.clientY + 'px'; } });
-  $$('#list button').forEach(function (b) {
-    var i = +b.dataset.i, p = P[i], nm = $('b', b);
-    b.addEventListener('mouseenter', function (e) { decode(nm, p.t); if (!touch && !phone.matches) { fol.src = IMG + p.img; fol.style.left = (e.clientX + 130) + 'px'; fol.style.top = e.clientY + 'px'; fol.classList.add('on'); } });
-    b.addEventListener('mouseleave', function () { fol.classList.remove('on'); });
-    b.onclick = function () { fol.classList.remove('on'); gatherOpen(i); };
+  /* ---------- 2. work: cards with three pieces of each campaign; click = the pieces spiral into the campaign ---------- */
+  // one line each, taken from the case studies: the idea it is built on
+  var CARD = {
+    'the-haunted-crm': { l: 'Your sales tools are haunted, by the things nobody cleaned up.', bg: '#1b1550', p: ['haunted-crm-02.jpg', 'haunted-crm-03.jpg', 'haunted-crm-teaser.jpg'] },
+    'the-founder-bottleneck': { l: 'What stops when everything has to go through the founder.', bg: '#0b0c22', p: ['founder-bottleneck-02.jpg', 'founder-bottleneck-03.jpg', 'founder-bottleneck-sick-day.jpg'] },
+    'the-content-studio': { l: 'A studio, not a folder of files: nothing is built until the words are approved.', bg: '#07081a', p: ['content-studio-route.svg'] },
+    'the-b2ne-website': { l: 'How to look credible with nothing to show.', bg: '#dfe9ff', p: ['b2ne-page-about-us.jpg', 'b2ne-page-pricing.jpg', 'b2ne-page-how-we-help.jpg'], wide: true },
+    'crm-graveyard': { l: 'One world, many visual grammars: no two posts look alike.', bg: '#0a1466', p: ['crm-graveyard-02.jpg', 'crm-graveyard-03.jpg', 'crm-graveyard-close-date.jpg'] }
+  };
+  $('#workGrid').innerHTML = P.map(function (p, i) {
+    var c = CARD[p.s] || { l: p.d, bg: '#800020', p: [p.img] };
+    return '<a class="wc" href="' + CASE + p.s + '/" data-i="' + i + '"><span class="wc-m wc-stack' + (c.wide ? ' wide' : '') + '" style="--t:' + c.bg + '"><span class="wc-tag">FOR B2NE</span>' +
+      c.p.map(function (x) { return '<img src="' + IMG + x + '" alt="" loading="lazy">'; }).join('') + '</span>' +
+      '<span class="wc-t"><b>' + p.t + '</b><span class="wc-l">' + c.l + '</span><span class="wc-go wc-read">Read the case →</span></span></a>';
+  }).join('');
+  // a plain click opens the gather; a new-tab click goes straight to the case study
+  $$('#workGrid .wc').forEach(function (a) {
+    a.addEventListener('click', function (e) { if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; e.preventDefault(); gatherOpen(+a.dataset.i); });
   });
   function count(el, to) {
     if (reduce) { el.textContent = to; return; }
@@ -623,7 +632,7 @@
   /* ---------- scroll reveals ---------- */
   (function () {
     if (reduce || !('IntersectionObserver' in window)) return;
-    var groups = [['#list button', .07], ['#bento .t', .06], ['#desk .ico', .06]];
+    var groups = [['#workGrid .wc', .07], ['#lab .wc', .07], ['#bento .t', .06], ['#desk .ico', .06]];
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
     groups.forEach(function (g) { $$(g[0]).forEach(function (el, i) { el.setAttribute('data-rv', ''); el.style.setProperty('--d', (g[1] * i) + 's'); io.observe(el); }); });
   })();

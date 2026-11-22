@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/home.css?v=26">
+<link rel="stylesheet" href="assets/home.css?v=28">
 </head>
 <body>
 
@@ -42,23 +42,18 @@
 
 <!-- 2. selected work -->
 <section id="work" class="work" aria-labelledby="work-h"><div class="wrap">
-  <p class="lab">Selected work</p>
-  <h2 id="work-h">Five projects. Pick one.</h2>
-  <p class="sub">Hover a name to see it. Click, and its pieces gather into the campaign.</p>
-  <div class="list" id="list"></div>
-  <a class="allwork" href="work/">See every project →</a>
+  <div class="whead"><div><p class="lab">Work for B2Ne</p><h2 id="work-h">Five projects for one client.</h2><p class="sub">Campaigns, a website and the system behind them.</p></div><a class="allwork" href="work/">See every project →</a></div>
+  <div class="wcards wwork" id="workGrid"></div>
 </div></section>
 <!-- 2b. lab: things with sites of their own; each tile opens the site -->
 <section id="lab" class="labs" aria-labelledby="lab-h"><div class="wrap">
-  <p class="lab">Lab</p>
-  <h2 id="lab-h">Made on my own time.</h2>
-  <div class="ltiles">
-    <a class="lt" href="https://gifting-index.vercel.app/" target="_blank" rel="noopener" style="--t:#fdfcfa"><img src="assets/img/gifting-index.jpg" alt="" loading="lazy"><span><b>The Gifting Index</b><i>Which perfume gets wrapped? ↗</i></span></a>
-    <a class="lt" href="https://fire-flowers.vercel.app/" target="_blank" rel="noopener" style="--t:#141833;color:#f4efe6"><img src="assets/img/fire-flowers.svg" alt="" loading="lazy"><span><b>Fire Flowers</b><i>Fireworks by night, flowers by day ↗</i></span></a>
-    <a class="lt" href="https://market-day-beige.vercel.app/" target="_blank" rel="noopener" style="--t:#dff2cf"><img src="assets/img/market-day.jpg" alt="" loading="lazy"><span><b>Market Day</b><i>Set the prices, see who buys ↗</i></span></a>
+  <div class="whead"><div><p class="lab">Lab</p><h2 id="lab-h">My own experiments. Try them.</h2><p class="sub">Small live sites, built on my own time.</p></div></div>
+  <div class="wcards">
+    <a class="wc" href="https://gifting-index.vercel.app/" target="_blank" rel="noopener"><span class="wc-m wc-shot" style="--t:#fdfcfa"><span class="wc-tag live">LIVE</span><img src="assets/img/gifting-index.jpg" alt="" loading="lazy"></span><span class="wc-t"><b>The Gifting Index</b><span class="wc-l">Which perfume gets wrapped? Guess before you see the data.</span><span class="wc-go wc-try">Try it ↗</span></span></a>
+    <a class="wc" href="https://fire-flowers.vercel.app/" target="_blank" rel="noopener"><span class="wc-m wc-shot" style="--t:#141833"><span class="wc-tag live">LIVE</span><img src="assets/img/fire-flowers.svg" alt="" loading="lazy"></span><span class="wc-t"><b>Fire Flowers</b><span class="wc-l">Fireworks by night, flowers by day.</span><span class="wc-go wc-try">Try it ↗</span></span></a>
+    <a class="wc" href="https://market-day-beige.vercel.app/" target="_blank" rel="noopener"><span class="wc-m wc-shot" style="--t:#dff2cf"><span class="wc-tag live">LIVE</span><img src="assets/img/market-day.jpg" alt="" loading="lazy"></span><span class="wc-t"><b>Market Day</b><span class="wc-l">Set the prices, see who buys, and learn why.</span><span class="wc-go wc-try">Try it ↗</span></span></a>
   </div>
 </div></section>
-<img class="follow" id="follow" alt="">
 <div class="open" id="open" role="dialog" aria-modal="true" aria-label="Project"><button class="x" id="closeOpen" type="button">Close ✕</button><div class="core" id="core"></div></div>
 
 <!-- 3. look around: a torch over every campaign -->
@@ -126,6 +121,6 @@
 
 <div class="cmd" id="cmd" role="dialog" aria-modal="true" aria-label="Jump to"><div><input id="cmdIn" placeholder="Jump to a project or section…" aria-label="Jump to a project or section"><ul id="cmdList"></ul></div></div>
 
-<script src="assets/home.js?v=31"></script>
+<script src="assets/home.js?v=33"></script>
 </body>
 </html>

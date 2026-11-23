@@ -5,8 +5,8 @@
  "credit": "INDEPENDENT · LAB",
  "tag": "Lab · 2026",
  "title": "Market Day",
- "sub": "A small game about why people buy. Mind a stall at a hill market, set the prices, choose the sign, and watch the villagers decide. Then come back for Festival day.",
- "description": "Market Day: a small browser game by Riya Dutta. Two market days, nine nudges and nine villagers. Set the prices, pick the sign, and learn why each one buys or walks away.",
+ "sub": "A small game about why people buy. Mind a stall at a hill market, set the prices, choose the sign, and watch the villagers decide. Then come back for Festival day and a Winter market.",
+ "description": "Market Day: a small browser game by Riya Dutta. Three market days, twelve nudges and eleven villagers. Set the prices, pick the sign, and learn why each one buys or walks away.",
  "postmark": "LIVE · MARKET-DAY · VERCEL ·",
  "facts": [
   [
@@ -15,11 +15,11 @@
   ],
   [
    "THE CHOICES",
-   "Price tags and a chalkboard sign; on Festival day, a free-taste tray and prices ending in 9"
+   "Price tags and a chalkboard sign; a free-taste tray and prices ending in 9 at the festival; a chai and walnut bundle in winter"
   ],
   [
-   "TWO DAYS",
-   "A first market day, then Festival day, where happy customers come back"
+   "THREE DAYS",
+   "A first market day, Festival day and a Winter market, where happy customers come back"
   ],
   [
    "MY PART",
@@ -59,14 +59,14 @@
    "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid. Finish the day to unlock Festival day."
+   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid. Finish a day to unlock the next."
   },
   {
    "type": "cards",
    "items": [
     {
      "k": "THE IDEA",
-     "t": "Most of marketing is a nudge, not a price cut. Here you can watch nine of them at work on nine shoppers, one at a time."
+     "t": "Most of marketing is a nudge, not a price cut. Here you can watch twelve of them at work on eleven shoppers, one at a time."
     },
     {
      "k": "THE LEDGER",
@@ -77,7 +77,7 @@
   {
    "type": "statement",
    "kick": "THE VILLAGERS",
-   "title": "Nine shoppers, nine reasons.",
+   "title": "Eleven shoppers, twelve reasons.",
    "tiles": [
     {
      "t": "Pip and Kiko",
@@ -94,6 +94,10 @@
     {
      "t": "Festival day",
      "d": "Lumi the marmot buys after a free taste. Bo the snow leopard cub hates to miss the last day of the season. Gus the black bear loves a price ending in 9, and eats every free taste. Pip and Wren come back loyal if you won them the day before."
+    },
+    {
+     "t": "Winter market",
+     "d": "Milo the ibex loves a bundle that costs less than its parts. Dot the snow partridge pays more when ₹10 goes to the school. Tess the Tibetan fox buys a ₹1,800 shawl once it is “under ₹5 a day”. Kiko and Bo come back, and Lumi and Gus are hibernating."
     }
    ]
   },
@@ -101,7 +105,7 @@
    "type": "text",
    "kick": "WHY IT’S HERE",
    "paras": [
-    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into two days at a hill market. A perfect day is possible on both, but it takes the right prices, and the right nudge at the right time."
+    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into three days at a hill market, from a sunny morning to a festival to the first snow. A perfect day is possible on each, but it takes the right prices, and the right nudge at the right time."
    ],
    "links": [
     {

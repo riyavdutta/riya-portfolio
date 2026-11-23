@@ -22,6 +22,10 @@
    "A first market day, Festival day and a Winter market, where happy customers come back"
   ],
   [
+   "TO KEEP",
+   "A postcard of your day: your stall, the villagers who bought, and a note on what worked. Save it or share it"
+  ],
+  [
    "MY PART",
    "The idea, the villagers, the drawing and the rules"
   ],
@@ -59,7 +63,7 @@
    "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
+   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
   },
   {
    "type": "cards",

@@ -63,7 +63,7 @@
    "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
+   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Villagers dress for the day and walk off wearing or carrying what they bought. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
   },
   {
    "type": "cards",
@@ -97,11 +97,11 @@
     },
     {
      "t": "Festival day",
-     "d": "Lumi the marmot buys after a free taste. Bo the snow leopard cub hates to miss the last day of the season. Gus the black bear loves a price ending in 9, and eats every free taste. Pip and Wren come back loyal if you won them the day before."
+     "d": "Lumi the marmot buys after a free taste. Bo the snow leopard cub hates to miss the last day of the season. Gus the black bear loves a price ending in 9, and eats every free taste. Pip and Wren come back loyal if you won them the day before. Everyone turns up in a party hat with a balloon."
     },
     {
      "t": "Winter market",
-     "d": "Milo the ibex loves a bundle that costs less than its parts. Dot the snow partridge pays more when each sale gives a child a book. Tess the Tibetan fox buys a ₹1,800 shawl once the sign says it lasts ten winters. Kiko and Bo come back, and Lumi and Gus are hibernating."
+     "d": "Milo the ibex loves a bundle that costs less than its parts. Dot the snow partridge pays more when each sale gives a child a book. Tess the Tibetan fox buys a ₹1,800 shawl once the sign says it lasts ten winters. Kiko and Bo come back, and Lumi and Gus are hibernating. Everyone is bundled up in beanies, scarves and earmuffs."
     }
    ]
   },

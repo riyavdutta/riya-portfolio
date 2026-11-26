@@ -34,6 +34,10 @@
    "A sticker book with one sticker for each nudge you get to work, and a postcard of your day to save or share"
   ],
   [
+   "FRIENDS",
+   "Every villager who buys from you gains a heart. At five hearts they bring a gift that stays on your stall: a brass bell, a paper lantern, a woven rug and more"
+  ],
+  [
    "MY PART",
    "The idea, the villagers, the drawing and the rules"
   ],
@@ -71,7 +75,7 @@
    "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "The stall is stocked differently every visit. Tap Make it yours to name the stall and choose how you look. Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Villagers dress for the day and walk off wearing or carrying what they bought. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
+   "note": "The stall is stocked differently every visit. Tap Make it yours to name the stall and choose how you look. Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Every sale also earns that villager a heart, and five hearts bring a gift for your stall. Villagers dress for the day and walk off wearing or carrying what they bought. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
   },
   {
    "type": "cards",

@@ -15,11 +15,15 @@
   ],
   [
    "THE CHOICES",
-   "Price tags and a chalkboard sign; a free-taste tray and prices ending in 9 at the festival; a chai and walnut bundle in winter"
+   "Price tags and a chalkboard sign; a free-taste tray and prices ending in 9 at the festival; a bundle of two things in winter"
   ],
   [
    "THREE DAYS",
    "A first market day, Festival day and a Winter market, where happy customers come back"
+  ],
+  [
+   "EVERY VISIT",
+   "What is on the counter, what each villager will pay and who comes first all change each time you play"
   ],
   [
    "TO KEEP",
@@ -63,7 +67,7 @@
    "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Villagers dress for the day and walk off wearing or carrying what they bought. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
+   "note": "The stall is stocked differently every visit. Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Villagers dress for the day and walk off wearing or carrying what they bought. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
   },
   {
    "type": "cards",
@@ -74,7 +78,7 @@
     },
     {
      "k": "THE LEDGER",
-     "t": "Every villager has a limit, and the right nudge stretches it. The ledger shows each reason and each limit, so the next day you can price a little smarter."
+     "t": "Every villager has a limit, and the right nudge stretches it. Limits shift a little every visit, so the ledger shows each reason and each limit at dusk, and the next day you price a little smarter."
     }
    ]
   },
@@ -85,15 +89,15 @@
    "tiles": [
     {
      "t": "Pip and Kiko",
-     "d": "Pip the goat pays more for the medium honey when the big jar costs twice as much: the decoy. Kiko the yak pays more for a cap when the shawl beside it is pricey: the anchor."
+     "d": "Pip the goat pays more for the medium size when the big one costs twice as much: the decoy. Kiko the yak pays more for a cap or a cushion when something pricey sits beside it: the anchor."
     },
     {
      "t": "Juno and Nell",
-     "d": "Juno the monal pays up to ₹150 for apples if stock looks short. Nell the pika pays ₹120, but only once a crowd has bought. Price the apples for one, and you may lose the other."
+     "d": "Juno the monal pays more for the fruit if stock looks short. Nell the pika only buys once a crowd has, and her limit is lower. Price the fruit for one, and you may lose the other."
     },
     {
      "t": "Wren",
-     "d": "Wren the red panda wants to know where it was made. Tell her it is local, and keep the small jar at ₹200 or less."
+     "d": "Wren the red panda wants to know where it was made. Tell her it is local, and keep the small one within her limit."
     },
     {
      "t": "Festival day",
@@ -101,7 +105,7 @@
     },
     {
      "t": "Winter market",
-     "d": "Milo the ibex loves a bundle that costs less than its parts. Dot the snow partridge pays more when each sale gives a child a book. Tess the Tibetan fox buys a ₹1,800 shawl once the sign says it lasts ten winters. Kiko and Bo come back, and Lumi and Gus are hibernating. Everyone is bundled up in beanies, scarves and earmuffs."
+     "d": "Milo the ibex loves a bundle that costs less than its parts. Dot the snow partridge pays more when each sale gives a child a book. Tess the Tibetan fox buys a pricey shawl once the sign says it lasts ten winters. Kiko and Bo come back, and Lumi and Gus are hibernating. Everyone is bundled up in beanies, scarves and earmuffs."
     }
    ]
   },
@@ -109,7 +113,7 @@
    "type": "text",
    "kick": "WHY IT’S HERE",
    "paras": [
-    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into three days at a hill market, from a sunny morning to a festival to the first snow. A perfect day is possible on each, but it takes the right prices, and the right nudge at the right time."
+    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into three days at a hill market, from a sunny morning to a festival to the first snow. The stock and the shoppers change every visit, so no two days play the same, but a perfect day is always possible if you get the prices and the nudges right."
    ],
    "links": [
     {

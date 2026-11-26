@@ -5,17 +5,17 @@
  "credit": "INDEPENDENT · LIVE DATA",
  "tag": "Live data · 2026",
  "title": "The Gifting Index",
- "sub": "Which luxury fragrance houses do people buy as gifts? A live site that answers from Google searches and ten years of Wikipedia data.",
- "description": "The Gifting Index: a live site by Riya Dutta comparing December demand for four luxury fragrance houses, Jo Malone London and Diptyque against Le Labo and Byredo, from Google Trends and Wikipedia data refreshed daily.",
+ "sub": "Which perfume houses do people buy as gifts? A live site that answers from Google searches, drawn as six stems in one vase.",
+ "description": "The Gifting Index: a live site by Riya Dutta comparing December demand for six perfume houses, Jo Malone London, Diptyque and Molton Brown against Le Labo, Byredo and Frédéric Malle, from Google Trends data refreshed daily, with a gift finder and a pressed-flower card.",
  "postmark": "LIVE · GIFTING-INDEX.VERCEL.APP ·",
  "facts": [
   [
    "WHAT",
-   "A live site comparing two classic gift names, Jo Malone London and Diptyque, with two cult niche houses, Le Labo and Byredo"
+   "A live site comparing three classic gift names (Jo Malone London, Diptyque, Molton Brown) with three cult niche houses (Le Labo, Byredo, Frédéric Malle)"
   ],
   [
    "DATA",
-   "Google Trends searches (main signal) and Wikipedia pageviews, fetched every morning and saved with the site"
+   "Google Trends searches, fetched every morning and saved with the site, with Wikipedia pageviews as a cross-check"
   ],
   [
    "MY PART",
@@ -41,16 +41,24 @@
   }
  ],
  "hero": {
-  "svg": "<svg viewBox=\"0 0 400 500\" role=\"img\" aria-label=\"December lift in Google searches: Jo Malone ×2.0, Diptyque ×2.0, Le Labo ×1.6, Byredo ×1.5\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"400\" height=\"500\" fill=\"#f6d8d6\"/><rect x=\"12\" y=\"12\" width=\"376\" height=\"476\" fill=\"#fffdf0\"/><rect x=\"20\" y=\"20\" width=\"360\" height=\"460\" fill=\"none\" stroke=\"#e2c9b3\" stroke-width=\"2\" stroke-dasharray=\"2 5\"/><text x=\"34\" y=\"58\" font-family=\"Space Mono, monospace\" font-size=\"10\" letter-spacing=\"2\" fill=\"#856a56\">THE GIFTING INDEX · DECEMBER SEARCHES</text><text x=\"34\" y=\"74\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#856a56\">- - -  A TYPICAL MONTH</text><rect x=\"52.3\" y=\"174.3\" width=\"46.5\" height=\"235.7\" fill=\"#65232b\"/><text x=\"75.5\" y=\"164.3\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"22\" fill=\"#432720\">×2.0</text><text x=\"75.5\" y=\"428.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">JO MALONE</text><rect x=\"135.3\" y=\"172.0\" width=\"46.5\" height=\"238.0\" fill=\"#56707f\"/><text x=\"158.5\" y=\"162.0\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"22\" fill=\"#432720\">×2.0</text><text x=\"158.5\" y=\"428.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">DIPTYQUE</text><rect x=\"218.3\" y=\"225.7\" width=\"46.5\" height=\"184.3\" fill=\"#b4546e\"/><text x=\"241.5\" y=\"215.7\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"22\" fill=\"#432720\">×1.6</text><text x=\"241.5\" y=\"428.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">LE LABO</text><rect x=\"301.3\" y=\"232.7\" width=\"46.5\" height=\"177.3\" fill=\"#8a6d2f\"/><text x=\"324.5\" y=\"222.7\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"22\" fill=\"#432720\">×1.5</text><text x=\"324.5\" y=\"428.0\" text-anchor=\"middle\" font-family=\"Space Mono, monospace\" font-size=\"9\" letter-spacing=\"1\" fill=\"#604734\">BYREDO</text><line x1=\"28\" x2=\"372\" y1=\"293.3\" y2=\"293.3\" stroke=\"#432720\" stroke-width=\"1\" stroke-dasharray=\"3 4\" opacity=\".6\"/></svg>",
-  "alt": "December lift in Google searches for the four fragrance houses"
+  "svg": "<svg viewBox=\"0 0 400 500\" role=\"img\" aria-label=\"December lift in Google searches, drawn as six stems in a vase: Molton Brown ×2.5, Diptyque ×2.0, Jo Malone ×2.0, Le Labo ×1.6, Byredo ×1.5, Frédéric Malle ×1.4\" preserveAspectRatio=\"xMidYMid slice\"><rect width=\"400\" height=\"500\" fill=\"#ecdfe6\"/><text x=\"32\" y=\"52\" font-family=\"Playfair Display, serif\" font-size=\"15\" fill=\"#6f6a64\">The Gifting Index · December searches</text><ellipse cx=\"200\" cy=\"426\" rx=\"118\" ry=\"7\" fill=\"#000\" opacity=\".07\"/><path d=\"M96,370 C96,416 123,416 138,416 L262,416 C277,416 304,416 304,370Z\" fill=\"#2f2b29\"/><ellipse cx=\"200\" cy=\"370\" rx=\"104\" ry=\"7\" fill=\"#433d3a\"/><path d=\"M172.5,370 Q123.1,262.1 31.3,233.7\" fill=\"none\" stroke=\"#6b7d5a\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><g transform=\"translate(31.3,233.7)\"><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(0)\" fill=\"#9b3a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(72)\" fill=\"#9b3a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(144)\" fill=\"#9b3a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(216)\" fill=\"#9b3a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(288)\" fill=\"#9b3a62\" opacity=\".88\"/><circle r=\"4.5\" fill=\"#f3e3a3\"/></g><text x=\"31.3\" y=\"203.7\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"15\" fill=\"#2a2724\">×2.0</text><path d=\"M183.5,370 Q151.0,261.1 90.5,195.1\" fill=\"none\" stroke=\"#6b7d5a\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><g transform=\"translate(90.5,195.1)\"><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(0)\" fill=\"#e48aa6\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(72)\" fill=\"#e48aa6\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(144)\" fill=\"#e48aa6\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(216)\" fill=\"#e48aa6\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(288)\" fill=\"#e48aa6\" opacity=\".88\"/><circle r=\"4.5\" fill=\"#f3e3a3\"/></g><text x=\"90.5\" y=\"165.1\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"15\" fill=\"#2a2724\">×2.0</text><path d=\"M194.5,370 Q180.2,240.3 153.6,137.8\" fill=\"none\" stroke=\"#6b7d5a\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><g transform=\"translate(153.6,137.8)\"><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(0)\" fill=\"#c73b55\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(72)\" fill=\"#c73b55\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(144)\" fill=\"#c73b55\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(216)\" fill=\"#c73b55\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(288)\" fill=\"#c73b55\" opacity=\".88\"/><circle r=\"4.5\" fill=\"#f3e3a3\"/></g><text x=\"153.6\" y=\"107.8\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"15\" fill=\"#2a2724\">×2.5</text><path d=\"M205.5,370 Q215.0,284.3 232.5,216.6\" fill=\"none\" stroke=\"#6b7d5a\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><g transform=\"translate(232.5,216.6)\"><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(0)\" fill=\"#6f9a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(72)\" fill=\"#6f9a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(144)\" fill=\"#6f9a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(216)\" fill=\"#6f9a62\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(288)\" fill=\"#6f9a62\" opacity=\".88\"/><circle r=\"4.5\" fill=\"#f3e3a3\"/></g><text x=\"232.5\" y=\"186.6\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"15\" fill=\"#2a2724\">×1.6</text><path d=\"M216.5,370 Q241.2,287.4 287.0,237.3\" fill=\"none\" stroke=\"#6b7d5a\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><g transform=\"translate(287.0,237.3)\"><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(0)\" fill=\"#8f84cf\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(72)\" fill=\"#8f84cf\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(144)\" fill=\"#8f84cf\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(216)\" fill=\"#8f84cf\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(288)\" fill=\"#8f84cf\" opacity=\".88\"/><circle r=\"4.5\" fill=\"#f3e3a3\"/></g><text x=\"287.0\" y=\"207.3\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"15\" fill=\"#2a2724\">×1.5</text><path d=\"M227.5,370 Q262.5,293.4 327.6,273.3\" fill=\"none\" stroke=\"#6b7d5a\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><g transform=\"translate(327.6,273.3)\"><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(0)\" fill=\"#4f978a\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(72)\" fill=\"#4f978a\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(144)\" fill=\"#4f978a\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(216)\" fill=\"#4f978a\" opacity=\".88\"/><ellipse cx=\"0\" cy=\"-12\" rx=\"8\" ry=\"13\" transform=\"rotate(288)\" fill=\"#4f978a\" opacity=\".88\"/><circle r=\"4.5\" fill=\"#f3e3a3\"/></g><text x=\"327.6\" y=\"243.3\" text-anchor=\"middle\" font-family=\"Playfair Display, serif\" font-size=\"15\" fill=\"#2a2724\">×1.4</text><circle cx=\"40\" cy=\"458\" r=\"4\" fill=\"#9b3a62\"/><text x=\"49\" y=\"462\" font-family=\"Playfair Display, serif\" font-size=\"13\" fill=\"#4b4642\">Jo Malone</text><circle cx=\"160\" cy=\"458\" r=\"4\" fill=\"#e48aa6\"/><text x=\"169\" y=\"462\" font-family=\"Playfair Display, serif\" font-size=\"13\" fill=\"#4b4642\">Diptyque</text><circle cx=\"280\" cy=\"458\" r=\"4\" fill=\"#c73b55\"/><text x=\"289\" y=\"462\" font-family=\"Playfair Display, serif\" font-size=\"13\" fill=\"#4b4642\">Molton Brown</text><circle cx=\"40\" cy=\"480\" r=\"4\" fill=\"#6f9a62\"/><text x=\"49\" y=\"484\" font-family=\"Playfair Display, serif\" font-size=\"13\" fill=\"#4b4642\">Le Labo</text><circle cx=\"160\" cy=\"480\" r=\"4\" fill=\"#8f84cf\"/><text x=\"169\" y=\"484\" font-family=\"Playfair Display, serif\" font-size=\"13\" fill=\"#4b4642\">Byredo</text><circle cx=\"280\" cy=\"480\" r=\"4\" fill=\"#4f978a\"/><text x=\"289\" y=\"484\" font-family=\"Playfair Display, serif\" font-size=\"13\" fill=\"#4b4642\">Frédéric Malle</text></svg>",
+  "alt": "December lift in Google searches for the six perfume houses, drawn as stems in one vase"
  },
  "sections": [
+  {
+   "type": "play",
+   "kick": "TRY IT",
+   "title": "Guess which stem grows tallest.",
+   "src": "https://gifting-index.vercel.app/",
+   "alt": "The Gifting Index, live",
+   "note": "Tap the flower you think the next gifting moment makes biggest, then try the months. Scroll inside to find a perfume for someone, or open the live site full screen."
+  },
   {
    "type": "cards",
    "items": [
     {
      "k": "THE QUESTION",
-     "t": "Two fragrance houses everyone recognises, two with an insider following. When people shop for someone else in December, does that difference show?",
+     "t": "Some perfume names everyone recognises; others have an insider following. When people shop for someone else, does that difference show?",
      "bg": "blush"
     },
     {
@@ -63,15 +71,19 @@
   {
    "type": "statement",
    "kick": "THE FINDING",
-   "title": "Classics get gifted. Cult houses get chosen.",
-   "lead": "Every December, Google searches for Jo Malone and Diptyque roughly double. Le Labo and Byredo rise by about half."
+   "title": "The names people recognise jump every December.",
+   "lead": "Searches for Jo Malone, Diptyque and Molton Brown roughly double each December. Le Labo, Byredo and Frédéric Malle rise by about half."
   },
   {
    "type": "numbers",
    "items": [
     {
+     "n": "×2.5",
+     "l": "MOLTON BROWN IN DECEMBER"
+    },
+    {
      "n": "×2.0",
-     "l": "DIPTYQUE IN DECEMBER"
+     "l": "DIPTYQUE"
     },
     {
      "n": "×2.0",
@@ -84,19 +96,23 @@
     {
      "n": "×1.5",
      "l": "BYREDO"
+    },
+    {
+     "n": "×1.4",
+     "l": "FRÉDÉRIC MALLE"
     }
    ],
-   "note": "Google searches in December against each year’s typical month, worldwide, every full year since 2016 (Le Labo from 2017, Byredo from 2018). The classic names lifted more in every December from 2018 to 2025, and Wikipedia pageviews show the same pattern. Figures as of November 2026; the live site recalculates them every day."
+   "note": "Google searches in December against each year’s typical month, worldwide, every full year since 2016 (the niche houses from when Google has enough searches for them). The gift names were taller in all eight Decembers with data for both groups, 2018 to 2025. Figures as of November 2026; the live site recalculates them every day."
   },
   {
    "type": "rules",
    "kick": "KEEPING IT HONEST",
    "title": "Checks that changed the story.",
-   "intro": "Each of these made the site claim less than a first pass would have, and the site shows its working.",
+   "intro": "Each of these made the site claim less than a first pass would have.",
    "items": [
     {
-     "t": "Two signals, not one",
-     "d": "Google searches lean towards buying; Wikipedia views lean towards curiosity. The finding is reported because both agree."
+     "t": "Six houses, chosen by test",
+     "d": "I tested nine more houses before adding two. Penhaligon’s and Acqua di Parma behave like the niche houses, so “classic” here means the name people reach for as a present, not the oldest."
     },
     {
      "t": "Medians, not averages",
@@ -108,7 +124,7 @@
     },
     {
      "t": "Let the data write the headline",
-     "d": "The headline and the year count are calculated from the current data. If the pattern breaks, the page says so."
+     "d": "The figures and the year count are calculated from the current data. If a niche house out-gifts the classics one year, the page says so."
     }
    ]
   },
@@ -118,16 +134,16 @@
    "title": "Made to be used, not only read.",
    "tiles": [
     {
-     "t": "Call it",
-     "d": "Visitors guess each house’s December lift before they see it. The finding stays sealed until they do."
+     "t": "The vase and the round",
+     "d": "Guess which stem the next gifting moment grows tallest, then call all ten moments of the year, from Valentine’s Day to Christmas, and save your score as a picture."
     },
     {
-     "t": "The live season",
-     "d": "This year’s gifting season, day by day, against the range of past seasons. It updates until 6 January."
+     "t": "Find them a perfume",
+     "d": "Pick who it’s for, the occasion and up to three things they love. It suggests one of 30 scents from the six houses, leaning to the gift names for others and the niche houses for yourself."
     },
     {
-     "t": "Reliable by design",
-     "d": "A GitHub Action fetches the data every morning and saves it with the site, so a slow or failed source never breaks the page."
+     "t": "A card to keep",
+     "d": "Press a month flower for someone and spray it with a scent; its notes are pressed beside the flower. Download or share it. Nothing typed is saved or sent."
     }
    ]
   },
@@ -135,7 +151,7 @@
    "type": "text",
    "kick": "WHAT’S NEXT",
    "paras": [
-    "This December is the live test. Byredo is running ahead of its usual season in both signals; if it holds, it would be the first year since 2018 that a cult house matches the classics."
+    "This December is the first live season for the new site. The page will show, as it happens, whether the gift names hold their lead for a ninth year."
    ],
    "links": [
     {

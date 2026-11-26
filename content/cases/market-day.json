@@ -5,8 +5,8 @@
  "credit": "INDEPENDENT · LAB",
  "tag": "Lab · 2026",
  "title": "Market Day",
- "sub": "A small game about why people buy. Name your own stall at a hill market, set the prices, choose the sign, and watch the villagers decide. Then come back for Festival day and a Winter market.",
- "description": "Market Day: a small browser game by Riya Dutta. Three market days, twelve nudges and eleven villagers. Set the prices, pick the sign, and learn why each one buys or walks away.",
+ "sub": "A small game about why people buy. Name your own stall at a hill market, set the prices, choose the sign, and watch the villagers decide, from a sunny morning to a festival, the first snow and a night market.",
+ "description": "Market Day: a small browser game by Riya Dutta. Four market days, fifteen nudges and fourteen villagers. Set the prices, pick the sign, and learn why each one buys or walks away.",
  "postmark": "LIVE · MARKET-DAY · VERCEL ·",
  "facts": [
   [
@@ -15,15 +15,15 @@
   ],
   [
    "THE CHOICES",
-   "Price tags and a chalkboard sign; a free-taste tray and prices ending in 9 at the festival; a bundle of two things in winter"
+   "Price tags and a chalkboard sign, plus a free-taste tray at the festival, a bundle in winter and a try-it-on mirror at the night market"
   ],
   [
-   "THREE DAYS",
-   "A first market day, Festival day and a Winter market, where happy customers come back"
+   "FOUR DAYS",
+   "Market Day, Festival day, a Winter market and a Night market, where happy customers come back"
   ],
   [
    "EVERY VISIT",
-   "What is on the counter, what each villager will pay and who comes first all change each time you play"
+   "The stock, the weather, what each villager will pay and who comes first all change, and sometimes a surprise visitor drops in from another day"
   ],
   [
    "YOUR STALL",
@@ -82,7 +82,7 @@
    "items": [
     {
      "k": "THE IDEA",
-     "t": "Most of marketing is a nudge, not a price cut. Here you can watch twelve of them at work on eleven shoppers, one at a time."
+     "t": "Most of marketing is a nudge, not a price cut. Here you can watch fifteen of them at work on fourteen shoppers, one at a time."
     },
     {
      "k": "THE LEDGER",
@@ -93,7 +93,7 @@
   {
    "type": "statement",
    "kick": "THE VILLAGERS",
-   "title": "Eleven shoppers, twelve reasons.",
+   "title": "Fourteen shoppers, fifteen reasons.",
    "tiles": [
     {
      "t": "Pip and Kiko",
@@ -114,6 +114,10 @@
     {
      "t": "Winter market",
      "d": "Milo the ibex loves a bundle that costs less than its parts. Dot the snow partridge pays more when each sale gives a child a book. Tess the Tibetan fox buys a pricey shawl once the sign says it lasts ten winters. Kiko and Bo come back, and Lumi and Gus are hibernating. Everyone is bundled up in beanies, scarves and earmuffs."
+    },
+    {
+     "t": "Night market",
+     "d": "Ollie the owl wants a free sparkler with his lantern. Mae the leopard cat pays more once she has tried the bangles on in the mirror. Finn the flying squirrel hurries when the sign says the market closes at ten. Gus and Juno come back too, but Juno cannot resist admiring herself in that mirror."
     }
    ]
   },
@@ -121,7 +125,7 @@
    "type": "text",
    "kick": "WHY IT’S HERE",
    "paras": [
-    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into three days at a hill market, from a sunny morning to a festival to the first snow. The stock and the shoppers change every visit, so no two days play the same, but a perfect day is always possible if you get the prices and the nudges right."
+    "The rest of this site is work for clients. The Lab is for things I make because I want them to exist. This one turns the ideas I use every day into four days at a hill market, from a sunny morning to a festival, the first snow and a night under the lanterns. The stock, the weather and the shoppers change every visit, so no two days play the same, but a perfect day is always possible if you get the prices and the nudges right."
    ],
    "links": [
     {

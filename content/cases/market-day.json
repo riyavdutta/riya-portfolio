@@ -5,7 +5,7 @@
  "credit": "INDEPENDENT · LAB",
  "tag": "Lab · 2026",
  "title": "Market Day",
- "sub": "A small game about why people buy. Mind a stall at a hill market, set the prices, choose the sign, and watch the villagers decide. Then come back for Festival day and a Winter market.",
+ "sub": "A small game about why people buy. Name your own stall at a hill market, set the prices, choose the sign, and watch the villagers decide. Then come back for Festival day and a Winter market.",
  "description": "Market Day: a small browser game by Riya Dutta. Three market days, twelve nudges and eleven villagers. Set the prices, pick the sign, and learn why each one buys or walks away.",
  "postmark": "LIVE · MARKET-DAY · VERCEL ·",
  "facts": [
@@ -24,6 +24,10 @@
   [
    "EVERY VISIT",
    "What is on the counter, what each villager will pay and who comes first all change each time you play"
+  ],
+  [
+   "YOUR STALL",
+   "Name it, and choose how your shopkeeper looks: skin, hair, outfit and an extra. It’s remembered for next time and shows on your postcard"
   ],
   [
    "TO KEEP",
@@ -67,7 +71,7 @@
    "title": "Price it, sign it, open up.",
    "src": "https://market-day-beige.vercel.app/",
    "alt": "Market Day, playable",
-   "note": "The stall is stocked differently every visit. Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Villagers dress for the day and walk off wearing or carrying what they bought. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
+   "note": "The stall is stocked differently every visit. Tap Make it yours to name the stall and choose how you look. Tap Set prices to change the price tags, then tap the chalkboard to choose what it says. Open the stall, and change things once at lunch. At dusk, the ledger shows who bought, why, and how much more they would have paid, and you get a postcard of your day to keep. Every nudge that wins a sale earns a sticker, twelve in all. Villagers dress for the day and walk off wearing or carrying what they bought. Switch days from “Other days” in the morning; win villagers early and they come back loyal."
   },
   {
    "type": "cards",
